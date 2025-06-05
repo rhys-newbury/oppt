@@ -8,7 +8,8 @@ int main(int argc, char const* argv[])
     int ret = problemEnvironment.setup<solvers::ABT, oppt::ABTExtendedOptions>(argc, argv);
     if (ret != 0)
         return ret;
-    return problemEnvironment.runEnvironment();
+    problemEnvironment.runEnvironment();
+    return 0;
 }
 
 

@@ -6,6 +6,8 @@
 #include "oppt/problemEnvironment/ProblemEnvironment.hpp"
 #include "solvers/ABT/solverABT.hpp"
 #include "solvers/ABT/ABTOptions.hpp"
+#include "solvers/ABT/robotModel/solver/Solver.hpp"
+// #include "solvers/ABT/solverABT.hpp"
 
 #include <gazebo/gazebo.hh>
 #include <gazebo/common/Events.hh>
@@ -58,13 +60,31 @@ std::shared_ptr<ABTExtendedOptions> parse_abt_options_from_file(const std::strin
     return std::dynamic_pointer_cast<ABTExtendedOptions>(basePtr);
 }
 
+std::shared_ptr<ProblemEnvironment> create_abt_env() {
+    auto env = std::make_shared<ProblemEnvironment>();
+    env->create<solvers::ABT>();
+    return env;
+}
+
 
 PYBIND11_MODULE(oppt_py, m) {
+
+    py::class_<RunSummary>(m, "RunSummary")
+    .def_readonly("mean_num_steps", &RunSummary::meanNumSteps)
+    .def_readonly("mean_planning_time_per_step", &RunSummary::meanPlanningTimePerStep)
+    .def_readonly("num_successful_runs", &RunSummary::numSuccessfulRuns)
+    .def_readonly("percentage_successful_runs", &RunSummary::percentageSuccRuns)
+    .def_readonly("average_total_discounted_reward", &RunSummary::averageTotalDiscountedReward);
+
+
 
     py::class_<ProblemEnvironment, std::shared_ptr<ProblemEnvironment>>(m, "ProblemEnvironment")
         .def(py::init<>())
         .def("initialize_with_options", &ProblemEnvironment::initializeWithOptions)
         .def("run_environment", &ProblemEnvironment::runEnvironment);
+
+    m.def("create_abt_environment", &create_abt_env, "Create ABT solver environment");
+
 
     py::class_<ProblemEnvironmentOptions, std::shared_ptr<ProblemEnvironmentOptions>>(m, "ProblemEnvironmentOptions")
         .def(py::init<>())

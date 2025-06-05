@@ -36,6 +36,14 @@
 namespace oppt
 {
 
+    struct RunSummary {
+    unsigned int meanNumSteps;
+    double meanPlanningTimePerStep;
+    unsigned int numSuccessfulRuns;
+    double percentageSuccRuns;
+    double averageTotalDiscountedReward;
+};
+
 /**
  * A parser that reads a configuration file, and constructs a ProblemEnvironmentOptions objects
  */
@@ -123,6 +131,7 @@ public:
             problemEnvironmentOptions_ = std::move(options);
 
             setVerbose(problemEnvironmentOptions_->hasVerboseOutput);
+
             if (problemEnvironmentOptions_->seed == 0) {
                 std::ifstream random("/dev/urandom", std::ios_base::in);
                 int t;
@@ -133,6 +142,7 @@ public:
             oppt::globalSeed = problemEnvironmentOptions_->seed;
             randGen_ = std::make_shared<RandomEngine>(problemEnvironmentOptions_->seed);
             randGen_->discard(100);
+
             if (problemEnvironmentOptions_->rngState > 0) {
                 std::stringstream sstr;
                 sstr << problemEnvironmentOptions_->rngState;
@@ -203,11 +213,14 @@ public:
             parseChanges();
 
             solver_->setRobotPlanningEnvironment(robotPlanningEnvironment_.get());
+
             solver_->setProblemEnvironmentOptions(problemEnvironmentOptions_.get());
+
             auto heuristicPlugin = std::move(solver_->createHeuristicPlugin(problemEnvironmentOptions_->heuristicPlugin, solver_->robotPlanningEnvironment_));
 
             loadPlugins_("exec");
             loadPlugins_("planning");
+
             heuristicPlugin->load(problemEnvironmentOptions_->configPath);
             solver_->heuristicPlugin_ = std::move(heuristicPlugin);
 
@@ -294,6 +307,13 @@ public:
         return initializeWithOptions(std::move(opts));
     }
 
+    template<class SolverType>
+    int create() {
+        solver_ = std::make_unique<SolverType>();
+        return 0;
+    }
+
+
     virtual void handleEnvironmentChanges(const EnvironmentChangeSharedPtr & environmentChange) {
         environmentUserChanges_.push_back(environmentChange);
     }
@@ -301,60 +321,62 @@ public:
     /**
      * @brief Run the environment. This method should be called from the main method after setup has been called.
      */
-    virtual int runEnvironment() {
-        try {
-            if (!problemEnvironmentOptions_) {
-                cout << "Error: You can't run an environment before calling the setup() method" << endl;
-                return 2;
-            }
+virtual RunSummary runEnvironment() {
+    RunSummary summary;
 
-            std::string resultsDir = problemEnvironmentOptions_->logPath;
-            if (!oppt::createDir(resultsDir)) {
-                cout << "Error: results directory couldn't be created: " << resultsDir << endl;
-                return 2;
-            }
+    try {
+        if (!problemEnvironmentOptions_) {
+            throw std::runtime_error("You must call setup() before runEnvironment()");
+        }
 
-            std::string finalLogFilePath = getLogFilePath(resultsDir);
-            if (!oppt::fileExists(finalLogFilePath)) {
-                std::ofstream os(finalLogFilePath,
-                                 std::ios_base::app | std::ios_base::out);
+        std::string resultsDir = problemEnvironmentOptions_->logPath;
+        if (!oppt::createDir(resultsDir)) {
+            std::cerr << "Error: results directory couldn't be created: " << resultsDir << std::endl;
+            return summary;  // Empty result
+        }
 
-                // Check the validity of the goal states
-                //goalStatesValid();
+        std::string finalLogFilePath = getLogFilePath(resultsDir);
+        if (oppt::fileExists(finalLogFilePath)) {
+            oppt::LOGGING("A logfile with the same covariance parameters exists. Skipping");
+            return summary;
+        }
 
-                // Put some initial information into the logfile
-                os << "seed: " << problemEnvironmentOptions_->seed << endl;
-                //os << "Process error: " << problemEnvironmentOptions_->processError << endl;
-                //os << "Observation error: " << problemEnvironmentOptions_->observationError << endl;
-                os << "Robot: " << robotPlanningEnvironment_->getRobot()->getName() << endl;
-                os << "Planning environment: " << problemEnvironmentOptions_->planningEnvironmentPath << endl;
-                os << "Execution environment: " << problemEnvironmentOptions_->executionEnvironmentPath << endl;
-                os << "solver: " << solver_->getName() << endl;
+        std::ofstream os(finalLogFilePath, std::ios_base::app | std::ios_base::out);
 
-                FloatType totalDiscountedReward = 0;
-                unsigned int totalNumSteps = 0;
-                unsigned int meanNumSteps = 0;
-                FloatType meanPlanningTimePerStep = 0;
-                unsigned int numSuccessfulRuns = 0;
-                for (size_t i = 0; i != problemEnvironmentOptions_->nRuns; ++i) {
-                    os << "Run #" << i + 1 << endl;
-                    cout << "Run # " << i + 1 << endl;
-                    SimulationResult simulationResult = run(i + 1, os);
-                    totalDiscountedReward += simulationResult.discountedReward;
-                    totalNumSteps += simulationResult.stepsTaken;
+        os << "seed: " << problemEnvironmentOptions_->seed << std::endl;
+        os << "Robot: " << robotPlanningEnvironment_->getRobot()->getName() << std::endl;
+        os << "Planning environment: " << problemEnvironmentOptions_->planningEnvironmentPath << std::endl;
+        os << "Execution environment: " << problemEnvironmentOptions_->executionEnvironmentPath << std::endl;
+        os << "solver: " << solver_->getName() << std::endl;
+
+        FloatType totalDiscountedReward = 0;
+        unsigned int totalNumSteps = 0;
+        unsigned int meanNumSteps = 0;
+        FloatType meanPlanningTimePerStep = 0;
+        unsigned int numSuccessfulRuns = 0;
+
+        for (size_t i = 0; i < problemEnvironmentOptions_->nRuns; ++i) {
+            os << "Run #" << i + 1 << std::endl;
+            std::cout << "Run # " << i + 1 << std::endl;
+
+            SimulationResult simulationResult = run(i + 1, os);
+
+            totalDiscountedReward += simulationResult.discountedReward;
+            totalNumSteps += simulationResult.stepsTaken;
                     meanNumSteps += simulationResult.stepsTaken;
-                    meanPlanningTimePerStep += simulationResult.totalPlanningTime;
-                    if (simulationResult.successfulRun)
-                        numSuccessfulRuns++;
-                    onRunFinishedFn_(i + 1);
+            meanPlanningTimePerStep += simulationResult.totalPlanningTime;
+            if (simulationResult.successfulRun)
+                numSuccessfulRuns++;
 
-                    os << "RUN_FINISHED_USER_DATA_BEGIN" << endl;
-                    // We're done with this run. Let the solver know about it
-                    solver_->runFinished(os, i + 1, simulationResult);
-                    os << "RUN_FINISHED_USER_DATA_END" << endl;
-                    cout << "Run finished \n";
-                    cout << "Discounted reward: " << simulationResult.discountedReward << endl;
-                }
+            onRunFinishedFn_(i + 1);
+
+            os << "RUN_FINISHED_USER_DATA_BEGIN" << std::endl;
+            solver_->runFinished(os, i + 1, simulationResult);
+            os << "RUN_FINISHED_USER_DATA_END" << std::endl;
+
+            std::cout << "Run finished\n";
+            std::cout << "Discounted reward: " << simulationResult.discountedReward << std::endl;
+        }
 
                 meanNumSteps /= (FloatType)problemEnvironmentOptions_->nRuns;
                 meanPlanningTimePerStep /= (FloatType)totalNumSteps;
@@ -362,25 +384,29 @@ public:
                 FloatType percentageSuccRuns =
                     (100.0 / (FloatType)problemEnvironmentOptions_->nRuns) * (FloatType)numSuccessfulRuns;
 
-                os << "##################################\n";
+        os << "##################################\n";
                 os << "Mean number of steps: " << meanNumSteps << endl;
                 os << "Mean planning time per step: " << meanPlanningTimePerStep * 1000 << "ms\n";
                 os << "Num successful runs: " << numSuccessfulRuns << endl;
                 os << "Percentage of successful runs: " << percentageSuccRuns << endl;
                 os << "Average total discounted reward: " << totalDiscountedReward / (FloatType)problemEnvironmentOptions_->nRuns << endl;
 
-                os.close();
-            } else {
-                oppt::LOGGING("A logfile with the same covariance parameters exists. Skipping");
-            }
+        os.close();
 
+        // Populate result struct
+        summary.meanNumSteps = meanNumSteps;
+        summary.meanPlanningTimePerStep = meanPlanningTimePerStep * 1000;
+        summary.numSuccessfulRuns = numSuccessfulRuns;
+        summary.percentageSuccRuns = percentageSuccRuns;
+        summary.averageTotalDiscountedReward = totalDiscountedReward / (FloatType)problemEnvironmentOptions_->nRuns;
 
-            oppt::LOGGING("Done.");
-            return 0;
-        } catch (const std::runtime_error& re) {
-            return 2;
-        }
+        oppt::LOGGING("Done.");
+    } catch (const std::exception& e) {
+        std::cerr << "Exception in runEnvironment(): " << e.what() << std::endl;
     }
+
+    return summary;
+}
 
     /**
      * @brief Returns a pointer to the ProblemEnvironmentOptions object

@@ -2,6 +2,11 @@ FROM ros:noetic
 
 RUN rm /etc/apt/sources.list.d/ros1-latest.list
 
+
+RUN echo "deb https://mirror.aarnet.edu.au/pub/ubuntu/archive/ focal main restricted universe multiverse\n\
+    deb https://mirror.aarnet.edu.au/pub/ubuntu/archive/ focal-updates main restricted universe multiverse\n\
+    deb https://mirror.aarnet.edu.au/pub/ubuntu/archive/ focal-security main restricted universe multiverse\n" > /etc/apt/sources.list
+
 RUN apt update && apt install -y curl
 
 WORKDIR /app
@@ -18,7 +23,7 @@ RUN mkdir -p /etc/apt/keyrings && \
     apt-get update
 
 # Extra dependencies that are needed.
-RUN apt update && apt install -y git ros-noetic-nlopt libnlopt-cxx-dev wget ros-noetic-rviz ros-noetic-kdl-parser ros-noetic-trac-ik ros-noetic-trac-ik-lib && \
+RUN apt update && apt install -y git python3-pip ros-noetic-nlopt libnlopt-cxx-dev wget ros-noetic-rviz ros-noetic-kdl-parser ros-noetic-trac-ik ros-noetic-trac-ik-lib && \
     rm -rf /var/lib/apt/lists/*
 
 # We need a specific version of FCL, so we will build from scratch
@@ -29,8 +34,8 @@ RUN apt remove -y ros-noetic-fcl libfcl-dev && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make && \
-    sudo make install
+    make -j $(($(nproc) - 1)) && \
+    make install
 
 # Install spatialindex
 RUN wget http://download.osgeo.org/libspatialindex/spatialindex-src-1.8.5.tar.gz && \
@@ -38,15 +43,15 @@ RUN wget http://download.osgeo.org/libspatialindex/spatialindex-src-1.8.5.tar.gz
     cd spatialindex-src-1.8.5 && \
     mkdir build && cd build && \
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local .. && \
-    make -j2 && sudo make install
+    make -j $(($(nproc) - 1)) && make install
 
 # Finally, make and install oppt
 WORKDIR /app
 COPY . .
 
-RUN . /opt/ros/noetic/setup.sh && \
-    cd /app/src/ && \
-    mkdir build && cd build && \
-    cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=. .. && \
-    make && make install && \
-    echo 'source /app/oppt/src/build/share/oppt/setup.sh' >> ~/.bashrc 
+# RUN . /opt/ros/noetic/setup.sh && \
+#     cd /app/src/ && \
+#     mkdir build && cd build && \
+#     cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=. .. && \
+#     make -j $(($(nproc) - 1)) && make install && \
+#     echo 'source /app/oppt/src/build/share/oppt/setup.sh' >> ~/.bashrc 
