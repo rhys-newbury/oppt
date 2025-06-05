@@ -40,19 +40,17 @@ namespace oppt
  * A parser that reads a configuration file, and constructs a ProblemEnvironmentOptions objects
  */
 struct ProblemEnvironmentOptionsParser {
+    // Parse from command line (uses configPath from parsed args)
     template<typename OptionsType>
     ProblemEnvironmentOptionsPtr parseOptions(int argc, char const* argv[]) {
-        std::unique_ptr<OptionsType> options_ = std::make_unique<OptionsType>();
-        std::unique_ptr <options::OptionParser> parser =
-            OptionsType::makeParser(true);
+        auto options_ = std::make_unique<OptionsType>();
+        auto parser = OptionsType::makeParser(true);
 
-        std::string workingDir = oppt::get_current_directory();
         try {
             parser->setOptions(options_.get());
             parser->parseCmdLine(argc, argv);
-            if (!options_->configPath.empty()) {
+            if (!options_->configPath.empty())
                 parser->parseCfgFile(options_->configPath);
-            }
 
             parser->finalize();
         } catch (options::OptionParsingException const& e) {
@@ -60,15 +58,40 @@ struct ProblemEnvironmentOptionsParser {
             return nullptr;
         }
 
-        if (options_->planningEnvironmentPath.empty() and options_->executionEnvironmentPath.empty() == false) {
-            ERROR("You have specified 'executionEnvironmentPath' in your problem configuration file but not 'planningEnvironmentPath'");
-        } else if (options_->planningEnvironmentPath.empty() == false and options_->executionEnvironmentPath.empty()) {
-            ERROR("You have specified 'planningEnvironmentPath' in your problem configuration file but not 'executionEnvironmentPath'");
-        } else if (options_->planningEnvironmentPath.empty() and options_->executionEnvironmentPath.empty()) {
+        return finalizeOptions(std::move(options_));
+    }
+
+    // Parse from a given config file path
+    template<typename OptionsType>
+    ProblemEnvironmentOptionsPtr parseOptions(const std::string& configPath) {
+        auto options_ = std::make_unique<OptionsType>();
+        auto parser = OptionsType::makeParser(true);
+
+        try {
+            parser->setOptions(options_.get());
+            options_->configPath = configPath;
+
+            parser->parseCfgFile(configPath);
+            parser->finalize();
+        } catch (options::OptionParsingException const& e) {
+            std::cerr << e.what() << std::endl;
+            return nullptr;
+        }
+
+        return finalizeOptions(std::move(options_));
+    }
+
+private:
+    ProblemEnvironmentOptionsPtr finalizeOptions(std::unique_ptr<ProblemEnvironmentOptions> options_) {
+        if (options_->planningEnvironmentPath.empty() && !options_->executionEnvironmentPath.empty()) {
+            ERROR("You have specified 'executionEnvironmentPath' but not 'planningEnvironmentPath'");
+        } else if (!options_->planningEnvironmentPath.empty() && options_->executionEnvironmentPath.empty()) {
+            ERROR("You have specified 'planningEnvironmentPath' but not 'executionEnvironmentPath'");
+        } else if (options_->planningEnvironmentPath.empty() && options_->executionEnvironmentPath.empty()) {
             options_->deactivateVisualization = true;
         }
 
-        if (options_->planningEnvironmentPath.empty() == false) {
+        if (!options_->planningEnvironmentPath.empty()) {
             if (!resources::FileExists(options_->planningEnvironmentPath)) {
                 ERROR("Environment file '" + options_->planningEnvironmentPath + "' doesn't exist");
             }
@@ -77,7 +100,6 @@ struct ProblemEnvironmentOptionsParser {
                 ERROR("Environment file '" + options_->executionEnvironmentPath + "' doesn't exist");
             }
 
-            // Replace paths with their full path
             options_->planningEnvironmentPath = resources::FindFile(options_->planningEnvironmentPath);
             options_->executionEnvironmentPath = resources::FindFile(options_->executionEnvironmentPath);
         }
@@ -96,16 +118,9 @@ public:
     /**
      * The setup method that has to be called from the main method before running the environment
      */
-    template<class SolverType, class OptionsType>
-    int setup(int argc, char const* argv[]) {
+    int initializeWithOptions(std::shared_ptr<ProblemEnvironmentOptions> options) {
         try {
-            solver_ = std::make_unique<SolverType>();
-            ProblemEnvironmentOptionsParser problemEnvironmentOptionsParser;
-            problemEnvironmentOptions_ =
-                problemEnvironmentOptionsParser.parseOptions<OptionsType>(argc, argv);
-            if (!problemEnvironmentOptions_) {
-                ERROR("Couldn't parse options");
-            }
+            problemEnvironmentOptions_ = std::move(options);
 
             setVerbose(problemEnvironmentOptions_->hasVerboseOutput);
             if (problemEnvironmentOptions_->seed == 0) {
@@ -264,6 +279,20 @@ public:
             return 2;
         }
     }
+    
+    template<class SolverType, class OptionsType>
+    int setup(int argc, char const* argv[]) {
+        solver_ = std::make_unique<SolverType>();
+
+        ProblemEnvironmentOptionsParser parser;
+        auto opts = parser.parseOptions<OptionsType>(argc, argv);
+        if (!opts) {
+            ERROR("Couldn't parse options");
+            return 1;
+        }
+
+        return initializeWithOptions(std::move(opts));
+    }
 
     virtual void handleEnvironmentChanges(const EnvironmentChangeSharedPtr & environmentChange) {
         environmentUserChanges_.push_back(environmentChange);
@@ -272,7 +301,7 @@ public:
     /**
      * @brief Run the environment. This method should be called from the main method after setup has been called.
      */
-    virtual int runEnvironment(int argc, char const * argv[]) {
+    virtual int runEnvironment() {
         try {
             if (!problemEnvironmentOptions_) {
                 cout << "Error: You can't run an environment before calling the setup() method" << endl;
@@ -310,7 +339,7 @@ public:
                 for (size_t i = 0; i != problemEnvironmentOptions_->nRuns; ++i) {
                     os << "Run #" << i + 1 << endl;
                     cout << "Run # " << i + 1 << endl;
-                    SimulationResult simulationResult = run(i + 1, os, argc, argv);
+                    SimulationResult simulationResult = run(i + 1, os);
                     totalDiscountedReward += simulationResult.discountedReward;
                     totalNumSteps += simulationResult.stepsTaken;
                     meanNumSteps += simulationResult.stepsTaken;
@@ -740,7 +769,7 @@ private:
         enableGazeboStateLogging(logTmp);
     }
 
-    SimulationResult run(const unsigned int& run, std::ofstream & os, int argc, char const * argv[]) {
+    SimulationResult run(const unsigned int& run, std::ofstream & os) {
         SimulationResult simulationResult;
         if (!solver_->reset())
             return simulationResult;
@@ -928,7 +957,6 @@ private:
         simulationResult.totalPlanningTime = totalPlanningTime;
         simulationResult.successfulRun = success;
 
-        //solver_->run(os, argc, argv);
         return simulationResult;
     }
 

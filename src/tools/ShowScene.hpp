@@ -62,7 +62,7 @@ public:
 
         ProblemEnvironment problemEnvironment;
         int ret = problemEnvironment.setup<ShowSceneSolverStub, ShowSceneSolverStubOptions>(argc2, argv2);
-        int ret2 = problemEnvironment.runEnvironment(argc2, argv2);
+        int ret2 = problemEnvironment.runEnvironment();
 	cout << "Press enter to exit" << endl;
 	getchar();
     }

@@ -235,7 +235,7 @@ struct ProblemEnvironmentOptions : public oppt::Options {
 
 };
 
-typedef std::unique_ptr<ProblemEnvironmentOptions> ProblemEnvironmentOptionsPtr;
+typedef std::shared_ptr<ProblemEnvironmentOptions> ProblemEnvironmentOptionsPtr;
 
 }
 

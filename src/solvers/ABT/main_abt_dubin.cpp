@@ -9,5 +9,5 @@ int main(int argc, char const* argv[])
     int ret = problemEnvironment.setup<oppt::DubinRobot, algorithm::ABT, oppt::ABTExtendedOptions>(argc, argv);
     if (ret != 0)
         return ret;
-    return problemEnvironment.runEnvironment(argc, argv);
+    return problemEnvironment.runEnvironment();
 }

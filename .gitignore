@@ -22,7 +22,7 @@ simulate
 solve
 solve-mdp
 stest
-
+src/build
 # Logging outputs
 core
 *.log
