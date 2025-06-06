@@ -31,9 +31,9 @@ public:
 
     virtual ~ManipulatorRRTHeuristicPlugin() = default;
 
-    virtual bool load(const std::string& optionsFile) override {            
-        parseOptions_<RRTHeuristicOptions>(optionsFile); 
-        timeout_ = static_cast<RRTHeuristicOptions*>(options_.get())->timeout;       
+    virtual bool load(const std::string& optionsFile) override {
+        parseOptions_<RRTHeuristicOptions>(optionsFile);
+        timeout_ = static_cast<RRTHeuristicOptions*>(options_.get())->timeout;
 
         rrtConnect_ =
             std::make_unique<RRTConnect>(robotEnvironment_,
@@ -48,23 +48,23 @@ public:
         rrtConnect_->setGoalStates(goalStatesVec);
 
         // Set the distance function
-        unsigned int numStateDimensions = robotEnvironment_->getRobot()->getStateSpace()->getNumDimensions();        
+        unsigned int numStateDimensions = robotEnvironment_->getRobot()->getStateSpace()->getNumDimensions();
         DistanceFunction d = [numStateDimensions](const RobotStateSharedPtr &s1, const RobotStateSharedPtr &s2){
             VectorFloat s1Vec = s1->as<VectorState>()->asVector();
             VectorFloat s2Vec = s2->as<VectorState>()->asVector();
-            return math::euclideanDistance(s1Vec.data(), s2Vec.data(), numStateDimensions / 2);            
+            return math::euclideanDistance(s1Vec.data(), s2Vec.data(), numStateDimensions / 2);
         };
 
         rrtConnect_->setDistanceFunction(d);
-        
+
         return true;
     }
 
     virtual FloatType getHeuristicValue(const HeuristicInfo * heuristicInfo) const override {
         return getHeuristicValueImpl(heuristicInfo);
     }
-    
-private:    
+
+private:
     std::unique_ptr<RRTConnect> rrtConnect_;
     FloatType timeout_ = 0.1;
 

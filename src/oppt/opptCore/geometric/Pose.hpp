@@ -78,7 +78,7 @@ public:
 		       equal_(orientation.w(), other.orientation.w()) &&
 		       equal_(orientation.x(), other.orientation.x()) &&
 		       equal_(orientation.y(), other.orientation.y()) &&
-		       equal_(orientation.z(), other.orientation.z());		
+		       equal_(orientation.z(), other.orientation.z());
 	}
 
 	bool operator!=(const Pose &other) const {

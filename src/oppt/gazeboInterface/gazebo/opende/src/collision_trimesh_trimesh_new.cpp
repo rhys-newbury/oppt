@@ -21,7 +21,7 @@
  *************************************************************************/
 
 // OPCODE TriMesh/TriMesh collision code
-// Written at 2006-10-28 by Francisco León (http://gimpact.sourceforge.net)
+// Written at 2006-10-28 by Francisco Leï¿½n (http://gimpact.sourceforge.net)
 
 #ifdef _MSC_VER
 #pragma warning(disable:4244 4305)  // for VC++, no precision loss complaints
@@ -146,7 +146,7 @@ SwapNormals(dVector3 *&pen_v, dVector3 *&col_v, dVector3* v1, dVector3* v2,
 }
 
 ///////////////////////MECHANISM FOR AVOID CONTACT REDUNDANCE///////////////////////////////
-////* Written by Francisco León (http://gimpact.sourceforge.net) *///
+////* Written by Francisco Leï¿½n (http://gimpact.sourceforge.net) *///
 #define CONTACT_DIFF_EPSILON REAL(0.00001)
 #if defined(dDOUBLE)
 #define CONTACT_NORMAL_ZERO REAL(0.0000001)
@@ -264,7 +264,7 @@ void RemoveArbitraryContactFromNode(const CONTACT_KEY *contactkey, CONTACT_KEY_H
 		}
 	}
 
-	dIASSERT(keyindex < lastkeyindex || 
+	dIASSERT(keyindex < lastkeyindex ||
 		node->m_keyarray[keyindex].m_contact == contactkey->m_contact); // It has been either the break from loop or last element should match
 
 	node->m_keycount = lastkeyindex;
@@ -286,7 +286,7 @@ void UpdateArbitraryContactInNode(const CONTACT_KEY *contactkey, CONTACT_KEY_HAS
 		}
 	}
 
-	dIASSERT(keyindex < lastkeyindex || 
+	dIASSERT(keyindex < lastkeyindex ||
 		node->m_keyarray[keyindex].m_contact == contactkey->m_contact); // It has been either the break from loop or last element should match
 
 	node->m_keyarray[keyindex].m_contact = pwithcontact;
@@ -308,7 +308,7 @@ dContactGeom *InsertContactInSet(CONTACT_KEY_HASH_TABLE &hashcontactset, const C
 void RemoveNewContactFromSet(CONTACT_KEY_HASH_TABLE &hashcontactset, const CONTACT_KEY &contactkey)
 {
 	unsigned int index = MakeContactIndex(contactkey.m_key);
-	
+
 	RemoveNewContactFromNode(&contactkey, &hashcontactset[index]);
 }
 
@@ -319,7 +319,7 @@ void RemoveArbitraryContactFromSet(CONTACT_KEY_HASH_TABLE &hashcontactset, const
 	RemoveArbitraryContactFromNode(&contactkey, &hashcontactset[index]);
 }
 
-void UpdateArbitraryContactInSet(CONTACT_KEY_HASH_TABLE &hashcontactset, const CONTACT_KEY &contactkey, 
+void UpdateArbitraryContactInSet(CONTACT_KEY_HASH_TABLE &hashcontactset, const CONTACT_KEY &contactkey,
 	dContactGeom *pwithcontact)
 {
 	unsigned int index = MakeContactIndex(contactkey.m_key);
@@ -336,7 +336,7 @@ bool AllocNewContact(
 
 	dContactGeom dLocalContact;
 
-	dContactGeom * pcontact = contactcount != (Flags & NUMC_MASK) ? 
+	dContactGeom * pcontact = contactcount != (Flags & NUMC_MASK) ?
 		SAFECONTACT(Flags, Contacts, contactcount, Stride) : &dLocalContact;
 
 	pcontact->pos[0] = newpoint[0];
@@ -346,7 +346,7 @@ bool AllocNewContact(
 
 	CONTACT_KEY newkey;
 	UpdateContactKey(newkey, pcontact);
-	
+
 	dContactGeom *pcontactfound = InsertContactInSet(hashcontactset, newkey);
 	if (pcontactfound == pcontact)
 	{
@@ -368,7 +368,7 @@ bool AllocNewContact(
 }
 
 void FreeExistingContact(dContactGeom *pcontact,
-	int Flags, CONTACT_KEY_HASH_TABLE &hashcontactset, 
+	int Flags, CONTACT_KEY_HASH_TABLE &hashcontactset,
 	dContactGeom *Contacts, int Stride, int &contactcount)
 {
 	CONTACT_KEY contactKey;
@@ -385,7 +385,7 @@ void FreeExistingContact(dContactGeom *pcontact,
 
 		CONTACT_KEY lastContactKey;
 		UpdateContactKey(lastContactKey, plastContact);
-		
+
 		UpdateArbitraryContactInSet(hashcontactset, lastContactKey, pcontact);
 	}
 
@@ -397,7 +397,7 @@ dContactGeom *  PushNewContact( dxGeom* g1, dxGeom* g2, int TriIndex1, int TriIn
 							   const dVector3 point,
 							   dVector3 normal,
 							   dReal  depth,
-							   int Flags, 
+							   int Flags,
 							   CONTACT_KEY_HASH_TABLE &hashcontactset,
 							 dContactGeom* Contacts, int Stride,
 							 int &contactcount)
@@ -429,8 +429,8 @@ dContactGeom *  PushNewContact( dxGeom* g1, dxGeom* g2, int TriIndex1, int TriIn
 			{
 				MULT(normal,normal, REAL(-1.0));
                 int tempInt = TriIndex1; TriIndex1 = TriIndex2; TriIndex2 = tempInt;
-                // This should be discarded by optimizer as g1 and g2 are 
-                // not used any more but it's preferable to keep this line for 
+                // This should be discarded by optimizer as g1 and g2 are
+                // not used any more but it's preferable to keep this line for
                 // the sake of consistency in variable values.
                 dxGeom *tempGeom = g1; g1 = g2; g2 = tempGeom;
 			}
@@ -483,7 +483,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 	dIASSERT (g1->type == dTriMeshClass);
 	dIASSERT (g2->type == dTriMeshClass);
 	dIASSERT ((Flags & NUMC_MASK) >= 1);
-	
+
     dxTriMesh* TriMesh1 = (dxTriMesh*) g1;
     dxTriMesh* TriMesh2 = (dxTriMesh*) g2;
 
@@ -564,8 +564,8 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 					TriTriContacts(v1,v2, id1,id2,
 						  g1, g2, Flags, hashcontactset,
 						 Contacts,Stride,OutTriCount);
-					
-					// Continue loop even after contacts are full 
+
+					// Continue loop even after contacts are full
 					// as existing contacts' normals/depths might be updated
 					// Break only if contacts are not important
 					if ((OutTriCount | CONTACTS_UNIMPORTANT) == (Flags & (NUMC_MASK | CONTACTS_UNIMPORTANT)))
@@ -683,10 +683,10 @@ dInvertMatrix4( dMatrix4& B, dMatrix4& Binv )
 #endif
 
 
-// Find the intersectiojn point between a coplanar line segement,
+// Find the intersectiojn point between a coplanar line segment,
 // defined by X1 and X2, and a ray defined by X3 and direction N.
 //
-// This forumla for this calculation is:
+// This formula for this calculation is:
 //               (c x b) . (a x b)
 //   Q = x1 + a -------------------
 //                  | a x b | ^2
@@ -1041,7 +1041,7 @@ dReal FindTriangleTriangleCollision(
 	bool bl;
 	LineContactSet clipped_points1,clipped_points2;
 	LineContactSet deep_points1,deep_points2;
-	// It is necessary to initialize the count because both conditional statements 
+	// It is necessary to initialize the count because both conditional statements
 	// might be skipped leading to uninitialized count being used for memcpy in if(mostdir==0)
 	deep_points1.Count = 0;
 
@@ -1261,7 +1261,7 @@ dReal FindTriangleTriangleCollision(
 bool TriTriContacts(const dVector3 tr1[3],
 							 const dVector3 tr2[3],
 							 int TriIndex1, int TriIndex2,
-							  dxGeom* g1, dxGeom* g2, int Flags, 
+							  dxGeom* g1, dxGeom* g2, int Flags,
 							  CONTACT_KEY_HASH_TABLE &hashcontactset,
 							 dContactGeom* Contacts, int Stride,
 							 int &contactcount)
@@ -1298,7 +1298,7 @@ bool TriTriContacts(const dVector3 tr1[3],
 					normal, depth, Flags, hashcontactset,
 					Contacts,Stride,contactcount);
 
-		// Continue loop even after contacts are full 
+		// Continue loop even after contacts are full
 		// as existing contacts' normals/depths might be updated
 		// Break only if contacts are not important
 		if ((contactcount | CONTACTS_UNIMPORTANT) == (Flags & (NUMC_MASK | CONTACTS_UNIMPORTANT)))

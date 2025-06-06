@@ -38,33 +38,33 @@ public:
 
     std::unique_ptr<abt::State> copy() const override;
     FloatType distanceTo(abt::State const& otherState) const override;
-    
+
     bool equals(abt::State const& otherState) const override;
 
     std::size_t hash() const override;
-    
+
     void print(std::ostream& os) const override;
 
-    virtual void serialize(std::ostream& os, const std::string prefix="") const override;   
+    virtual void serialize(std::ostream& os, const std::string prefix="") const override;
 
     void setWeight(const FloatType weight) const;
 
     FloatType getWeight() const;
-    
+
     const oppt::RobotStateSharedPtr getOpptState() const;
-    
+
     VectorFloat asVector() const override;
-    
+
     void setPropagationResult(const oppt::PropagationResultSharedPtr &propagationResult);
-    
+
     const oppt::PropagationResultSharedPtr getPropagationResult() const;
 
 private:
     const oppt::RobotStateSharedPtr robotState_;
-    
+
     // The PropagationResult this state origined from;
     oppt::PropagationResultSharedPtr propagationResult_;
-    
+
     VectorFloat state_vector_;
 
     int roundingPrecision_ = 6;

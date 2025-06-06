@@ -1,2 +1,2 @@
-ADD_HEURISTIC_PLUGIN(DefaultHeuristicPlugin
-            ${CMAKE_CURRENT_LIST_DIR}/DefaultHeuristicPlugin.cpp)
+add_heuristic_plugin(DefaultHeuristicPlugin
+                     ${CMAKE_CURRENT_LIST_DIR}/DefaultHeuristicPlugin.cpp)

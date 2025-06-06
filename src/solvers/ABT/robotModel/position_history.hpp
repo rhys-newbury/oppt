@@ -43,8 +43,8 @@ class HistEntry : public abt::HistoricalData
 public:
     HistEntry();
 
-    HistEntry(oppt::ActionSharedPtr &parentAction, 
-        oppt::ObservationSharedPtr &parentObservation, 
+    HistEntry(oppt::ActionSharedPtr &parentAction,
+        oppt::ObservationSharedPtr &parentObservation,
         const unsigned int &stepNum);
 
     virtual ~HistEntry() = default;

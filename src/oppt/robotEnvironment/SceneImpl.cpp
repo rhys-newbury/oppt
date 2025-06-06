@@ -62,7 +62,7 @@ void SceneImpl::addBody(BodyUniquePtr body, bool executeCallback)
     }
 
     bodies_.push_back(std::move(body));
-    if (bodyPtr->isEnabled()) {        
+    if (bodyPtr->isEnabled()) {
         bodiesInManager_[bodyPtr->getScopedName()] = body.get();
         //bodiesInManager_.push_back(bodyPtr->getName());
         auto opptCollisionObjects = bodyPtr->getOpptCollisionObjects();
@@ -100,7 +100,7 @@ void SceneImpl::removeModel(const std::string &modelName) {
 }
 
 bool SceneImpl::removeBody(std::string bodyName, bool executeCallback)
-{    
+{
     Body* body = getBody(bodyName);
     if (!body) {
         WARNING("Can't remove body with name '" + bodyName + "'");
@@ -161,11 +161,11 @@ bool SceneImpl::changeBodyPose(const std::string& name, const geometric::Pose& p
     if (!body) {
         WARNING("Can't change pose of body '" + name + "'");
         cout << "bodies: " << endl;
-        for (size_t i = 0; i != bodies_.size(); i++) {            
+        for (size_t i = 0; i != bodies_.size(); i++) {
             cout << bodies_[i]->getScopedName() << endl;
-        }        
+        }
     }
-    
+
     bool poseChanged = false;
     if (body) {
         body->setWorldPose(pose);
@@ -223,8 +223,8 @@ Body* SceneImpl::getBody(std::string name) const
     for (size_t i = 0; i != bodies_.size(); i++) {
         auto body = bodies_[i].get();
         auto bodyName = body->getScopedName();
-        if (bodyName == name) 
-            return body;        
+        if (bodyName == name)
+            return body;
     }
 
     return nullptr;

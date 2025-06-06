@@ -42,7 +42,7 @@ bool Opcode::InitOpcode()
 {
 	//Log("// Initializing OPCODE\n\n");
 //	LogAPIInfo();
-	
+
 	return true;
 }
 

@@ -142,7 +142,7 @@ integer ieeeck_(integer *ispec, real *zero, real *one)
   integer ret_val;
 
   /* Local variables */
-  static real nan1, nan2, nan3, nan4, nan5, nan6, neginf, posinf, negzro, 
+  static real nan1, nan2, nan3, nan4, nan5, nan6, neginf, posinf, negzro,
               newzro;
 
 
@@ -164,7 +164,7 @@ integer ieeeck_(integer *ispec, real *zero, real *one)
   /*  ========= */
 
   /*  ISPEC   (input) INTEGER */
-  /*          Specifies whether to test just for inifinity arithmetic */
+  /*          Specifies whether to test just for infinity arithmetic */
   /*          or whether to test for infinity and NaN arithmetic. */
   /*          = 0: Verify infinity arithmetic only. */
   /*          = 1: Verify infinity and NaN arithmetic. */
@@ -290,8 +290,8 @@ integer ieeeck_(integer *ispec, real *zero, real *one)
   return ret_val;
 } /* ieeeck_ */
 
-integer ilaenv_(integer *ispec, char *name__, char *opts, integer *n1, 
-    integer *n2, integer *n3, integer *n4, ftnlen name_len, ftnlen 
+integer ilaenv_(integer *ispec, char *name__, char *opts, integer *n1,
+    integer *n2, integer *n3, integer *n4, ftnlen name_len, ftnlen
     opts_len)
 {
   /* System generated locals */
@@ -306,7 +306,7 @@ integer ilaenv_(integer *ispec, char *name__, char *opts, integer *n1,
   static logical sname;
   extern integer ieeeck_(integer *, real *, real *);
   static char subnam[6];
-  extern integer iparmq_(integer *, char *, char *, integer *, integer *, 
+  extern integer iparmq_(integer *, char *, char *, integer *, integer *,
       integer *, integer *, ftnlen, ftnlen);
 
 
@@ -474,12 +474,12 @@ L10:
 
     /*        EBCDIC character set */
 
-    if ((ic >= 129 && ic <= 137) || (ic >= 145 && ic <= 153) || 
+    if ((ic >= 129 && ic <= 137) || (ic >= 145 && ic <= 153) ||
         (ic >= 162 && ic <= 169)) {
       *(unsigned char *)subnam = (char) (ic + 64);
       for (i__ = 2; i__ <= 6; ++i__) {
         ic = *(unsigned char *)&subnam[i__ - 1];
-        if ((ic >= 129 && ic <= 137) || (ic >= 145 && ic <= 153) || 
+        if ((ic >= 129 && ic <= 137) || (ic >= 145 && ic <= 153) ||
             (ic >= 162 && ic <= 169)) {
           *(unsigned char *)&subnam[i__ - 1] = (char) (ic + 64);
         }
@@ -537,9 +537,9 @@ L50:
       } else {
         nb = 64;
       }
-    } else if (s_cmp(c3, "QRF", (ftnlen)3, (ftnlen)3) == 0 || s_cmp(c3, 
+    } else if (s_cmp(c3, "QRF", (ftnlen)3, (ftnlen)3) == 0 || s_cmp(c3,
           "RQF", (ftnlen)3, (ftnlen)3) == 0 || s_cmp(c3, "LQF", (ftnlen)
-          3, (ftnlen)3) == 0 || s_cmp(c3, "QLF", (ftnlen)3, (ftnlen)3) 
+          3, (ftnlen)3) == 0 || s_cmp(c3, "QLF", (ftnlen)3, (ftnlen)3)
         == 0) {
       if (sname) {
         nb = 32;
@@ -595,7 +595,7 @@ L50:
     }
   } else if (sname && s_cmp(c2, "OR", (ftnlen)2, (ftnlen)2) == 0) {
     if (*(unsigned char *)c3 == 'G') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -604,7 +604,7 @@ L50:
         nb = 32;
       }
     } else if (*(unsigned char *)c3 == 'M') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -615,7 +615,7 @@ L50:
     }
   } else if (cname && s_cmp(c2, "UN", (ftnlen)2, (ftnlen)2) == 0) {
     if (*(unsigned char *)c3 == 'G') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -624,7 +624,7 @@ L50:
         nb = 32;
       }
     } else if (*(unsigned char *)c3 == 'M') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -739,7 +739,7 @@ L60:
     }
   } else if (sname && s_cmp(c2, "OR", (ftnlen)2, (ftnlen)2) == 0) {
     if (*(unsigned char *)c3 == 'G') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -748,7 +748,7 @@ L60:
         nbmin = 2;
       }
     } else if (*(unsigned char *)c3 == 'M') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -759,7 +759,7 @@ L60:
     }
   } else if (cname && s_cmp(c2, "UN", (ftnlen)2, (ftnlen)2) == 0) {
     if (*(unsigned char *)c3 == 'G') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -768,7 +768,7 @@ L60:
         nbmin = 2;
       }
     } else if (*(unsigned char *)c3 == 'M') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -819,7 +819,7 @@ L70:
     }
   } else if (sname && s_cmp(c2, "OR", (ftnlen)2, (ftnlen)2) == 0) {
     if (*(unsigned char *)c3 == 'G') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -830,7 +830,7 @@ L70:
     }
   } else if (cname && s_cmp(c2, "UN", (ftnlen)2, (ftnlen)2) == 0) {
     if (*(unsigned char *)c3 == 'G') {
-      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ", 
+      if (s_cmp(c4, "QR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "RQ",
             (ftnlen)2, (ftnlen)2) == 0 || s_cmp(c4, "LQ", (ftnlen)2, (
               ftnlen)2) == 0 || s_cmp(c4, "QL", (ftnlen)2, (ftnlen)2) ==
           0 || s_cmp(c4, "HR", (ftnlen)2, (ftnlen)2) == 0 || s_cmp(
@@ -939,7 +939,7 @@ extern "C" {
 }
 #endif
 
-integer iparmq_(integer *ispec, char * name__, char * opts, integer *n, integer 
+integer iparmq_(integer *ispec, char * name__, char * opts, integer *n, integer
     *ilo, integer *ihi, integer * lwork, ftnlen name_len, ftnlen opts_len)
 {
   /* System generated locals */
@@ -1402,11 +1402,11 @@ logical lsame_(char *ca, char *cb, ftnlen ca_len, ftnlen cb_len)
     /*        EBCDIC is assumed - ZCODE is the EBCDIC code of either lower or */
     /*        upper case 'Z'. */
 
-    if ((inta >= 129 && inta <= 137) || (inta >= 145 && inta <= 153) || 
+    if ((inta >= 129 && inta <= 137) || (inta >= 145 && inta <= 153) ||
         (inta >= 162 && inta <= 169)) {
       inta += 64;
     }
-    if ((intb >= 129 && intb <= 137) || (intb >= 145 && intb <= 153) || 
+    if ((intb >= 129 && intb <= 137) || (intb >= 145 && intb <= 153) ||
         (intb >= 162 && intb <= 169)) {
       intb += 64;
     }
@@ -1444,7 +1444,7 @@ logical lsame_(char *ca, char *cb, ftnlen ca_len, ftnlen cb_len)
 http://www.netlib.org/f2c/libf2c.zip
 */
 
-/* Subroutine */ int scopy_(integer *n, real *sx, integer *incx, real *sy, 
+/* Subroutine */ int scopy_(integer *n, real *sx, integer *incx, real *sy,
     integer *incy)
 {
   /* System generated locals */
@@ -1556,11 +1556,11 @@ http://www.netlib.org/f2c/libf2c.zip
 
 /* Subroutine */ int sgemm_(char *transa, char *transb, integer *m, integer *
     n, integer *k, real *alpha, real *a, integer *lda, real *b, integer *
-    ldb, real *beta, real *c__, integer *ldc, ftnlen transa_len, ftnlen 
+    ldb, real *beta, real *c__, integer *ldc, ftnlen transa_len, ftnlen
     transb_len)
 {
   /* System generated locals */
-  integer a_dim1, a_offset, b_dim1, b_offset, c_dim1, c_offset, i__1, i__2, 
+  integer a_dim1, a_offset, b_dim1, b_offset, c_dim1, c_offset, i__1, i__2,
           i__3;
 
   /* Local variables */
@@ -1750,7 +1750,7 @@ http://www.netlib.org/f2c/libf2c.zip
   if (! nota && ! lsame_(transa, "C", (ftnlen)1, (ftnlen)1) && ! lsame_(
         transa, "T", (ftnlen)1, (ftnlen)1)) {
     info = 1;
-  } else if (! notb && ! lsame_(transb, "C", (ftnlen)1, (ftnlen)1) && ! 
+  } else if (! notb && ! lsame_(transb, "C", (ftnlen)1, (ftnlen)1) && !
       lsame_(transb, "T", (ftnlen)1, (ftnlen)1)) {
     info = 2;
   } else if (*m < 0) {
@@ -1772,7 +1772,7 @@ http://www.netlib.org/f2c/libf2c.zip
 
   /*     Quick return if possible. */
 
-  if (_dequal(*m, 0.0) || _dequal(*n, 0.0) || ((_dequal(*alpha, 0.0f) || _dequal(*k, 0.0)) && _dequal(*beta, 1.f))) 
+  if (_dequal(*m, 0.0) || _dequal(*n, 0.0) || ((_dequal(*alpha, 0.0f) || _dequal(*k, 0.0)) && _dequal(*beta, 1.f)))
   {
     return 0;
   }
@@ -1830,7 +1830,7 @@ http://www.netlib.org/f2c/libf2c.zip
             temp = *alpha * b[l + j * b_dim1];
             i__3 = *m;
             for (i__ = 1; i__ <= i__3; ++i__) {
-              c__[i__ + j * c_dim1] += temp * a[i__ + l * 
+              c__[i__ + j * c_dim1] += temp * a[i__ + l *
                 a_dim1];
               /* L70: */
             }
@@ -1890,7 +1890,7 @@ http://www.netlib.org/f2c/libf2c.zip
             temp = *alpha * b[j + l * b_dim1];
             i__3 = *m;
             for (i__ = 1; i__ <= i__3; ++i__) {
-              c__[i__ + j * c_dim1] += temp * a[i__ + l * 
+              c__[i__ + j * c_dim1] += temp * a[i__ + l *
                 a_dim1];
               /* L150: */
             }
@@ -1944,8 +1944,8 @@ http://www.netlib.org/f2c/libf2c.zip
 http://www.netlib.org/f2c/libf2c.zip
 */
 
-/* Subroutine */ int sgemv_(char *trans, integer *m, integer *n, real *alpha, 
-    real *a, integer *lda, real *x, integer *incx, real *beta, real *y, 
+/* Subroutine */ int sgemv_(char *trans, integer *m, integer *n, real *alpha,
+    real *a, integer *lda, real *x, integer *incx, real *beta, real *y,
     integer *incy, ftnlen trans_len)
 {
   /* System generated locals */
@@ -2246,7 +2246,7 @@ http://www.netlib.org/f2c/libf2c.zip
 
 } /* sgemv_ */
 
-/* Subroutine */ int sger_(integer *m, integer *n, real *alpha, real *x, 
+/* Subroutine */ int sger_(integer *m, integer *n, real *alpha, real *x,
     integer *incx, real *y, integer *incy, real *a, integer *lda)
 {
   /* System generated locals */
@@ -2542,7 +2542,7 @@ static real c_b8 = -1.f;
 static real c_b9 = 1.f;
 
 /* Subroutine */ int slasyf_(char *uplo, integer *n, integer *nb, integer *kb,
-    real *a, integer *lda, integer *ipiv, real *w, integer *ldw, integer 
+    real *a, integer *lda, integer *ipiv, real *w, integer *ldw, integer
     *info, ftnlen uplo_len)
 {
   /* System generated locals */
@@ -2558,14 +2558,14 @@ static real c_b9 = 1.f;
   static integer jb, jj, kk, jp, kp, kw, kkw, imax, jmax;
   static real alpha;
   extern logical lsame_(char *, char *, ftnlen, ftnlen);
-  extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *), 
-         sgemm_(char *, char *, integer *, integer *, integer *, real *, 
-             real *, integer *, real *, integer *, real *, real *, integer *, 
-             ftnlen, ftnlen), sgemv_(char *, integer *, integer *, real *, 
-               real *, integer *, real *, integer *, real *, real *, integer *, 
+  extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *),
+         sgemm_(char *, char *, integer *, integer *, integer *, real *,
+             real *, integer *, real *, integer *, real *, real *, integer *,
+             ftnlen, ftnlen), sgemv_(char *, integer *, integer *, real *,
+               real *, integer *, real *, integer *, real *, real *, integer *,
                ftnlen);
   static integer kstep;
-  extern /* Subroutine */ int scopy_(integer *, real *, integer *, real *, 
+  extern /* Subroutine */ int scopy_(integer *, real *, integer *, real *,
       integer *), sswap_(integer *, real *, integer *, real *, integer *
         );
   static real absakk;
@@ -2718,7 +2718,7 @@ L10:
     if (k < *n) {
       i__1 = *n - k;
       sgemv_("No transpose", &k, &i__1, &c_b8, &a[(k + 1) * a_dim1 + 1],
-          lda, &w[k + (kw + 1) * w_dim1], ldw, &c_b9, &w[kw * 
+          lda, &w[k + (kw + 1) * w_dim1], ldw, &c_b9, &w[kw *
           w_dim1 + 1], &c__1, (ftnlen)12);
     }
 
@@ -2758,15 +2758,15 @@ L10:
 
         /*              Copy column IMAX to column KW-1 of W and update it */
 
-        scopy_(&imax, &a[imax * a_dim1 + 1], &c__1, &w[(kw - 1) * 
+        scopy_(&imax, &a[imax * a_dim1 + 1], &c__1, &w[(kw - 1) *
             w_dim1 + 1], &c__1);
         i__1 = k - imax;
-        scopy_(&i__1, &a[imax + (imax + 1) * a_dim1], lda, &w[imax + 
+        scopy_(&i__1, &a[imax + (imax + 1) * a_dim1], lda, &w[imax +
             1 + (kw - 1) * w_dim1], &c__1);
         if (k < *n) {
           i__1 = *n - k;
-          sgemv_("No transpose", &k, &i__1, &c_b8, &a[(k + 1) * 
-              a_dim1 + 1], lda, &w[imax + (kw + 1) * w_dim1], 
+          sgemv_("No transpose", &k, &i__1, &c_b8, &a[(k + 1) *
+              a_dim1 + 1], lda, &w[imax + (kw + 1) * w_dim1],
               ldw, &c_b9, &w[(kw - 1) * w_dim1 + 1], &c__1, (
                 ftnlen)12);
         }
@@ -2802,7 +2802,7 @@ L10:
 
           /*                 copy column KW-1 of W to column KW */
 
-          scopy_(&k, &w[(kw - 1) * w_dim1 + 1], &c__1, &w[kw * 
+          scopy_(&k, &w[(kw - 1) * w_dim1 + 1], &c__1, &w[kw *
               w_dim1 + 1], &c__1);
         } else {
 
@@ -2825,7 +2825,7 @@ L10:
 
         a[kp + k * a_dim1] = a[kk + k * a_dim1];
         i__1 = k - 1 - kp;
-        scopy_(&i__1, &a[kp + 1 + kk * a_dim1], &c__1, &a[kp + (kp + 
+        scopy_(&i__1, &a[kp + 1 + kk * a_dim1], &c__1, &a[kp + (kp +
               1) * a_dim1], lda);
         scopy_(&kp, &a[kk * a_dim1 + 1], &c__1, &a[kp * a_dim1 + 1], &
             c__1);
@@ -2836,7 +2836,7 @@ L10:
         sswap_(&i__1, &a[kk + kk * a_dim1], lda, &a[kp + kk * a_dim1],
             lda);
         i__1 = *n - kk + 1;
-        sswap_(&i__1, &w[kk + kkw * w_dim1], ldw, &w[kp + kkw * 
+        sswap_(&i__1, &w[kk + kkw * w_dim1], ldw, &w[kp + kkw *
             w_dim1], ldw);
       }
 
@@ -2876,9 +2876,9 @@ L10:
           d21 = t / d21;
           i__1 = k - 2;
           for (j = 1; j <= i__1; ++j) {
-            a[j + (k - 1) * a_dim1] = d21 * (d11 * w[j + (kw - 1) 
+            a[j + (k - 1) * a_dim1] = d21 * (d11 * w[j + (kw - 1)
                 * w_dim1] - w[j + kw * w_dim1]);
-            a[j + k * a_dim1] = d21 * (d22 * w[j + kw * w_dim1] - 
+            a[j + k * a_dim1] = d21 * (d22 * w[j + kw * w_dim1] -
                 w[j + (kw - 1) * w_dim1]);
             /* L20: */
           }
@@ -2915,7 +2915,7 @@ L30:
     /*        computing blocks of NB columns at a time */
 
     i__1 = -(*nb);
-    for (j = (k - 1) / *nb * *nb + 1; i__1 < 0 ? j >= 1 : j <= 1; j += 
+    for (j = (k - 1) / *nb * *nb + 1; i__1 < 0 ? j >= 1 : j <= 1; j +=
         i__1) {
       /* Computing MIN */
       i__2 = *nb, i__3 = k - j + 1;
@@ -2927,8 +2927,8 @@ L30:
       for (jj = j; jj <= i__2; ++jj) {
         i__3 = jj - j + 1;
         i__4 = *n - k;
-        sgemv_("No transpose", &i__3, &i__4, &c_b8, &a[j + (k + 1) * 
-            a_dim1], lda, &w[jj + (kw + 1) * w_dim1], ldw, &c_b9, 
+        sgemv_("No transpose", &i__3, &i__4, &c_b8, &a[j + (k + 1) *
+            a_dim1], lda, &w[jj + (kw + 1) * w_dim1], ldw, &c_b9,
             &a[j + jj * a_dim1], &c__1, (ftnlen)12);
         /* L40: */
       }
@@ -2990,7 +2990,7 @@ L70:
     scopy_(&i__1, &a[k + k * a_dim1], &c__1, &w[k + k * w_dim1], &c__1);
     i__1 = *n - k + 1;
     i__2 = k - 1;
-    sgemv_("No transpose", &i__1, &i__2, &c_b8, &a[k + a_dim1], lda, &w[k 
+    sgemv_("No transpose", &i__1, &i__2, &c_b8, &a[k + a_dim1], lda, &w[k
         + w_dim1], ldw, &c_b9, &w[k + k * w_dim1], &c__1, (ftnlen)12);
 
     kstep = 1;
@@ -3030,15 +3030,15 @@ L70:
         /*              Copy column IMAX to column K+1 of W and update it */
 
         i__1 = imax - k;
-        scopy_(&i__1, &a[imax + k * a_dim1], lda, &w[k + (k + 1) * 
+        scopy_(&i__1, &a[imax + k * a_dim1], lda, &w[k + (k + 1) *
             w_dim1], &c__1);
         i__1 = *n - imax + 1;
-        scopy_(&i__1, &a[imax + imax * a_dim1], &c__1, &w[imax + (k + 
+        scopy_(&i__1, &a[imax + imax * a_dim1], &c__1, &w[imax + (k +
               1) * w_dim1], &c__1);
         i__1 = *n - k + 1;
         i__2 = k - 1;
-        sgemv_("No transpose", &i__1, &i__2, &c_b8, &a[k + a_dim1], 
-            lda, &w[imax + w_dim1], ldw, &c_b9, &w[k + (k + 1) * 
+        sgemv_("No transpose", &i__1, &i__2, &c_b8, &a[k + a_dim1],
+            lda, &w[imax + w_dim1], ldw, &c_b9, &w[k + (k + 1) *
             w_dim1], &c__1, (ftnlen)12);
 
         /*              JMAX is the column-index of the largest off-diagonal */
@@ -3050,10 +3050,10 @@ L70:
         rowmax = (r__1 = w[jmax + (k + 1) * w_dim1], dabs(r__1));
         if (imax < *n) {
           i__1 = *n - imax;
-          jmax = imax + isamax_(&i__1, &w[imax + 1 + (k + 1) * 
+          jmax = imax + isamax_(&i__1, &w[imax + 1 + (k + 1) *
               w_dim1], &c__1);
           /* Computing MAX */
-          r__2 = rowmax, r__3 = (r__1 = w[jmax + (k + 1) * w_dim1], 
+          r__2 = rowmax, r__3 = (r__1 = w[jmax + (k + 1) * w_dim1],
               dabs(r__1));
           rowmax = dmax(r__2,r__3);
         }
@@ -3063,7 +3063,7 @@ L70:
           /*                 no interchange, use 1-by-1 pivot block */
 
           kp = k;
-        } else if ((r__1 = w[imax + (k + 1) * w_dim1], dabs(r__1)) >= 
+        } else if ((r__1 = w[imax + (k + 1) * w_dim1], dabs(r__1)) >=
             alpha * rowmax) {
 
           /*                 interchange rows and columns K and IMAX, use 1-by-1 */
@@ -3074,7 +3074,7 @@ L70:
           /*                 copy column K+1 of W to column K */
 
           i__1 = *n - k + 1;
-          scopy_(&i__1, &w[k + (k + 1) * w_dim1], &c__1, &w[k + k * 
+          scopy_(&i__1, &w[k + (k + 1) * w_dim1], &c__1, &w[k + k *
               w_dim1], &c__1);
         } else {
 
@@ -3096,10 +3096,10 @@ L70:
 
         a[kp + k * a_dim1] = a[kk + k * a_dim1];
         i__1 = kp - k - 1;
-        scopy_(&i__1, &a[k + 1 + kk * a_dim1], &c__1, &a[kp + (k + 1) 
+        scopy_(&i__1, &a[k + 1 + kk * a_dim1], &c__1, &a[kp + (k + 1)
             * a_dim1], lda);
         i__1 = *n - kp + 1;
-        scopy_(&i__1, &a[kp + kk * a_dim1], &c__1, &a[kp + kp * 
+        scopy_(&i__1, &a[kp + kk * a_dim1], &c__1, &a[kp + kp *
             a_dim1], &c__1);
 
         /*              Interchange rows KK and KP in first KK columns of A and W */
@@ -3146,7 +3146,7 @@ L70:
           d21 = t / d21;
           i__1 = *n;
           for (j = k + 2; j <= i__1; ++j) {
-            a[j + k * a_dim1] = d21 * (d11 * w[j + k * w_dim1] - 
+            a[j + k * a_dim1] = d21 * (d11 * w[j + k * w_dim1] -
                 w[j + (k + 1) * w_dim1]);
             a[j + (k + 1) * a_dim1] = d21 * (d22 * w[j + (k + 1) *
                 w_dim1] - w[j + k * w_dim1]);
@@ -3197,7 +3197,7 @@ L90:
       for (jj = j; jj <= i__3; ++jj) {
         i__4 = j + jb - jj;
         i__5 = k - 1;
-        sgemv_("No transpose", &i__4, &i__5, &c_b8, &a[jj + a_dim1], 
+        sgemv_("No transpose", &i__4, &i__5, &c_b8, &a[jj + a_dim1],
             lda, &w[jj + w_dim1], ldw, &c_b9, &a[jj + jj * a_dim1]
             , &c__1, (ftnlen)12);
         /* L100: */
@@ -3208,8 +3208,8 @@ L90:
       if (j + jb <= *n) {
         i__3 = *n - j - jb + 1;
         i__4 = k - 1;
-        sgemm_("No transpose", "Transpose", &i__3, &jb, &i__4, &c_b8, 
-            &a[j + jb + a_dim1], lda, &w[j + w_dim1], ldw, &c_b9, 
+        sgemm_("No transpose", "Transpose", &i__3, &jb, &i__4, &c_b8,
+            &a[j + jb + a_dim1], lda, &w[j + w_dim1], ldw, &c_b9,
             &a[j + jb + j * a_dim1], lda, (ftnlen)12, (ftnlen)9);
       }
       /* L110: */
@@ -3355,7 +3355,7 @@ L40:
 http://www.netlib.org/f2c/libf2c.zip
 */
 
-/* Subroutine */ int sswap_(integer *n, real *sx, integer *incx, real *sy, 
+/* Subroutine */ int sswap_(integer *n, real *sx, integer *incx, real *sy,
     integer *incy)
 {
   /* System generated locals */
@@ -3472,7 +3472,7 @@ L40:
 http://www.netlib.org/f2c/libf2c.zip
 */
 
-/* Subroutine */ int ssyr_(char *uplo, integer *n, real *alpha, real *x, 
+/* Subroutine */ int ssyr_(char *uplo, integer *n, real *alpha, real *x,
     integer *incx, real *a, integer *lda, ftnlen uplo_len)
 {
   /* System generated locals */
@@ -3716,8 +3716,8 @@ http://www.netlib.org/f2c/libf2c.zip
 
 static integer c_n1 = -1;
 
-/* Subroutine */ int ssysv_(char *uplo, integer *n, integer *nrhs, real *a, 
-    integer *lda, integer *ipiv, real *b, integer *ldb, real *work, 
+/* Subroutine */ int ssysv_(char *uplo, integer *n, integer *nrhs, real *a,
+    integer *lda, integer *ipiv, real *b, integer *ldb, real *work,
     integer *lwork, integer *info, ftnlen uplo_len)
 {
   /* System generated locals */
@@ -3726,13 +3726,13 @@ static integer c_n1 = -1;
   /* Local variables */
   static integer nb;
   extern logical lsame_(char *, char *, ftnlen, ftnlen);
-  extern integer ilaenv_(integer *, char *, char *, integer *, integer *, 
+  extern integer ilaenv_(integer *, char *, char *, integer *, integer *,
       integer *, integer *, ftnlen, ftnlen);
   static integer lwkopt;
   static logical lquery;
-  extern /* Subroutine */ int ssytrf_(char *, integer *, real *, integer *, 
-      integer *, real *, integer *, integer *, ftnlen), ssytrs_(char *, 
-        integer *, integer *, real *, integer *, integer *, real *, 
+  extern /* Subroutine */ int ssytrf_(char *, integer *, real *, integer *,
+      integer *, real *, integer *, integer *, ftnlen), ssytrs_(char *,
+        integer *, integer *, real *, integer *, integer *, real *,
         integer *, integer *, ftnlen);
 
   (void)(uplo_len);
@@ -3926,7 +3926,7 @@ static integer c_n1 = -1;
 http://www.netlib.org/f2c/libf2c.zip
 */
 
-/* Subroutine */ int ssytf2_(char *uplo, integer *n, real *a, integer *lda, 
+/* Subroutine */ int ssytf2_(char *uplo, integer *n, real *a, integer *lda,
     integer *ipiv, integer *info, ftnlen uplo_len)
 {
   /* System generated locals */
@@ -3942,14 +3942,14 @@ http://www.netlib.org/f2c/libf2c.zip
   static integer kk, kp;
   static real wk, wkm1, wkp1;
   static integer imax, jmax;
-  extern /* Subroutine */ int ssyr_(char *, integer *, real *, real *, 
+  extern /* Subroutine */ int ssyr_(char *, integer *, real *, real *,
       integer *, real *, integer *, ftnlen);
   static real alpha;
   extern logical lsame_(char *, char *, ftnlen, ftnlen);
   extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *);
   static integer kstep;
   static logical upper;
-  extern /* Subroutine */ int sswap_(integer *, real *, integer *, real *, 
+  extern /* Subroutine */ int sswap_(integer *, real *, integer *, real *,
       integer *);
   static real absakk;
   extern integer isamax_(integer *, real *, integer *);
@@ -4173,14 +4173,14 @@ L10:
         /*              element in row IMAX, and ROWMAX is its absolute value */
 
         i__1 = k - imax;
-        jmax = imax + isamax_(&i__1, &a[imax + (imax + 1) * a_dim1], 
+        jmax = imax + isamax_(&i__1, &a[imax + (imax + 1) * a_dim1],
             lda);
         rowmax = (r__1 = a[imax + jmax * a_dim1], dabs(r__1));
         if (imax > 1) {
           i__1 = imax - 1;
           jmax = isamax_(&i__1, &a[imax * a_dim1 + 1], &c__1);
           /* Computing MAX */
-          r__2 = rowmax, r__3 = (r__1 = a[jmax + imax * a_dim1], 
+          r__2 = rowmax, r__3 = (r__1 = a[jmax + imax * a_dim1],
               dabs(r__1));
           rowmax = dmax(r__2,r__3);
         }
@@ -4190,7 +4190,7 @@ L10:
           /*                 no interchange, use 1-by-1 pivot block */
 
           kp = k;
-        } else if ((r__1 = a[imax + imax * a_dim1], dabs(r__1)) >= 
+        } else if ((r__1 = a[imax + imax * a_dim1], dabs(r__1)) >=
             alpha * rowmax) {
 
           /*                 interchange rows and columns K and IMAX, use 1-by-1 */
@@ -4217,7 +4217,7 @@ L10:
         sswap_(&i__1, &a[kk * a_dim1 + 1], &c__1, &a[kp * a_dim1 + 1],
             &c__1);
         i__1 = kk - kp - 1;
-        sswap_(&i__1, &a[kp + 1 + kk * a_dim1], &c__1, &a[kp + (kp + 
+        sswap_(&i__1, &a[kp + 1 + kk * a_dim1], &c__1, &a[kp + (kp +
               1) * a_dim1], lda);
         t = a[kk + kk * a_dim1];
         a[kk + kk * a_dim1] = a[kp + kp * a_dim1];
@@ -4276,13 +4276,13 @@ L10:
           d12 = t / d12;
 
           for (j = k - 2; j >= 1; --j) {
-            wkm1 = d12 * (d11 * a[j + (k - 1) * a_dim1] - a[j + k 
+            wkm1 = d12 * (d11 * a[j + (k - 1) * a_dim1] - a[j + k
                 * a_dim1]);
-            wk = d12 * (d22 * a[j + k * a_dim1] - a[j + (k - 1) * 
+            wk = d12 * (d22 * a[j + k * a_dim1] - a[j + (k - 1) *
                 a_dim1]);
             for (i__ = j; i__ >= 1; --i__) {
-              a[i__ + j * a_dim1] = a[i__ + j * a_dim1] - a[i__ 
-                + k * a_dim1] * wk - a[i__ + (k - 1) * 
+              a[i__ + j * a_dim1] = a[i__ + j * a_dim1] - a[i__
+                + k * a_dim1] * wk - a[i__ + (k - 1) *
                 a_dim1] * wkm1;
               /* L20: */
             }
@@ -4370,7 +4370,7 @@ L40:
           jmax = imax + isamax_(&i__1, &a[imax + 1 + imax * a_dim1],
               &c__1);
           /* Computing MAX */
-          r__2 = rowmax, r__3 = (r__1 = a[jmax + imax * a_dim1], 
+          r__2 = rowmax, r__3 = (r__1 = a[jmax + imax * a_dim1],
               dabs(r__1));
           rowmax = dmax(r__2,r__3);
         }
@@ -4380,7 +4380,7 @@ L40:
           /*                 no interchange, use 1-by-1 pivot block */
 
           kp = k;
-        } else if ((r__1 = a[imax + imax * a_dim1], dabs(r__1)) >= 
+        } else if ((r__1 = a[imax + imax * a_dim1], dabs(r__1)) >=
             alpha * rowmax) {
 
           /*                 interchange rows and columns K and IMAX, use 1-by-1 */
@@ -4405,11 +4405,11 @@ L40:
 
         if (kp < *n) {
           i__1 = *n - kp;
-          sswap_(&i__1, &a[kp + 1 + kk * a_dim1], &c__1, &a[kp + 1 
+          sswap_(&i__1, &a[kp + 1 + kk * a_dim1], &c__1, &a[kp + 1
               + kp * a_dim1], &c__1);
         }
         i__1 = kp - kk - 1;
-        sswap_(&i__1, &a[kk + 1 + kk * a_dim1], &c__1, &a[kp + (kk + 
+        sswap_(&i__1, &a[kk + 1 + kk * a_dim1], &c__1, &a[kp + (kk +
               1) * a_dim1], lda);
         t = a[kk + kk * a_dim1];
         a[kk + kk * a_dim1] = a[kp + kp * a_dim1];
@@ -4470,15 +4470,15 @@ L40:
           i__1 = *n;
           for (j = k + 2; j <= i__1; ++j) {
 
-            wk = d21 * (d11 * a[j + k * a_dim1] - a[j + (k + 1) * 
+            wk = d21 * (d11 * a[j + k * a_dim1] - a[j + (k + 1) *
                 a_dim1]);
-            wkp1 = d21 * (d22 * a[j + (k + 1) * a_dim1] - a[j + k 
+            wkp1 = d21 * (d22 * a[j + (k + 1) * a_dim1] - a[j + k
                 * a_dim1]);
 
             i__2 = *n;
             for (i__ = j; i__ <= i__2; ++i__) {
-              a[i__ + j * a_dim1] = a[i__ + j * a_dim1] - a[i__ 
-                + k * a_dim1] * wk - a[i__ + (k + 1) * 
+              a[i__ + j * a_dim1] = a[i__ + j * a_dim1] - a[i__
+                + k * a_dim1] * wk - a[i__ + (k + 1) *
                 a_dim1] * wkp1;
               /* L50: */
             }
@@ -4532,8 +4532,8 @@ http://www.netlib.org/f2c/libf2c.zip
 
 static integer c__2 = 2;
 
-/* Subroutine */ int ssytrf_(char *uplo, integer *n, real *a, integer *lda, 
-    integer *ipiv, real *work, integer *lwork, integer *info, ftnlen 
+/* Subroutine */ int ssytrf_(char *uplo, integer *n, real *a, integer *lda,
+    integer *ipiv, real *work, integer *lwork, integer *info, ftnlen
     uplo_len)
 {
   /* System generated locals */
@@ -4544,12 +4544,12 @@ static integer c__2 = 2;
   extern logical lsame_(char *, char *, ftnlen, ftnlen);
   static integer nbmin, iinfo;
   static logical upper;
-  extern /* Subroutine */ int ssytf2_(char *, integer *, real *, integer *, 
+  extern /* Subroutine */ int ssytf2_(char *, integer *, real *, integer *,
       integer *, integer *, ftnlen);
-  extern integer ilaenv_(integer *, char *, char *, integer *, integer *, 
+  extern integer ilaenv_(integer *, char *, char *, integer *, integer *,
       integer *, integer *, ftnlen, ftnlen);
-  extern /* Subroutine */ int slasyf_(char *, integer *, integer *, integer 
-      *, real *, integer *, integer *, real *, integer *, integer *, 
+  extern /* Subroutine */ int slasyf_(char *, integer *, integer *, integer
+      *, real *, integer *, integer *, real *, integer *, integer *,
       ftnlen);
   static integer ldwork, lwkopt;
   static logical lquery;
@@ -4811,7 +4811,7 @@ L20:
       /*           update columns k+kb:n */
 
       i__1 = *n - k + 1;
-      slasyf_(uplo, &i__1, &nb, &kb, &a[k + k * a_dim1], lda, &ipiv[k], 
+      slasyf_(uplo, &i__1, &nb, &kb, &a[k + k * a_dim1], lda, &ipiv[k],
           &work[1], &ldwork, &iinfo, (ftnlen)1);
     } else {
 
@@ -4873,8 +4873,8 @@ http://www.netlib.org/f2c/libf2c.zip
 static real c_b7 = -1.f;
 static real c_b19 = 1.f;
 
-/* Subroutine */ int ssytrs_(char *uplo, integer *n, integer *nrhs, real *a, 
-    integer *lda, integer *ipiv, real *b, integer *ldb, integer *info, 
+/* Subroutine */ int ssytrs_(char *uplo, integer *n, integer *nrhs, real *a,
+    integer *lda, integer *ipiv, real *b, integer *ldb, integer *info,
     ftnlen uplo_len)
 {
   /* System generated locals */
@@ -4886,16 +4886,16 @@ static real c_b19 = 1.f;
   static real ak, bk;
   static integer kp;
   static real akm1, bkm1;
-  extern /* Subroutine */ int sger_(integer *, integer *, real *, real *, 
+  extern /* Subroutine */ int sger_(integer *, integer *, real *, real *,
       integer *, real *, integer *, real *, integer *);
   static real akm1k;
   extern logical lsame_(char *, char *, ftnlen, ftnlen);
   static real denom;
-  extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *), 
-         sgemv_(char *, integer *, integer *, real *, real *, integer *, 
+  extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *),
+         sgemv_(char *, integer *, integer *, real *, real *, integer *,
              real *, integer *, real *, real *, integer *, ftnlen);
   static logical upper;
-  extern /* Subroutine */ int sswap_(integer *, real *, integer *, real *, 
+  extern /* Subroutine */ int sswap_(integer *, real *, integer *, real *,
       integer *);
 
 
@@ -5036,7 +5036,7 @@ L10:
       /*           stored in column K of A. */
 
       i__1 = k - 1;
-      sger_(&i__1, nrhs, &c_b7, &a[k * a_dim1 + 1], &c__1, &b[k + 
+      sger_(&i__1, nrhs, &c_b7, &a[k * a_dim1 + 1], &c__1, &b[k +
           b_dim1], ldb, &b[b_dim1 + 1], ldb);
 
       /*           Multiply by the inverse of the diagonal block. */
@@ -5059,10 +5059,10 @@ L10:
       /*           stored in columns K-1 and K of A. */
 
       i__1 = k - 2;
-      sger_(&i__1, nrhs, &c_b7, &a[k * a_dim1 + 1], &c__1, &b[k + 
+      sger_(&i__1, nrhs, &c_b7, &a[k * a_dim1 + 1], &c__1, &b[k +
           b_dim1], ldb, &b[b_dim1 + 1], ldb);
       i__1 = k - 2;
-      sger_(&i__1, nrhs, &c_b7, &a[(k - 1) * a_dim1 + 1], &c__1, &b[k - 
+      sger_(&i__1, nrhs, &c_b7, &a[(k - 1) * a_dim1 + 1], &c__1, &b[k -
           1 + b_dim1], ldb, &b[b_dim1 + 1], ldb);
 
       /*           Multiply by the inverse of the diagonal block. */
@@ -5107,7 +5107,7 @@ L40:
       /*           stored in column K of A. */
 
       i__1 = k - 1;
-      sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[b_offset], ldb, &a[k * 
+      sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[b_offset], ldb, &a[k *
           a_dim1 + 1], &c__1, &c_b19, &b[k + b_dim1], ldb, (ftnlen)
           9);
 
@@ -5126,12 +5126,12 @@ L40:
       /*           stored in columns K and K+1 of A. */
 
       i__1 = k - 1;
-      sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[b_offset], ldb, &a[k * 
+      sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[b_offset], ldb, &a[k *
           a_dim1 + 1], &c__1, &c_b19, &b[k + b_dim1], ldb, (ftnlen)
           9);
       i__1 = k - 1;
-      sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[b_offset], ldb, &a[(k 
-            + 1) * a_dim1 + 1], &c__1, &c_b19, &b[k + 1 + b_dim1], 
+      sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[b_offset], ldb, &a[(k
+            + 1) * a_dim1 + 1], &c__1, &c_b19, &b[k + 1 + b_dim1],
           ldb, (ftnlen)9);
 
       /*           Interchange rows K and -IPIV(K). */
@@ -5181,7 +5181,7 @@ L60:
 
       if (k < *n) {
         i__1 = *n - k;
-        sger_(&i__1, nrhs, &c_b7, &a[k + 1 + k * a_dim1], &c__1, &b[k 
+        sger_(&i__1, nrhs, &c_b7, &a[k + 1 + k * a_dim1], &c__1, &b[k
             + b_dim1], ldb, &b[k + 1 + b_dim1], ldb);
       }
 
@@ -5206,7 +5206,7 @@ L60:
 
       if (k < *n - 1) {
         i__1 = *n - k - 1;
-        sger_(&i__1, nrhs, &c_b7, &a[k + 2 + k * a_dim1], &c__1, &b[k 
+        sger_(&i__1, nrhs, &c_b7, &a[k + 2 + k * a_dim1], &c__1, &b[k
             + b_dim1], ldb, &b[k + 2 + b_dim1], ldb);
         i__1 = *n - k - 1;
         sger_(&i__1, nrhs, &c_b7, &a[k + 2 + (k + 1) * a_dim1], &c__1,
@@ -5256,8 +5256,8 @@ L90:
 
       if (k < *n) {
         i__1 = *n - k;
-        sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[k + 1 + b_dim1], 
-            ldb, &a[k + 1 + k * a_dim1], &c__1, &c_b19, &b[k + 
+        sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[k + 1 + b_dim1],
+            ldb, &a[k + 1 + k * a_dim1], &c__1, &c_b19, &b[k +
             b_dim1], ldb, (ftnlen)9);
       }
 
@@ -5277,11 +5277,11 @@ L90:
 
       if (k < *n) {
         i__1 = *n - k;
-        sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[k + 1 + b_dim1], 
-            ldb, &a[k + 1 + k * a_dim1], &c__1, &c_b19, &b[k + 
+        sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[k + 1 + b_dim1],
+            ldb, &a[k + 1 + k * a_dim1], &c__1, &c_b19, &b[k +
             b_dim1], ldb, (ftnlen)9);
         i__1 = *n - k;
-        sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[k + 1 + b_dim1], 
+        sgemv_("Transpose", &i__1, nrhs, &c_b7, &b[k + 1 + b_dim1],
             ldb, &a[k + 1 + (k - 1) * a_dim1], &c__1, &c_b19, &b[
             k - 1 + b_dim1], ldb, (ftnlen)9);
       }
@@ -5305,4 +5305,3 @@ L100:
   /*     End of SSYTRS */
 
 } /* ssytrs_ */
-

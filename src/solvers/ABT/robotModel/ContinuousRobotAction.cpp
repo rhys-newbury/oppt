@@ -32,7 +32,7 @@ ContActionConstructionData::ContActionConstructionData(const oppt::ActionSharedP
 
 const FloatType* ContActionConstructionData::data() const
 {
-    return vectorData_.data();    
+    return vectorData_.data();
 }
 
 size_t ContActionConstructionData::size() const
@@ -41,12 +41,12 @@ size_t ContActionConstructionData::size() const
 }
 
 FloatType& ContActionConstructionData::operator[](size_t index)
-{    
+{
     return static_cast<oppt::VectorAction*>(storage.get())->asVector()[index];
 }
 
 const FloatType& ContActionConstructionData::operator[](size_t index) const
-{    
+{
     return static_cast<oppt::VectorAction*>(storage.get())->asVector()[index];
 }
 

@@ -25,7 +25,7 @@ enum EnvironmentChangeType {
     MODEL_ADDED,
     MODEL_REMOVED,
     BODY_ADDED_SDF,
-    BODY_ADDED,  
+    BODY_ADDED,
     BODY_REMOVED,
     BODY_POSE_CHANGED
 };
@@ -63,7 +63,7 @@ public:
     /**
      * @brief Serialize the EnvironmentChange
      *
-     * @param step The step in which the change occured
+     * @param step The step in which the change occurred
      * @param os Stream to the output file
      */
     virtual void serialize(std::ofstream& os) const = 0;
@@ -139,7 +139,7 @@ public:
 
     virtual void print(std::ostream& os) const override {
         os << "remove" << modelName_;
-    }   
+    }
 
 private:
     const std::string modelName_;

@@ -113,11 +113,11 @@ static inline dReal dNormalizeAngle(dReal angle)
  * \brief dShortestAngularDistance
  *
  * Given 2 angles, this returns the shortest angular
- * difference.  The inputs and ouputs are of course radians.
+ * difference.  The inputs and outputs are of course radians.
  *
  * The result
  * would always be -pi <= result <= pi.  Adding the result
- * to "from" will always get you an equivelent angle to "to".
+ * to "from" will always get you an equivalent angle to "to".
  */
 static inline dReal dShortestAngularDistance(dReal from, dReal to)
 {
@@ -132,7 +132,7 @@ static inline dReal dShortestAngularDistance(dReal from, dReal to)
  * \brief dShortestAngularDistanceUpdate
  *
  * Given 2 angles, this returns the shortest angular
- * difference.  The inputs and ouputs are radians.
+ * difference.  The inputs and outputs are radians.
  *
  * This function returns (from + delta) where delta is in the range of [-pi, pi].
  * However, if |delta| > tol, then this function simply returns incoming parameter "to".

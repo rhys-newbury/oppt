@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #ifndef __OBSERVATION_SPACE_HPP_
@@ -50,7 +50,7 @@ public:
     ObservationLimits(const LimitsContainerSharedPtr& limits):
         container_(limits) {}
 
-    virtual ~ObservationLimits() = default;    
+    virtual ~ObservationLimits() = default;
 
     _NO_COPY_BUT_MOVE(ObservationLimits)
 
@@ -61,7 +61,7 @@ public:
     virtual const LimitsContainerSharedPtr& getLimits() const {
         return container_;
     }
-    
+
     virtual const LimitsContainerSharedPtr& getRawLimits() const {
         return container_;
     }
@@ -156,7 +156,7 @@ private:
 
 class ObservationNormalizer
 {
-public:  
+public:
     virtual ~ObservationNormalizer() = default;
 
     virtual ObservationSharedPtr normalizeObservation(const ObservationSharedPtr& observation) const = 0;
@@ -219,10 +219,10 @@ public:
 
     /**
      * @brief Normalizes an observation to [0, 1]
-     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect     
+     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect
      * @param observation The observation to normalize
      * @return A shared pointer to the normalized observation
-     */    
+     */
     ObservationSharedPtr normalizeObservation(const ObservationSharedPtr& observation) const {
         if (!observationNormalizer_)
             return observation;
@@ -232,10 +232,10 @@ public:
 
     /**
      * @brief Denormalizes an observation
-     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect     
+     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect
      * @param observation The observation to denormalize
      * @return A shared pointer to the denormalized observation
-     */    
+     */
     ObservationSharedPtr denormalizeObservation(const ObservationSharedPtr& observation) const {
         if (!observationNormalizer_)
             return observation;
@@ -253,7 +253,7 @@ protected:
     ObservationSpaceInfo observationSpaceInfo_;
 
     ObservationLimitsSharedPtr observationLimits_;
-    
+
     ObservationLimitsSharedPtr denormalizedObservationLimits_;
 
     std::unique_ptr<ObservationNormalizer> observationNormalizer_ = nullptr;

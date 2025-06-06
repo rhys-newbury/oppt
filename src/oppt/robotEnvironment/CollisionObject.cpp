@@ -94,7 +94,7 @@ FloatType OpptCollisionObject::distance(const OpptCollisionObject *other) const 
     fcl::DistanceRequest request;
     fcl::DistanceResult result;
     fcl::distance(collisionObject_.get(), other->getFCLCollisionObject(), request, result);
-    return result.min_distance;    
+    return result.min_distance;
 }
 
 

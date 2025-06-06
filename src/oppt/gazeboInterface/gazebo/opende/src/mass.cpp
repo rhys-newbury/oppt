@@ -256,14 +256,14 @@ void dMassSetTrimesh( dMass *m, dReal density, dGeomID g )
 	dReal T2[3] = {0., 0., 0.};
 	dReal TP[3] = {0., 0., 0.};
 
-	for( i = 0; i < triangles; i++ )	 	
+	for( i = 0; i < triangles; i++ )
 	{
 		dVector3 v[3];
 		FetchTransformedTriangle( TriMesh, i, v);
 
 		dVector3 n, a, b;
-		dSubtractVectors3( a, v[1], v[0] ); 
-		dSubtractVectors3( b, v[2], v[0] ); 
+		dSubtractVectors3( a, v[1], v[0] );
+		dSubtractVectors3( b, v[2], v[0] );
 		dCalcVectorCross3( n, b, a );
 		nx = fabs(n[0]);
 		ny = fabs(n[1]);
@@ -274,8 +274,8 @@ void dMassSetTrimesh( dMass *m, dReal density, dGeomID g )
 		else
 			C = (ny > nz) ? 1 : 2;
 
-		// Even though all triangles might be initially valid, 
-		// a triangle may degenerate into a segment after applying 
+		// Even though all triangles might be initially valid,
+		// a triangle may degenerate into a segment after applying
 		// space transformation.
 		if (!_dequal(n[C], REAL(0.0)))
 		{
@@ -327,7 +327,7 @@ void dMassSetTrimesh( dMass *m, dReal density, dGeomID g )
 						db = b1 - b0;
 						a0_2 = a0 * a0; a0_3 = a0_2 * a0; a0_4 = a0_3 * a0;
 						b0_2 = b0 * b0; b0_3 = b0_2 * b0; b0_4 = b0_3 * b0;
-						a1_2 = a1 * a1; a1_3 = a1_2 * a1; 
+						a1_2 = a1 * a1; a1_3 = a1_2 * a1;
 						b1_2 = b1 * b1; b1_3 = b1_2 * b1;
 
 						C1 = a1 + a0;
@@ -360,7 +360,7 @@ void dMassSetTrimesh( dMass *m, dReal density, dGeomID g )
 					Pab /= 24.0;
 					Paab /= 60.0;
 					Pabb /= -60.0;
-				}			
+				}
 
 				w = - dCalcVectorDot3(n, v[0]);
 
@@ -377,7 +377,7 @@ void dMassSetTrimesh( dMass *m, dReal density, dGeomID g )
 
 				Faaa = k1 * Paaa;
 				Fbbb = k1 * Pbbb;
-				Fccc = -k4 * (CUBE(n[A])*Paaa + 3*SQR(n[A])*n[B]*Paab 
+				Fccc = -k4 * (CUBE(n[A])*Paaa + 3*SQR(n[A])*n[B]*Paab
 					+ 3*n[A]*SQR(n[B])*Pabb + CUBE(n[B])*Pbbb
 					+ 3*w*(SQR(n[A])*Paa + 2*n[A]*n[B]*Pab + SQR(n[B])*Pbb)
 					+ w*w*(3*(n[A]*Pa + n[B]*Pb) + w*P1));
@@ -553,4 +553,3 @@ void dMassSetCappedCylinderTotal(dMass *a, dReal b, int c, dReal d, dReal e)
 {
   return dMassSetCapsuleTotal(a,b,c,d,e);
 }
-

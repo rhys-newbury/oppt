@@ -1,24 +1,22 @@
-# - Find TinyXML
-# Find the native TinyXML includes and library
+# * Find TinyXML Find the native TinyXML includes and library
 #
-#   TINYXML_FOUND       - True if TinyXML found.
-#   TINYXML_INCLUDE_DIR - where to find tinyxml.h, etc.
-#   TINYXML_LIBRARIES   - TinyXML library.
+# TINYXML_FOUND       - True if TinyXML found. TINYXML_INCLUDE_DIR - where to
+# find tinyxml.h, etc. TINYXML_LIBRARIES   - TinyXML library.
 #
 
-IF( TINYXML_INCLUDE_DIR )
-    # Already in cache, be silent
-    SET( TinyXML_FIND_QUIETLY TRUE )
-ENDIF( TINYXML_INCLUDE_DIR )
+if(TINYXML_INCLUDE_DIR)
+  # Already in cache, be silent
+  set(TinyXML_FIND_QUIETLY TRUE)
+endif(TINYXML_INCLUDE_DIR)
 
-FIND_PATH( TINYXML_INCLUDE_DIR "tinyxml.h"
-           PATH_SUFFIXES "tinyxml" )
+find_path(TINYXML_INCLUDE_DIR "tinyxml.h" PATH_SUFFIXES "tinyxml")
 
-FIND_LIBRARY( TINYXML_LIBRARIES
-              NAMES "tinyxml"
-              PATH_SUFFIXES "tinyxml" )
+find_library(
+  TINYXML_LIBRARIES
+  NAMES "tinyxml"
+  PATH_SUFFIXES "tinyxml")
 
-SET(TINYXML_FOUND "NO")
-IF(TINYXML_LIBRARIES AND TINYXML_INCLUDE_DIR)
-    SET(TINYXML_FOUND "YES")
-ENDIF(TINYXML_LIBRARIES AND TINYXML_INCLUDE_DIR)
+set(TINYXML_FOUND "NO")
+if(TINYXML_LIBRARIES AND TINYXML_INCLUDE_DIR)
+  set(TINYXML_FOUND "YES")
+endif(TINYXML_LIBRARIES AND TINYXML_INCLUDE_DIR)

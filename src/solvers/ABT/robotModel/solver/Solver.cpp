@@ -26,21 +26,21 @@ ABTSolver::ABTSolver(std::unique_ptr< abt::Model > model):
 
 void ABTSolver::initializeEmpty()
 {
-    // Basic initialization.    
-    initialize();    
+    // Basic initialization.
+    initialize();
 
     // Create new instances of these.
     actionPool_ = model_->createActionPool(this);
-    observationPool_ = model_->createObservationPool(this);    
+    observationPool_ = model_->createObservationPool(this);
 
     // Initialize the root node properly.
-    static_cast<oppt::BeliefTree*>(policy_.get())->initializeRoot();    
+    static_cast<oppt::BeliefTree*>(policy_.get())->initializeRoot();
 }
 
 
 void ABTSolver::initialize()
 {
-    // Core data structures    
+    // Core data structures
     if (!hasChanges_ && !interactive_) {
         statePool_ = std::make_unique<abt::OPPTStatePool>(nullptr);
     } else {
@@ -108,9 +108,9 @@ void ABTSolver::singleSearch(abt::BeliefNode* startNode, abt::StateInfo* startSt
         firstEntry->registerNode(startNode);
     } else {
         firstEntry->registerNode(startNode, false);
-    }    
-    
-    continueSearch(sequence, maximumDepth, action);    
+    }
+
+    continueSearch(sequence, maximumDepth, action);
 }
 
 

@@ -32,8 +32,8 @@ struct ValidityReport {
     }
 
     virtual ~ValidityReport() = default;
-    
-    /** @brief The oppt::RobotStateSharedPtr this validity report corresponds to */    
+
+    /** @brief The oppt::RobotStateSharedPtr this validity report corresponds to */
     const RobotStateSharedPtr state_;
 
     /** @brief Is true iff state_ is a valid state */

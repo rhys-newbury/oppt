@@ -37,23 +37,23 @@ Model::StepResult UcbStepGenerator::getStep(HistoryEntry const *entry, State con
     BeliefNode *currentNode = entry->getAssociatedBeliefNode();
     ActionMapping *mapping = currentNode->getMapping();
     std::unique_ptr<Action> nextAction = nullptr;
-    if (!action) {        
-        nextAction = mapping->getNextActionToTry();             
+    if (!action) {
+        nextAction = mapping->getNextActionToTry();
         if (nextAction != nullptr) {
             // If there are unvisited actions, we take one, and we're finished with UCB search.
             choseUnvisitedAction_ = true;
         } else {
             // Use UCB to get the best action.
-            nextAction = choosers::ucb_action(currentNode, explorationCoefficient_);            
+            nextAction = choosers::ucb_action(currentNode, explorationCoefficient_);
         }
 
         // NO action -> error!
-        if (nextAction == nullptr) {            
+        if (nextAction == nullptr) {
             debug::show_message("ERROR: node has no actions!?");
             status_ = SearchStatus::ERROR;
             return Model::StepResult { };
-        }        
-    } else {        
+        }
+    } else {
         nextAction = action->copy();
     }
 

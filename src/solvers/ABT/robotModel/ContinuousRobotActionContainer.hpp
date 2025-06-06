@@ -32,7 +32,7 @@ public:
     }*/
 
     ContinuousRobotActionContainer(const HashEqualOptions& options, size_t& dim);
-    
+
     virtual ~ContinuousRobotActionContainer() {}
 
     _NO_COPY_OR_MOVE(ContinuousRobotActionContainer);
@@ -58,7 +58,7 @@ public:
     virtual std::vector<abt::ActionMappingEntry const*> getEntriesWithChildren() const override;
 
     virtual std::vector<abt::ActionMappingEntry const*> getEntriesWithNonzeroVisitCount() const override;
-    
+
 private:
     std::unordered_map<KeyType, std::unique_ptr<abt::ContinuousActionMapEntry>, Comparator, Comparator> container;
 
@@ -115,7 +115,7 @@ public:
      */
     virtual std::vector<std::pair<FloatType, FloatType>> getInitialBoundingBox(BeliefNode* belief) const override;
 
- 
+
     /** Returns a shared pointer to a container containing the construction data for the additional fixed actions in a hybrid action space.
      *
      * The result is a shared pointer. Thus, the implementation can decide whether it wants to create the container and pass on ownership or it
@@ -127,7 +127,7 @@ public:
 
 
 private:
-    std::vector<std::pair<FloatType, FloatType>> initial_bounding_box_;    
+    std::vector<std::pair<FloatType, FloatType>> initial_bounding_box_;
 
     oppt::ActionSpaceSharedPtr actionSpace_;
 };

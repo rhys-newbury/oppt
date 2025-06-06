@@ -28,7 +28,7 @@ public:
 template<typename T> class CachedValue : public BaseCachedValue {
 public:
     /** Constructs a new CachedValue for the given node, which will use the given function in order
-     * to recalculate the cahced value whenever it is needed.
+     * to recalculate the cached value whenever it is needed.
      */
     CachedValue(BeliefNode const *node, std::function<T(BeliefNode const *)> f) :
                 node_(node),

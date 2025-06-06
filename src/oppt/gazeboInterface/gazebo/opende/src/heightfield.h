@@ -65,7 +65,7 @@ struct dxHeightfieldData
 
     void ComputeHeightBounds();
 
-    bool IsOnHeightfield2  ( const HeightFieldVertex * const CellCorner, 
+    bool IsOnHeightfield2  ( const HeightFieldVertex * const CellCorner,
         const dReal * const pos,  const bool isABC) const;
 
     dReal GetHeight(int x, int z);
@@ -131,10 +131,10 @@ public:
     {
         const size_t asize = trianglelistCurrentSize;
         if (asize > 0)
-        {  
+        {
             maxAAAB = trianglelist[0]->maxAAAB;
             for (size_t k = 1; asize > k; k++)
-            {   
+            {
                 if (trianglelist[k]->maxAAAB >  maxAAAB)
                     maxAAAB = trianglelist[k]->maxAAAB;
             }
@@ -181,7 +181,7 @@ struct dxHeightfield : public dxGeom
 
     void computeAABB();
 
-    int dCollideHeightfieldZone( const int minX, const int maxX, const int minZ, const int maxZ,  
+    int dCollideHeightfieldZone( const int minX, const int maxX, const int minZ, const int maxZ,
         dxGeom *o2, const int numMaxContacts,
         int flags, dContactGeom *contact, int skip );
 

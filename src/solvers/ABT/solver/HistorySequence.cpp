@@ -50,7 +50,7 @@ long HistorySequence::getId() const {
 long HistorySequence::getLength() const {
     return entrySequence_.size();
 }
-HistoryEntry *HistorySequence::getEntry(HistoryEntry::IdType entryId) const {    
+HistoryEntry *HistorySequence::getEntry(HistoryEntry::IdType entryId) const {
     return entrySequence_[entryId].get();
 }
 HistoryEntry *HistorySequence::getFirstEntry() const {
@@ -83,7 +83,7 @@ void HistorySequence::erase(HistoryEntry::IdType firstEntryId) {
 
 HistoryEntry *HistorySequence::addEntry() {
     std::unique_ptr<HistoryEntry> newEntry = std::make_unique<HistoryEntry>(
-            this, entrySequence_.size());    
+            this, entrySequence_.size());
     HistoryEntry *newEntryReturn = newEntry.get();
     entrySequence_.push_back(std::move(newEntry));
     return newEntryReturn;

@@ -31,12 +31,12 @@ public :
     virtual ~RocksampleObservationPlugin() = default;
 
     virtual bool load(const std::string& optionsFile) override {
-        parseOptions_<RocksampleObservationPluginOptions>(optionsFile);        
+        parseOptions_<RocksampleObservationPluginOptions>(optionsFile);
         halfEfficiencyDistance_ = static_cast<RocksampleObservationPluginOptions*>(options_.get())->halfEfficiencyDistance;
         distr_ = std::make_unique<std::uniform_real_distribution<FloatType>>(0.0, 1.0);
         getRockLocations();
         return true;
-    }    
+    }
 
     virtual ObservationResultSharedPtr getObservation(const ObservationRequest* observationRequest) const override {
         ObservationResultSharedPtr observationResult = std::make_shared<ObservationResult>();
@@ -55,8 +55,8 @@ public :
             // Get the probability of receiving a correct sensor reading based on the distance between the rover and the rock
             FloatType probability = getSensorCorrectnessProbability_(distance);
 
-            // Determine whether we recieve a correct observation                   
-            bool obsMatches = (*(distr_.get()))((*(robotEnvironment_->getRobot()->getRandomEngine().get()))) <= probability;                
+            // Determine whether we receive a correct observation
+            bool obsMatches = (*(distr_.get()))((*(robotEnvironment_->getRobot()->getRandomEngine().get()))) <= probability;
             if (obsMatches) {
                 // We will receive a correct observation. If the rock is good (== 1), the observation will be the one with binNumber = 1.
                 // If it is bad, the observation will be the one with binNumber = 2.
@@ -64,13 +64,13 @@ public :
             } else {
                 // We will receive an incorrect observation. If the rock is good (== 1), the observation will be the one with binNumber = 2.
                 // If it is bad, the observation will be the one with binNumber = 1.
-                (unsigned int)(stateVec[rockIndex - 4] + 0.25) == 1 ? binNumber = 2 : binNumber = 1;                
+                (unsigned int)(stateVec[rockIndex - 4] + 0.25) == 1 ? binNumber = 2 : binNumber = 1;
             }
         }
 
         // Finally, construct the observation as a oppt::DiscreteVectorObservation
-        observationResult->observation = ObservationSharedPtr(new DiscreteVectorObservation({(FloatType)(binNumber)}));        
-        observationResult->observation->as<DiscreteVectorObservation>()->setBinNumber(binNumber);        
+        observationResult->observation = ObservationSharedPtr(new DiscreteVectorObservation({(FloatType)(binNumber)}));
+        observationResult->observation->as<DiscreteVectorObservation>()->setBinNumber(binNumber);
         return observationResult;
     }
 
@@ -102,8 +102,8 @@ public :
                 // We observed the rock to be bad. If the rock was actually good (== 1), the probability of getting the received observation
                 // is 1 - correctObservationProbability. Otherwise it is correctObservationProbability.
                 (unsigned int)(stateVec[rockIndex - 4] + 0.25) == 1 ? likelihood = 1.0 - correctObservationProbability : likelihood = correctObservationProbability;
-            }           
-            
+            }
+
             return likelihood;
         }
     }
@@ -131,7 +131,7 @@ private:
                 idx++;
             }
         }
-    }    
+    }
 
     FloatType euclideanDistance_(const VectorFloat& stateVec, const VectorFloat& rockLocation) const {
         VectorFloat roverPosition( {stateVec[0], stateVec[1]});

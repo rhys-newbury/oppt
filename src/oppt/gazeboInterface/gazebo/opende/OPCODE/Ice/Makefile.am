@@ -15,4 +15,3 @@ libIce_la_SOURCES = \
         IceRevisitedRadix.h     IceSegment.cpp        IceSegment.h \
         IceTriangle.cpp         IceTriangle.h         IceTriList.h \
         IceTypes.h              IceUtils.cpp          IceUtils.h
-

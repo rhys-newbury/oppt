@@ -1546,7 +1546,7 @@ int dxHeightfield::dCollideHeightfieldZone( const int minX, const int maxX, cons
     // pass2: VS triangle vertices
     if (needFurtherPasses)
     {
-        dxRay tempRay(0, 1);
+        dxRay temporary(0, 1);
         dReal depth;
         bool vertexCollided;
 
@@ -1582,13 +1582,13 @@ int dxHeightfield::dCollideHeightfieldZone( const int minX, const int maxX, cons
                 // We don't have a GetDepth function, so do a ray cast instead.
                 // NOTE: This isn't ideal, and a GetDepth function should be
                 // written for all geom classes.
-                tempRay.length = (minO2Height - triVertex[1]) * REAL(1000.0);
+                temporary.length = (minO2Height - triVertex[1]) * REAL(1000.0);
 
-                //dGeomRaySet( &tempRay, pContact->pos[0], pContact->pos[1], pContact->pos[2],
+                //dGeomRaySet( &temporary, pContact->pos[0], pContact->pos[1], pContact->pos[2],
                 //    - itTriangle->Normal[0], - itTriangle->Normal[1], - itTriangle->Normal[2] );
-                dGeomRaySetNoNormalize(tempRay, triVertex, itTriangle->planeDef);
+                dGeomRaySetNoNormalize(temporary, triVertex, itTriangle->planeDef);
 
-                if (geomRayNCollider(&tempRay, o2, rayTestFlags,
+                if (geomRayNCollider(&temporary, o2, rayTestFlags,
                                      PlaneContact, sizeof(dContactGeom)))
                 {
                   depth = PlaneContact[0].depth;
@@ -1861,6 +1861,3 @@ dCollideHeightfieldExit:
     // Return contact count.
     return numTerrainContacts;
 }
-
-
-

@@ -30,7 +30,7 @@ public :
 
     virtual ~DubinObservationPlugin() = default;
 
-    virtual bool load(const std::string& optionsFile) override {        
+    virtual bool load(const std::string& optionsFile) override {
         parseOptions_<DubinObservationPluginOptions>(optionsFile);
         observationError_ =
             static_cast<DubinObservationPluginOptions*>(options_.get())->observationError;
@@ -43,7 +43,7 @@ public :
         VectorFloat errorVector;
         auto robot = robotEnvironment_->getRobot();
 
-        // Sample an observation error is neccessary
+        // Sample an observation error is necessary
         if (observationRequest->errorVector.size() != robot->getObservationSpace()->getNumDimensions()) {
             errorVector = toStdVec<FloatType>(errorDistribution_->sample(1));
         } else {

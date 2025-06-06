@@ -14,4 +14,3 @@ libGIMPACT_la_SOURCES = gim_boxpruning.cpp \
                         gim_trimesh_sphere_collision.cpp \
                         gim_trimesh_trimesh_collision.cpp \
                         gimpact.cpp
-

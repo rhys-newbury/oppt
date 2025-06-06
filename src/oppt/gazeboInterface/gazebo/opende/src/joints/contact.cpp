@@ -449,4 +449,3 @@ dxJointContact::size() const
 {
     return sizeof( *this );
 }
-

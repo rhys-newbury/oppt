@@ -26,8 +26,8 @@
 #include <ode/common.h>
 #include <ode/collision_space.h>
 #include <ode/contact.h>
-// Include odeinit.h for backward compatibility as some of initialization APIs 
-// were initally declared in current header.
+// Include odeinit.h for backward compatibility as some of initialization APIs
+// were initially declared in current header.
 #include <ode/odeinit.h>
 
 #ifdef __cplusplus
@@ -265,7 +265,7 @@ ODE_API void dGeomGetAABB (dGeomID geom, dReal aabb[6]);
 
 
 /**
- * @brief Determing if a geom is a space.
+ * @brief Determining if a geom is a space.
  * @param geom the geom to query
  * @returns Non-zero if the geom is a space, zero otherwise.
  * @ingroup collide
@@ -435,14 +435,14 @@ enum
  *
  * The variable the dataSize points to must be initialized before the call.
  * If the size does not match the one expected for the control class/code function
- * changes it to the size expected and returns failure. This implies the function 
+ * changes it to the size expected and returns failure. This implies the function
  * can be called with NULL data and zero size to test if control class/code is supported
  * and obtain required data size for it.
  *
- * dGeomCommonAnyControlCode applies to any control class and returns success if 
+ * dGeomCommonAnyControlCode applies to any control class and returns success if
  * at least one control code is available for the given class with given geom.
  *
- * Currently there are the folliwing control classes supported:
+ * Currently there are the following control classes supported:
  *  @li dGeomColliderControlClass
  *
  * For dGeomColliderControlClass there are the following codes available:
@@ -637,7 +637,7 @@ ODE_API void dGeomSetOffsetWorldQuaternion (dGeomID geom, const dQuaternion);
  * repositioned at the body's position.  If the geom has no offset,
  * this function does nothing.
  * This is more efficient than calling dGeomSetOffsetPosition(zero)
- * and dGeomSetOffsetRotation(identiy), because this function actually
+ * and dGeomSetOffsetRotation(identity), because this function actually
  * eliminates the offset, rather than leaving it as the identity transform.
  *
  * @param geom the geom to have its offset destroyed.
@@ -759,10 +759,10 @@ ODE_API void dGeomGetOffsetQuaternion (dGeomID geom, dQuaternion result);
  * @param flags The flags specify how contacts should be generated if
  * the geoms touch. The lower 16 bits of flags is an integer that
  * specifies the maximum number of contact points to generate. You must
- * ask for at least one contact. 
+ * ask for at least one contact.
  * Additionally, following bits may be set:
  * CONTACTS_UNIMPORTANT -- just generate any contacts (skip contact refining).
- * All other bits in flags must be set to zero. In the future the other bits 
+ * All other bits in flags must be set to zero. In the future the other bits
  * may be used to select from different contact generation strategies.
  *
  * @param contact Points to an array of dContactGeom structures. The array
@@ -826,9 +826,9 @@ ODE_API void dSpaceCollide (dSpaceID space, void *data, dNearCallback *callback)
 
 
 /**
- * @brief Determines which geoms from one space may potentially intersect with 
- * geoms from another space, and calls the callback function for each candidate 
- * pair. 
+ * @brief Determines which geoms from one space may potentially intersect with
+ * geoms from another space, and calls the callback function for each candidate
+ * pair.
  *
  * @param space1 The first space to test.
  *
@@ -840,8 +840,8 @@ ODE_API void dSpaceCollide (dSpaceID space, void *data, dNearCallback *callback)
  *
  * @param callback A callback function is of type @ref dNearCallback.
  *
- * @remarks This function can also test a single non-space geom against a 
- * space. This function is useful when there is a collision hierarchy, i.e. 
+ * @remarks This function can also test a single non-space geom against a
+ * space. This function is useful when there is a collision hierarchy, i.e.
  * when there are spaces that contain other spaces.
  *
  * @remarks Other spaces that are contained within the colliding space are
@@ -908,7 +908,7 @@ enum {
  */
 
 /**
- * @brief Create a sphere geom of the given radius, and return its ID. 
+ * @brief Create a sphere geom of the given radius, and return its ID.
  *
  * @param space   a space to contain the new geom. May be null.
  * @param radius  the radius of the sphere.
@@ -955,7 +955,7 @@ ODE_API dReal dGeomSphereGetRadius (dGeomID sphere);
  * @param y       the Y coordinate of the point.
  * @param z       the Z coordinate of the point.
  *
- * @returns The depth of the point. Points inside the sphere will have a 
+ * @returns The depth of the point. Points inside the sphere will have a
  * positive depth, points outside it will have a negative depth, and points
  * on the surface will have a depth of zero.
  *
@@ -1030,13 +1030,13 @@ ODE_API void dGeomBoxGetLengths (dGeomID box, dVector3 result);
 
 /**
  * @brief Return the depth of a point in a box.
- * 
+ *
  * @param box  the box to query
  * @param x    the X coordinate of the point to test.
  * @param y    the Y coordinate of the point to test.
  * @param z    the Z coordinate of the point to test.
  *
- * @returns The depth of the point. Points inside the box will have a 
+ * @returns The depth of the point. Points inside the box will have a
  * positive depth, points outside it will have a negative depth, and points
  * on the surface will have a depth of zero.
  */
@@ -1314,7 +1314,7 @@ ODE_API void dGeomHeightfieldDataBuildShort( dHeightfieldDataID d,
 				dReal scale, dReal offset, dReal thickness, int bWrap );
 
 /**
- * @brief Configures a dHeightfieldDataID to use height data in 
+ * @brief Configures a dHeightfieldDataID to use height data in
  * single precision floating point format.
  *
  * Before a dHeightfieldDataID can be used by a geom it must be
@@ -1364,7 +1364,7 @@ ODE_API void dGeomHeightfieldDataBuildSingle( dHeightfieldDataID d,
 				dReal scale, dReal offset, dReal thickness, int bWrap );
 
 /**
- * @brief Configures a dHeightfieldDataID to use height data in 
+ * @brief Configures a dHeightfieldDataID to use height data in
  * double precision floating point format.
  *
  * Before a dHeightfieldDataID can be used by a geom it must be
@@ -1504,7 +1504,7 @@ ODE_API void * dGeomGetClassData (dGeomID);
 ODE_API dGeomID dCreateGeom (int classnum);
 
 /**
- * @brief Sets a custom collider function for two geom classes. 
+ * @brief Sets a custom collider function for two geom classes.
  *
  * @param i The first geom class handled by this collider
  * @param j The second geom class handled by this collider

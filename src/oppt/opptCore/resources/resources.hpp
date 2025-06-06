@@ -194,4 +194,3 @@ inline bool FileExists(const std::string& filename)
 }
 
 #endif
-

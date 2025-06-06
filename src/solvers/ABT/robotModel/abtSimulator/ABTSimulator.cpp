@@ -43,8 +43,8 @@ bool ABTSimulator::stepSimulation(std::ofstream& os)
         std::vector<State const*> currentParticles = currentBelief->getStates();
 
         os << "PARTICLES BEGIN" << endl;
-        for (size_t k = 0; k < currentParticles.size(); k++) {            
-            currentParticles[k]->serialize(os, "p"); 
+        for (size_t k = 0; k < currentParticles.size(); k++) {
+            currentParticles[k]->serialize(os, "p");
 	    os << " \n";
         }
         os << "PARTICLES END" << endl;

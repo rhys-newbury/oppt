@@ -96,7 +96,7 @@ bool AABBTreeCollider::Collide(BVTCache& cache, const Matrix4x4* world0, const M
 	if(cache.Model0->IsQuantized()!=cache.Model1->IsQuantized())	return false;
 
 	/*
-	
+
 	  Rules:
 		- perform hull test
 		- when hulls collide, disable hull test

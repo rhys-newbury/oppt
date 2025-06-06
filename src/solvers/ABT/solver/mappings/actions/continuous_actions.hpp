@@ -401,7 +401,7 @@ public:
 	 * This class does not do much with it. It is just there as a place for the chooser
 	 * to store data. Thus it is simply a public member.
 	 *
-	 * This class only takes care of desctruction, serialisation and de-serialisation
+	 * This class only takes care of destruction, serialisation and de-serialisation
 	 * of the data stored here. Otherwise the chooserData is left alone.
 	 */
 	std::unique_ptr<ChooserDataBaseBase> chooserData = nullptr;

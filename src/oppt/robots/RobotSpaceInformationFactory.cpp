@@ -36,7 +36,7 @@ const StateSpaceInformationPtr makeStateSpaceInformation(const RobotConfigOption
     VectorString jointsInConfigFile = robotConfigOptions->jointPositions;
     jointsInConfigFile.insert(jointsInConfigFile.end(),
                               robotConfigOptions->jointVelocities.begin(),
-                              robotConfigOptions->jointVelocities.end());    
+                              robotConfigOptions->jointVelocities.end());
 
     VectorString linksInConfigFile = robotConfigOptions->linkPoses;
     linksInConfigFile.insert(linksInConfigFile.end(),
@@ -85,13 +85,13 @@ const StateSpaceInformationPtr makeStateSpaceInformation(const RobotConfigOption
     if (jointsInConfigFile.empty() == false and cfgPath.empty()) {
         std::string msg = "You have specified joints as part of your state variables (e.g. jointPositions or jointVelocities), ";
         msg += "but you haven't specified the 'planningEnvironmentPath' and 'executionEnvironmentPath' options which would contain the joints.";
-        ERROR(msg);  
+        ERROR(msg);
     }
 
     if (linksInConfigFile.empty() == false and cfgPath.empty()) {
         std::string msg = "You have specified robot links as part of your state variables (e.g. linkPoses), ";
         msg += "but you haven't specified the 'planningEnvironmentPath' and 'executionEnvironmentPath' options which would contain the robot links.";
-        ERROR(msg);  
+        ERROR(msg);
     }
 
     if (gazeboInterface) {
@@ -686,7 +686,7 @@ const ActionSpaceInformationPtr makeActionSpaceInformation(const RobotConfigOpti
     if (jointsInConfigFile.empty() == false and cfgPath.empty()) {
         std::string msg = "You have specified joints as part of your action variables (e.g. jointTorques), ";
         msg += "but you haven't specified the 'planningEnvironmentPath' and 'executionEnvironmentPath' options which would contain the joints.";
-        ERROR(msg);  
+        ERROR(msg);
     }
 
     if (gazeboInterface) {
@@ -950,13 +950,13 @@ const ObservationSpaceInformationPtr makeObservationSpaceInformation(const Robot
     if (jointsInConfigFile.empty() == false and cfgPath.empty()) {
         std::string msg = "You have specified joints as part of your observation variables (e.g. jointPositions or jointVelocities), ";
         msg += "but you haven't specified the 'planningEnvironmentPath' and 'executionEnvironmentPath' options which would contain the joints.";
-        ERROR(msg);  
+        ERROR(msg);
     }
 
     if (linksInConfigFile.empty() == false and cfgPath.empty()) {
         std::string msg = "You have specified robot links as part of your observation variables (e.g. linkPoses), ";
         msg += "but you haven't specified the 'planningEnvironmentPath' and 'executionEnvironmentPath' options which would contain the robot links.";
-        ERROR(msg);  
+        ERROR(msg);
     }
 
     if (gazeboInterface) {

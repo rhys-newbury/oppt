@@ -131,4 +131,3 @@ const oppt::PropagationResultSharedPtr RobotState::getPropagationResult() const
 }
 
 } /* namespace rocksample */
-

@@ -80,7 +80,7 @@ public:
     { dGeomSetRotation (_id,R); }
   const dReal * getRotation() const
     { return dGeomGetRotation (_id); }
-    
+
   void setQuaternion (const dQuaternion quat)
     { dGeomSetQuaternion (_id,quat); }
   void getQuaternion (dQuaternion quat) const
@@ -107,7 +107,7 @@ public:
     { dGeomDisable (_id); }
   int isEnabled()
     { return dGeomIsEnabled (_id); }
-  
+
   void getRelPointPos (dReal px, dReal py, dReal pz, dVector3 result) const
     { dGeomGetRelPointPos (_id, px, py, pz, result); }
   void getRelPointPos (const dVector3 p, dVector3 result) const
@@ -127,7 +127,7 @@ public:
     { dGeomVectorFromWorld (_id, px, py, pz, result); }
   void vectorFromWorld (const dVector3 p, dVector3 result) const
     { vectorFromWorld (p[0], p[1], p[2], result); }
-  
+
   void collide2 (dGeomID g, void *data, dNearCallback *callback)
     { dSpaceCollide2 (_id,g,data,callback); }
 };

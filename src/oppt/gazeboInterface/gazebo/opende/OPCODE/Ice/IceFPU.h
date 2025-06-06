@@ -40,7 +40,7 @@
 	#define IS_NEGATIVE_FLOAT(x)	(IR(x)&0x80000000)
 
 	//! Fast fabs for floating-point values. It just clears the sign bit.
-	//! Don't use it blindy, it can be faster or slower than the FPU comparison, depends on the context.
+	//! Don't use it blindly, it can be faster or slower than the FPU comparison, depends on the context.
 	inline_ float FastFabs(float x)
 	{
 		udword FloatBits = IR(x)&0x7fffffff;
@@ -75,7 +75,7 @@
 	//! Computes 1.0f / sqrtf(x). Comes from NVIDIA.
 	inline_ float InvSqrt(const float& x)
 	{
-		const udword tmp = (udword(IEEE_1_0 << 1) + IEEE_1_0 - IR(x)) >> 1;      
+		const udword tmp = (udword(IEEE_1_0 << 1) + IEEE_1_0 - IR(x)) >> 1;
 		const float y = FR(tmp);
 		return y * (1.47f - 0.47f * x * y * y);
 	}
@@ -146,7 +146,7 @@
 		// location pointed to by pwOldCW.
 		{
 			uword wTemp, wSave;
- 
+
 			__asm fstcw wSave
 			if (wSave & 0x300 ||            // Not single mode
 				0x3f != (wSave & 0x3f) ||   // Exceptions enabled

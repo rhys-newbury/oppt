@@ -14,29 +14,29 @@ class TreeInspector
 {
 public:
     TreeInspector();
-    
+
     void makeTreeStatistics(const abt::Simulator* simulator, std::ofstream& os) const;
-    
+
     void getTotalNumberOfStates(const abt::Simulator* simulator) const;
-    
+
 private:
     long getTreeDepthRecursive(abt::BeliefNode* belief, long currentDepth) const;
-    
+
     /**
      * Gets the depth of the belief tree
      */
     long totalTreeDepth(const abt::Simulator* simulator) const;
-    
+
     /**
      * Gets the depth of the belief tree relative to the current belief
      */
     long relativeTreeDepth(const abt::Simulator* simulator) const;
-    
+
     /**
      * Gets the total number of nodes in the belief tree
      */
     long numNodes(const abt::Simulator* simulator) const;
-    
+
     /**
      * Gets the number of nodes in the subtree of a belief
      */

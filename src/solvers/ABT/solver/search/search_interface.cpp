@@ -126,11 +126,11 @@ SearchStatus BasicSearchStrategy::extendAndBackup(HistorySequence* sequence, lon
     } else if (currentEntry->immediateReward_ != 0) {
         debug::show_message("ERROR: The last in the sequence has a nonzero reward!?");
         return SearchStatus::ERROR;
-    }    
+    }
 
     bool useProvidedAction = false;
     if (action) {
-        useProvidedAction = true;        
+        useProvidedAction = true;
     }
 
     while (true) {
@@ -140,7 +140,7 @@ SearchStatus BasicSearchStrategy::extendAndBackup(HistorySequence* sequence, lon
             break;
         }
 
-        // Step the search forward.        
+        // Step the search forward.
         Model::StepResult result;
         if (useProvidedAction) {
             result = generator->getStep(currentEntry, currentEntry->getState(),
@@ -155,7 +155,7 @@ SearchStatus BasicSearchStrategy::extendAndBackup(HistorySequence* sequence, lon
         // Null action => stop the search.
         if (result.action == nullptr) {
             break;
-        }                
+        }
 
         // Set the parameters of the current history entry using the ones we got from the result.
         currentEntry->immediateReward_ = result.reward;
@@ -177,7 +177,7 @@ SearchStatus BasicSearchStrategy::extendAndBackup(HistorySequence* sequence, lon
         currentEntry->registerState(nextStateInfo);
         currentEntry->registerNode(currentNode);
 
-        if (result.isTerminal) {            
+        if (result.isTerminal) {
             nextStateInfo->setTerminal(true);
             // Terminal state => search complete.
             status = SearchStatus::FINISHED;
@@ -186,7 +186,7 @@ SearchStatus BasicSearchStrategy::extendAndBackup(HistorySequence* sequence, lon
     }
 
     // OUT_OF_STEPS => must calculated a heuristic estimate.
-    if (status == SearchStatus::OUT_OF_STEPS) {        
+    if (status == SearchStatus::OUT_OF_STEPS) {
         currentEntry->immediateReward_ = heuristic_(currentEntry, currentEntry->getState(),
                                          currentNode->getHistoricalData());
         status = SearchStatus::FINISHED;

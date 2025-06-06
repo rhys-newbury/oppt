@@ -80,8 +80,8 @@ public:
 
     }
 
-    virtual ~OpptODEJointExtended() {        
-        if (jointEntries_ && jointEntries_->size() > 0) {            
+    virtual ~OpptODEJointExtended() {
+        if (jointEntries_ && jointEntries_->size() > 0) {
             if (jointEntries_->find(this) != jointEntries_->end()) {
                 jointEntries_->erase(this);
             }

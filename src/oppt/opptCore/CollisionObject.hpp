@@ -33,7 +33,7 @@ class OpptCollisionObject
 {
 public:
     _NO_COPY_BUT_MOVE(OpptCollisionObject)
-    
+
 
     /**
      * @brief Construct from a oppt::GeometryUniquePtr
@@ -49,7 +49,7 @@ public:
      * @brief Get a pointer to the underlying collision geometry
      */
     geometric::Geometry *getCollisionGeometry() const;
-    
+
     /**
      * @brief Performs a collision check based on the provided oppt::CollisionRequest
      * @param collisionRequest Pointer to a collisionRequest
@@ -58,7 +58,7 @@ public:
     CollisionReportSharedPtr collides(const CollisionRequest *collisionRequest) const;
 
     /**
-     * @brief Compute the distance betwee this collision object and another oppt::OpptCollisionObject
+     * @brief Compute the distance between this collision object and another oppt::OpptCollisionObject
      * @param other Pointer to the other oppt::OpptCollisionObject
      * @return The distance between this and the other oppt::OpptCollisionObject
      */
@@ -67,7 +67,7 @@ public:
 private:
     GeometryUniquePtr collisionGeometry_ = nullptr;
 
-    FCLCollisionObjectUniquePtr collisionObject_ = nullptr;    
+    FCLCollisionObjectUniquePtr collisionObject_ = nullptr;
 
     std::unique_ptr<OpptCollisionObjectData> collisionObjectData_ = nullptr;
 };

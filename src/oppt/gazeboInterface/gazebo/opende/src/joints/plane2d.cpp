@@ -60,7 +60,7 @@ dxJointPlane2D::dxJointPlane2D( dxWorld *w ) :
 }
 
 
-void 
+void
 dxJointPlane2D::getSureMaxInfo( SureMaxInfo* info )
 {
     info->max_m = 6;
@@ -185,4 +185,3 @@ void dJointSetPlane2DAngleParam( dxJoint *joint,
     dxJointPlane2D* joint2d = ( dxJointPlane2D* )( joint );
     joint2d->motor_angle.set( parameter, value );
 }
-

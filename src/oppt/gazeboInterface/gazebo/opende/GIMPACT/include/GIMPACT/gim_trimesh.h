@@ -1,7 +1,7 @@
 #ifndef GIM_TRIMESH_H_INCLUDED
 #define GIM_TRIMESH_H_INCLUDED
 /*! \file gim_trimesh.h
-\author Francisco León
+\author Francisco Leï¿½n
 */
 /*
 -----------------------------------------------------------------------------
@@ -75,10 +75,10 @@ trimeshindices,
 0 //transformed_reply is 0
 );
 \endcode
-<p>Note that parameter transformed_reply is 0, that means that m_transformed_vertex_buffer is a reference to m_source_vertex on the trimesh, and transformations are not avaliable. Use that configuration if you have to simulate a deformable trimesh like cloth or elastic bodies.</p>
+<p>Note that parameter transformed_reply is 0, that means that m_transformed_vertex_buffer is a reference to m_source_vertex on the trimesh, and transformations are not available. Use that configuration if you have to simulate a deformable trimesh like cloth or elastic bodies.</p>
 <p>When the trimesh is no longer needed, destroy it safely with gim_trimesh_destroy()</p>
 <p><strong>UPDATING TRIMESHES</strong></p>
-<p>On simulation loops, is needed to update trimeshes every time for update vertices althought updating triangle boxes and planes cache. There is two ways for update trimeshes: </p>
+<p>On simulation loops, is needed to update trimeshes every time for update vertices although updating triangle boxes and planes cache. There is two ways for update trimeshes: </p>
 <ul>
 <li> Updating vertices directly. You need to access to the \ref GIM_TRIMESH.m_source_vertex_buffer member; a vertex buffer which has access to the source vertices.
 \code
@@ -111,7 +111,7 @@ gim_trimesh_post_update(&mytrimesh.m_source_vertex_buffer);
 For making trimeshes that allow to update their vertices, use \ref gim_trimesh_create_from_data with parameter <strong>transformed_reply</strong> = 0.
 </ul>
 <ul>
-<li> Aplying a transformation. Simply use \ref gim_trimesh_set_tranform . Remember that with this method trimeshes must be created with \ref gim_trimesh_create_from_data with parameter <strong>transformed_reply</strong> = 1.
+<li> Applying a transformation. Simply use \ref gim_trimesh_set_tranform . Remember that with this method trimeshes must be created with \ref gim_trimesh_create_from_data with parameter <strong>transformed_reply</strong> = 1.
 </ul>
 <p> After updating vertices, you must call \ref gim_trimesh_update()</p>
 <p><strong>TRIMESHES COLLISION</strong></p>
@@ -204,7 +204,7 @@ void gim_trimesh_create_from_arrays(GBUFFER_MANAGER_DATA buffer_managers[],
 \param transformed_reply If 1, then the m_transformed_vertices is a reply of the source vertices. Else it just be a reference to the original array. Use 1 if you will apply transformations to the trimesh. See \ref gim_trimesh_set_tranform().
 */
 void gim_trimesh_create_from_data(GBUFFER_MANAGER_DATA buffer_managers[],
-	GIM_TRIMESH * trimesh, vec3f * vertex_array, GUINT32 vertex_count,char copy_vertices, 
+	GIM_TRIMESH * trimesh, vec3f * vertex_array, GUINT32 vertex_count,char copy_vertices,
 	GUINT32 * triindex_array, GUINT32 index_count,char copy_indices,char transformed_reply);
 
 //! Clears auxiliary data and releases buffer arrays
@@ -218,7 +218,7 @@ void gim_trimesh_destroy(GIM_TRIMESH * trimesh);
 \param transformed_reply If 1, transformed vertices are reply of source vertives. 1 Is recommended
 */
 void gim_trimesh_copy(GIM_TRIMESH * source_trimesh,
-	GBUFFER_MANAGER_DATA dest_buffer_managers[], GIM_TRIMESH * dest_trimesh, 
+	GBUFFER_MANAGER_DATA dest_buffer_managers[], GIM_TRIMESH * dest_trimesh,
 	char copy_by_reference, char transformed_reply);
 
 
@@ -249,7 +249,7 @@ void gim_trimesh_update_vertices(GIM_TRIMESH * trimesh);
 */
 void gim_trimesh_update_aabbset(GIM_TRIMESH * trimesh);
 
-//! Calls before perfom collisions. Updates the trimesh if needed
+//! Calls before perform collisions. Updates the trimesh if needed
 /*!
 \post If gim_trimesh_needs_update returns 1, then it calls  gim_trimesh_update_vertices and gim_trimesh_update_aabbset
 */

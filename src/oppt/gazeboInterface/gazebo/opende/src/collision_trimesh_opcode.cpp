@@ -48,7 +48,7 @@ void TrimeshCollidersCache::InitOPCODECaches()
 	_OBBCollider.SetTemporalCoherence(true);
 
 	// no first-contact test (i.e. return full contact info)
-	_AABBTreeCollider.SetFirstContact( false );     
+	_AABBTreeCollider.SetFirstContact( false );
 	// temporal coherence only works with "first contact" tests
 	_AABBTreeCollider.SetTemporalCoherence(false);
 	// Perform full BV-BV tests (true) or SAT-lite tests (false)
@@ -82,7 +82,7 @@ dxTriMeshData::~dxTriMeshData()
 		delete [] UseFlags;
 }
 
-void 
+void
 dxTriMeshData::Build(const void* Vertices, int VertexStide, int VertexCount,
 		     const void* Indices, int IndexCount, int TriStride,
 		     const void* in_Normals,
@@ -95,7 +95,7 @@ dxTriMeshData::Build(const void* Vertices, int VertexStide, int VertexCount,
     Mesh.SetPointers((IndexedTriangle*)Indices, (Point*)Vertices);
     Mesh.SetStrides(TriStride, VertexStide);
     Mesh.SetSingle(Single);
-    
+
     // Build tree
     BuildSettings Settings;
     // recommended in Opcode User Manual
@@ -171,7 +171,7 @@ struct EdgeRecord
 	int VertIdx2;
 	int TriIdx;		// Index into triangle array for triangle this edge belongs to
 
-	uint8 EdgeFlags;	
+	uint8 EdgeFlags;
 	uint8 Vert1Flags;
 	uint8 Vert2Flags;
 	bool Concave;
@@ -431,27 +431,27 @@ void*  dGeomTriMeshDataGet(dTriMeshDataID g, int data_id)
         dUASSERT(data_id, "invalid data type");
         break;
     }
-    
+
     return NULL;
 }
 
 
 void dGeomTriMeshDataBuildSingle1(dTriMeshDataID g,
-                                  const void* Vertices, int VertexStride, int VertexCount, 
+                                  const void* Vertices, int VertexStride, int VertexCount,
                                   const void* Indices, int IndexCount, int TriStride,
                                   const void* Normals)
 {
     dUASSERT(g, "argument not trimesh data");
-    
-    g->Build(Vertices, VertexStride, VertexCount, 
-             Indices, IndexCount, TriStride, 
-             Normals, 
+
+    g->Build(Vertices, VertexStride, VertexCount,
+             Indices, IndexCount, TriStride,
+             Normals,
              true);
 }
 
 
 void dGeomTriMeshDataBuildSingle(dTriMeshDataID g,
-                                 const void* Vertices, int VertexStride, int VertexCount, 
+                                 const void* Vertices, int VertexStride, int VertexCount,
                                  const void* Indices, int IndexCount, int TriStride)
 {
     dGeomTriMeshDataBuildSingle1(g, Vertices, VertexStride, VertexCount,
@@ -460,21 +460,21 @@ void dGeomTriMeshDataBuildSingle(dTriMeshDataID g,
 
 
 void dGeomTriMeshDataBuildDouble1(dTriMeshDataID g,
-                                  const void* Vertices, int VertexStride, int VertexCount, 
+                                  const void* Vertices, int VertexStride, int VertexCount,
                                  const void* Indices, int IndexCount, int TriStride,
 				 const void* Normals)
 {
     dUASSERT(g, "argument not trimesh data");
-    
-    g->Build(Vertices, VertexStride, VertexCount, 
-             Indices, IndexCount, TriStride, 
-             Normals, 
+
+    g->Build(Vertices, VertexStride, VertexCount,
+             Indices, IndexCount, TriStride,
+             Normals,
              false);
 }
 
 
 void dGeomTriMeshDataBuildDouble(dTriMeshDataID g,
-				 const void* Vertices, int VertexStride, int VertexCount, 
+				 const void* Vertices, int VertexStride, int VertexCount,
                                  const void* Indices, int IndexCount, int TriStride) {
     dGeomTriMeshDataBuildDouble1(g, Vertices, VertexStride, VertexCount,
                                  Indices, IndexCount, TriStride, NULL);
@@ -482,16 +482,16 @@ void dGeomTriMeshDataBuildDouble(dTriMeshDataID g,
 
 
 void dGeomTriMeshDataBuildSimple1(dTriMeshDataID g,
-                                  const dReal* Vertices, int VertexCount, 
+                                  const dReal* Vertices, int VertexCount,
                                  const dTriIndex* Indices, int IndexCount,
                                  const int* Normals){
 #ifdef dSINGLE
     dGeomTriMeshDataBuildSingle1(g,
-				Vertices, 4 * sizeof(dReal), VertexCount, 
+				Vertices, 4 * sizeof(dReal), VertexCount,
 				Indices, IndexCount, 3 * sizeof(dTriIndex),
 				Normals);
 #else
-    dGeomTriMeshDataBuildDouble1(g, Vertices, 4 * sizeof(dReal), VertexCount, 
+    dGeomTriMeshDataBuildDouble1(g, Vertices, 4 * sizeof(dReal), VertexCount,
 				Indices, IndexCount, 3 * sizeof(dTriIndex),
 				Normals);
 #endif
@@ -499,7 +499,7 @@ void dGeomTriMeshDataBuildSimple1(dTriMeshDataID g,
 
 
 void dGeomTriMeshDataBuildSimple(dTriMeshDataID g,
-                                 const dReal* Vertices, int VertexCount, 
+                                 const dReal* Vertices, int VertexCount,
                                  const dTriIndex* Indices, int IndexCount) {
     dGeomTriMeshDataBuildSimple1(g,
                                  Vertices, VertexCount, Indices, IndexCount,
@@ -607,11 +607,11 @@ bool dxTriMesh::controlGeometry(int controlClass, int controlCode, void *dataVal
 			return checkControlValueSizeValidity(dataValue, dataSize, 0);
 		}
 		else if (controlCode == dGeomColliderSetMergeSphereContactsControlCode) {
-			return checkControlValueSizeValidity(dataValue, dataSize, sizeof(int)) 
+			return checkControlValueSizeValidity(dataValue, dataSize, sizeof(int))
 				&& controlGeometry_SetMergeSphereContacts(*(int *)dataValue);
 		}
 		else if (controlCode == dGeomColliderGetMergeSphereContactsControlCode) {
-			return checkControlValueSizeValidity(dataValue, dataSize, sizeof(int)) 
+			return checkControlValueSizeValidity(dataValue, dataSize, sizeof(int))
 				&& controlGeometry_GetMergeSphereContacts(*(int *)dataValue);
 		}
 	}
@@ -670,17 +670,17 @@ void dxTriMesh::computeAABB() {
     dVector3 c;
     const dMatrix3& R = final_posr->R;
     const dVector3& pos = final_posr->pos;
-    
+
     dMultiply0_331( c, R, d->AABBCenter );
-    
+
     dReal xrange = dFabs(R[0] * Data->AABBExtents[0]) +
-        dFabs(R[1] * Data->AABBExtents[1]) + 
+        dFabs(R[1] * Data->AABBExtents[1]) +
         dFabs(R[2] * Data->AABBExtents[2]);
     dReal yrange = dFabs(R[4] * Data->AABBExtents[0]) +
-        dFabs(R[5] * Data->AABBExtents[1]) + 
+        dFabs(R[5] * Data->AABBExtents[1]) +
         dFabs(R[6] * Data->AABBExtents[2]);
     dReal zrange = dFabs(R[8] * Data->AABBExtents[0]) +
-        dFabs(R[9] * Data->AABBExtents[1]) + 
+        dFabs(R[9] * Data->AABBExtents[1]) +
         dFabs(R[10] * Data->AABBExtents[2]);
 
     aabb[0] = c[0] + pos[0] - xrange;
@@ -700,7 +700,7 @@ void dxTriMeshData::UpdateData()
 }
 
 
-dGeomID dCreateTriMesh(dSpaceID space, 
+dGeomID dCreateTriMesh(dSpaceID space,
 		       dTriMeshDataID Data,
 		       dTriCallback* Callback,
 		       dTriArrayCallback* ArrayCallback,
@@ -746,7 +746,7 @@ void dGeomTriMeshSetRayCallback(dGeomID g, dTriRayCallback* Callback)
 
 dTriRayCallback* dGeomTriMeshGetRayCallback(dGeomID g)
 {
-	dUASSERT(g && g->type == dTriMeshClass, "argument not a trimesh");	
+	dUASSERT(g && g->type == dTriMeshClass, "argument not a trimesh");
 	return ((dxTriMesh*)g)->RayCallback;
 }
 
@@ -758,7 +758,7 @@ void dGeomTriMeshSetTriMergeCallback(dGeomID g, dTriTriMergeCallback* Callback)
 
 dTriTriMergeCallback* dGeomTriMeshGetTriMergeCallback(dGeomID g)
 {
-    dUASSERT(g && g->type == dTriMeshClass, "argument not a trimesh");	
+    dUASSERT(g && g->type == dTriMeshClass, "argument not a trimesh");
     return ((dxTriMesh*)g)->TriMergeCallback;
 }
 
@@ -781,10 +781,10 @@ dTriMeshDataID dGeomTriMeshGetData(dGeomID g)
 void dGeomTriMeshEnableTC(dGeomID g, int geomClass, int enable)
 {
 	dUASSERT(g && g->type == dTriMeshClass, "argument not a trimesh");
-  
+
 	switch (geomClass)
 	{
-		case dSphereClass: 
+		case dSphereClass:
 			((dxTriMesh*)g)->doSphereTC = (1 == enable);
 			break;
 		case dBoxClass:
@@ -801,7 +801,7 @@ void dGeomTriMeshEnableTC(dGeomID g, int geomClass, int enable)
 int dGeomTriMeshIsTCEnabled(dGeomID g, int geomClass)
 {
 	dUASSERT(g && g->type == dTriMeshClass, "argument not a trimesh");
-  
+
 	switch (geomClass)
 	{
 		case dSphereClass:

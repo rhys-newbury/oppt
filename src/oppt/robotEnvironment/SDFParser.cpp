@@ -297,7 +297,7 @@ GeometryUniquePtr SDFEnvironmentParser::makeCollisionGeometry(const sdf::Element
         ERROR(collisionElement->Get<std::string>("name") + " has no geometryElement");
     }
 
-    std::string collisionName = collisionElement->Get<std::string>("name");    
+    std::string collisionName = collisionElement->Get<std::string>("name");
     geometric::Pose collisionPose = getCollisionPose(collisionElement, parentLinkPose);
     GeometryUniquePtr collisionGeometry = nullptr;
     if (geometryElement->HasElement("mesh")) {

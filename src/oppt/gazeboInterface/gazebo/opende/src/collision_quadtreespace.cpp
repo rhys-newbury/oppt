@@ -61,13 +61,13 @@ public:
 	void Collide(dGeomID g1, dGeomID g2, void* UserData, dNearCallback* Callback);
 
 	void CollideLocal(dGeomID g2, void* UserData, dNearCallback* Callback);
-	
+
 	void AddObject(dGeomID Object);
 	void DelObject(dGeomID Object);
 	void Traverse(dGeomID Object);
 
 	bool Inside(const dReal* AABB);
-	
+
 	Block* GetBlock(const dReal* AABB);
 	Block* GetBlockChild(const dReal* AABB);
 };
@@ -81,47 +81,47 @@ static void DrawBlock(Block* Block){
 	v[0][AXIS0] = Block->mMinX;
 	v[0][UP] = REAL(-1.0);
 	v[0][AXIS1] = Block->mMinZ;
-	
+
 	v[1][AXIS0] = Block->mMinX;
 	v[1][UP] = REAL(-1.0);
 	v[1][AXIS1] = Block->mMaxZ;
-	
+
 	v[2][AXIS0] = Block->mMaxX;
 	v[2][UP] = REAL(-1.0);
 	v[2][AXIS1] = Block->mMinZ;
-	
+
 	v[3][AXIS0] = Block->mMaxX;
 	v[3][UP] = REAL(-1.0);
 	v[3][AXIS1] = Block->mMaxZ;
-	
+
 	v[4][AXIS0] = Block->mMinX;
 	v[4][UP] = REAL(1.0);
 	v[4][AXIS1] = Block->mMinZ;
-	
+
 	v[5][AXIS0] = Block->mMinX;
 	v[5][UP] = REAL(1.0);
 	v[5][AXIS1] = Block->mMaxZ;
-	
+
 	v[6][AXIS0] = Block->mMaxX;
 	v[6][UP] = REAL(1.0);
 	v[6][AXIS1] = Block->mMinZ;
-	
+
 	v[7][AXIS0] = Block->mMaxX;
 	v[7][UP] = REAL(1.0);
 	v[7][AXIS1] = Block->mMaxZ;
-	
+
 	// Bottom
 	dsDrawLine(v[0], v[1]);
 	dsDrawLine(v[1], v[3]);
 	dsDrawLine(v[3], v[2]);
 	dsDrawLine(v[2], v[0]);
-	
+
 	// Top
 	dsDrawLine(v[4], v[5]);
 	dsDrawLine(v[5], v[7]);
 	dsDrawLine(v[7], v[6]);
 	dsDrawLine(v[6], v[4]);
-	
+
 	// Sides
 	dsDrawLine(v[0], v[4]);
 	dsDrawLine(v[1], v[5]);
@@ -340,13 +340,13 @@ struct dxQuadTreeSpace : public dxSpace{
 	~dxQuadTreeSpace();
 
 	dxGeom* getGeom(int i);
-	
+
 	void add(dxGeom* g);
 	void remove(dxGeom* g);
 	void dirty(dxGeom* g);
 
 	void computeAABB();
-	
+
 	void cleanGeoms();
 	void collide(void* UserData, dNearCallback* Callback);
 	void collide2(void* UserData, dxGeom* g1, dNearCallback* Callback);
@@ -417,7 +417,7 @@ dxGeom* dxQuadTreeSpace::getGeom(int /*Index*/){
 
 	return 0;
 
-	// This doesnt work
+	// This doesn't work
 
 	/*if (CurrentIndex == Index){
 		// Loop through all objects in the local list
@@ -426,7 +426,7 @@ CHILDRECURSE:
 			dGeomID g = CurrentObject;
 			CurrentObject = CurrentObject->next;
 			CurrentIndex++;
-		
+
 #ifdef DRAWBLOCKS
 			DrawBlock(CurrentBlock);
 #endif	//DRAWBLOCKS
@@ -443,15 +443,15 @@ PARENTRECURSE:
 					}
 					CurrentBlock = &CurrentBlock->Children[i];
 					CurrentObject = CurrentBlock->First;
-				
+
 					i++;
-				
+
 					CurrentLevel++;
 					goto CHILDRECURSE;
 				}
 			}
 		}
-		
+
 		// Now lets go back to the parent so it can continue processing its other children.
 		if (CurrentBlock->Parent){
 			CurrentBlock = CurrentBlock->Parent;
@@ -494,10 +494,10 @@ void dxQuadTreeSpace::add(dxGeom* g){
 	g->parent_space = this;
 	Blocks[0].GetBlock(g->aabb)->AddObject(g);	// Add to best block
 	count++;
-	
+
 	// enumerator has been invalidated
 	current_geom = 0;
-	
+
 	dGeomMoved(this);
 }
 
@@ -505,7 +505,7 @@ void dxQuadTreeSpace::remove(dxGeom* g){
 	CHECK_NOT_LOCKED(this);
 	dAASSERT(g);
 	dUASSERT(g->parent_space == this,"object is not in this space");
-	
+
 	// remove
 	((Block*)g->tome)->DelObject(g);
 	count--;
@@ -517,15 +517,15 @@ void dxQuadTreeSpace::remove(dxGeom* g){
 			--i;
 		}
 	}
-	
+
 	// safeguard
 	g->next = 0;
 	g->tome = 0;
 	g->parent_space = 0;
-	
+
 	// enumerator has been invalidated
 	current_geom = 0;
-	
+
 	// the bounding box of this space (and that of all the parents) may have
 	// changed as a consequence of the removal.
 	dGeomMoved(this);
@@ -542,7 +542,7 @@ void dxQuadTreeSpace::computeAABB(){
 void dxQuadTreeSpace::cleanGeoms(){
 	// compute the AABBs of all dirty geoms, and clear the dirty flags
 	lock_count++;
-	
+
 	for (int i = 0; i < DirtyList.size(); i++){
 		dxGeom* g = DirtyList[i];
 		if (IS_SPACE(g)){
@@ -592,11 +592,11 @@ void dxQuadTreeSpace::collide2(void* UserData, dxGeom* g2, dNearCallback* Callba
   if (g2->parent_space == this){
 	  // The block the geom is in
 	  Block* CurrentBlock2 = (Block*)g2->tome;
-	  
+
 	  // Collide against block and its children
 	  DataCallback dc = {UserData, Callback};
 	  CurrentBlock2->Collide(g2, CurrentBlock2->mFirst, &dc, swap_callback);
-	  
+
 	  // Collide against parents
 	  while ((CurrentBlock2 = CurrentBlock2->mParent))
 		  CurrentBlock2->CollideLocal(g2, UserData, Callback);

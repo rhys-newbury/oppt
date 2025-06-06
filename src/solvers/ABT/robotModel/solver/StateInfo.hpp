@@ -24,7 +24,7 @@ public:
     StateInfo(std::unique_ptr<abt::State> state);
 
     virtual ~StateInfo();
-    
+
     long containedInBeliefs() const;
 
 protected:

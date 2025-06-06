@@ -39,17 +39,17 @@ public:
     virtual RobotStateSharedPtr sampleAnInitState() override {
         auto options = static_cast<RocksampleInitialBeliefOptions*>(options_.get());
 
-        // Construct an 10-dimensional state vector              
+        // Construct an 10-dimensional state vector
         VectorFloat initialStateVector(robotEnvironment_->getRobot()->getStateSpace()->getNumDimensions(), 0.0);
 
         // The first two dimensions of the initial state vector are the rover position as specified in the configuration file
         initialStateVector[0] = options->initialRoverPosition[0];
         initialStateVector[1] = options->initialRoverPosition[1];
 
-        // The next 8 dimensions of the initial state are the rock states. We set them to be bad (= 0) 
+        // The next 8 dimensions of the initial state are the rock states. We set them to be bad (= 0)
         // or good (= 1) with equal probability
         std::uniform_int_distribution<unsigned int> d(0, 1);
-        auto randomGenerator = robotEnvironment_->getRobot()->getRandomEngine();        
+        auto randomGenerator = robotEnvironment_->getRobot()->getRandomEngine();
         for (size_t i = 2; i != robotEnvironment_->getRobot()->getStateSpace()->getNumDimensions(); ++i) {
             initialStateVector[i] = (FloatType)d(*(randomGenerator.get()));
         }
@@ -60,7 +60,7 @@ public:
             // Required for visualization
             initialState->setGazeboWorldState(robotEnvironment_->getGazeboInterface()->getInitialWorldState());
         }
-                
+
         return initialState;
     }
 };

@@ -57,7 +57,7 @@ void Body::addVisualGeometry(GeometryUniquePtr visualGeometry) {
 CollisionReportSharedPtr Body::collides(const CollisionRequest *collisionRequest) const {
     CollisionReportSharedPtr collisionReport(new CollisionReport);
     for (auto &collisionObject : opptCollisionObjects_) {
-        CollisionReportSharedPtr cp = collisionObject->collides(collisionRequest);            
+        CollisionReportSharedPtr cp = collisionObject->collides(collisionRequest);
         for (size_t i = 0; i != cp->collisionPairs.size(); ++i) {
             collisionReport->collisionPairs.push_back(cp->collisionPairs[i]);
         }
@@ -131,7 +131,7 @@ std::string Body::toSDFString() const {
     serString += "</static>";
     serString += "<link name='link'>";
     for (auto &collisionObject : opptCollisionObjects_) {
-        serString += "<collision name='" + collisionObject->getCollisionGeometry()->getName() + "'>";        
+        serString += "<collision name='" + collisionObject->getCollisionGeometry()->getName() + "'>";
         auto gzPose = (collisionObject->getCollisionGeometry()->getWorldPose() - worldPose_).toGZPose();
         serString += "<pose frame=''>";
 #ifdef GZ_GT_7

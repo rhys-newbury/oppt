@@ -25,10 +25,10 @@
 
 #include "dball.h"
 
-struct dxJointDHinge : public dxJointDBall 
+struct dxJointDHinge : public dxJointDBall
 {
     dVector3 axis1, axis2;
-    
+
     dxJointDHinge(dxWorld *w);
 
     virtual void getSureMaxInfo( SureMaxInfo* info );

@@ -151,7 +151,7 @@ public:
      */
     virtual StepResult generateStep(
         State const& state,
-        Action const& action	
+        Action const& action
     ) = 0;
 
     virtual void updateModel(StepResult& stepResult,
@@ -341,7 +341,7 @@ public:
      *
      * By default this returns a null pointer. However, if you require serialization of the state
      * of an ABT solver, you must implement a custom Serializer which will properly serialize
-     * the various clases you have implemented as part of your POMDP model.
+     * the various classes you have implemented as part of your POMDP model.
      */
     virtual std::unique_ptr<Serializer> createSerializer(Solver* solver);
 

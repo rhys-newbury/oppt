@@ -127,6 +127,3 @@ void gim_merge_contacts_unique(GDYNAMIC_ARRAY * source_contacts,
 	pcontact->m_depth = divide_average/normal_len;
 	*/
 }
-
-
-

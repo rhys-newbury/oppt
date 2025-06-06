@@ -132,7 +132,7 @@ public:
     virtual void setRobotCollisionObjects(VectorCollisionObjectPtr& robotCollisionObjects) = 0;
 
     /**
-     * Set the robot collision objects that are ingnored during collision checking
+     * Set the robot collision objects that are ignored during collision checking
      */
     virtual void setCollisionInvariantRobotCollisionObjects(VectorCollisionObjectPtr &robotCollisionObjects) = 0;
 
@@ -142,7 +142,7 @@ public:
     virtual VectorCollisionObjectPtr getRobotCollisionObjects() const = 0;
 
     /**
-     * Get the robot collision objects that are ingnored during collision checking
+     * Get the robot collision objects that are ignored during collision checking
      */
     virtual VectorCollisionObjectPtr getCollisionInvariantRobotCollisionObjects() const = 0;
 

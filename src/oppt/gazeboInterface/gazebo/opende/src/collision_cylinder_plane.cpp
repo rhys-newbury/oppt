@@ -26,7 +26,7 @@
  *
  * This testing basically comes down to testing the intersection
  * of the cylinder caps (discs) with the plane.
- * 
+ *
  */
 
 #include <ode/collision.h>
@@ -98,7 +98,7 @@ int dCollideCylinderPlane(dxGeom *Cylinder, dxGeom *Plane, int flags, dContactGe
 		s = planevec[3] - dVector3Dot(planevec, G1Pos1);
 		dReal t;
 		t = planevec[3] - dVector3Dot(planevec, G1Pos2);
-		if(s >= t) // s == t does never happen, 
+		if(s >= t) // s == t does never happen,
 		{
 			if(s >= 0)
 			{

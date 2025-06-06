@@ -355,7 +355,7 @@ public:
 
         parser->addOptionWithDefault<VectorString>("observation", "linkVelocitiesLinearX", &RobotConfigOptions::linkLinearVelocitiesXObs, defaultStringVec);
         parser->addOptionWithDefault<VectorString>("observation", "linkVelocitiesLinearY", &RobotConfigOptions::linkLinearVelocitiesYObs, defaultStringVec);
-        parser->addOptionWithDefault<VectorString>("observation", "linkVelocitiesLinearZ", &RobotConfigOptions::linkLinearVelocitiesZObs, defaultStringVec);        
+        parser->addOptionWithDefault<VectorString>("observation", "linkVelocitiesLinearZ", &RobotConfigOptions::linkLinearVelocitiesZObs, defaultStringVec);
         parser->addOptionWithDefault<std::vector<VectorFloat>>("observation",
                 "linkVelocitiesLinearXLimits",
                 &RobotConfigOptions::linkLinearVelocitiesXLimitsObs, defaultLimitsVec);
@@ -409,9 +409,9 @@ public:
                 "additionalDimensions",
                 &RobotConfigOptions::additionalActionDimensions,
                 0);
-        parser->addOptionWithDefault<std::vector<VectorFloat>>("action", 
-            "jointPositionIncrementLimits", 
-            &RobotConfigOptions::jointPositionIncrementLimits, 
+        parser->addOptionWithDefault<std::vector<VectorFloat>>("action",
+            "jointPositionIncrementLimits",
+            &RobotConfigOptions::jointPositionIncrementLimits,
             defaultAdditionalLimits);
         parser->addOptionWithDefault<std::vector<VectorFloat>>("action",
                 "additionalDimensionLimits",

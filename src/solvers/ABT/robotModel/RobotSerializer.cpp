@@ -45,7 +45,7 @@ std::vector<valueType> loadVector(std::istream& is)
     std::vector<valueType> values;
     std::string tmpStr;
     std::getline(is, tmpStr, '(');
-    std::getline(is, tmpStr, ')');    
+    std::getline(is, tmpStr, ')');
     std::istringstream sstr(tmpStr);
     while (std::getline(sstr, tmpStr, ' ')) {
         valueType value;
@@ -67,7 +67,7 @@ std::vector<valueType> loadVectorFromString(std::string& str)
         std::istringstream(str) >> value;
         values.push_back(value);
     }
-   
+
     return values;
 }
 
@@ -77,13 +77,13 @@ std::vector<std::vector<valueType>> load2Vector(std::istream& is)
     std::vector<std::vector<valueType>> values;
     std::string tmpStr;
     std::getline(is, tmpStr, '|');
-    std::getline(is, tmpStr, '|');    
+    std::getline(is, tmpStr, '|');
     std::vector<std::string> coords = split(tmpStr, ',');
     for (std::string &k: coords) {
 	std::vector<valueType> vertice = loadVectorFromString<valueType>(k);
 	values.push_back(vertice);
     }
-   
+
     return values;
 }
 
@@ -168,7 +168,7 @@ std::unique_ptr<abt::ModelChange> RobotSerializer::loadModelChange(std::istream&
 {
     //TODO IMPLEMENT ME!
     ERROR("Loading changes is currently not implemented");
-    return nullptr;    
+    return nullptr;
 }
 
 /*--------------- RobotApproximateObservationTextSerializer -----------------------*/
@@ -184,7 +184,7 @@ std::unique_ptr<abt::ObservationMapping> RobotSerializer::loadObservationMapping
     std::istringstream totalsStream(line);
     long nChildren, totalVisitCount;
     totalsStream >> nChildren >> tmpStr >> tmpStr;
-    totalsStream >> totalVisitCount;    
+    totalsStream >> totalVisitCount;
     approxMap.setTotalVisitCount(totalVisitCount);
 
     for (int i = 0; i < nChildren; i++) {

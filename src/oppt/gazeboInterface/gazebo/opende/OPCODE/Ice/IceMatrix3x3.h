@@ -493,4 +493,3 @@ void FromQuatL2(const Quat &q, float l2);
 	};
 
 #endif // __ICEMATRIX3X3_H__
-

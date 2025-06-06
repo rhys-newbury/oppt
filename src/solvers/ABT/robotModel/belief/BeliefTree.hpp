@@ -12,16 +12,16 @@ class BeliefTree: public abt::BeliefTree
     friend class oppt::ABTSolver;
 public:
     BeliefTree(abt::Solver* solver);
-    
+
 protected:
     virtual abt::BeliefNode* reset() override;
-    
+
     /** Adds the given node to the index of nodes. */
     virtual void addNode(BeliefNode *node);
 
     /** Removes the given node from the index of nodes. */
     virtual void removeNode(BeliefNode *node);
-    
+
     long counter_;
 };
 }

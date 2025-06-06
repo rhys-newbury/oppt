@@ -59,4 +59,3 @@ private:
 } /* namespace abt */
 
 #endif /* SOLVER_AGENT_HPP_ */
-

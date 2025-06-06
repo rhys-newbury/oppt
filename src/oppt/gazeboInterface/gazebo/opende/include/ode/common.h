@@ -319,7 +319,7 @@ enum {
 
   /*
    \enum  D_ALL_PARAM_NAMES_X
-  
+
    \var dParamGroup This is the starting value of the different group
                     (i.e. dParamGroup1, dParamGroup2, dParamGroup3)
                     It also helps in the use of parameter

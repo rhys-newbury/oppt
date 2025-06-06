@@ -131,7 +131,7 @@ public:
      * @param state2 The second state
      * @param numIterations The number of discretization points between the two states
      *
-     * @return A shared pointer to a CollisionReport which constains collision information
+     * @return A shared pointer to a CollisionReport which contains collision information
      */
     oppt::CollisionReportSharedPtr makeContinuousCollisionReport(const oppt::RobotStateSharedPtr& state1,
             const oppt::RobotStateSharedPtr& state2,
@@ -164,7 +164,7 @@ public:
      * @brief Loads the observation plugin. This method calls the oppt::Plugin::load() method
      */
     void loadObservationPlugin(const std::string& optionsFile);
-    
+
     /**
      * @brief Get the name of the robot
      */
@@ -200,7 +200,7 @@ public:
     Serializer* getSerializer() const;
 
     /**
-     * @brief Retuns true if colliding states are not terminal
+     * @brief Returns true if colliding states are not terminal
      */
     bool getCollisionsAllowed() const;
 

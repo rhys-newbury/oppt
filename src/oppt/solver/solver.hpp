@@ -103,7 +103,7 @@ public:
     /**
      * @brief Update the belief, based on the action taken and observation received
      * @param action The action that was executed
-     * @param observation The observation that was percieved
+     * @param observation The observation that was perceived
      * @param allowTerminalStates If true, the next belief is allowed to have terminal states
      *
      * @return true if the belief update was successful
@@ -182,7 +182,7 @@ protected:
 
     /**
      * @brief Creates a heuristic plugin from the shared library provided in pluginFile
-     * @param pluginFile The filename of the shared library containting the heuristic plugin
+     * @param pluginFile The filename of the shared library containing the heuristic plugin
      * @return A oppt::HeuristicPlugin::HeuristicPluginUniquePtr to the created heuristic plugin
      */
     virtual HeuristicPlugin::HeuristicPluginUniquePtr createHeuristicPlugin(const std::string &pluginFile,
@@ -194,7 +194,7 @@ protected:
 
         HeuristicPlugin::HeuristicPluginUniquePtr heuristicPlugin = HeuristicPlugin::Create(pluginFile, "heuristicPlugin");
         heuristicPlugin->robotEnvironment_ = robotEnvironment;
-        return std::move(heuristicPlugin);        
+        return std::move(heuristicPlugin);
     }
 
     /**
@@ -280,5 +280,3 @@ typedef std::unique_ptr<Solver> SolverPtr;
 
 
 #endif
-
-

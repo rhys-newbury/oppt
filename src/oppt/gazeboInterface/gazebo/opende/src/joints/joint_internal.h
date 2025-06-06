@@ -59,4 +59,3 @@ dReal getHingeAngleFromRelativeQuat( dQuaternion qrel, dVector3 axis );
 void setFixedOrientation( dxJoint *joint, dxJoint::Info2 *info, dQuaternion qrel, int start_row );
 
 #endif
-

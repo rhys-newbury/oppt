@@ -52,7 +52,7 @@ class Point {
 
     /** Prints this point in a human-readable way [optional] */
     virtual void print(std::ostream &/*os*/) const {};
-    
+
     /** Serializes this point in a human-readable way [optional] */
     virtual void serialize(std::ostream &/*os*/, const std::string prefix="") const {};
 };

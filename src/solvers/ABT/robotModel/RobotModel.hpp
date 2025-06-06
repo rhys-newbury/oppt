@@ -93,7 +93,7 @@ public:
  * to be changed easily via the configuration interface without having to recompile the code.
  */
 class RobotModel : public shared::ModelWithProgramOptions
-{      
+{
 public:
     /** Constructs a new RobotModel instance with the given random number engine, and the
      * given set of configuration options.
@@ -143,7 +143,7 @@ public:
     /* ---------------------- Basic customizations  ---------------------- */
     virtual FloatType getDefaultHeuristicValue(abt::HistoryEntry const* entry,
             abt::State const* state, abt::HistoricalData const* data) override;
-            
+
     virtual std::unique_ptr<abt::StateIndex> createStateIndex() override;
 
     /* ----------------------- Methods for handling changes -------------- */
@@ -185,8 +185,8 @@ private:
 
     const oppt::HeuristicPlugin* heuristicPlugin_;
 
-    RandomEnginePtr randGen_;    
-    
+    RandomEnginePtr randGen_;
+
     int seed = 123456789;
 };
 } /* namespace Robot */

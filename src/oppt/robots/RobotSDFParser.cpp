@@ -35,20 +35,20 @@ VectorGeometryUniquePtr RobotSDFParser::parseCollisionGeometries(const std::stri
     sdf::SDFPtr sdfModel(new sdf::SDF());
     sdf::init(sdfModel);
     sdf::readFile(file, sdfModel);
-    if (!sdfModel) 
-        oppt::ERROR("Could not parse SDF file");    
+    if (!sdfModel)
+        oppt::ERROR("Could not parse SDF file");
 
     sdf::ElementPtr rootElement = sdfModel->Root();
-    if (!rootElement) 
-        ERROR("SDF file seems invalid");    
+    if (!rootElement)
+        ERROR("SDF file seems invalid");
 
     sdf::ElementPtr worldElement = rootElement->GetElement("world");
     if (!worldElement)
         ERROR("SDF File has no world");
 
     sdf::ElementPtr modelElement = worldElement->GetElement("model");
-    if (!modelElement) 
-        ERROR("SDF file has no model element");    
+    if (!modelElement)
+        ERROR("SDF file has no model element");
 
     while (modelElement) {
         std::string modelName = modelElement->Get<std::string>("name");
@@ -224,7 +224,7 @@ GeometryUniquePtr RobotSDFParser::processBoxGeometry(sdf::ElementPtr boxGeometry
     for (size_t i = 0; i < sizeStrVec.size(); i++) {
         sizeVec[i] = atof(sizeStrVec[i].c_str());
     }
-    
+
     GeometryUniquePtr boxGeometry(new geometric::Box(visualName, sizeVec, processPose(visualElement)));
     processMaterialElement(visualElement, boxGeometry.get());
     return std::move(boxGeometry);

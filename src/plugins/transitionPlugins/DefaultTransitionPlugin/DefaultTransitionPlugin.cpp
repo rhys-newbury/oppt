@@ -30,7 +30,7 @@ public :
 
     virtual ~DefaultTransitionPlugin() = default;
 
-    virtual bool load(const std::string& optionsFile) override {        
+    virtual bool load(const std::string& optionsFile) override {
         parseOptions_<DefaultTransitionPluginOptions>(optionsFile);
         controlDuration_ =
             static_cast<DefaultTransitionPluginOptions*>(options_.get())->controlDuration;
@@ -47,7 +47,7 @@ public :
         auto robot = robotEnvironment_->getRobot();
         VectorFloat errorVector;
 
-        // Sample a control error if neccessary
+        // Sample a control error if necessary
         if (propagationRequest->errorVector.size() != robot->getActionSpace()->getNumDimensions()) {
             errorVector = toStdVec<FloatType>(errorDistribution_->sample(1).col(0));
         } else {

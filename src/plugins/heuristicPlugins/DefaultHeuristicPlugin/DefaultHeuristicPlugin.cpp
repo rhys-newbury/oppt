@@ -29,12 +29,12 @@ public:
 
     virtual ~DefaultHeuristicPlugin() = default;
 
-    virtual bool load(const std::string& optionsFile) override {        
-        
+    virtual bool load(const std::string& optionsFile) override {
+
         return true;
     }
 
-    virtual FloatType getHeuristicValue(const HeuristicInfo* heuristicInfo) const override {        
+    virtual FloatType getHeuristicValue(const HeuristicInfo* heuristicInfo) const override {
         return 1.0;
     }
 };

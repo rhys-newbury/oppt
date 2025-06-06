@@ -154,7 +154,7 @@ ODE_API void dSolveLDLT (const dReal *L, const dReal *d, dReal *b, int n, int ns
  *   - d has size n. d contains the reciprocal diagonal elements of D.
  *   - a has size n.
  * the result is written into L, except that the left column of L and d[0]
- * are not actually modified. see ldltaddTL.m for further comments. 
+ * are not actually modified. see ldltaddTL.m for further comments.
  */
 ODE_API void dLDLTAddTL (dReal *L, dReal *d, const dReal *a, int n, int nskip);
 

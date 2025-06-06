@@ -97,7 +97,7 @@ Model::StepResult NnRolloutGenerator::getStep(HistoryEntry const */*entry*/, Sta
         action = nextAction.get();
     }
 
-    // Generate a step using the recommended action from the neighboring node.    
+    // Generate a step using the recommended action from the neighboring node.
     Model::StepResult result = model_->generateStep(*state, *action);
 
     // getChild() will return nullptr if the child doesn't yet exist => this will be the last step.

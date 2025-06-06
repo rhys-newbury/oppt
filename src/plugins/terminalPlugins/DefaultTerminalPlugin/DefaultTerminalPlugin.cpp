@@ -123,7 +123,3 @@ private:
 OPPT_REGISTER_TERMINAL_PLUGIN(DefaultTerminalPlugin)
 
 }
-
-
-
-

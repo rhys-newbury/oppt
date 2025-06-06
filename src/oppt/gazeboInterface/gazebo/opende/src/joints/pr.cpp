@@ -41,7 +41,7 @@ dxJointPR::dxJointPR( dxWorld *w ) :
     //  |+---------+   -                +-----------+
     //  |
     // X.-----------------------------------------> Y
-    // N.B. X is comming out of the page
+    // N.B. X is coming out of the page
     dSetZero( anchor2, 4 );
 
     dSetZero( axisR1, 4 );
@@ -176,7 +176,7 @@ dReal dJointGetPRAngleRate( dJointID j )
 
 
 
-void 
+void
 dxJointPR::getSureMaxInfo( SureMaxInfo* info )
 {
     info->max_m = 6;
@@ -504,7 +504,7 @@ void dJointSetPRParam( dJointID j, int parameter, dReal value )
     if (( parameter & 0xff00 ) == 0x100 )
     {
         joint->limotR.set( parameter & 0xff, value );  // Take only lower part of the
-    }                                              // parameter alue
+    }                                              // parameter value
     else
     {
         joint->limotP.set( parameter, value );
@@ -612,8 +612,3 @@ dxJointPR::setRelativeValues()
 
     computeInitialRelativeRotation();
 }
-
-
-
-
-

@@ -216,7 +216,7 @@ private:
     Solver *solver_;
     /** The factory to use for generating sequence steps. */
     std::unique_ptr<StepGeneratorFactory> factory_;
-    /** The heuristic to use to evalulate non-terminal states at the end of a sequence. */
+    /** The heuristic to use to evaluate non-terminal states at the end of a sequence. */
     HeuristicFunction heuristic_;
 };
 

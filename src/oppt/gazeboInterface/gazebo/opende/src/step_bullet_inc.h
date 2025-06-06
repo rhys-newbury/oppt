@@ -29,4 +29,3 @@
 #include "BulletDynamics/MLCPSolvers/btSolveProjectedGaussSeidel.h"
 #endif
 #endif
-

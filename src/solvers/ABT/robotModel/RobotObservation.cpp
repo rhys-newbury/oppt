@@ -33,12 +33,12 @@ std::unique_ptr<abt::Observation> RobotObservation::copy() const
 }
 
 FloatType RobotObservation::distanceTo(abt::Observation const& otherObs) const
-{    
+{
     return observation_->distanceTo(*(static_cast<RobotObservation const&>(otherObs).getOpptObservation().get()));
 }
 
 bool RobotObservation::equals(abt::Observation const& otherObs) const
-{    
+{
     return observation_->equals(*(static_cast<const RobotObservation&>(otherObs).getOpptObservation().get()));
 }
 
@@ -58,8 +58,8 @@ void RobotObservation::serialize(std::ostream& os, const std::string prefix) con
 }
 
 long RobotObservation::getBinNumber() const
-{    
-    //long code = static_cast<oppt::DiscreteVectorObservation*>(observation_.get())->getBinNumber();    
+{
+    //long code = static_cast<oppt::DiscreteVectorObservation*>(observation_.get())->getBinNumber();
     return static_cast<oppt::DiscreteVectorObservation*>(observation_.get())->getBinNumber();
 }
 
@@ -70,4 +70,3 @@ oppt::ObservationSharedPtr RobotObservation::getOpptObservation() const
 
 }
 /* namespace manipulator */
-

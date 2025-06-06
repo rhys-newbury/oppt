@@ -627,7 +627,7 @@ class GpsSearch {
 
 		// we traverse the tree. If we decide to descend into a child, currentNode will be set to the child in the next round of the loop.
 		GpsStencil* currentNode = static_cast<GpsStencil*>(mapping.chooserData.get());
-		
+
 
 		// when the loop is finished, currentNode will be null. Thus we keep a copy of it in previousNode so we know which leaf we reached in the end.
 		GpsStencil* previousNode = nullptr;
@@ -668,7 +668,7 @@ class GpsSearch {
 					if ( (entry != nullptr) && (entry->getVisitCount() == 0) ) {
 						if (count == selectEntryNumber) {
 							bestPointScore = std::numeric_limits<FloatType>::infinity();
-							bestEntry = entry;							
+							bestEntry = entry;
 							return;
 						}
 						count++;
@@ -719,7 +719,7 @@ class GpsSearch {
 
 		// We reached a leaf of the tree now. Determine whether we want to create a child.
 
-		// Calculate how deep the hirarchy is allowed to be.
+		// Calculate how deep the hierarchy is allowed to be.
 		FloatType desiredHirarchyLevels = 0;
 		if (mapping.getTotalVisitCount() > 0) {
 			desiredHirarchyLevels = log(mapping.getTotalVisitCount())/log(options.newSearchPointCoefficient);
@@ -757,7 +757,7 @@ class GpsSearch {
 					if ( (entry != nullptr) && (entry->getVisitCount() == 0) ) {
 						if (count == selectEntryNumber) {
 							bestPointScore = std::numeric_limits<FloatType>::infinity();
-							bestEntry = entry;							
+							bestEntry = entry;
 							return;
 						}
 						count++;
@@ -801,7 +801,7 @@ public:
 		gpsUcbAction_processFixed(node, model, options, mapping, bestPointScore, bestEntry);
 
 		// return if there is an unvisited fixed action.
-		if ( (bestEntry!= nullptr) && (bestEntry->getVisitCount() == 0) ) {		        
+		if ( (bestEntry!= nullptr) && (bestEntry->getVisitCount() == 0) ) {
 			return GpsChooserResponse(bestEntry->getAction(), false);
 		}
 
@@ -814,7 +814,7 @@ public:
 					}
 				} e;
 				throw e;
-			}			
+			}
 
 			return GpsChooserResponse(bestEntry->getAction(), bestEntry->getVisitCount() > 0);
 		}
@@ -832,8 +832,8 @@ public:
 				}
 			} e;
 			throw e;
-		}		
-		
+		}
+
 		return GpsChooserResponse(bestEntry->getAction(), bestEntry->getVisitCount() > 0);
 
 	}
@@ -935,14 +935,14 @@ template<>
 void route_gpsUcbAction_compass<GpsChooserOptions::maxDimensions+1>(GpsChooserResponse& /*result*/, BeliefNode const* /*node*/, const Model& /*model*/, const GpsChooserOptions& /*options*/) {
 	class TooManyDimensions: public std::exception {
 		virtual const char* what() const noexcept {
-			return "route_gpsUcbAction_compass: the dimensionality you requested wasn't instanciated during compile time. Please adjust GpsChooserOptions::maxDimensions.";
+			return "route_gpsUcbAction_compass: the dimensionality you requested wasn't instantiated during compile time. Please adjust GpsChooserOptions::maxDimensions.";
 		}
 	} e;
 	throw e;
 }
 
 template<size_t DIMENSIONS>
-void route_gpsUcbAction_compass(GpsChooserResponse& result, BeliefNode const *node, const Model& model, const GpsChooserOptions& options) {        
+void route_gpsUcbAction_compass(GpsChooserResponse& result, BeliefNode const *node, const Model& model, const GpsChooserOptions& options) {
 	if (DIMENSIONS==options.dimensions) {
 		result = GpsSearch<CompassHierarchyData<DIMENSIONS>>::gpsUcbAction(node, model, options);
 	} else {

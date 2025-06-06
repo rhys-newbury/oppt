@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #ifndef ___ROBOT_STATE_SPEC_HPP___
@@ -25,7 +25,7 @@ namespace oppt
 {
 
 /**
- * A class that represents a weighted RobotState 
+ * A class that represents a weighted RobotState
  */
 class WeightedRobotState: public RobotState
 {
@@ -36,7 +36,7 @@ public:
      * @brief Default constructor
      */
     WeightedRobotState();
-    
+
     virtual ~WeightedRobotState() {}
 
     /**
@@ -66,14 +66,14 @@ public:
     _NO_COPY_BUT_MOVE(VectorState)
     /**
      * @brief Construct from a VectorFloat
-     */    
-    VectorState(VectorFloat& stateVector);    
+     */
+    VectorState(VectorFloat& stateVector);
 
     /**
      * @brief Construct from a const VectorFloat
-     */ 
-    VectorState(const VectorFloat& stateVector);    
-    
+     */
+    VectorState(const VectorFloat& stateVector);
+
     virtual ~VectorState() = default;
 
     virtual void serialize(std::ostream& os, const std::string prefix = "") const override;
@@ -90,7 +90,7 @@ public:
      * @brief Return the raw vector values
      * @return A VectorFloat containing the raw vector values
      */
-    VectorFloat asVector() const;    
+    VectorFloat asVector() const;
 
 protected:
     VectorFloat state_;

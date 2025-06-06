@@ -1,0 +1,15 @@
+[build-system]
+requires = ["scikit-build-core[pyproject]>=0.7.0"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "oppt_py"
+version = "0.0.1"
+description = "Python bindings for OPPT (CMake/pybind11)"
+authors = [{ name = "Your Name" }]
+requires-python = ">=3.7"
+
+[tool.scikit-build]
+minimum-version = "0.7"
+cmake.source-dir = "src"
+cmake.define = { CMAKE_CXX_COMPILER_LAUNCHER = "ccache" }

@@ -40,7 +40,7 @@ public:
     /**
      * Parses an add body change
      * @param ifstream Input stream to the changes file
-     * @param sdfString SDF containting a description of the body that is being added
+     * @param sdfString SDF containing a description of the body that is being added
      */
     bool parseAddBody(std::ifstream& ifstream, std::string& sdfString);
 

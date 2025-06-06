@@ -21,7 +21,7 @@ public:
     RobotTransitionParameters(oppt::PropagationResultSharedPtr& propagationResult);
 
     RobotTransitionParameters(const oppt::PropagationResultSharedPtr& propagationResult);
-    
+
     virtual ~RobotTransitionParameters() {}
 
     virtual void print(std::ostream& os) const override;

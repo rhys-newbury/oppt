@@ -518,7 +518,7 @@ static size_t BuildIslandsAndEstimateStepperMemoryRequirements(dxWorldProcessCon
         }
       }
     }
-  } END_STATE_SAVE(context, stackstate);  // restores contex pointer m_pAllocCurrent back to what it was before this block
+  } END_STATE_SAVE(context, stackstate);  // restores context pointer m_pAllocCurrent back to what it was before this block
 
 # ifndef dNODEBUG
   // if debugging, check that all objects (except for disabled bodies,
@@ -729,7 +729,7 @@ static dxWorldProcessContext *InternalReallocateWorldProcessContext (
             if (pShrunkOldArena != pOldArena) {
               dxWorldProcessContext *shrunkcontext = (dxWorldProcessContext *)dEFFICIENT_PTR(pShrunkOldArena);
 
-              // Preform data shift in case if efficient alignment of new block
+              // Perform data shift in case if efficient alignment of new block
               // does not match that of old block
               size_t shrunkcontextofs = (size_t)shrunkcontext - (size_t)pShrunkOldArena;
               size_t offsetdiff = oldcontextofs - shrunkcontextofs;
@@ -834,7 +834,7 @@ bool dxReallocateWorldProcessContext (dxWorld *world,
 
   dxWorldProcessContext *context = oldcontext;
 
-  // EstimateIslandsProcessingMemoryRequirements allocates memeory for 3 arrays:
+  // EstimateIslandsProcessingMemoryRequirements allocates memory for 3 arrays:
   //    islandsizes: integer arrays, 2*n_islands in size, contains bodycount and jointcount for each island
   //    islandreqs: integer arrays, n_islands in size, contains memory requirements for each island
   //    body: one array with all the 'active' bodies, all indexed by islandsizes
@@ -935,6 +935,3 @@ void dxFreeWorldProcessContext (dxWorldProcessContext *context)
 
   InternalFreeWorldProcessContext(context);
 }
-
-
-

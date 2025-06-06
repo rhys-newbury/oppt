@@ -48,4 +48,3 @@ struct dxJointPlane2D : public dxJoint
 
 
 #endif
-

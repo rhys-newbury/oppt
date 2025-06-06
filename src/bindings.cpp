@@ -9,44 +9,32 @@
 #include "solvers/ABT/robotModel/solver/Solver.hpp"
 // #include "solvers/ABT/solverABT.hpp"
 
-#include <gazebo/gazebo.hh>
-#include <gazebo/common/Events.hh>
-#include <gazebo/common/UpdateInfo.hh>
-#include <typeinfo>
+// #include <gazebo/gazebo.hh>
+// #include <gazebo/common/Events.hh>
+// #include <gazebo/common/UpdateInfo.hh>
+// #include <typeinfo>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
-namespace {
-    struct DummyGazeboEvent : public gazebo::event::Event {
-        void Disconnect(int) override {}
-    };
-
-    // This ensures RTTI info is generated and kept in dynamic symbol table
-    __attribute__((used))
-    const std::type_info* force_gazebo_event_rtti_export = &typeid(DummyGazeboEvent);
+void set_env(const std::string& name, const std::string& value) {
+#ifdef _WIN32
+    _putenv_s(name.c_str(), value.c_str());
+#else
+    setenv(name.c_str(), value.c_str(), 1); // overwrite = 1
+#endif
 }
 
 
 // namespace {
 //     struct DummyGazeboEvent : public gazebo::event::Event {
-//         void Disconnect(int) override {}  // required to make it concrete
+//         void Disconnect(int) override {}
 //     };
 
-//     struct ForceGazeboRTTI {
-//         ForceGazeboRTTI() {
-//             DummyGazeboEvent dummy;
-//             const gazebo::event::Event& ref = dummy;
-//             (void)typeid(ref);  // Forces RTTI symbol generation
-//         }
-//     };
-//     static const std::type_info& dummy_rtti = typeid(DummyGazeboEvent);
-
-//     static ForceGazeboRTTI _force_gazebo_rtti;
-// }
-// namespace {
-//     // struct DummyGazeboEvent : public gazebo::event::Event {
-//     //     void Disconnect(int) override {}  // Make concrete
-//     // };
-
+//     // This ensures RTTI info is generated and kept in dynamic symbol table
+//     __attribute__((used))
+//     const std::type_info* force_gazebo_event_rtti_export = &typeid(DummyGazeboEvent);
 // }
 
 
@@ -68,6 +56,25 @@ std::shared_ptr<ProblemEnvironment> create_abt_env() {
 
 
 PYBIND11_MODULE(oppt_py, m) {
+
+    try {
+        py::object pathlib = py::module_::import("pathlib");
+        py::object sys = py::module_::import("sys");
+
+        // This file: <site-packages>/oppt_py.cpython-XY.so
+        py::object module_file = py::module_::import("__main__").attr("__file__");
+        py::object mod_path = pathlib.attr("Path")(module_file).attr("parent");
+
+        // plugins directory is sibling: <site-packages>/plugins
+        py::object plugins_path = mod_path.attr("__truediv__")("plugins");
+        std::string plugin_str = py::str(plugins_path);
+
+        set_env("OPPT_RESOURCE_PATH", plugin_str);
+
+    } catch (const std::exception& e) {
+        // Fallback: don’t crash if something went wrong
+        py::print("Warning: could not set OPPT_RESOURCE_PATH:", e.what());
+    }
 
     py::class_<RunSummary>(m, "RunSummary")
     .def_readonly("mean_num_steps", &RunSummary::meanNumSteps)
@@ -109,7 +116,7 @@ PYBIND11_MODULE(oppt_py, m) {
         .def_readwrite("saveParticles", &ProblemEnvironmentOptions::saveParticles)
         .def_readwrite("overwriteExistingLogFiles", &ProblemEnvironmentOptions::overwriteExistingLogFiles)
         .def_readwrite("logPath", &ProblemEnvironmentOptions::logPath);
-        
+
     py::class_<ABTExtendedOptions, ProblemEnvironmentOptions, std::shared_ptr<ABTExtendedOptions>>(m, "ABTExtendedOptions")
         .def(py::init<>())
         .def_readwrite("configPath", &ABTExtendedOptions::configPath)

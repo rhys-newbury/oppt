@@ -103,7 +103,7 @@ public:
 		}
 		return Result;
 	}
-	
+
 	bool GetVertexUSEDFlag(unsigned VertexIndex) const { return (m_VertexUseBits[VertexIndex / 8] & (1 << (VertexIndex % 8))) != 0; }
 	void SetVertexUSEDFlag(unsigned VertexIndex) { m_VertexUseBits[VertexIndex / 8] |= (1 << (VertexIndex % 8)); }
 
@@ -156,7 +156,7 @@ struct TrimeshCollidersCache
 
 	// Colliders
 /* -- not used -- also uncomment in InitOPCODECaches()
-	PlanesCollider _PlanesCollider; -- not used 
+	PlanesCollider _PlanesCollider; -- not used
 */
 	SphereCollider _SphereCollider;
 	OBBCollider _OBBCollider;
@@ -202,7 +202,7 @@ inline TrimeshCollidersCache *GetTrimeshCollidersCache(unsigned uiTLSKind)
 
 
 
-struct dxTriMeshData  : public dBase 
+struct dxTriMeshData  : public dBase
 {
     /* Array of flags for which edges and verts should be used on each triangle */
     enum UseFlags
@@ -221,17 +221,17 @@ struct dxTriMeshData  : public dBase
     void Preprocess();
     /* For when app changes the vertices */
     void UpdateData();
-    
+
 #if dTRIMESH_OPCODE
 	Model BVTree;
 	MeshInterface Mesh;
 
     dxTriMeshData();
     ~dxTriMeshData();
-    
-	void Build(const void* Vertices, int VertexStide, int VertexCount, 
-		const void* Indices, int IndexCount, int TriStride, 
-		const void* Normals, 
+
+	void Build(const void* Vertices, int VertexStide, int VertexCount,
+		const void* Indices, int IndexCount, int TriStride,
+		const void* Normals,
 		bool Single);
 
 	/* aabb in model space */
@@ -362,7 +362,7 @@ struct dxTriMesh : public dxGeom{
 		dxGeom* Geom;
 	};
 	dArray<BoxTC> BoxTCCache;
-	
+
 	struct CapsuleTC : public LSSCache{
 		dxGeom* Geom;
 	};
@@ -451,7 +451,7 @@ inline Matrix4x4& MakeMatrix(dxGeom* g, Matrix4x4& Out){
 #if dTRIMESH_GIMPACT
 
 	#ifdef dDOUBLE
-		// To use GIMPACT with doubles, we need to patch a couple of the GIMPACT functions to 
+		// To use GIMPACT with doubles, we need to patch a couple of the GIMPACT functions to
 		// convert arguments to floats before sending them in
 
 
@@ -463,7 +463,7 @@ inline Matrix4x4& MakeMatrix(dxGeom* g, Matrix4x4& Out){
 			(b)[3] = 0;                   \
 		}
 
-		inline void gim_trimesh_get_triangle_verticesODE(GIM_TRIMESH * trimesh, GUINT32 triangle_index, dVector3 v1, dVector3 v2, dVector3 v3) {   
+		inline void gim_trimesh_get_triangle_verticesODE(GIM_TRIMESH * trimesh, GUINT32 triangle_index, dVector3 v1, dVector3 v2, dVector3 v3) {
 			vec3f src1, src2, src3;
 			gim_trimesh_get_triangle_vertices(trimesh, triangle_index, src1, src2, src3);
 
@@ -472,7 +472,7 @@ inline Matrix4x4& MakeMatrix(dxGeom* g, Matrix4x4& Out){
 			dVECTOR3_VEC3F_COPY(v3, src3);
 		}
 
-		// Anything calling gim_trimesh_get_triangle_vertices from within ODE 
+		// Anything calling gim_trimesh_get_triangle_vertices from within ODE
 		// should be patched through to the dDOUBLE version above
 
 		#define gim_trimesh_get_triangle_vertices gim_trimesh_get_triangle_verticesODE
@@ -510,7 +510,7 @@ inline Matrix4x4& MakeMatrix(dxGeom* g, Matrix4x4& Out){
 			dst[ 5 ]= (src) -> maxZ;			\
 		}
 
-	#else 
+	#else
 		// With single precision, we can pass native ODE vectors directly to GIMPACT
 
 		#define gim_trimesh_ray_closest_collisionODE 	gim_trimesh_ray_closest_collision
@@ -528,7 +528,7 @@ inline unsigned FetchTriangleCount(dxTriMesh* TriMesh)
 }
 
 inline void FetchTransformedTriangle(dxTriMesh* TriMesh, int Index, dVector3 Out[3]){
-	gim_trimesh_locks_work_data(&TriMesh->m_collision_trimesh);	
+	gim_trimesh_locks_work_data(&TriMesh->m_collision_trimesh);
 	gim_trimesh_get_triangle_vertices(&TriMesh->m_collision_trimesh, (GUINT32)Index, Out[0], Out[1], Out[2]);
 	gim_trimesh_unlocks_work_data(&TriMesh->m_collision_trimesh);
 }
@@ -608,16 +608,16 @@ template<class T> const T& dcMIN(const T& x, const T& y){
 	return x < y ? x : y;
 }
 
-dReal SqrDistancePointTri( const dVector3 p, const dVector3 triOrigin, 
+dReal SqrDistancePointTri( const dVector3 p, const dVector3 triOrigin,
                            const dVector3 triEdge1, const dVector3 triEdge2,
                            dReal* pfSParam = 0, dReal* pfTParam = 0 );
 
-dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Direction, 
+dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Direction,
                            const dVector3 seg2Origin, const dVector3 seg2Direction,
                            dReal* pfSegP0 = 0, dReal* pfSegP1 = 0 );
 
-dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd, 
-                         const dVector3 triOrigin, 
+dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
+                         const dVector3 triOrigin,
                          const dVector3 triEdge1, const dVector3 triEdge2,
                          dReal* t = 0, dReal* u = 0, dReal* v = 0 );
 
@@ -667,8 +667,8 @@ void Vector3Multiply( const dVector3 in, dReal scalar, dVector3 out )
 }
 
 inline
-void TransformVector3( const dVector3 in, 
-                       const dMatrix3 orientation, const dVector3 position, 
+void TransformVector3( const dVector3 in,
+                       const dMatrix3 orientation, const dVector3 position,
                        dVector3 out )
 {
     dMultiply0_331( out, orientation, in );
@@ -680,34 +680,34 @@ void TransformVector3( const dVector3 in,
 //------------------------------------------------------------------------------
 /**
   @brief Check for intersection between triangle and capsule.
-  
-  @param dist [out] Shortest distance squared between the triangle and 
+
+  @param dist [out] Shortest distance squared between the triangle and
                     the capsule segment (central axis).
-  @param t    [out] t value of point on segment that's the shortest distance 
-                    away from the triangle, the coordinates of this point 
+  @param t    [out] t value of point on segment that's the shortest distance
+                    away from the triangle, the coordinates of this point
                     can be found by (cap.seg.end - cap.seg.start) * t,
                     or cap.seg.ipol(t).
   @param u    [out] Barycentric coord on triangle.
   @param v    [out] Barycentric coord on triangle.
   @return True if intersection exists.
-  
+
   The third Barycentric coord is implicit, ie. w = 1.0 - u - v
   The Barycentric coords give the location of the point on the triangle
   closest to the capsule (where the distance between the two shapes
   is the shortest).
 */
 inline
-bool IntersectCapsuleTri( const dVector3 segOrigin, const dVector3 segEnd, 
-                          const dReal radius, const dVector3 triOrigin, 
+bool IntersectCapsuleTri( const dVector3 segOrigin, const dVector3 segEnd,
+                          const dReal radius, const dVector3 triOrigin,
                           const dVector3 triEdge0, const dVector3 triEdge1,
                           dReal* dist, dReal* t, dReal* u, dReal* v )
 {
-    dReal sqrDist = SqrDistanceSegTri( segOrigin, segEnd, triOrigin, triEdge0, triEdge1, 
+    dReal sqrDist = SqrDistanceSegTri( segOrigin, segEnd, triOrigin, triEdge0, triEdge1,
                                        t, u, v );
-  
+
     if ( dist )
       *dist = sqrDist;
-    
+
     return ( sqrDist <= (radius * radius) );
 }
 

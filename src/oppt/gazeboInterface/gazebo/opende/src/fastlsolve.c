@@ -13,7 +13,7 @@
  */
 
 void _dSolveL1 (const dReal *L, dReal *B, int n, int lskip1)
-{  
+{
   /* declare variables - Z matrix, p and q vectors, etc */
   dReal Z11,Z21,Z31,Z41,p1,q1,p2,p3,p4,*ex;
   const dReal *ell;
@@ -304,4 +304,3 @@ void dSolveL1 (const dReal *L, dReal *B, int n, int lskip1)
 {
   _dSolveL1 (L, B, n, lskip1);
 }
-

@@ -129,14 +129,14 @@ struct DefaultTerminalPluginGoalParser
                     VectorString sizeElems;
                     split(sizeStr, ' ', sizeElems);
                     if (sizeElems.size() != 3) {
-                        ERROR("Size of box has incorrect number of values");                        
+                        ERROR("Size of box has incorrect number of values");
                     }
 
-                    VectorFloat goalArea({pose(0, 3), 
-                        pose(1, 3), 
-                        pose(2, 3), 
-                        atof(sizeElems[0].c_str()), 
-                        atof(sizeElems[1].c_str()), 
+                    VectorFloat goalArea({pose(0, 3),
+                        pose(1, 3),
+                        pose(2, 3),
+                        atof(sizeElems[0].c_str()),
+                        atof(sizeElems[1].c_str()),
                         atof(sizeElems[2].c_str())});
                     return goalArea;
                 }

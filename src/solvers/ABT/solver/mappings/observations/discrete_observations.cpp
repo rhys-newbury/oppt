@@ -190,4 +190,3 @@ std::unique_ptr<ObservationMapping> DiscreteObservationTextSerializer::loadObser
     return std::move(map);
 }
 } /* namespace abt */
-

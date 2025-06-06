@@ -50,7 +50,7 @@ BEGIN_NAMESPACE_OU()
 	void *pv_NewBlock;
 
 	CMemoryAllocationProcedure fnMemoryAllocationProcedure = CMemoryManagerCustomization::GetMemoryAllocationCustomProcedure();
-	
+
 	if (fnMemoryAllocationProcedure)
 	{
 		pv_NewBlock = fnMemoryAllocationProcedure(nBlockSize);
@@ -67,7 +67,7 @@ BEGIN_NAMESPACE_OU()
 /*extern*/ void *_OU_CONVENTION_API ReallocateMemoryBlock(void *pv_ExistingBlock, size_t nNewBlockSize)
 {
 	OU_ASSERT(OU_ALIGNED_SIZE((size_t)pv_ExistingBlock, _OU_MEMORY_REQUIRED_ALIGNMENT) == (size_t)pv_ExistingBlock); // Memory must be aligned
-	
+
 	void *pv_NewBlock;
 
 	CMemoryReallocationProcedure fnMemoryReallocationProcedure = CMemoryManagerCustomization::GetMemoryReallocationCustomProcedure();
@@ -103,4 +103,3 @@ BEGIN_NAMESPACE_OU()
 
 
 END_NAMESPACE_OU()
-

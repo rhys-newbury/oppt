@@ -4,7 +4,7 @@
 #include "oppt/robotHeaders/Dubin/DubinRobot.hpp"
 
 int main(int argc, char const* argv[])
-{   
+{
     oppt::ProblemEnvironment problemEnvironment;
     int ret = problemEnvironment.setup<oppt::DubinRobot, algorithm::ABT, oppt::ABTExtendedOptions>(argc, argv);
     if (ret != 0)

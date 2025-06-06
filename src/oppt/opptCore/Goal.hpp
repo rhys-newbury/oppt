@@ -33,7 +33,7 @@ public:
     virtual ~Goal() = default;
 
     _STATIC_CAST
-    
+
     /**
      * Determines if a state satisfies the goal requirements, i.e. if it is a goal state
      * @param state oppt::RobotStateSharedPtr for which the goal requirement is being checked
@@ -57,7 +57,7 @@ public:
         center_(center) {
 
     }
-    
+
     /**
      * Get the distance of a point to the center of the goal
      * @param point The ND-point for which the distance to the center is calculated

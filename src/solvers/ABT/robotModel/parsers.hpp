@@ -126,8 +126,8 @@ public:
         try {
             return getParser(targetType)->parse(solver, argsVector);
         } catch (std::out_of_range const &error) {
-            if (defaultParser_ == nullptr) {                
-                ERROR("Invalid target type: " + targetType);                
+            if (defaultParser_ == nullptr) {
+                ERROR("Invalid target type: " + targetType);
             } else {
                 return defaultParser_->parse(solver, argsVector);
             }
@@ -190,7 +190,7 @@ public:
 class StagedParser: public Parser<std::unique_ptr<abt::StepGeneratorFactory>> {
 public:
     /** Creates a new StagedParser that will use the given set of parsers for StepGeneratorFactory
-     * instances in order to parse the invididual stages.
+     * instances in order to parse the individual stages.
      */
     StagedParser(ParserSet<std::unique_ptr<abt::StepGeneratorFactory>> *allParsers);
     virtual ~StagedParser() = default;

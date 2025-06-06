@@ -36,7 +36,7 @@ BeliefNode *BeliefTree::getRoot() const {
     return root_.get();
 }
 BeliefNode *BeliefTree::getNode(long id) const {
-    BeliefNode *node = allNodes_[id];    
+    BeliefNode *node = allNodes_[id];
     if (node->getId() != id) {
         std::ostringstream message;
         message << "ERROR: ID mismatch in Belief Tree - ID should be " << id;
@@ -76,10 +76,10 @@ void BeliefTree::removeNode(BeliefNode *node) {
     long lastNodeId = allNodes_.size() - 1;
 
     if (id < 0 || id > lastNodeId) {
-        debug::show_message("ERROR: Node ID is out of bounds.");	
+        debug::show_message("ERROR: Node ID is out of bounds.");
         return;
     }
-    
+
     if (allNodes_[id] != node) {
         debug::show_message("ERROR: Node ID does not match index.");
         return;
@@ -98,7 +98,7 @@ void BeliefTree::removeNode(BeliefNode *node) {
 BeliefNode *BeliefTree::reset() {
     root_ = nullptr;
     root_ = std::make_unique<BeliefNode>(solver_);
-    BeliefNode *rootPtr = root_.get();    
+    BeliefNode *rootPtr = root_.get();
     return rootPtr;
 }
 

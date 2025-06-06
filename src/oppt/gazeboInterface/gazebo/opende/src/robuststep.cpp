@@ -92,7 +92,7 @@ struct Auto {
 #endif
   }
 
-  operator T*() 
+  operator T*()
   {
     return p;
   }
@@ -273,7 +273,7 @@ static void det_orthonormal_vec(dReal* dir, dReal* v)
   }
 
   dCROSS(v, =, dir, ones);
-} 
+}
 
 // verifies that all elements of a vector are finite (for debugging/testing)
 static void verifyFinite(dReal* /*A*/, int /*n*/)
@@ -404,7 +404,7 @@ static void determineBodyPairs(dxJoint* const* joints, int nj, vector<BodyPair>&
   info2.fps = 0.0;
   info2.erp = 0.0;
 
-  // setup all of info2 structure now, even though we won't really use it... 
+  // setup all of info2 structure now, even though we won't really use it...
   info2.J1l = dummy;
   info2.J1a = dummy;
   info2.J2l = dummy;
@@ -670,7 +670,7 @@ static void getJ_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
   // the same line, so copying is necessary...
   dReal J1[6*6], J2[6*6], lo[6], hi[6], c[6];
 
-  // setup all of info2 structure now, even though we won't really use it 
+  // setup all of info2 structure now, even though we won't really use it
   // all until later
   info2.J1l = J1;
   info2.J1a = J1+3;
@@ -680,7 +680,7 @@ static void getJ_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
   info2.lo = lo;
   info2.hi = hi;
 
-  // use dummy variables for some parts of info2 structure 
+  // use dummy variables for some parts of info2 structure
   dReal dummy[6];
   int findex[6];
   info2.cfm = dummy;
@@ -698,7 +698,7 @@ static void getJ_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
 
     // get the joint information
     joints[i]->getInfo1(&info1);
-    joints[i]->getInfo2(&info2);    
+    joints[i]->getInfo2(&info2);
 
     // tag the joint
     joints[i]->tag = (info1.m > 0) ? j++ : -1;
@@ -734,9 +734,9 @@ static void getJ_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
   dSetZero(jl_c.get(),ml);
   dSetZero(Jh.get(),mh*12);
   dSetZero(jh_c.get(),mh);
-  
+
   // now, setup the Jacobians and rhs's
-  for (int i=0, jj=0, jl=0, jh=0; i<nj; i++) 
+  for (int i=0, jj=0, jl=0, jh=0; i<nj; i++)
   {
     // skip non-tagged joints
     if (joints[i]->tag == -1)
@@ -746,7 +746,7 @@ static void getJ_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
     joints[i]->getInfo1(&info1);
     joints[i]->getInfo2(&info2);
 
-    // copy the standard Jacobian and rhs 
+    // copy the standard Jacobian and rhs
     dSetSubMat0(J.get(), 12, J1, info1.nub, 6, jj, 0);
     dSetSubMat0(J.get(), 12, J2, info1.nub, 6, jj, 6);
     dCopy(j_c.get()+jj, c, info1.nub);
@@ -763,7 +763,7 @@ static void getJ_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
           dSetSubMat0(Jl.get(), 12, J2+k*6, 1, 6, jl, 6);
           jl_c[jl] = c[k];
           jl++;
-        } 
+        }
         if (info2.hi[k] < dInfinity)
         {
           dSetSubMat0(Jh.get(), 12, J1+k*6, 1, 6, jh, 0);
@@ -809,7 +809,7 @@ static void getJ_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
       wxr[0] += body1->lvel[0];
       wxr[1] += body1->lvel[1];
       wxr[2] += body1->lvel[2];
-      dReal rvel = n[0]*wxr[0] + n[1]*wxr[1] + n[2]*wxr[2]; 
+      dReal rvel = n[0]*wxr[0] + n[1]*wxr[1] + n[2]*wxr[2];
 
       // calculate the normal velocity for body 2
       if (body2)
@@ -822,7 +822,7 @@ static void getJ_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
         wxr[0] += body2->lvel[0];
         wxr[1] += body2->lvel[1];
         wxr[2] += body2->lvel[2];
-        rvel -= n[0]*wxr[0] + n[1]*wxr[1] + n[2]*wxr[2]; 
+        rvel -= n[0]*wxr[0] + n[1]*wxr[1] + n[2]*wxr[2];
       }
 
       std::cout << "relative normal vel for contact " << i << ": " << rvel << std::endl;
@@ -880,7 +880,7 @@ static void getN_c(dxWorld* world, dxJoint* const* joints, int nj, dReal stepsiz
         normal[2] = contact.geom.normal[2];
       }
 
-      // get c 
+      // get c
       Jinfo.c = c + k++;
       joints[i]->getInfo2(&Jinfo);
 
@@ -1143,7 +1143,7 @@ static void formXiMXT(shared_array<dReal>& XMXT, dReal* X, int nb, int n, dReal*
 }
 
 //****************************************************************************
-// convex optimization objective / constraint functions (phase I) 
+// convex optimization objective / constraint functions (phase I)
 //****************************************************************************
 static void copt_fx1(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
 {
@@ -1156,7 +1156,7 @@ static void copt_fx1(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
   dReal* cl = cd.cl;
   dReal* ch = cd.ch;
   dCopy(cn, x, cd.nc);
-  dCopy(cv, x+cd.nc, cd.m); 
+  dCopy(cv, x+cd.nc, cd.m);
   dCopy(cl, x+cd.nc+cd.m, cd.ml);
   dCopy(ch, x+cd.nc+cd.m+cd.ml, cd.mh);
 
@@ -1165,7 +1165,7 @@ static void copt_fx1(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
   dReal* vnp1 = cd.vnp1;
   dSetZero(cd.worknb6_2, cd.nb*6);
   multSparseMatrix1(cd.worknb6_2, cd.N, cn, cd.nc, cd.nb, 1, cd.uniPairs);
-  multSparseMatrix1(cd.worknb6, cd.J, cv, cd.m, cd.nb, 1, cd.biPairs); 
+  multSparseMatrix1(cd.worknb6, cd.J, cv, cd.m, cd.nb, 1, cd.biPairs);
   dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
   multSparseMatrix1(cd.worknb6, cd.Jl, cl, cd.ml, cd.nb, 1, cd.biPairs);
   dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
@@ -1177,7 +1177,7 @@ static void copt_fx1(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
 
   // multiply N*v^{n+1}
   dReal* Nv = cd.Nv;
-  multSparseMatrix0(Nv, cd.N, vnp1, cd.nc, 1, cd.uniPairs); 
+  multSparseMatrix0(Nv, cd.N, vnp1, cd.nc, 1, cd.uniPairs);
 
   // multiply Jl*v^{n+1}
   dReal* Jlv = cd.Jlv;
@@ -1191,7 +1191,7 @@ static void copt_fx1(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
   int fidx = 0;
   dReal* Mv = cd.Mv;
   multGMass0(Mv, cd.I, cd.nb, cd.bodies, vnp1, 1, false);
-  f[fidx++] = dDot(Mv, vnp1, cd.nb*6) * (dReal) 0.5; 
+  f[fidx++] = dDot(Mv, vnp1, cd.nb*6) * (dReal) 0.5;
 dIASSERT(!isnan(f[0]));
 
   // evaluate non-negativity constraints on cn [indices 1..nc]
@@ -1208,11 +1208,11 @@ dIASSERT(!isnan(f[0]));
 
   // evaluate upper joint limit constraints [indices 2*nc+ml+1..2*nc+ml+mh]
   for (int i=0; i< cd.mh; i++)
-    f[fidx++] = cd.jh_c[i] - Jhv[i] - S_BUFFER;  
+    f[fidx++] = cd.jh_c[i] - Jhv[i] - S_BUFFER;
 }
 
 //****************************************************************************
-// convex optimization objective / constraint functions (phase II) 
+// convex optimization objective / constraint functions (phase II)
 //****************************************************************************
 static void copt_fx2(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
 {
@@ -1229,7 +1229,7 @@ static void copt_fx2(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
   dCopy(cn, x, cd.nc);
   dCopy(ct1, x+cd.nc, cd.nc);
   dCopy(ct2, x+cd.nc*2, cd.nc);
-  dCopy(cv, x+cd.nc*3, cd.m); 
+  dCopy(cv, x+cd.nc*3, cd.m);
   dCopy(cl, x+cd.nc*3+cd.m, cd.ml);
   dCopy(ch, x+cd.nc*3+cd.m+cd.ml, cd.mh);
 
@@ -1242,7 +1242,7 @@ static void copt_fx2(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
   dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
   multSparseMatrix1(cd.worknb6, cd.T2, ct2, cd.nc, cd.nb, 1, cd.uniPairs);
   dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
-  multSparseMatrix1(cd.worknb6, cd.J, cv, cd.m, cd.nb, 1, cd.biPairs); 
+  multSparseMatrix1(cd.worknb6, cd.J, cv, cd.m, cd.nb, 1, cd.biPairs);
   dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
   multSparseMatrix1(cd.worknb6, cd.Jl, cl, cd.ml, cd.nb, 1, cd.biPairs);
   dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
@@ -1254,7 +1254,7 @@ static void copt_fx2(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
 
   // multiply N*v^{n+1}
   dReal* Nv = cd.Nv;
-  multSparseMatrix0(Nv, cd.N, vnp1, cd.nc, 1, cd.uniPairs); 
+  multSparseMatrix0(Nv, cd.N, vnp1, cd.nc, 1, cd.uniPairs);
 
   // multiply Jl*v^{n+1}
   dReal* Jlv = cd.Jlv;
@@ -1268,7 +1268,7 @@ static void copt_fx2(dReal* x, int /*n*/, dReal* f, int /*m*/, void* data)
   int fidx = 0;
   dReal* Mv = cd.Mv;
   multGMass0(Mv, cd.I, cd.nb, cd.bodies, vnp1, 1, false);
-  f[fidx++] = dDot(Mv, vnp1, cd.nb*6) * (dReal) 0.5; 
+  f[fidx++] = dDot(Mv, vnp1, cd.nb*6) * (dReal) 0.5;
 dIASSERT(!isnan(f[0]));
 
   // evaluate non-negativity constraints on cn [indices 1..nc]
@@ -1285,8 +1285,8 @@ dIASSERT(!isnan(f[0]));
 
   // evaluate upper joint limit constraints [indices 2*nc+ml+1..2*nc+ml+mh]
   for (int i=0; i< cd.mh; i++)
-    f[fidx++] = cd.jh_c[i] - Jhv[i] - S_BUFFER;  
- 
+    f[fidx++] = cd.jh_c[i] - Jhv[i] - S_BUFFER;
+
   // evaluate normal impulse constraint [index 2*nc+ml+mh+1]
   f[fidx] = -cd.kappa - 1e-1;
   for (int i=0; i< cd.nc; i++)
@@ -1360,20 +1360,20 @@ f[fidx++] = -1000000;
 
 
 //****************************************************************************
-// convex optimization gradient functions 
+// convex optimization gradient functions
 //****************************************************************************
 static void copt_grad1(dReal* x, int n, int idx, dReal* g, void* data)
 {
   COptData& cd = *((COptData*) data);
   //const dReal S_BUFFER = dSqrt(std::numeric_limits<dReal>::epsilon());
 
-  // determine cv, cn, cl, ch 
+  // determine cv, cn, cl, ch
   dReal* cn = cd.cn;
   dReal* cv = cd.cv;
   dReal* cl = cd.cl;
   dReal* ch = cd.ch;
   dCopy(cn, x, cd.nc);
-  dCopy(cv, x+cd.nc, cd.m); 
+  dCopy(cv, x+cd.nc, cd.m);
   dCopy(cl, x+cd.nc+cd.m, cd.ml);
   dCopy(ch, x+cd.nc+cd.m+cd.ml, cd.mh);
 
@@ -1398,7 +1398,7 @@ static void copt_grad1(dReal* x, int n, int idx, dReal* g, void* data)
     dReal* vnp1 = cd.vnp1;
     dSetZero(cd.worknb6_2, cd.nb*6);
     multSparseMatrix1(cd.worknb6_2, cd.N, cn, cd.nc, cd.nb, 1, cd.uniPairs);
-    multSparseMatrix1(cd.worknb6, cd.J, cv, cd.m, cd.nb, 1, cd.biPairs); 
+    multSparseMatrix1(cd.worknb6, cd.J, cv, cd.m, cd.nb, 1, cd.biPairs);
     dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
     multSparseMatrix1(cd.worknb6, cd.Jl, cl, cd.ml, cd.nb, 1, cd.biPairs);
     dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
@@ -1413,7 +1413,7 @@ static void copt_grad1(dReal* x, int n, int idx, dReal* g, void* data)
     multSparseMatrix0(g, cd.N, vnp1, cd.nc, 1, cd.uniPairs);
     multSparseMatrix0(g + cd.nc, cd.J, vnp1, cd.m, 1, cd.biPairs);
     multSparseMatrix0(g + cd.nc+cd.m, cd.Jl, vnp1, cd.ml, 1, cd.biPairs);
-    multSparseMatrix0(g + cd.nc+cd.m+cd.ml, cd.Jh, vnp1, cd.mh, 1, cd.biPairs); 
+    multSparseMatrix0(g + cd.nc+cd.m+cd.ml, cd.Jh, vnp1, cd.mh, 1, cd.biPairs);
   }
   // gradients for non-negativity constraints
   else if (idx <= cd.nc)
@@ -1456,13 +1456,13 @@ static void copt_grad2(dReal* x, int n, int idx, dReal* g, void* data)
   dCopy(cn, x, cd.nc);
   dCopy(ct1, x+cd.nc, cd.nc);
   dCopy(ct2, x+cd.nc*2, cd.nc);
-  dCopy(cv, x+cd.nc*3, cd.m); 
+  dCopy(cv, x+cd.nc*3, cd.m);
   dCopy(cl, x+cd.nc*3+cd.m, cd.ml);
   dCopy(ch, x+cd.nc*3+cd.m+cd.ml, cd.mh);
 
   // evaluate objective function: kinetic energy
   // given: * is inverse
-  // f0 = (cn'NM*(N'cn + T1'ct1 + T2'ct2 + J'cv + Jl'cl + Jh'ch + hfext) + 
+  // f0 = (cn'NM*(N'cn + T1'ct1 + T2'ct2 + J'cv + Jl'cl + Jh'ch + hfext) +
   //       cn'Nv +
   //       ct1'T1M*(N'cn + T1'ct1 + T2'ct2 + J'cv + Jl'cl + Jh'ch + hfext) +
   //       ct1'T1v +
@@ -1494,7 +1494,7 @@ static void copt_grad2(dReal* x, int n, int idx, dReal* g, void* data)
     dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
     multSparseMatrix1(cd.worknb6, cd.T2, ct2, cd.nc, cd.nb, 1, cd.uniPairs);
     dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
-    multSparseMatrix1(cd.worknb6, cd.J, cv, cd.m, cd.nb, 1, cd.biPairs); 
+    multSparseMatrix1(cd.worknb6, cd.J, cv, cd.m, cd.nb, 1, cd.biPairs);
     dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
     multSparseMatrix1(cd.worknb6, cd.Jl, cl, cd.ml, cd.nb, 1, cd.biPairs);
     dAdd(cd.worknb6_2, cd.worknb6_2, cd.worknb6, cd.nb*6);
@@ -1511,7 +1511,7 @@ static void copt_grad2(dReal* x, int n, int idx, dReal* g, void* data)
     multSparseMatrix0(g + cd.nc*2, cd.T2, vnp1, cd.nc, 1, cd.uniPairs);
     multSparseMatrix0(g + cd.nc*3, cd.J, vnp1, cd.m, 1, cd.biPairs);
     multSparseMatrix0(g + cd.nc*3+cd.m, cd.Jl, vnp1, cd.ml, 1, cd.biPairs);
-    multSparseMatrix0(g + cd.nc*3+cd.m+cd.ml, cd.Jh, vnp1, cd.mh, 1, cd.biPairs); 
+    multSparseMatrix0(g + cd.nc*3+cd.m+cd.ml, cd.Jh, vnp1, cd.mh, 1, cd.biPairs);
   }
   // gradients for non-negativity constraints
   else if (idx <= cd.nc)
@@ -1629,7 +1629,7 @@ static void copt_grad2(dReal* x, int n, int idx, dReal* g, void* data)
 }*/
 
 //****************************************************************************
-// convex optimization Hessian functions 
+// convex optimization Hessian functions
 //****************************************************************************
 static bool copt_hess1(dReal* x, int n, int idx, dReal* H, void* data)
 {
@@ -1644,16 +1644,16 @@ static bool copt_hess1(dReal* x, int n, int idx, dReal* H, void* data)
   dCopy(cn, x, cd.nc);
   dCopy(ct1, x+cd.nc, cd.nc);
   dCopy(ct2, x+cd.nc*2, cd.nc);
-  dCopy(cv, x+cd.nc*3, cd.m); 
+  dCopy(cv, x+cd.nc*3, cd.m);
 
-  // Hessian is unchanging for objective function 
+  // Hessian is unchanging for objective function
   if (idx == 0)
   {
     dCopy(H, cd.ohess1, n*n);
     return true;
   }
   // Hessians for non-negativity constraints
-  // Hessians for non-interpenetration constraints  
+  // Hessians for non-interpenetration constraints
   // Hessians for inequality constraints on cv
   // Hessians on normal impulse constraint
   else
@@ -1673,7 +1673,7 @@ static bool copt_hess2(dReal* x, int n, int idx, dReal* H, void* data)
   dCopy(cn, x, cd.nc);
   dCopy(ct1, x+cd.nc, cd.nc);
   dCopy(ct2, x+cd.nc*2, cd.nc);
-  dCopy(cv, x+cd.nc*3, cd.m); 
+  dCopy(cv, x+cd.nc*3, cd.m);
 
   // evaluate objective function: kinetic energy
   if (idx == 0)
@@ -1682,7 +1682,7 @@ static bool copt_hess2(dReal* x, int n, int idx, dReal* H, void* data)
     return true;
   }
   // Hessians for non-negativity constraints
-  // Hessians for non-interpenetration constraints  
+  // Hessians for non-interpenetration constraints
   // Hessians for inequality constraints on cv
   // Hessians on normal impulse constraint
   else if (idx <= cd.nc*2+1)
@@ -1706,7 +1706,7 @@ static bool copt_hess2(dReal* x, int n, int idx, dReal* H, void* data)
 //****************************************************************************
 // a convex optimization version of dxInternalStepIsland
 //****************************************************************************
-void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world, 
+void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
                         dxBody * const *body, int nb,
                         dxJoint * const *joint, int nj, dReal stepsize)
 {
@@ -1721,7 +1721,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   int nc = 0;
   for (int i=0; i< nj; i++)
     if (joint[i]->type() == dJointTypeContact)
-      nc++; 
+      nc++;
 
   // if there are no contact constraints, do the original island stepper
   if (nc == 0)
@@ -1731,7 +1731,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   }
 
   // number all bodies in the body list - set their tag values
-  for (int i=0; i<nb; i++) 
+  for (int i=0; i<nb; i++)
     body[i]->tag = i;
 
   // for all bodies, compute the inertia tensor and its inverse in the global
@@ -1739,7 +1739,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   // accumulator. invI are vertically stacked 3x4 matrices, one per body.
   shared_array<dReal> fwdJ(new dReal[3*3*nb]);
   ALLOCA(dReal,invI,3*nb*4*sizeof(dReal));
-  for (int i=0; i<nb; i++) 
+  for (int i=0; i<nb; i++)
   {
     dReal tmp[12];
 
@@ -1747,7 +1747,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
     dMULTIPLY2_333 (tmp,body[i]->invI,body[i]->posr.R);
     dMULTIPLY0_333 (invI+i*12,body[i]->posr.R,tmp);
 
-    if (body[i]->flags & dxBodyGyroscopic) 
+    if (body[i]->flags & dxBodyGyroscopic)
     {
         dMatrix3 I;
 
@@ -1790,7 +1790,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
 
   // add the gravity force to all bodies
   for (int i=0; i<nb; i++) {
-    if ((body[i]->flags & dxBodyNoGravity)==0) 
+    if ((body[i]->flags & dxBodyNoGravity)==0)
     {
       body[i]->facc[0] += body[i]->mass.mass * world->gravity[0];
       body[i]->facc[1] += body[i]->mass.mass * world->gravity[1];
@@ -1863,9 +1863,9 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   cparams.data = (void*) &copt;
   cparams.fx = copt_fx1;
   cparams.grad = copt_grad1;
-  cparams.hess = copt_hess1; 
+  cparams.hess = copt_hess1;
 
-  // setup the n+m+ml+mh and 3n+m+ml+mh - dimensional vectors of impulses to 
+  // setup the n+m+ml+mh and 3n+m+ml+mh - dimensional vectors of impulses to
   // solve for
   int nvar1 = nc + m + ml + mh;
   int nvar2 = 3*nc + m + ml + mh;
@@ -1888,14 +1888,14 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   shared_array<dReal> worknb6n2(new dReal[nb*6*nvar2]);
   // set b = j_c - J(v + M^{-1}hfext)
   dCopy(b.get(), j_c.get(), m);
-  multGMass0(worknb6.get(), invJ.get(), nb, body, fext.get(), 1, true); 
+  multGMass0(worknb6.get(), invJ.get(), nb, body, fext.get(), 1, true);
   dAdd(worknb6.get(), worknb6.get(), v.get(), nb*6);
   multSparseMatrix0(workm.get(), J.get(), worknb6.get(), m, 1, biPairs);
   dSub(b.get(), b.get(), workm.get(), m);
   // set A = J*M^{-1}*[N' J' Jl' Jh']
   formStack1(worknb6n.get(), N.get(), J.get(), Jl.get(), Jh.get(), nb, nc, m, ml, mh, uniPairs, biPairs);
   multGMass0(copt.stack1, invJ.get(), nb, body, worknb6n.get(), nvar1, true);
-  multSparseMatrix0(A1.get(), J.get(), copt.stack1, m, nvar1, biPairs); 
+  multSparseMatrix0(A1.get(), J.get(), copt.stack1, m, nvar1, biPairs);
   cparams.A = A1.get();
   cparams.b = b.get();
   cparams.nu_len = 2*m;
@@ -1955,7 +1955,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   // we were successful; we will still have some sort of solution on failure
   dOptimizeConvexPrimalDual(cparams, EPS_FEAS, x1.get(), nvar1);
 
-  // reset number of inequality constraints 
+  // reset number of inequality constraints
   cparams.m = 3*nc+ml+mh+1;
 
   // setup kappa
@@ -1972,10 +1972,10 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   shared_array<dReal> A2(new dReal[m*nvar2]);
   formStack2(worknb6n.get(), N.get(), T1.get(), T2.get(), J.get(), Jl.get(), Jh.get(), nb, nc, m, ml, mh, uniPairs, biPairs);
   multGMass0(copt.stack2, invJ.get(), nb, body, worknb6n.get(), nvar2, true);
-  multSparseMatrix0(A2.get(), J.get(), copt.stack2, m, nvar2, biPairs); 
+  multSparseMatrix0(A2.get(), J.get(), copt.stack2, m, nvar2, biPairs);
   cparams.A = A2.get();
 
-  // resolve the convex optimization problem with friction; again, not 
+  // resolve the convex optimization problem with friction; again, not
   // necessary to check that we are successful
   #ifdef DEBUG
   std::cout << "  -- required " << cparams.iterations << " iterations" << std::endl;
@@ -1985,7 +1985,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   #endif
   cparams.fx = copt_fx2;
   cparams.grad = copt_grad2;
-  cparams.hess = copt_hess2; 
+  cparams.hess = copt_hess2;
   cparams.max_iterations = MAX_ITERATIONS;
   dOptimizeConvexPrimalDual(cparams, EPS_FEAS, x2.get(), nvar2);
 
@@ -1999,7 +1999,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   dCopy(cn, x2.get(), nc);
   dCopy(ct1, x2.get()+nc, nc);
   dCopy(ct2, x2.get()+nc*2, nc);
-  dCopy(cv, x2.get()+nc*3, m); 
+  dCopy(cv, x2.get()+nc*3, m);
   dCopy(cl, x2.get()+nc*3+m, ml);
   dCopy(ch, x2.get()+nc*3+m+ml, mh);
 
@@ -2011,7 +2011,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   dAdd(copt.worknb6_2, copt.worknb6_2, copt.worknb6, nb*6);
   multSparseMatrix1(copt.worknb6, T2.get(), ct2, nc, nb, 1, uniPairs);
   dAdd(copt.worknb6_2, copt.worknb6_2, copt.worknb6, nb*6);
-  multSparseMatrix1(copt.worknb6, J.get(), cv, m, nb, 1, biPairs); 
+  multSparseMatrix1(copt.worknb6, J.get(), cv, m, nb, 1, biPairs);
   dAdd(copt.worknb6_2, copt.worknb6_2, copt.worknb6, nb*6);
   multSparseMatrix1(copt.worknb6, Jl.get(), cl, ml, nb, 1, biPairs);
   dAdd(copt.worknb6_2, copt.worknb6_2, copt.worknb6, nb*6);
@@ -2029,9 +2029,9 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   // compute energy before and after
   dReal* Mv = copt.Mv;
   multGMass0(Mv, fwdJ.get(), nb, body, v.get(), 1, false);
-  dReal oke = dDot(Mv, v.get(), nb*6) * (dReal) 0.5; 
+  dReal oke = dDot(Mv, v.get(), nb*6) * (dReal) 0.5;
   multGMass0(Mv, fwdJ.get(), nb, body, vnp1, 1, false);
-  dReal nke = dDot(Mv, vnp1, nb*6) * (dReal) 0.5; 
+  dReal nke = dDot(Mv, vnp1, nb*6) * (dReal) 0.5;
   std::cout << "old kinetic energy: " << oke << std::endl;
   std::cout << "new kinetic energy: " << nke << std::endl;
   if (nke > oke)
@@ -2045,7 +2045,7 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   std::cout << "new velocity vector: ";
   printMatrix(vnp1, 1, nb*6);
   dReal* Nv = copt.Nv;
-  multSparseMatrix0(Nv, copt.N, vnp1, nc, 1, uniPairs);  
+  multSparseMatrix0(Nv, copt.N, vnp1, nc, 1, uniPairs);
   std::cout << "N*v: ";
   printMatrix(Nv, 1, nc);
   #endif
@@ -2061,11 +2061,11 @@ void dxRobustStepIsland(dxWorldProcessContext* context, dxWorld *world,
   }
 
   // step bodies forward using new velocities
-  for (int i=0; i<nb; i++) 
+  for (int i=0; i<nb; i++)
     dxStepBody (body[i],stepsize);
 
   // zero all force accumulators
-  for (int i=0; i<nb; i++) 
+  for (int i=0; i<nb; i++)
   {
     body[i]->facc[0] = 0;
     body[i]->facc[1] = 0;
@@ -2178,7 +2178,7 @@ void dRobustStepIsland(dxWorldProcessContext* context, dxWorld *world, dxBody * 
 
 void TEST()
 {
-  dReal sparse[12*2] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
+  dReal sparse[12*2] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
                          12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };
   dReal full[24*2] = { 0, 1, 2, 3, 4, 5, 0, 0, 0, 0, 0, 0, 6, 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };
   dReal v[48] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47 };
@@ -2190,7 +2190,7 @@ void TEST()
   multSparseMatrix0(result, sparse, v, 2, 2, pairs);
   std::cout << "result: ";
   printMatrix(result, 2, 2);
-  dNPMultiply0(result, full, v, 2, 24, 2); 
+  dNPMultiply0(result, full, v, 2, 24, 2);
   std::cout << "result: ";
   printMatrix(result, 2, 2);
   multSparseMatrix1(result, sparse, v2, 2, 4, 2, pairs);
@@ -2200,4 +2200,3 @@ void TEST()
   printMatrix(result, 2, 24);
 
 }
-

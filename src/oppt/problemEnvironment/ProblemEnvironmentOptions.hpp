@@ -134,7 +134,7 @@ struct ProblemEnvironmentOptions : public oppt::Options {
     FloatType particleOpacity;
 
     /** @brief Frame rate of the visualization */
-    unsigned int frameRate = 30;    
+    unsigned int frameRate = 30;
 
     /** @brief Makes a parser which can parse options from config files,
      * into a ProblemEnvironmentOptions instance.
@@ -176,13 +176,13 @@ struct ProblemEnvironmentOptions : public oppt::Options {
                 "particlePlotLimit",
                 &Options::particlePlotLimit,
                 30);
-        parser->addOptionWithDefault<FloatType>("simulation", 
-            "particleOpacity", 
-            &ProblemEnvironmentOptions::particleOpacity, 
+        parser->addOptionWithDefault<FloatType>("simulation",
+            "particleOpacity",
+            &ProblemEnvironmentOptions::particleOpacity,
             0.1);
-        parser->addOptionWithDefault<unsigned int>("simulation", 
-            "frameRate", 
-            &ProblemEnvironmentOptions::frameRate, 
+        parser->addOptionWithDefault<unsigned int>("simulation",
+            "frameRate",
+            &ProblemEnvironmentOptions::frameRate,
             30);
     }
 
@@ -240,4 +240,3 @@ typedef std::shared_ptr<ProblemEnvironmentOptions> ProblemEnvironmentOptionsPtr;
 }
 
 #endif
-

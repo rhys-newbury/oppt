@@ -40,4 +40,3 @@ struct dxJointNull : public dxJoint
 };
 
 #endif
-

@@ -47,7 +47,7 @@ public:
         //RandomGenerator solverGen(this->randGen);
         this->randGen_->discard(10000);
         if (!options->baseConfigPath.empty()) {
-            auto baseConfigPath = options->baseConfigPath;  
+            auto baseConfigPath = options->baseConfigPath;
             oppt::change_directory(baseConfigPath);
         }
 
@@ -160,8 +160,8 @@ public:
         abt::BeliefNode *currentBelief = simulator_->getAgent()->getCurrentBelief();
         auto robotAction =
             static_cast<robot::RobotModel*>(simulator_->getModel())->makeRobotAction(action);
-        shared::RobotObservation robotObservation(observation);        
-        abt::BeliefNode *nextBelief = currentBelief->createOrGetChild(*(robotAction.get()), robotObservation);        
+        shared::RobotObservation robotObservation(observation);
+        abt::BeliefNode *nextBelief = currentBelief->createOrGetChild(*(robotAction.get()), robotObservation);
 
         // Update the agent's belief.
         simulator_->getAgent()->updateBelief(*(robotAction.get()), robotObservation);
@@ -293,7 +293,7 @@ protected:
                 for (size_t i = 0; i != diff; ++i) {
                     oppt::RobotStateSharedPtr state =
                         robotPlanningEnvironment_->sampleInitialState();
-                    filterRequest->previousParticles.push_back(std::make_shared<Particle>(state, 
+                    filterRequest->previousParticles.push_back(std::make_shared<Particle>(state,
                         state->as<oppt::WeightedRobotState>()->getWeight()));
                 }
             }
@@ -327,12 +327,12 @@ protected:
         const ABTExtendedOptions *abtOptions = static_cast<const ABTExtendedOptions *>(problemEnvironmentOptions_);
         if (!abtOptions->hasChanges && !abtOptions->interactive) {
             // If there are no planned changes and the problem is not interactive,
-            // we can safely delete the history sequences that go through the next node            
+            // we can safely delete the history sequences that go through the next node
             for (abt::HistoryEntry * entry : nextBelief->particles_) {
                 auto owningSequence = entry->owningSequence_;
                 solver_->histories_->deleteSequence(owningSequence);
             }
-        }        
+        }
 
         // Create the datastructures for the new particles
         for (auto &particle : filterResult->particles) {
@@ -374,4 +374,3 @@ private:
 }
 
 #endif
-

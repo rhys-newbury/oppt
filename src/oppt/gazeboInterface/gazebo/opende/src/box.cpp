@@ -61,7 +61,7 @@ void dxBox::computeAABB()
 {
   const dMatrix3& R = final_posr->R;
   const dVector3& pos = final_posr->pos;
-  
+
   dReal xrange = REAL(0.5) * (dFabs (R[0] * side[0]) +
     dFabs (R[1] * side[1]) + dFabs (R[2] * side[2]));
   dReal yrange = REAL(0.5) * (dFabs (R[4] * side[0]) +
@@ -422,7 +422,7 @@ int dBoxBox (const dVector3 p1, const dMatrix3 R1,
 	  } \
 	}
 
-    // We only need to check 3 edges per box 
+    // We only need to check 3 edges per box
     // since parallel edges are equivalent.
 
     // separating axis = u1 x (v1,v2,v3)
@@ -485,7 +485,7 @@ int dBoxBox (const dVector3 p1, const dMatrix3 R1,
       sign = (dCalcVectorDot3_14(normal,R2+j) > 0) ? REAL(-1.0) : REAL(1.0);
       for (i=0; i<3; i++) pb[i] += sign * B[j] * R2[i*4+j];
     }
-    
+
     dReal alpha,beta;
     dVector3 ua,ub;
     // Get direction of first edge
@@ -493,7 +493,7 @@ int dBoxBox (const dVector3 p1, const dMatrix3 R1,
     // Get direction of second edge
     for (i=0; i<3; i++) ub[i] = R2[((code)-7)%3 + i*4];
     // Get closest points between edges (one at each)
-    dLineClosestApproach (pa,ua,pb,ub,&alpha,&beta);    
+    dLineClosestApproach (pa,ua,pb,ub,&alpha,&beta);
     for (i=0; i<3; i++) pa[i] += ua[i]*alpha;
     for (i=0; i<3; i++) pb[i] += ub[i]*beta;
     // Set the contact point as halfway between the 2 closest points
@@ -514,16 +514,16 @@ int dBoxBox (const dVector3 p1, const dMatrix3 R1,
     Rb = R2; // Rotation of 'b'
     pa = p1; // Center (location) of 'a'
     pb = p2; // Center (location) of 'b'
-    Sa = A;  // Side Lenght of 'a'
-    Sb = B;  // Side Lenght of 'b'
+    Sa = A;  // Side Length of 'a'
+    Sb = B;  // Side Length of 'b'
   }
   else { // One of the faces of box 2 is the reference face
     Ra = R2; // Rotation of 'a'
     Rb = R1; // Rotation of 'b'
     pa = p2; // Center (location) of 'a'
     pb = p1; // Center (location) of 'b'
-    Sa = B;  // Side Lenght of 'a'
-    Sb = A;  // Side Lenght of 'b'
+    Sa = B;  // Side Length of 'a'
+    Sb = A;  // Side Length of 'b'
   }
 
   // nr = normal vector of reference face dotted with axes of incident box.
@@ -549,7 +549,7 @@ int dBoxBox (const dVector3 p1, const dMatrix3 R1,
   anr[1] = dFabs (nr[1]);
   anr[2] = dFabs (nr[2]);
 
-  // find the largest compontent of anr: this corresponds to the normal
+  // find the largest component of anr: this corresponds to the normal
   // for the incident face. the other axis numbers of the incident face
   // are stored in a1,a2.
   int lanr,a1,a2;
@@ -667,7 +667,7 @@ int dBoxBox (const dVector3 p1, const dMatrix3 R1,
 	  }
     }
   }
-  if (cnum < 1) { 
+  if (cnum < 1) {
 	  return 0;	// this should not happen, yet does at times (demo_plane2d single precision).
   }
 
@@ -758,7 +758,7 @@ int dCollideBoxPlane (dxGeom *o1, dxGeom *o2,
   contact->g2 = o2;
   contact->side1 = -1;
   contact->side2 = -1;
-  
+
   int ret = 0;
 
   //@@@ problem: using 4-vector (plane->p) as 3-vector (normal).

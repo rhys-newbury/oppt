@@ -227,7 +227,7 @@ inline void dQuatTransform(const dQuaternion& quat,const dVector3& source,dVecto
 
 	/*
 	// nVidia SDK implementation
-	dVector3 uv, uuv; 
+	dVector3 uv, uuv;
 	dVector3 qvec;
 	qvec[0] = quat[1];
 	qvec[1] = quat[2];
@@ -241,7 +241,7 @@ inline void dQuatTransform(const dQuaternion& quat,const dVector3& source,dVecto
 
 	dest[0] = source[0] + uv[0] + uuv[0];
 	dest[1] = source[1] + uv[1] + uuv[1];
-	dest[2] = source[2] + uv[2] + uuv[2];   
+	dest[2] = source[2] + uv[2] + uuv[2];
 	*/
 }
 
@@ -256,8 +256,8 @@ inline void dQuatInvTransform(const dQuaternion& quat,const dVector3& source,dVe
 		invQuat[0] =  quat[0] / norm;
 		invQuat[1] = -quat[1] / norm;
 		invQuat[2] = -quat[2] / norm;
-		invQuat[3] = -quat[3] / norm;	
-		
+		invQuat[3] = -quat[3] / norm;
+
 		dQuatTransform(invQuat,source,dest);
 
 	}
@@ -302,7 +302,7 @@ inline void dQuatInv(const dQuaternion& source, dQuaternion& dest)
 		dest[0] = source[0] / norm;
 		dest[1] = -source[1] / norm;
 		dest[2] = -source[2] / norm;
-		dest[3] = -source[3] / norm;	
+		dest[3] = -source[3] / norm;
 	}
 	else
 	{

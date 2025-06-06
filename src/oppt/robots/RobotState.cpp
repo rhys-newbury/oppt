@@ -107,7 +107,7 @@ void VectorState::serialize(std::ostream& os, const std::string prefix) const
         sdf::ElementPtr stateElem = worldSDF->GetElement("state");
         if (!stateElem)
             ERROR("No state element");
-        gazeboWorldState_->getWorldState()->FillSDF(stateElem);        
+        gazeboWorldState_->getWorldState()->FillSDF(stateElem);
         cout << "sdfString1: " << endl;
         cout << sdfString << endl;
         cout << "===============" << endl;

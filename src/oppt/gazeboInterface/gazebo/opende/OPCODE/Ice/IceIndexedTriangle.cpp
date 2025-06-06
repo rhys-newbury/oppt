@@ -542,7 +542,7 @@ float IndexedTriangle::Angle(const IndexedTriangle& tri, const Point* verts)	con
 bool IndexedTriangle::Equal(const IndexedTriangle& tri) const
 {
 	// Test all vertex references
-	return (HasVertex(tri.mVRef[0]) && 
+	return (HasVertex(tri.mVRef[0]) &&
 			HasVertex(tri.mVRef[1]) &&
 			HasVertex(tri.mVRef[2]));
 }

@@ -275,7 +275,7 @@ static void* ComputeRows(void *p)
       //  int swapi = dRandInt(i+1); // swap across engire matrix
       for (int i=startRow+1; i<startRow+nRows; i++) { // swap within boundary of our own segment
         int swapi = dRandInt(i+1-startRow)+startRow; // swap within boundary of our own segment
-        //printf("xxxxxxxx>id %d swaping order[%d].index=%d order[%d].index=%d\n",thread_id,i,order[i].index,swapi,order[swapi].index);
+        //printf("xxxxxxxx>id %d swapping order[%d].index=%d order[%d].index=%d\n",thread_id,i,order[i].index,swapi,order[swapi].index);
         IndexError tmp = order[i];
         order[i] = order[swapi];
         order[swapi] = tmp;
@@ -1587,4 +1587,3 @@ size_t quickstep::EstimatePGS_LCPMemoryRequirements(int m,int /*nb*/)
   res += dEFFICIENT_SIZE(sizeof(boost::recursive_mutex)); // for mutex
   return res;
 }
-

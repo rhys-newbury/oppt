@@ -29,7 +29,7 @@ FloatType RolloutHeuristic::getHeuristicValue(HistoryEntry const *entry,
             entry, state, data);
     FloatType value = 0.0;
     FloatType netDiscount = 1.0;
-    FloatType discountFactor = 
+    FloatType discountFactor =
     static_cast<oppt::ProblemEnvironmentOptions const*>(model_->getOptions())->discountFactor;
 
     Model::StepResult result = generator->getStep(entry, state, data);
@@ -50,7 +50,7 @@ FloatType RolloutHeuristic::getHeuristicValue(HistoryEntry const *entry,
     return value;
 }
 
-HeuristicFunction RolloutHeuristic::asFunction() {    
+HeuristicFunction RolloutHeuristic::asFunction() {
     return std::bind(&RolloutHeuristic::getHeuristicValue, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 }
 } /* namespace abt */

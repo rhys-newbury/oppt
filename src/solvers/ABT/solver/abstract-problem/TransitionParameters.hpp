@@ -30,7 +30,7 @@ public:
 
     /** Prints the parameters in a human-readable way [optional]. */
     virtual void print(std::ostream &/*os*/) const {};
-    
+
     virtual void serialize(std::ostream &/*os*/, const std::string prefix="") const {}
 };
 

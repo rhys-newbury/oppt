@@ -180,7 +180,7 @@ struct dxPGSLCPParameters {
 namespace ode {
     namespace quickstep{
 
-// multiply block of B matrix (q x 6) with 12 dReal per row with C vektor (q)
+// multiply block of B matrix (q x 6) with 12 dReal per row with C vector (q)
 void Multiply1_12q1 (dReal *A, const dReal *B, const dReal *C, int q);
 
 // compute iMJ = inv(M)*J'

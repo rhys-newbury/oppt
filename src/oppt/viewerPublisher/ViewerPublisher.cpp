@@ -339,7 +339,3 @@ bool ViewerPublisher::viewerRunning() const
 }
 
 }
-
-
-
-

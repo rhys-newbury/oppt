@@ -24,7 +24,7 @@ GazeboSubscriber::GazeboSubscriber(GazeboInterface* gazeboInterface, const std::
     node_(nullptr),
     worldChangesIgnored_(true),
     topicStringRequest_("/gazebo/" + worldName_ + "/request"),
-    topicStringModify_("/gazebo/" + worldName_ + "/model/modify") {    
+    topicStringModify_("/gazebo/" + worldName_ + "/model/modify") {
 }
 
 GazeboSubscriber::~GazeboSubscriber()
@@ -39,8 +39,8 @@ void GazeboSubscriber::subscribe() {
     if (node_)
         return;
     node_ = gazebo::transport::NodePtr(new gazebo::transport::Node());
-    node_->Init("GazeboSubscriber");    
-    
+    node_->Init("GazeboSubscriber");
+
     requestSubscriber_ = node_->Subscribe(topicStringRequest_, &GazeboSubscriber::onRequest, this, true);
     modifySubscriber_ = node_->Subscribe(topicStringModify_, &GazeboSubscriber::onModify, this, true);
     worldChangesIgnored_ = false;

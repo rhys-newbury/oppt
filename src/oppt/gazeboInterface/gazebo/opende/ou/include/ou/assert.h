@@ -31,8 +31,8 @@
 /**
  *	\file
  *	\brief Definitions of assertion checking macros.
- *	
- *	This file contains definitions of assertion failure check macros. 
+ *
+ *	This file contains definitions of assertion failure check macros.
  *	These include \c OU_ASSERT, \c OU_VERIFY and \c OU_CHECK.
  *	Assertion failure handler is common for all three macros and is customizable.
  *	If assertion checks are not customized, system \c assert() function is used.
@@ -48,7 +48,7 @@
  *	\def OU_ASSERT
  *	\brief Defines a regular assertion check macro.
  *
- *	\c OU_ASSERT defines a classic assertion check macro. Normally its expression 
+ *	\c OU_ASSERT defines a classic assertion check macro. Normally its expression
  *	is evaluated and if it is equal to \c false, assertion failure handler is invoked
  *	with \c AFS_ASSERT parameter. If assertion failure handler is not customized,
  *	the functionality of system \c assert() call is performed.
@@ -57,8 +57,8 @@
  *	\note The expression is evaluated only once even though either custom handler or
  *	system \c assert() might be chosen to handle failure.
  *	\par
- *	\note The macro is designed so that "Condition" text is passed to customized 
- *	handler and  "OU__ASSERT_HANDLER(Condition)" is passed to \c assert() if 
+ *	\note The macro is designed so that "Condition" text is passed to customized
+ *	handler and  "OU__ASSERT_HANDLER(Condition)" is passed to \c assert() if
  *	handler is not customized. However new versions of GCC (starting from 4.3.0)
  *	seem to use modified macro expansion schema which formats macro \c OU__ASSERT_HANDLER
  *	into string after full expansion.
@@ -74,16 +74,16 @@
  *	\def OU_VERIFY
  *	\brief Defines an assertion check macro which always evaluates its parameter.
  *
- *	\c OU_VERIFY is similar to \c OU_ASSERT with exception that if \c NDEBUG preprocessor 
+ *	\c OU_VERIFY is similar to \c OU_ASSERT with exception that if \c NDEBUG preprocessor
  *	symbol is defined it still evaluates its parameter.
  *	The main purpose of this macro is to prevent "unused variable" compiler warning
  *	which would otherwise appear with \c OU_ASSERT macro used when \c NDEBUG is defined.
  *
  *	\code
  *	    bool bCallStatus = CallMyFunction();
- *	    // A compiler warning would be generated with OU_ASSERT if bCallStatus is 
+ *	    // A compiler warning would be generated with OU_ASSERT if bCallStatus is
  *	    // not used further in the code.
- *	    OU_VERIFY(bCallStatus); 
+ *	    OU_VERIFY(bCallStatus);
  *	\endcode
  *
  *	\note It is not recommended to use \c OU_VERIFY with function calls directly
@@ -91,8 +91,8 @@
  *	it will be not possible to retrieve function result.
  *	\code
  *	    // Incorrect! Call status will not be available in case of failure!
- *	    OU_VERIFY(pthread_mutex_create(&attr) == EOK); 
- *	    
+ *	    OU_VERIFY(pthread_mutex_create(&attr) == EOK);
+ *
  *	    // Correct. Call status can be retrieved from a variable.
  *	    int iMutexCreateStatus = pthread_mutex_create(&attr);
  *	    OU_VERIFY(iMutexCreateStatus == EOK);
@@ -112,17 +112,17 @@
  *	\c OU_CHECK evaluates its parameter and if the expression equals to \c false
  *	it invokes either a custom assertion failure handler with \c AFS_CHECK parameter
  *	or failure processing of system \c assert() function. The execution is not supposed
- *	to exit from assertion failure call. If it does (either because custom assertion 
+ *	to exit from assertion failure call. If it does (either because custom assertion
  *	failure handler returns or handler is not customized and \c assert() function has
- *	no effect because of \c NDEBUG symbol being defined), a write attempt to NULL 
+ *	no effect because of \c NDEBUG symbol being defined), a write attempt to NULL
  *	pointer is performed to generate Access Violation exception or SIGSEGV signal.
  *	\c OU_CHECK is similar to \c OU_VERIFY in that it evaluates its parameter whether
  *	\c NDEBUG is defined or not.
  *	\note The expression is evaluated only once even though either custom handler or
  *	system \c assert() might be chosen to handle failure.
  *	\par
- *	\note The macro is designed so that "Condition" text is passed to customized 
- *	handler and  "OU__CHECK_HANDLER(Condition)" is passed to \c assert() if 
+ *	\note The macro is designed so that "Condition" text is passed to customized
+ *	handler and  "OU__CHECK_HANDLER(Condition)" is passed to \c assert() if
  *	handler is not customized. However new versions of GCC (starting from 4.3.0)
  *	seem to use modified macro expansion schema which formats macro \c OU__CHECK_HANDLER
  *	into string after full expansion.
@@ -137,7 +137,7 @@
 
 /*
  *	Implementation Note:
- *	1) Fully qualified names must be used in macros as they might be 
+ *	1) Fully qualified names must be used in macros as they might be
  *	used externally and forwarded from outside of _OU_NAMESPACE.
  *	2) false || ... is necessary to suppress C4800 warning in MSVC.
  */

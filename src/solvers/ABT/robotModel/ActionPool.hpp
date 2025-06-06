@@ -31,7 +31,7 @@ public:
     long getClosestBin(abt::Action const& action) const;
 
     long getNumBins() const;
-    
+
     long getNumVisitedEntries() const;
 
     void reduceNumVisitedEntries();
@@ -58,7 +58,7 @@ private:
     std::unique_ptr<RobotDiscretizedActionMapEntry[]> mapEntries_;
 
     void increaseNChildren();
-    
+
     void addToBinSequence(long &code);
 
 };
@@ -79,18 +79,18 @@ public:
     virtual bool update(long deltaNVisits, FloatType deltaTotalQ) override;
 
     void reduceNumVisits();
-    
+
 private:
     void setBinNumber(long &binNumber);
-    
+
     void setActionMapping(abt::DiscretizedActionMap *mapping);
-    
+
     void setMeanQValue(const FloatType &meanQValue);
-    
+
     void setVisitCount(const long &visitCount);
-    
+
     void setTotalQValue(const FloatType &totalQValue);
-    
+
     void setLegal(const bool &legal);
 };
 
@@ -99,7 +99,7 @@ class RobotEnumeratedActionPool: public abt::EnumeratedActionPool
 public:
     RobotEnumeratedActionPool(abt::Model* model,
                               const unsigned int& numStepsPerDimension,
-                              const unsigned int& numActions,                              
+                              const unsigned int& numActions,
                               std::vector<std::unique_ptr<abt::DiscretizedPoint>> allActions);
     virtual ~RobotEnumeratedActionPool() {}
 

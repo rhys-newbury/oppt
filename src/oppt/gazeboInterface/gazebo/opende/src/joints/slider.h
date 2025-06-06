@@ -53,4 +53,3 @@ struct dxJointSlider : public dxJoint
 
 
 #endif
-

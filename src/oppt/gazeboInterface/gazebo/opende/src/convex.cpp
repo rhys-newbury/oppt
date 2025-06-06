@@ -279,7 +279,7 @@ bool IntersectSegmentPlane(dVector3 a,
   \param Direction1 The direction of Ray 3
   \param t the time "t" in Ray 1 that gives us the closest point
   (closest_point=Origin1+(Direction1*t).
-  \return true if there is a closest point, false if the rays are paralell.
+  \return true if there is a closest point, false if the rays are parallel.
 */
 inline bool ClosestPointInRay(const dVector3 Origin1,
 			      const dVector3 Direction1,
@@ -318,7 +318,7 @@ inline float Clamp(float n, float min, float max)
   \param q2 end of segment 2
   \param t the time "t" in Ray 1 that gives us the closest point
   (closest_point=Origin1+(Direction1*t).
-  \return true if there is a closest point, false if the rays are paralell.
+  \return true if there is a closest point, false if the rays are parallel.
   \note Adapted from Christer Ericson's Real Time Collision Detection Book.
 */
 inline float ClosestPointBetweenSegments(dVector3& p1,
@@ -328,7 +328,7 @@ inline float ClosestPointBetweenSegments(dVector3& p1,
                                          dVector3& c1,
                                          dVector3& c2)
 {
-    // s & t were originaly part of the output args, but since
+    // s & t were originally part of the output args, but since
     // we don't really need them, we'll just declare them in here
     float s;
     float t;
@@ -448,7 +448,7 @@ if (tnom < 0.0f) {
   \param p2 Plane 2
   \param p Contains the origin of the ray upon returning if planes intersect
   \param d Contains the direction of the ray upon returning if planes intersect
-  \return true if the planes intersect, false if paralell.
+  \return true if the planes intersect, false if parallel.
 */
 inline bool IntersectPlanes(const dVector4 p1, const dVector4 p2, dVector3 p, dVector3 d)
 {
@@ -728,7 +728,7 @@ int dCollideSphereConvex (dxGeom *o1, dxGeom *o2, int /*flags*/,
 		  temp[1] = (Sphere->final_posr->pos[1]-out[1]);
 		  temp[2] = (Sphere->final_posr->pos[2]-out[2]);
 		  dist=(temp[0]*temp[0])+(temp[1]*temp[1])+(temp[2]*temp[2]);
-		  // avoid the sqrt unless really necesary
+		  // avoid the sqrt unless really necessary
 		  if(dist<(Sphere->radius*Sphere->radius))
 		    {
 		      // We got an indirect hit
@@ -840,7 +840,7 @@ inline void ComputeInterval(dxConvex& cvx,dVector4 axis,dReal& min,dReal& max)
         }
     }
   // *: usually using the distance part of the plane (axis) is
-  // not necesary, however, here we need it here in order to know
+  // not necessary, however, here we need it here in order to know
   // which face to pick when there are 2 parallel sides.
 }
 
@@ -1162,7 +1162,7 @@ int TestConvexIntersection(dxConvex& cvx1,dxConvex& cvx2, int flags,
 
     pReferencePoly = cvx1.polygons;
     pIncidentPoly  = cvx2.polygons;
-    // Get Reference plane (We may not have to apply transforms Optimization Oportunity)
+    // Get Reference plane (We may not have to apply transforms Optimization Opportunity)
     // Rotate
     dMultiply0_331(rplane,cvx1.final_posr->R,cvx1.planes+(reference_side*4));
     dNormalize3(rplane);
@@ -1245,7 +1245,7 @@ int TestConvexIntersection(dxConvex& cvx1,dxConvex& cvx2, int flags,
             p[2] = i1[2]+((i2[2]-i1[2])*t);
 #else
             // Apply reference convex transformations to p
-            // The commented out piece of code is likelly to
+            // The commented out piece of code is likely to
             // produce less operations than this one, but
             // this way we know we are getting the right data
             dMultiply0_331(tmp,cvx1.final_posr->R,p);
@@ -1375,14 +1375,14 @@ int TestConvexIntersection(dxConvex& cvx1,dxConvex& cvx2, int flags,
   {
     dVector3 c1,c2;
     //float s,t;
-    SAFECONTACT(flags, contact, contacts, skip)->depth = 
+    SAFECONTACT(flags, contact, contacts, skip)->depth =
       dSqrt(ClosestPointBetweenSegments(ccso.e1a,ccso.e1b,ccso.e2a,ccso.e2b,c1,c2));
     SAFECONTACT(flags, contact, contacts, skip)->g1=&cvx1;
     SAFECONTACT(flags, contact, contacts, skip)->g2=&cvx2;
     dVector3Copy(c1,SAFECONTACT(flags, contact, contacts, skip)->pos);
     SAFECONTACT(flags, contact, contacts, skip)->normal[0] = c2[0]-c1[0];
     SAFECONTACT(flags, contact, contacts, skip)->normal[1] = c2[1]-c1[1];
-    SAFECONTACT(flags, contact, contacts, skip)->normal[2] = c2[2]-c1[2];    
+    SAFECONTACT(flags, contact, contacts, skip)->normal[2] = c2[2]-c1[2];
     dNormalize3(SAFECONTACT(flags, contact, contacts, skip)->normal);
     contacts++;
   }

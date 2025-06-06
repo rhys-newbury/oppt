@@ -50,8 +50,8 @@ public:
         switch ((unsigned int)(actionVec[0] + 0.25)) {
         case 5: {
             // We performed a sampling action. Return the corresponding reward/penalty
-            return getRockSamplingReward_(previousStateVector);            
-        } default:            
+            return getRockSamplingReward_(previousStateVector);
+        } default:
             break;
         }
 

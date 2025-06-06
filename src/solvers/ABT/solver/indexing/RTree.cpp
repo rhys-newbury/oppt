@@ -27,7 +27,7 @@ RTree::RTree(unsigned int nSDim) :
         nSDim_(nSDim),
         properties_(nullptr),
         storageManager_(nullptr),
-        tree_(nullptr) {	    
+        tree_(nullptr) {
     reset();
 }
 

@@ -205,7 +205,7 @@ dReal dJointGetPUPositionRate( dJointID j )
 
 
 
-void 
+void
 dxJointPU::getSureMaxInfo( SureMaxInfo* info )
 {
   info->max_m = 6;
@@ -855,4 +855,3 @@ dxJointPU::setRelativeValues()
 
     computeInitialRelativeRotations();
 }
-

@@ -24,7 +24,7 @@ void GazeboInterface::makeJointVectorHelper_(const VectorString &jointNames,
 }
 
 void GazeboInterface::makeLinkVectorHelper_(const VectorString &linkNames, std::vector<LinkPtr> &links) const {
-	for (size_t i = 0; i != linkNames.size(); ++i) {		
+	for (size_t i = 0; i != linkNames.size(); ++i) {
 		links.push_back(worldLinkMap_.at(world_->GetName()).at(linkNames[i]));
 	}
 }
@@ -35,7 +35,7 @@ void GazeboInterface::setStateSpaceInformation(const StateSpaceInformationPtr& s
 	VectorString jointPositionVec = stateSpaceInformation_->jointPositions;
 	VectorString jointVelocityVec = stateSpaceInformation_->jointVelocities;
 	VectorString linkPosesVec = stateSpaceInformation_->containedLinkPoses;
-	VectorString linkPositionsXVec = stateSpaceInformation_->containedLinkPositionsX;	
+	VectorString linkPositionsXVec = stateSpaceInformation_->containedLinkPositionsX;
 	VectorString linkPositionsYVec = stateSpaceInformation_->containedLinkPositionsY;
 	VectorString linkPositionsZVec = stateSpaceInformation_->containedLinkPositionsZ;
 	VectorString linkOrientationsXVec = stateSpaceInformation_->containedLinkOrientationsX;
@@ -72,7 +72,7 @@ void GazeboInterface::setStateSpaceInformation(const StateSpaceInformationPtr& s
 	makeLinkVectorHelper_(linkPosesVec, stateLinkPoses);
 
 	std::vector<LinkPtr> stateLinkPositionsX;
-	makeLinkVectorHelper_(linkPositionsXVec, stateLinkPositionsX);	
+	makeLinkVectorHelper_(linkPositionsXVec, stateLinkPositionsX);
 
 	std::vector<LinkPtr> stateLinkPositionsY;
 	makeLinkVectorHelper_(linkPositionsYVec, stateLinkPositionsY);
@@ -135,7 +135,7 @@ void GazeboInterface::setStateSpaceInformation(const StateSpaceInformationPtr& s
 						stateVec[startIndex + i] = statePositionJoints[i]->Position(0);
 #else
                                                 stateVec[startIndex + i] = statePositionJoints[i]->GetAngle(0).Radian();
-#endif						
+#endif
 					}
 				};
 
@@ -146,7 +146,7 @@ void GazeboInterface::setStateSpaceInformation(const StateSpaceInformationPtr& s
 			break;
 		case SpaceVariable::JOINT_VELOCITIES:
 			if (jointVelocityVec.size() > 0) {
-				SetStateFunction setVelocity = [this, stateVelocityJoints, redundantStateVelocityJoints, startIndex](const VectorFloat & stateVec) {					
+				SetStateFunction setVelocity = [this, stateVelocityJoints, redundantStateVelocityJoints, startIndex](const VectorFloat & stateVec) {
 					for (size_t i = 0; i != stateVelocityJoints.size(); ++i) {
 						setJointVelocityRecursive(stateVelocityJoints[i].get(), stateVec[startIndex + i]);
 						for (size_t j = 0; j != redundantStateVelocityJoints[i].size(); ++j) {
@@ -184,7 +184,7 @@ void GazeboInterface::setStateSpaceInformation(const StateSpaceInformationPtr& s
 
 				GetStateFunction getLinkPoses = [this, stateLinkPoses, startIndex](VectorFloat & stateVec) {
 					unsigned int idx = startIndex;
-					GZPose pose;					
+					GZPose pose;
 					for (size_t i = 0; i != stateLinkPoses.size(); ++i) {
 #ifdef GZ_GT_7
 						pose = stateLinkPoses[i]->WorldPose();
@@ -206,7 +206,7 @@ void GazeboInterface::setStateSpaceInformation(const StateSpaceInformationPtr& s
 						stateVec[idx + 5] = orientation.z;
 #endif
 						idx += 6;
-					}					
+					}
 				};
 
 				setPositionFunctions.push_back(setLinkPoses);
@@ -228,7 +228,7 @@ void GazeboInterface::setStateSpaceInformation(const StateSpaceInformationPtr& s
 						GZVector3 newPosition(stateVec[idx], currentPose.pos.y, currentPose.pos.z);
 						currentPose.Set(newPosition, currentPose.rot);
 #endif
-						stateLinkPositionsX[i]->SetWorldPose(currentPose);						
+						stateLinkPositionsX[i]->SetWorldPose(currentPose);
 						idx++;
 					}
 				};
@@ -971,7 +971,7 @@ void GazeboInterface::setObservationSpaceInformation(const ObservationSpaceInfor
 				                                   observationLinkVelocitiesLinear,
 				startIndex](VectorFloat & observationVec) {
 					unsigned int idx = startIndex;
-					GZVector3 vel;					
+					GZVector3 vel;
 					for (size_t i = 0; i != observationLinkVelocitiesLinear.size(); ++i) {
 #ifdef GZ_GT_7
 						vel = observationLinkVelocitiesLinear[i]->WorldLinearVel();
@@ -998,7 +998,7 @@ void GazeboInterface::setObservationSpaceInformation(const ObservationSpaceInfor
 				                                   observationLinkVelocitiesAngular,
 				startIndex](VectorFloat & observationVec) {
 					unsigned int idx = startIndex;
-					GZVector3 vel;					
+					GZVector3 vel;
 					for (size_t i = 0; i != observationLinkVelocitiesAngular.size(); ++i) {
 #ifdef GZ_GT_7
 						vel = observationLinkVelocitiesAngular[i]->WorldAngularVel();
@@ -1025,7 +1025,7 @@ void GazeboInterface::setObservationSpaceInformation(const ObservationSpaceInfor
 				                                   observationLinkVelocitiesLinearX,
 				startIndex](VectorFloat & observationVec) {
 					unsigned int idx = startIndex;
-					GZVector3 vel;					
+					GZVector3 vel;
 					for (size_t i = 0; i != observationLinkVelocitiesLinearX.size(); ++i) {
 #ifdef GZ_GT_7
 						observationVec[idx] = observationLinkVelocitiesLinearX[i]->WorldLinearVel().X();
@@ -1046,7 +1046,7 @@ void GazeboInterface::setObservationSpaceInformation(const ObservationSpaceInfor
 				                                   observationLinkVelocitiesLinearY,
 				startIndex](VectorFloat & observationVec) {
 					unsigned int idx = startIndex;
-					GZVector3 vel;					
+					GZVector3 vel;
 					for (size_t i = 0; i != observationLinkVelocitiesLinearY.size(); ++i) {
 #ifdef GZ_GT_7
 						observationVec[idx] = observationLinkVelocitiesLinearY[i]->WorldLinearVel().Y();
@@ -1067,9 +1067,9 @@ void GazeboInterface::setObservationSpaceInformation(const ObservationSpaceInfor
 				                                   observationLinkVelocitiesLinearZ,
 				startIndex](VectorFloat & observationVec) {
 					unsigned int idx = startIndex;
-					GZVector3 vel;					
-					for (size_t i = 0; i != observationLinkVelocitiesLinearZ.size(); ++i) {	
-#ifdef GZ_GT_7					
+					GZVector3 vel;
+					for (size_t i = 0; i != observationLinkVelocitiesLinearZ.size(); ++i) {
+#ifdef GZ_GT_7
 						observationVec[idx] = observationLinkVelocitiesLinearZ[i]->WorldLinearVel().Z();
 #else
                                                 observationVec[idx] = observationLinkVelocitiesLinearZ[i]->GetWorldLinearVel().z;
@@ -1089,8 +1089,8 @@ void GazeboInterface::setObservationSpaceInformation(const ObservationSpaceInfor
 				startIndex](VectorFloat & observationVec) {
 					unsigned int idx = startIndex;
 					GZVector3 vel;
-					for (size_t i = 0; i != observationLinkVelocitiesAngularX.size(); ++i) {	
-#ifdef GZ_GT_7					
+					for (size_t i = 0; i != observationLinkVelocitiesAngularX.size(); ++i) {
+#ifdef GZ_GT_7
 						observationVec[idx] = observationLinkVelocitiesAngularX[i]->WorldAngularVel().X();
 #else
                                                 observationVec[idx] = observationLinkVelocitiesAngularX[i]->GetWorldAngularVel().x;
@@ -1111,7 +1111,7 @@ void GazeboInterface::setObservationSpaceInformation(const ObservationSpaceInfor
 					unsigned int idx = startIndex;
 					GZVector3 vel;
 					for (size_t i = 0; i != observationLinkVelocitiesAngularY.size(); ++i) {
-#ifdef GZ_GT_7						
+#ifdef GZ_GT_7
 						observationVec[idx] = observationLinkVelocitiesAngularY[i]->WorldAngularVel().Y();
 #else
                                                 observationVec[idx] = observationLinkVelocitiesAngularY[i]->GetWorldAngularVel().y;
@@ -1131,8 +1131,8 @@ void GazeboInterface::setObservationSpaceInformation(const ObservationSpaceInfor
 				startIndex](VectorFloat & observationVec) {
 					unsigned int idx = startIndex;
 					GZVector3 vel;
-					for (size_t i = 0; i != observationLinkVelocitiesAngularZ.size(); ++i) {	
-#ifdef GZ_GT_7					
+					for (size_t i = 0; i != observationLinkVelocitiesAngularZ.size(); ++i) {
+#ifdef GZ_GT_7
 						observationVec[idx] = observationLinkVelocitiesAngularZ[i]->WorldAngularVel().Z();
 #else
                                                 observationVec[idx] = observationLinkVelocitiesAngularZ[i]->GetWorldAngularVel().z;

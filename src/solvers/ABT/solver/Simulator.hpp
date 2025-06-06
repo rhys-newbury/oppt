@@ -63,9 +63,9 @@ public:
     State const *getCurrentState() const;
     /** Returns the history of the simulation. */
     HistorySequence *getHistory() const;
-    
+
     std::vector<std::vector<State const *>> *getVisitedBeliefs() const;
-    
+
     /** Returns the number of steps taken in this simulation. */
     long getStepCount() const;
 
@@ -103,7 +103,7 @@ public:
      */
     bool handleChanges(std::vector<std::unique_ptr<ModelChange>> const &changes,
             bool areDynamic = true, bool resetTree = false);
-    
+
     long getTotalNumHistories() const;
 
 protected:
@@ -134,7 +134,7 @@ protected:
     FloatType totalDiscountedReward_;
     /** The actual history of the simulation. */
     std::unique_ptr<HistorySequence> actualHistory_;
-    
+
     std::unique_ptr<std::vector<std::vector<State const *> >> visitedBeliefs_;
 
     /** The total time spent on changes to the solver's model and policy. */
@@ -145,10 +145,9 @@ protected:
     FloatType totalImprovementTime_;
     /** The total time spent on pruning the tree. */
     FloatType totalPruningTime_;
-    
+
     long totalNumHistories_;
 };
 } /* namespace abt */
 
 #endif /* SOLVER_SIMULATOR_HPP_ */
-

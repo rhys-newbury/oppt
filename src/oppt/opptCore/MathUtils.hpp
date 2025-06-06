@@ -94,7 +94,7 @@ inline T l2norm(const std::vector<T> &vec) {
  */
 inline VectorFloat mean(const std::vector<VectorFloat>& vectors)
 {
-    VectorFloat mean(vectors[0].size(), 0.0);    
+    VectorFloat mean(vectors[0].size(), 0.0);
     for (auto & vec : vectors) {
         mean = addVectors(mean, vec);
     }
@@ -180,7 +180,7 @@ inline Quaternionf eulerAnglesToQuaternion(const T& angles)
 }
 
 inline Quaternionf eulerAnglesToQuaternion(const FloatType& roll, const FloatType& pitch, const FloatType& yaw)
-{    
+{
     Quaternionf q = AngleAxisf(roll, Vector3f::UnitX()) *
                     AngleAxisf(pitch, Vector3f::UnitY()) *
                     AngleAxisf(yaw, Vector3f::UnitZ());
@@ -272,7 +272,7 @@ inline FloatType unwrapAngle(const FloatType &angle) {
  * @param angle2 The second angle in radians
  */
 inline FloatType distAngles(const FloatType &angle1, const FloatType &angle2) {
-    return wrapAngle(angle1 - angle2);    
+    return wrapAngle(angle1 - angle2);
 }
 
 }

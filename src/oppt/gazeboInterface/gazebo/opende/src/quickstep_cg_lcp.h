@@ -33,7 +33,7 @@ namespace ode {
                 int m, int nb, dRealMutablePtr J, int *jb, dxBody * const *body,
                 dRealPtr invMOI, dRealMutablePtr lambda, dRealMutablePtr cforce, dRealMutablePtr rhs,
                 dRealMutablePtr lo, dRealMutablePtr hi, dRealPtr cfm, int *findex,
-                dxQuickStepParameters *qs); 
+                dxQuickStepParameters *qs);
 
         size_t quickstep::EstimateGR_LCPMemoryRequirements(int m);
 #endif

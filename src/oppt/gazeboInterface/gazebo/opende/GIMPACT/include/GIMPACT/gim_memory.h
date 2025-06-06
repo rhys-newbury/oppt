@@ -1,7 +1,7 @@
 #ifndef GIM_MEMORY_H_INCLUDED
 #define GIM_MEMORY_H_INCLUDED
 /*! \file gim_memory.h
-\author Francisco León
+\author Francisco Leï¿½n
 */
 /*
 -----------------------------------------------------------------------------
@@ -130,7 +130,7 @@ gim_free_function  *gim_get_free_handler (void);
 //! @}
 
 /*! \defgroup MEMORY_FUNCTIONS
-Standar Memory functions
+Standard Memory functions
 */
 //! @{
 void * gim_alloc(size_t size);
@@ -536,7 +536,7 @@ void gim_create_buffer_manager(GBUFFER_MANAGER_DATA buffer_managers[],
 	GUINT32 buffer_manager_id);
 //! Destroys a buffer manager
 void gim_destroy_buffer_manager(GBUFFER_MANAGER_DATA buffer_managers[], GUINT32 buffer_manager_id);
-void gim_get_buffer_manager_data(GBUFFER_MANAGER_DATA buffer_managers[], 
+void gim_get_buffer_manager_data(GBUFFER_MANAGER_DATA buffer_managers[],
 	GUINT32 buffer_manager_id,GBUFFER_MANAGER_DATA ** pbm_data);
 void gim_init_buffer_managers(GBUFFER_MANAGER_DATA buffer_managers[]);
 void gim_terminate_buffer_managers(GBUFFER_MANAGER_DATA buffer_managers[]);
@@ -842,12 +842,12 @@ struct GBUFFER_ARRAY
 
 //! Initializes an GBUFFER_ARRAY object from a buffer ID
 /*!
-m_buffer_data will be 0, for acces to the elements, you'd need to call lock_array
+m_buffer_data will be 0, for access to the elements, you'd need to call lock_array
 \param array_data Array structure to be filled
 \param buffer_id A GBUFFER_ID structure which this array_daya will refer to
 \param element_count Number of elements
-\param offset element offset, it isn't byte offset. 0 is recomended
-\param byte_stride size of each element.  0 is recomended.
+\param offset element offset, it isn't byte offset. 0 is recommended
+\param byte_stride size of each element.  0 is recommended.
 \post Adds reference to the buffer
 \sa gim_buffer_add_ref
 */
@@ -864,12 +864,12 @@ m_buffer_data will be 0, for acces to the elements, you'd need to call lock_arra
 
 //! Initializes an GBUFFER_ARRAY object from a buffer ID and a Given type
 /*!
-m_buffer_data will be 0, for acces to the elements, you'd need to call lock_array
+m_buffer_data will be 0, for access to the elements, you'd need to call lock_array
 \param type Type of the Array. It determines the stride.
 \param array_data Array structure to be filled
 \param buffer_id A GBUFFER_ID structure which this array_daya will refer to
 \param element_count Number of elements
-\param offset element offset, it isn't byte offset. 0 is recomended
+\param offset element offset, it isn't byte offset. 0 is recommended
 \post Adds reference to the buffer
 \sa gim_buffer_add_ref
 */
@@ -886,7 +886,7 @@ m_buffer_data will be 0, for acces to the elements, you'd need to call lock_arra
 
 //! Initializes a buffer array giving a data type and a buffer id
 /*!
-m_buffer_data will be 0, for acces to the elements, you'd need to call lock_array.
+m_buffer_data will be 0, for access to the elements, you'd need to call lock_array.
 \param type Type of the Array. It determines the stride.
 \param array_data Array structure to be filled
 \param buffer_id A GBUFFER_ID structure which this array_daya will refer to
@@ -927,12 +927,12 @@ void gim_buffer_array_copy_ref(GBUFFER_ARRAY * source_data,GBUFFER_ARRAY  * dest
 \post A new buffer is created
 */
 void gim_buffer_array_copy_value(GBUFFER_ARRAY * source_data,
-	GBUFFER_MANAGER_DATA dest_buffer_managers[],GBUFFER_ARRAY  * dest_data, 
+	GBUFFER_MANAGER_DATA dest_buffer_managers[],GBUFFER_ARRAY  * dest_data,
 	GUINT32 buffer_manager_id,int usage);
 
 //! Destroys an GBUFFER_ARRAY object
 /*!
-\post Attemps to destroy the buffer, decreases reference counting
+\post Attempts to destroy the buffer, decreases reference counting
 */
 void GIM_BUFFER_ARRAY_DESTROY(GBUFFER_ARRAY & array_data);
 

@@ -42,20 +42,20 @@ public:
 	_OU_INLINE CTypeSimpleWrapper(): m_ctValue() {}
 	_OU_INLINE CTypeSimpleWrapper(const ContainedType &ctValue): m_ctValue(ctValue) {}
 	// _OU_INLINE CTypeSimpleWrapper(const CTypeSimpleWrapper &twOtherWrapper): m_ctValue(twOtherWrapper.m_ctValue) {} -- do not uncomment!!! in MSVC 6.0 optimization fails with it. :-/
-	
+
 	typedef ContainedType value_type;
-	
+
 	_OU_INLINE bool operator ==(const CTypeSimpleWrapper &twOtherWrapper) const { return m_ctValue == twOtherWrapper.m_ctValue; }
 	_OU_INLINE bool operator !=(const CTypeSimpleWrapper &twOtherWrapper) const { return !(operator ==(twOtherWrapper)); }
-	
+
 	_OU_INLINE bool operator <(const CTypeSimpleWrapper &twOtherWrapper) const { return m_ctValue < twOtherWrapper.m_ctValue; }
 	_OU_INLINE bool operator >(const CTypeSimpleWrapper &twOtherWrapper) const { return twOtherWrapper.operator <(*this); }
 	_OU_INLINE bool operator <=(const CTypeSimpleWrapper &twOtherWrapper) const { return !(twOtherWrapper.operator <(*this)); }
 	_OU_INLINE bool operator >=(const CTypeSimpleWrapper &twOtherWrapper) const { return !(operator <(twOtherWrapper)); }
-	
+
 	// _OU_INLINE operator bool() const { return !!m_ctValue; } -- casting to bool is too dangerous - it tends to be used instead of casting to int
 	_OU_INLINE bool operator !() const { return !m_ctValue; }
-	
+
 	_OU_INLINE CTypeSimpleWrapper &operator =(const ContainedType &ctValue) { m_ctValue = ctValue; return *this; }
 	_OU_INLINE CTypeSimpleWrapper &operator =(const CTypeSimpleWrapper &twOtherWrapper) { m_ctValue = twOtherWrapper.m_ctValue; return *this; }
 

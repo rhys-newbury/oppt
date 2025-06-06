@@ -1,1 +1,4 @@
-ADD_INITIAL_BELIEF_PLUGIN(rocksampleInitialBeliefPlugin ${CMAKE_CURRENT_LIST_DIR}/RocksampleInitialBeliefPlugin.cpp ${GAZEBO_LIBRARIES})
+add_initial_belief_plugin(
+  rocksampleInitialBeliefPlugin
+  ${CMAKE_CURRENT_LIST_DIR}/RocksampleInitialBeliefPlugin.cpp
+  ${GAZEBO_LIBRARIES})

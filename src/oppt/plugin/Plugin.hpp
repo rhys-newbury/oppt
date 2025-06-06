@@ -75,9 +75,9 @@ public:
         } else {
             ERROR("File '" + filename + "' not found");
         }
-        
+
         bool found = false;
-        std::string registerName = "RegisterPlugin";        
+        std::string registerName = "RegisterPlugin";
         //void* dlHandle = dlopen(fullFileName.c_str(), RTLD_LAZY | RTLD_GLOBAL);
         void* dlHandle = dlopen(fullFileName.c_str(), RTLD_NOW | RTLD_GLOBAL);
         if (!dlHandle) {
@@ -231,7 +231,7 @@ private:
 class RewardPlugin: public OpptPlugin<RewardPlugin>
 {
 public:
-    friend class RobotEnvironment;    
+    friend class RobotEnvironment;
     typedef std::unique_ptr<RewardPlugin> RewardPluginUniquePtr;
 
     _NO_COPY_OR_MOVE(RewardPlugin)
@@ -259,7 +259,7 @@ class HeuristicPlugin: public OpptPlugin<HeuristicPlugin>
 {
 public:
     friend class ProblemEnvironment;
-    friend class solvers::Solver;    
+    friend class solvers::Solver;
     typedef std::unique_ptr<HeuristicPlugin> HeuristicPluginUniquePtr;
     typedef std::shared_ptr<HeuristicPlugin> HeuristicPluginSharedPtr;
 
@@ -281,7 +281,7 @@ class TransitionPlugin: public OpptPlugin<TransitionPlugin>
 {
 public:
     friend class Robot;
-    typedef std::unique_ptr<TransitionPlugin> PropagatorPluginUniquePtr;   
+    typedef std::unique_ptr<TransitionPlugin> PropagatorPluginUniquePtr;
 
     _NO_COPY_OR_MOVE(TransitionPlugin)
 
@@ -293,7 +293,7 @@ public:
 
 
     /**
-     * @brief Perfom forward propagation based on a PropagationRequest.
+     * @brief Perform forward propagation based on a PropagationRequest.
      * This method is the implicit definition of the POMDP transition function
      * P(s' | s, a).
      *
@@ -306,7 +306,7 @@ public:
     /**
      * @brief Returns a pointer to the underlying error distribution.
      * Implementing this method is optional, as per derfault, a nullptr is returned
-     */    
+     */
     virtual Distribution<FloatType>* const getErrorDistribution() const {
         return nullptr;
     }
@@ -369,14 +369,14 @@ public:
     virtual ~TerminalPlugin() = default;
 
     /**
-     * @brief Checks wheter a PropagationResult is valid
+     * @brief Checks whether a PropagationResult is valid
      * @return A shared pointer to a ValidityReport object, containing information about the validity
      * of a PropagationResult
      */
     virtual ValidityReportSharedPtr isValid(const PropagationResultSharedPtr& propagationResult) = 0;
 
     /**
-     * @brief Checks wheter a PropagationResult leads to a terminal state
+     * @brief Checks whether a PropagationResult leads to a terminal state
      * @return True if the resulting state inside the PropagationResult is terminal
      */
     virtual bool isTerminal(const PropagationResultSharedPtr& propagationResult) = 0;
@@ -447,4 +447,3 @@ public:
 }
 
 #endif
-

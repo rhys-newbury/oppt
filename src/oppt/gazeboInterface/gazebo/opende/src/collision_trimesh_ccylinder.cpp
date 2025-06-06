@@ -29,12 +29,12 @@
 //	14 Apr : Seem to be robust
 //       There is a problem when you use original Step and set contact friction
 //		surface.mu = dInfinity;
-//		More description : 
+//		More description :
 //			When I dropped Capsule over the bunny ears, it seems to stuck
 //			there for a while. I think the cause is when you set surface.mu = dInfinity;
 //			the friction force is too high so it just hang the capsule there.
 //			So the good cure for this is to set mu = around 1.5 (in my case)
-//		For StepFast1, this become as solid as rock : StepFast1 just approximate 
+//		For StepFast1, this become as solid as rock : StepFast1 just approximate
 //		friction force.
 
 // NOTES from Croteam's Alen
@@ -43,7 +43,7 @@
 //the triangle (usually happens with large mass or low FPS), some such
 //contacts can in some cases push the capsule away from the edge instead of
 //away from the two triangles. This shows up as capsule slowing down a bit
-//when hitting an edge while sliding along a flat tesselated grid of
+//when hitting an edge while sliding along a flat tessellated grid of
 //triangles. This is only if capsule is standing upwards.
 
 //Same thing can appear whenever a smooth object (e.g sphere) hits such an
@@ -136,7 +136,7 @@ struct sTrimeshCapsuleColliderData
 	sTrimeshCapsuleColliderData(): m_gLocalContacts(NULL), m_ctContacts(0) { memset(m_vN, 0, sizeof(dVector3)); }
 
 	void SetupInitialContext(dxTriMesh *TriMesh, dxGeom *Capsule, int flags, int skip);
-	int TestCollisionForSingleTriangle(int ctContacts0, int Triint, dVector3 dv[3], 
+	int TestCollisionForSingleTriangle(int ctContacts0, int Triint, dVector3 dv[3],
 		uint8 flags, bool &bOutFinishSearching);
 
 #if OPTIMIZE_CONTACTS
@@ -145,11 +145,11 @@ struct sTrimeshCapsuleColliderData
 	int	_ProcessLocalContacts(dContactGeom *contact, dxTriMesh *TriMesh, dxGeom *Capsule);
 
 	static BOOL _cldClipEdgeToPlane(dVector3 &vEpnt0, dVector3 &vEpnt1, const dVector4& plPlane);
-	BOOL _cldTestAxis(const dVector3 &v0, const dVector3 &v1, const dVector3 &v2, 
+	BOOL _cldTestAxis(const dVector3 &v0, const dVector3 &v1, const dVector3 &v2,
 		dVector3 vAxis, int iAxis, BOOL bNoFlip = FALSE);
-	BOOL _cldTestSeparatingAxesOfCapsule(const dVector3 &v0, const dVector3 &v1, 
+	BOOL _cldTestSeparatingAxesOfCapsule(const dVector3 &v0, const dVector3 &v1,
 		const dVector3 &v2, uint8 flags);
-	void _cldTestOneTriangleVSCapsule(const dVector3 &v0, const dVector3 &v1, 
+	void _cldTestOneTriangleVSCapsule(const dVector3 &v0, const dVector3 &v1,
 		const dVector3 &v2, uint8 flags);
 
 	sLocalContactData   *m_gLocalContacts;
@@ -178,7 +178,7 @@ struct sTrimeshCapsuleColliderData
 	int		m_iBestAxis;
 	dVector3 m_vN;
 
-	dVector3 m_vV0; 
+	dVector3 m_vV0;
 	dVector3 m_vV1;
 	dVector3 m_vV2;
 
@@ -238,14 +238,14 @@ inline int _IsBetter(sLocalContactData& c1,sLocalContactData& c2)
 void sTrimeshCapsuleColliderData::_OptimizeLocalContacts()
 {
 	int nContacts = m_ctContacts;
-		
+
 	for (int i = 0; i < nContacts-1; i++)
 	{
 		for (int j = i+1; j < nContacts; j++)
 		{
 			if (_IsNearContacts(m_gLocalContacts[i],m_gLocalContacts[j]))
 			{
-				// If they are seem to be the samed then filtered 
+				// If they are seem to be the samed then filtered
 				// out the least penetrate one
 				if (_IsBetter(m_gLocalContacts[j],m_gLocalContacts[i]))
 				{
@@ -274,7 +274,7 @@ int	sTrimeshCapsuleColliderData::_ProcessLocalContacts(dContactGeom *contact,
 		// Can be optimized...
 		_OptimizeLocalContacts();
 	}
-#endif		
+#endif
 
 	unsigned int iContact = 0;
 	dContactGeom* Contact = 0;
@@ -284,7 +284,7 @@ int	sTrimeshCapsuleColliderData::_ProcessLocalContacts(dContactGeom *contact,
 	for (iContact = 0; iContact < m_ctContacts; iContact ++)
 	{
         // Ensure that we haven't created too many contacts
-        if( nFinalContact >= (m_iFlags & NUMC_MASK)) 
+        if( nFinalContact >= (m_iFlags & NUMC_MASK))
 		{
             break;
         }
@@ -312,7 +312,7 @@ int	sTrimeshCapsuleColliderData::_ProcessLocalContacts(dContactGeom *contact,
 	return nFinalContact;
 }
 
-BOOL sTrimeshCapsuleColliderData::_cldClipEdgeToPlane( 
+BOOL sTrimeshCapsuleColliderData::_cldClipEdgeToPlane(
 	dVector3 &vEpnt0, dVector3 &vEpnt1, const dVector4& plPlane)
 {
 	// calculate distance of edge points to plane
@@ -320,17 +320,17 @@ BOOL sTrimeshCapsuleColliderData::_cldClipEdgeToPlane(
 	dReal fDistance1 = POINTDISTANCE( plPlane, vEpnt1 );
 
 	// if both points are behind the plane
-	if ( fDistance0 < 0 && fDistance1 < 0 ) 
+	if ( fDistance0 < 0 && fDistance1 < 0 )
 	{
 		// do nothing
 		return FALSE;
 		// if both points in front of the plane
-	} else if ( fDistance0 > 0 && fDistance1 > 0 ) 
+	} else if ( fDistance0 > 0 && fDistance1 > 0 )
 	{
 		// accept them
 		return TRUE;
 		// if we have edge/plane intersection
-	} else if ((fDistance0 > 0 && fDistance1 < 0) || ( fDistance0 < 0 && fDistance1 > 0)) 
+	} else if ((fDistance0 > 0 && fDistance1 < 0) || ( fDistance0 < 0 && fDistance1 > 0))
 	{
 			// find intersection point of edge and plane
 			dVector3 vIntersectionPoint;
@@ -339,10 +339,10 @@ BOOL sTrimeshCapsuleColliderData::_cldClipEdgeToPlane(
 			vIntersectionPoint[2]= vEpnt0[2]-(vEpnt0[2]-vEpnt1[2])*fDistance0/(fDistance0-fDistance1);
 
 			// clamp correct edge to intersection point
-			if ( fDistance0 < 0 ) 
+			if ( fDistance0 < 0 )
 			{
 				SET(vEpnt0,vIntersectionPoint);
-			} else 
+			} else
 			{
 				SET(vEpnt1,vIntersectionPoint);
 			}
@@ -354,17 +354,17 @@ BOOL sTrimeshCapsuleColliderData::_cldClipEdgeToPlane(
 BOOL sTrimeshCapsuleColliderData::_cldTestAxis(
 						 const dVector3 &/*v0*/,
 						 const dVector3 &/*v1*/,
-						 const dVector3 &/*v2*/, 
-						 dVector3 vAxis, 
+						 const dVector3 &/*v2*/,
+						 dVector3 vAxis,
 						 int iAxis,
-						 BOOL bNoFlip/* = FALSE*/) 
+						 BOOL bNoFlip/* = FALSE*/)
 {
 
 	// calculate length of separating axis vector
 	dReal fL = LENGTHOF(vAxis);
 	// if not long enough
 	// TODO : dReal epsilon please
-	if ( fL < REAL(1e-5) ) 
+	if ( fL < REAL(1e-5) )
 	{
 		// do nothing
 		//iLastOutAxis = 0;
@@ -386,16 +386,16 @@ BOOL sTrimeshCapsuleColliderData::_cldTestAxis(
 	dReal fMin = MAX_REAL;
 	dReal fMax = MIN_REAL;
 
-	// for each vertex 
-	for(int i=0; i<3; i++) 
+	// for each vertex
+	for(int i=0; i<3; i++)
 	{
 		// find minimum
-		if (afv[i]<fMin) 
+		if (afv[i]<fMin)
 		{
 			fMin = afv[i];
 		}
 		// find maximum
-		if (afv[i]>fMax) 
+		if (afv[i]>fMax)
 		{
 			fMax = afv[i];
 		}
@@ -403,21 +403,21 @@ BOOL sTrimeshCapsuleColliderData::_cldTestAxis(
 
 	// find triangle's center of interval on axis
 	dReal fCenter = (fMin+fMax)*REAL(0.5);
-	// calculate triangles half interval 
+	// calculate triangles half interval
 	dReal fTriangleRadius = (fMax-fMin)*REAL(0.5);
 
-	// if they do not overlap, 
+	// if they do not overlap,
 	if (dFabs(fCenter) > ( frc + fTriangleRadius ))
-	{ 
+	{
 		// exit, we have no intersection
-		return FALSE; 
+		return FALSE;
 	}
 
-	// calculate depth 
+	// calculate depth
 	dReal fDepth = dFabs(fCenter) - (frc+fTriangleRadius);
 
 	// if greater then best found so far
-	if ( fDepth > m_fBestDepth ) 
+	if ( fDepth > m_fBestDepth )
 	{
 		// remember depth
 		m_fBestDepth  = fDepth;
@@ -431,8 +431,8 @@ BOOL sTrimeshCapsuleColliderData::_cldTestAxis(
 		m_iBestAxis   = iAxis;
 
 		// flip normal if interval is wrong faced
-		if (fCenter<0 && !bNoFlip) 
-		{ 
+		if (fCenter<0 && !bNoFlip)
+		{
 			m_vNormal[0] = -m_vNormal[0];
 			m_vNormal[1] = -m_vNormal[1];
 			m_vNormal[2] = -m_vNormal[2];
@@ -463,7 +463,7 @@ BOOL sTrimeshCapsuleColliderData::_cldTestSeparatingAxesOfCapsule(
 											const dVector3 &v0,
 											const dVector3 &v1,
 											const dVector3 &v2,
-											uint8 flags) 
+											uint8 flags)
 {
 	// calculate caps centers in absolute space
 	dVector3 vCp0;
@@ -483,7 +483,7 @@ BOOL sTrimeshCapsuleColliderData::_cldTestSeparatingAxesOfCapsule(
 	// reset separating axis vector
 	dVector3 vAxis = {REAL(0.0),REAL(0.0),REAL(0.0),REAL(0.0)};
 
-	// Epsilon value for checking axis vector length 
+	// Epsilon value for checking axis vector length
 	const dReal fEpsilon = 1e-6f;
 
 	// Translate triangle to Cc cord.
@@ -502,9 +502,9 @@ BOOL sTrimeshCapsuleColliderData::_cldTestSeparatingAxesOfCapsule(
 	vAxis[0] = - m_vN[0];
 	vAxis[1] = - m_vN[1];
 	vAxis[2] = - m_vN[2];
-	if (!_cldTestAxis(v0, v1, v2, vAxis, 1, TRUE)) 
-	{ 
-		return FALSE; 
+	if (!_cldTestAxis(v0, v1, v2, vAxis, 1, TRUE))
+	{
+		return FALSE;
 	}
 
 	if (flags & dxTriMeshData::kEdge0)
@@ -513,7 +513,7 @@ BOOL sTrimeshCapsuleColliderData::_cldTestSeparatingAxesOfCapsule(
 		dCalcVectorCross3(vAxis,m_vCapsuleAxis,m_vE0);
 		//vAxis = dCalcVectorCross3( m_vCapsuleAxis cross vE0 );
 		if (_length2OfVector3( vAxis ) > fEpsilon) {
-			if (!_cldTestAxis(v0, v1, v2, vAxis, 2)) { 
+			if (!_cldTestAxis(v0, v1, v2, vAxis, 2)) {
 				return FALSE;
 			}
 		}
@@ -634,7 +634,7 @@ BOOL sTrimeshCapsuleColliderData::_cldTestSeparatingAxesOfCapsule(
 	{
 		// second vertex on triangle
 		// axis ((V1-Cp0) x C) x C
-		_CalculateAxis(v1,vCp0,m_vCapsuleAxis,m_vCapsuleAxis,vAxis);	
+		_CalculateAxis(v1,vCp0,m_vCapsuleAxis,m_vCapsuleAxis,vAxis);
 		//vAxis = ( ( v1-vCp0 ) cross vCapsuleAxis ) cross vCapsuleAxis;
 		if (_length2OfVector3( vAxis ) > fEpsilon) {
 			if (!_cldTestAxis(v0, v1, v2, vAxis, 12)) {
@@ -750,8 +750,8 @@ void sTrimeshCapsuleColliderData::_cldTestOneTriangleVSCapsule(
 	// calculate poly normal
 	dCalcVectorCross3(m_vN,m_vE1,_minus_vE0);
 
-	// Even though all triangles might be initially valid, 
-	// a triangle may degenerate into a segment after applying 
+	// Even though all triangles might be initially valid,
+	// a triangle may degenerate into a segment after applying
 	// space transformation.
 	if (!dSafeNormalize3(m_vN))
 	{
@@ -767,7 +767,7 @@ void sTrimeshCapsuleColliderData::_cldTestOneTriangleVSCapsule(
 	dReal fDistanceCapsuleCenterToPlane = POINTDISTANCE(plTrianglePlane,m_vCapsulePosition);
 
 	// Capsule must be over positive side of triangle
-	if (fDistanceCapsuleCenterToPlane < 0 /* && !bDoubleSided*/) 
+	if (fDistanceCapsuleCenterToPlane < 0 /* && !bDoubleSided*/)
 	{
 		// if not don't generate contacts
 		return;
@@ -795,7 +795,7 @@ void sTrimeshCapsuleColliderData::_cldTestOneTriangleVSCapsule(
 	}
 
 	// if best separation axis is not found
-	if (m_iBestAxis == 0 ) 
+	if (m_iBestAxis == 0 )
 	{
 		// this should not happen (we should already exit in that case)
 		dIASSERT(FALSE);
@@ -813,7 +813,7 @@ void sTrimeshCapsuleColliderData::_cldTestOneTriangleVSCapsule(
 	vCEdgePoint0[0]  = vCposTrans[0] + m_vCapsuleAxis[0]*(m_fCapsuleSize*REAL(0.5)-m_vCapsuleRadius);
 	vCEdgePoint0[1]  = vCposTrans[1] + m_vCapsuleAxis[1]*(m_fCapsuleSize*REAL(0.5)-m_vCapsuleRadius);
 	vCEdgePoint0[2]  = vCposTrans[2] + m_vCapsuleAxis[2]*(m_fCapsuleSize*REAL(0.5)-m_vCapsuleRadius);
-    
+
 	dVector3 vCEdgePoint1;
 	vCEdgePoint1[0] = vCposTrans[0] - m_vCapsuleAxis[0]*(m_fCapsuleSize*REAL(0.5)-m_vCapsuleRadius);
 	vCEdgePoint1[1] = vCposTrans[1] - m_vCapsuleAxis[1]*(m_fCapsuleSize*REAL(0.5)-m_vCapsuleRadius);
@@ -837,9 +837,9 @@ void sTrimeshCapsuleColliderData::_cldTestOneTriangleVSCapsule(
 	CONSTRUCTPLANE(plPlane,_minus_vN,0);
 	//plPlane = Plane4f( -m_vN, 0);
 
-	if (!_cldClipEdgeToPlane( vCEdgePoint0, vCEdgePoint1, plPlane )) 
-	{ 
-		return; 
+	if (!_cldClipEdgeToPlane( vCEdgePoint0, vCEdgePoint1, plPlane ))
+	{
+		return;
 	}
 
 	// plane with edge 0
@@ -847,21 +847,21 @@ void sTrimeshCapsuleColliderData::_cldTestOneTriangleVSCapsule(
 	dCalcVectorCross3(vTemp,m_vN,m_vE0);
 	CONSTRUCTPLANE(plPlane, vTemp, REAL(1e-5));
 	if (!_cldClipEdgeToPlane( vCEdgePoint0, vCEdgePoint1, plPlane ))
-	{ 
-		return; 
+	{
+		return;
 	}
 
 	dCalcVectorCross3(vTemp,m_vN,m_vE1);
 	CONSTRUCTPLANE(plPlane, vTemp, -(dCalcVectorDot3(m_vE0,vTemp)-REAL(1e-5)));
-	if (!_cldClipEdgeToPlane( vCEdgePoint0, vCEdgePoint1, plPlane )) 
-	{ 
-		return; 
+	if (!_cldClipEdgeToPlane( vCEdgePoint0, vCEdgePoint1, plPlane ))
+	{
+		return;
 	}
 
 	dCalcVectorCross3(vTemp,m_vN,m_vE2);
 	CONSTRUCTPLANE(plPlane, vTemp, REAL(1e-5));
-	if (!_cldClipEdgeToPlane( vCEdgePoint0, vCEdgePoint1, plPlane )) { 
-		return; 
+	if (!_cldClipEdgeToPlane( vCEdgePoint0, vCEdgePoint1, plPlane )) {
+		return;
 	}
 
 	// return capsule edge points into absolute space
@@ -880,12 +880,12 @@ void sTrimeshCapsuleColliderData::_cldTestOneTriangleVSCapsule(
 	dReal fDepth1 = dCalcVectorDot3(vTemp,m_vNormal) - (m_fBestCenter-m_fBestrt);
 
 	// clamp depths to zero
-	if (fDepth0 < 0) 
+	if (fDepth0 < 0)
 	{
 		fDepth0 = 0.0f;
 	}
 
-	if (fDepth1 < 0 ) 
+	if (fDepth1 < 0 )
 	{
 		fDepth1 = 0.0f;
 	}
@@ -909,7 +909,7 @@ void sTrimeshCapsuleColliderData::_cldTestOneTriangleVSCapsule(
     }
 }
 
-void sTrimeshCapsuleColliderData::SetupInitialContext(dxTriMesh *TriMesh, dxGeom *Capsule, 
+void sTrimeshCapsuleColliderData::SetupInitialContext(dxTriMesh *TriMesh, dxGeom *Capsule,
 	int flags, int skip)
 {
 	const dMatrix3* pRot = (const dMatrix3*)dGeomGetRotation(Capsule);
@@ -937,7 +937,7 @@ void sTrimeshCapsuleColliderData::SetupInitialContext(dxTriMesh *TriMesh, dxGeom
 	m_iFlags			=flags;
 
 	// reset contact counter
-	m_ctContacts = 0;	
+	m_ctContacts = 0;
 
 	// reset best depth
 	m_fBestDepth  = - MAX_REAL;
@@ -950,7 +950,7 @@ void sTrimeshCapsuleColliderData::SetupInitialContext(dxTriMesh *TriMesh, dxGeom
 	m_vNormal[2] = REAL(0.0);
 }
 
-int sTrimeshCapsuleColliderData::TestCollisionForSingleTriangle(int ctContacts0, 
+int sTrimeshCapsuleColliderData::TestCollisionForSingleTriangle(int ctContacts0,
 	int Triint, dVector3 dv[3], uint8 flags, bool &bOutFinishSearching)
 {
 	// test this triangle
@@ -967,11 +967,11 @@ int sTrimeshCapsuleColliderData::TestCollisionForSingleTriangle(int ctContacts0,
 }
 
 
-static void dQueryCCTLPotentialCollisionTriangles(OBBCollider &Collider, 
+static void dQueryCCTLPotentialCollisionTriangles(OBBCollider &Collider,
 	const sTrimeshCapsuleColliderData &cData, dxTriMesh *TriMesh, dxGeom *Capsule,
 	OBBCache &BoxCache)
 {
-	// It is a potential issue to explicitly cast to float 
+	// It is a potential issue to explicitly cast to float
 	// if custom width floating point type is introduced in OPCODE.
 	// It is necessary to make a typedef and cast to it
 	// (e.g. typedef float opc_float;)
@@ -1042,7 +1042,7 @@ int dCollideCCTL(dxGeom *o1, dxGeom *o2, int _flags,
 	dIASSERT (o1->type == dTriMeshClass);
 	dIASSERT (o2->type == dCapsuleClass);
 	dIASSERT ((_flags & NUMC_MASK) >= 1);
-	
+
 	int nContactCount = 0;
 
 	dxTriMesh *TriMesh = (dxTriMesh*)o1;
@@ -1057,10 +1057,10 @@ int dCollideCCTL(dxGeom *o1, dxGeom *o2, int _flags,
 	OBBCollider& Collider = pccColliderCache->_OBBCollider;
 
 	// Will it better to use LSS here? -> confirm Pierre.
-	dQueryCCTLPotentialCollisionTriangles(Collider, cData, 
+	dQueryCCTLPotentialCollisionTriangles(Collider, cData,
 		TriMesh, Capsule, pccColliderCache->defaultBoxCache);
 
-	 if (Collider.GetContactStatus()) 
+	 if (Collider.GetContactStatus())
 	 {
 		 // Retrieve data
 		 int TriCount = Collider.GetNbTouchedPrimitives();
@@ -1097,7 +1097,7 @@ int dCollideCCTL(dxGeom *o1, dxGeom *o2, int _flags,
           cData.TestCollisionForSingleTriangle(ctContacts0, Triint, dv,
               flags, bFinishSearching);
 
-				if (bFinishSearching) 
+				if (bFinishSearching)
 				{
 					break;
 				}
@@ -1124,7 +1124,7 @@ int dCollideCCTL(dxGeom *o1, dxGeom *o2, int flags, dContactGeom *contact, int s
 	dIASSERT (o1->type == dTriMeshClass);
 	dIASSERT (o2->type == dCapsuleClass);
 	dIASSERT ((flags & NUMC_MASK) >= 1);
-	
+
 	dxTriMesh* TriMesh = (dxTriMesh*)o1;
 	dxGeom*	   gCylinder = o2;
 
@@ -1200,7 +1200,7 @@ int dCollideCCTL(dxGeom *o1, dxGeom *o2, int flags, dContactGeom *contact, int s
         pcontact->g2 = gCylinder;
         pcontact->side1 = ptrimeshcontacts->m_feature1;
         pcontact->side2 = -1;
-        
+
         ptrimeshcontacts++;
 	}
 

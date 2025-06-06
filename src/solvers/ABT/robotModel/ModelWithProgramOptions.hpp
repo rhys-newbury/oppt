@@ -136,12 +136,12 @@ public:
 
     // Overridden methods follow
     virtual std::unique_ptr<abt::SearchStrategy> createSearchStrategy(abt::Solver *solver)
-            override {	
+            override {
         return searchParsers_.parse(solver, options_->searchStrategy);
     }
 
     virtual std::unique_ptr<abt::SelectRecommendedActionStrategy> createRecommendationSelectionStrategy(abt::Solver */*solver*/) override {
-        return selectRecommendedActionParsers_.parse(nullptr, 
+        return selectRecommendedActionParsers_.parse(nullptr,
                                                      options_->recommendationStrategy);
     }
 
@@ -168,7 +168,7 @@ public:
             abt::State const */*state*/, abt::HistoricalData const */*data*/) {
         return 0;
     }
-    
+
 protected:
     /** The generator parsers. */
     ParserSet<std::unique_ptr<abt::StepGeneratorFactory>> generatorParsers_;
@@ -180,7 +180,7 @@ protected:
     ParserSet<std::unique_ptr<abt::SelectRecommendedActionStrategy>> selectRecommendedActionParsers_;
     /** The parsers for EstimationStrategy instances. */
     ParserSet<std::unique_ptr<abt::EstimationStrategy>> estimationParsers_;
-    
+
 
 private:
     /** A pointer to the options object stored by this instance.
@@ -188,7 +188,7 @@ private:
      * This is really the same as Model::options_, but in this case we know it's a SharedOptions
      * because we've enforced that via the constructor of ModelWithProgramOptions.
      */
-    oppt::ABTExtendedOptions const *options_;    
+    oppt::ABTExtendedOptions const *options_;
 };
 } /* namespace shared */
 

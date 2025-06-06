@@ -32,11 +32,10 @@ struct SharedOptions: public oppt::ProblemEnvironmentOptions {
      */
     static std::unique_ptr<options::OptionParser> makeParser(bool simulating) {
         std::unique_ptr<options::OptionParser> parser =
-            ProblemEnvironmentOptions::makeParser(simulating);        
+            ProblemEnvironmentOptions::makeParser(simulating);
         return std::move(parser);
-    }       
+    }
 };
 } /* namespace shared */
 
 #endif /* SHAREDOPTIONS_HPP_ */
-

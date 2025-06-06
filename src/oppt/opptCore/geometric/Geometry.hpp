@@ -61,7 +61,7 @@ public:
     /**
      * @brief Get the name of the geometry
      */
-    std::string getScopedName() const;    
+    std::string getScopedName() const;
 
     /**
      * @brief Set the world pose of the geometry
@@ -120,7 +120,7 @@ public:
 
     /**
      * @brief Get the SDF description of this geometry
-     * @return A std::string containting the SDF description of this geometry
+     * @return A std::string containing the SDF description of this geometry
      */
     virtual std::string toSDFString() const = 0;
 

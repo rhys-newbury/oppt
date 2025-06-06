@@ -28,7 +28,7 @@ std::unique_ptr< abt::StepGeneratorFactory > Gps2Parser::parse(abt::Solver* solv
     } else {
         std::cout << "Warning: unknown gps search type given: " << searchType << std::endl;
     }
-    
+
     options.dimensions = dimensions_;
     shared::fillOption(args, "explorationCoefficient", options.explorationCoefficient);
     shared::fillOption(args, "newSearchPointCoefficient", options.newSearchPointCoefficient);
@@ -64,7 +64,7 @@ std::unique_ptr< abt::SelectRecommendedActionStrategy > Gps2MaxRecommendedAction
         options.searchType = decltype(options)::COMPASS;
     } else {
         std::cout << "Warning: unknown gps search type given: " << searchType << std::endl;
-    }    
+    }
     options.dimensions = dimensions_;
 
     std::string recommendationMode = "";

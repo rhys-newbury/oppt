@@ -25,7 +25,7 @@ class EnvironmentInfo
 {
 public:
     _NO_COPY_BUT_MOVE(EnvironmentInfo)
-    
+
     EnvironmentInfo(const bool &interactive):
         scene_(),
         interactive_(interactive) {

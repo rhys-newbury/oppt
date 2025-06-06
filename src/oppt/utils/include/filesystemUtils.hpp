@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #ifndef __FILESYSTEM_UTILS_HPP__
@@ -69,14 +69,14 @@ inline bool clearDirectory(const std::string& path)
  * @brief Removes a file
  */
 inline bool removeFile(const std::string& path)
-{    
-    bool removed = boost::filesystem::remove(path);    
+{
+    bool removed = boost::filesystem::remove(path);
     return removed;
 }
 
 /**
  * @brief Copies a source path to a destination path
- * 
+ *
  * @param sourcePath The source path
  * @param destinationPath The destination path
  * @param removeExisting Remove existing destination path

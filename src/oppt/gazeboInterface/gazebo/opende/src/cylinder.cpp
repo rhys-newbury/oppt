@@ -61,11 +61,11 @@ void dxCylinder::computeAABB()
     const dMatrix3& R = final_posr->R;
     const dVector3& pos = final_posr->pos;
 
-	dReal xrange = dFabs (R[0] * radius) +	 dFabs (R[1] * radius) + REAL(0.5)* dFabs (R[2] * 
+	dReal xrange = dFabs (R[0] * radius) +	 dFabs (R[1] * radius) + REAL(0.5)* dFabs (R[2] *
 		lz);
-	dReal yrange = dFabs (R[4] * radius) +   dFabs (R[5] * radius) + REAL(0.5)* dFabs (R[6] * 
+	dReal yrange = dFabs (R[4] * radius) +   dFabs (R[5] * radius) + REAL(0.5)* dFabs (R[6] *
 		lz);
-	dReal zrange = dFabs (R[8] * radius) +	 dFabs (R[9] * radius) + REAL(0.5)* dFabs (R[10] * 
+	dReal zrange = dFabs (R[8] * radius) +	 dFabs (R[9] * radius) + REAL(0.5)* dFabs (R[10] *
 		lz);
 	aabb[0] = pos[0] - xrange;
 	aabb[1] = pos[0] + xrange;
@@ -99,5 +99,3 @@ void dGeomCylinderGetParams (dGeomID cylinder, dReal *radius, dReal *length)
 	*radius = c->radius;
 	*length = c->lz;
 }
-
-

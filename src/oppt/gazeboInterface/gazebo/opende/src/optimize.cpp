@@ -132,7 +132,7 @@ void dNPMultiply0 (dReal *A, const dReal *B, const dReal *C, int p, int q, int r
       b = bb;
       sum = 0;
       for (k=q; k; k--, c+=rskip) sum += (*(b++))*(*c);
-      *(A++) = sum; 
+      *(A++) = sum;
     }
     A += rpad;
     bb += qskip;
@@ -175,7 +175,7 @@ void dNPMultiply2 (dReal *A, const dReal *B, const dReal *C, int p, int q, int r
       z = 0;
       sum = 0;
       for (k=q; k; k--,z++) sum += bb[z] * cc[z];
-      *(A++) = sum; 
+      *(A++) = sum;
       cc += qskip;
     }
     A += rpad;
@@ -414,7 +414,7 @@ static void lcp_ip_grad(dReal* x, int n, int idx, dReal* g, void* data)
   {
     dNPMultiply0(g, M, x, n, n, 1);
     for (int i=0; i< n; i++)
-      g[i] += q[i]*0.5;  
+      g[i] += q[i]*0.5;
   }
   // constraint x >= 0
   else if (idx <= n)
@@ -509,7 +509,7 @@ bool dMakeFeasibleConvex(CvxOptParams& cparams, dReal eps_feas, dReal* x, int n)
   shared_array<dReal> Anew(new dReal[(n+1)*cparams.nu_len]);
   dSetSubMat0(Anew.get(), n+1, cparams.A, cparams.nu_len, n, 0, 0);
   for (int i=0; i< cparams.nu_len; i++)
-    Anew[i*(n+1)+n] = (dReal) 0.0; 
+    Anew[i*(n+1)+n] = (dReal) 0.0;
 
   // setup convex optimization parameters
   CvxOptParams cp;
@@ -771,13 +771,13 @@ bool dOptimizeConvexPrimalDual(CvxOptParams& cparams, dReal eps_feas, dReal* x, 
     printMatrix(H.get(), n, n);
     #endif
     conditionHessian(H.get(), tmp2.get(), n);
-    setupM(M.get(), H.get(), n, cparams.A, nu_len); 
+    setupM(M.get(), H.get(), n, cparams.A, nu_len);
     memcpy(rdual.get(), r.get(), n*sizeof(dReal));
     memcpy(rcent.get(), r.get()+n, m*sizeof(dReal));
     memcpy(rpri.get(), r.get()+n+m, nu_len*sizeof(dReal));
     dSetZero(tmp3.get(), m*m);
     for (int i=0; i< m; i++) tmp3[m*i+i] = fc[i];
-    dNPMultiply0(tmp4.get(), tmp3.get(), rcent.get(), m, m, 1);    
+    dNPMultiply0(tmp4.get(), tmp3.get(), rcent.get(), m, m, 1);
     dNPMultiply1(tmp1.get(), Df.get(), tmp4.get(), n, m, 1);
     for (int i=0; i< n; i++) rhs[i] = -(rdual[i] + tmp1[i]);
     for (int i=0; i< nu_len; i++) rhs[i+n] = -rpri[i];
@@ -833,7 +833,7 @@ dIASSERT(!isnan(rhs[i]));
     for (int i=0; i< m; i++) lambda_plus[i] = lambda[i] + dlambda[i]*s;
     for (int i=0; i< nu_len; i++) nu_plus[i] = nu[i] + dnu[i]*s;
 
-    // satisfy inequality constraints 
+    // satisfy inequality constraints
     (*cparams.fx)(x_plus.get(), n, f.get(), m, cparams.data);
     memcpy(fc.get(), f.get()+1, sizeof(dReal)*m);
     #ifdef DEBUG
@@ -902,7 +902,7 @@ dIASSERT(!isnan(rhs[i]));
     for (int i=0; i< nu_len; i++)  r[n+m+i] -= cparams.b[i];
 
     // do backtracking line search
-    #ifdef DEBUG 
+    #ifdef DEBUG
     cout << " starting BLS..." << endl;
     #endif
     while (dSqrt(dDot(r.get(), r.get(), n+m+nu_len)) > (1-cparams.alpha*s)*rnorm)
@@ -1008,5 +1008,3 @@ dIASSERT(!isnan(rhs[i]));
   memcpy(x, x_best.get(), n*sizeof(dReal));
   return false;
 }
-
-

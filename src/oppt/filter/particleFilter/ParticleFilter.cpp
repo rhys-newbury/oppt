@@ -123,7 +123,7 @@ FilterResultPtr ParticleFilter::propagateParticles(const FilterRequestPtr& filte
     int deficit = filterRequest->numParticles - currNumNextParticles;
     if (deficit <= 0) {
         FilterResultPtr filterResult = std::make_unique<FilterResult>();
-        filterResult->particles = filterRequest->currentNextParticles;        
+        filterResult->particles = filterRequest->currentNextParticles;
         return filterResult;
     }
 
@@ -132,7 +132,7 @@ FilterResultPtr ParticleFilter::propagateParticles(const FilterRequestPtr& filte
 
     unsigned int particleCounter = 0;
     PropagationRequestSharedPtr propagationRequest;
-    auto robot = filterRequest->robotEnvironment->getRobot();    
+    auto robot = filterRequest->robotEnvironment->getRobot();
     if (deficit > 0) {
         auto sampledParticles = particleSet.sampleWeighted(filterRequest->randomEngine, deficit);
         for (size_t i = particleCounter; i != deficit; ++i) {
@@ -140,7 +140,7 @@ FilterResultPtr ParticleFilter::propagateParticles(const FilterRequestPtr& filte
             propagationRequest->currentState = sampledParticles[i]->getState();
             propagationRequest->action = filterRequest->action;
             propagationRequest->allowCollisions = filterRequest->allowCollisions;
-            PropagationResultSharedPtr propagationRes = robot->propagateState(propagationRequest);            
+            PropagationResultSharedPtr propagationRes = robot->propagateState(propagationRequest);
 
             //auto propagationRes2 = propagationFn_->operator()(propagationRequest);
             bool collided = false;
@@ -152,7 +152,7 @@ FilterResultPtr ParticleFilter::propagateParticles(const FilterRequestPtr& filte
                 FloatType newWeight = sampledParticles[i]->getWeight();
                 if (propagatedParticle->getWeight() > 0 || filterRequest->allowZeroWeightParticles) {
                     replenishedParticlesVec[particleCounter] = propagatedParticle;
-                    OpptUserDataSharedPtr userData = replenishedParticlesVec[particleCounter]->getState()->getUserData();                    
+                    OpptUserDataSharedPtr userData = replenishedParticlesVec[particleCounter]->getState()->getUserData();
                     if (userData) {
                         userData->as<RobotStateUserData>()->previousState = sampledParticles[i]->getState();
                     } else {
@@ -163,11 +163,11 @@ FilterResultPtr ParticleFilter::propagateParticles(const FilterRequestPtr& filte
 
                     particleCounter++;
                 }
-            }            
+            }
         }
     }
 
-    
+
 
     FilterResultPtr filterResult = std::make_unique<FilterResult>();
     filterResult->particles.resize(currNumNextParticles + particleCounter);
@@ -210,7 +210,7 @@ FilterResultPtr ParticleFilter::filter(const FilterRequestPtr& filterRequest)
             replenishedParticlesVec[particleCounter]->setWeight(newWeight);
             weightNormalizationConstant += newWeight;
             particleCounter++;
-        } 
+        }
     }
 
     if (particleCounter == 0) {
@@ -239,11 +239,11 @@ FilterResultPtr ParticleFilter::filter(const FilterRequestPtr& filterRequest)
     // Resampling step
     filterResult->particles.resize(filterRequest->numParticles);
     auto resampledParticles = replenishedParticles.sampleWeighted(filterRequest->randomEngine, filterRequest->numParticles);
-    FloatType newWeight = 1.0 / ((FloatType)resampledParticles.size());    
+    FloatType newWeight = 1.0 / ((FloatType)resampledParticles.size());
     for (size_t i = 0; i != resampledParticles.size(); ++i) {
         filterResult->particles[i] = resampledParticles[i];
-        filterResult->particles[i]->setWeight(newWeight);        
-    }    
+        filterResult->particles[i]->setWeight(newWeight);
+    }
 
     return std::move(filterResult);
 }

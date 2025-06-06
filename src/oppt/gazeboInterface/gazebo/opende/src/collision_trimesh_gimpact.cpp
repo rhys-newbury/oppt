@@ -276,7 +276,7 @@ void dGeomTriMeshSetTriMergeCallback(dGeomID g, dTriTriMergeCallback* Callback)
 
 dTriTriMergeCallback* dGeomTriMeshGetTriMergeCallback(dGeomID g)
 {
-    dUASSERT(g && g->type == dTriMeshClass, "argument not a trimesh");	
+    dUASSERT(g && g->type == dTriMeshClass, "argument not a trimesh");
     return ((dxTriMesh*)g)->TriMergeCallback;
 }
 
@@ -415,7 +415,7 @@ void dGeomTriMeshGetPoint(dGeomID g, int Index, dReal u, dReal v, dVector3 Out){
 
     dxTriMesh* Geom = (dxTriMesh*)g;
     dVector3 dv[3];
-	gim_trimesh_locks_work_data(&Geom->m_collision_trimesh);	
+	gim_trimesh_locks_work_data(&Geom->m_collision_trimesh);
 	gim_trimesh_get_triangle_vertices(&Geom->m_collision_trimesh, Index, dv[0],dv[1],dv[2]);
     GetPointFromBarycentric(dv, u, v, Out);
 	gim_trimesh_unlocks_work_data(&Geom->m_collision_trimesh);
@@ -423,7 +423,7 @@ void dGeomTriMeshGetPoint(dGeomID g, int Index, dReal u, dReal v, dVector3 Out){
 
 int dGeomTriMeshGetTriangleCount (dGeomID g)
 {
-    dxTriMesh* Geom = (dxTriMesh*)g;	
+    dxTriMesh* Geom = (dxTriMesh*)g;
 	return FetchTriangleCount(Geom);
 }
 

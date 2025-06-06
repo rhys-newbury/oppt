@@ -112,7 +112,7 @@ void TextSerializer::save(StateInfo const &info, std::ostream &os) {
 
 void TextSerializer::load(StateInfo &info, std::istream &is) {
     std::string tmpStr;
-    is >> tmpStr >> info.id_ >> tmpStr;    
+    is >> tmpStr >> info.id_ >> tmpStr;
     info.state_ = loadState(is);
 }
 
@@ -144,10 +144,10 @@ void TextSerializer::load(StatePool &pool, std::istream &is) {
     std::getline(is, line);
     while (line.find("STATESPOOL-END") == std::string::npos) {
         std::unique_ptr<StateInfo> newStateInfo(std::make_unique<StateInfo>());
-        std::istringstream sstr(line);	
+        std::istringstream sstr(line);
         load(*newStateInfo, sstr);
         pool.add(std::move(newStateInfo));
-        std::getline(is, line);	
+        std::getline(is, line);
     }
 }
 
@@ -306,8 +306,8 @@ void TextSerializer::save(BeliefNode const &node, std::ostream &os) {
         }
         os << "particles end" << std::endl;
     }
-    
-    saveHistoricalData(node.getHistoricalData(), os);    
+
+    saveHistoricalData(node.getHistoricalData(), os);
     saveActionMapping(*node.getMapping(), os);
 }
 
@@ -368,13 +368,13 @@ void TextSerializer::load(BeliefTree &tree, std::istream &is) {
 
     long nNodes;
     std::string tmpStr;
-    std::istringstream(line) >> tmpStr >> nNodes;    
-    tree.allNodes_.resize(nNodes);    
+    std::istringstream(line) >> tmpStr >> nNodes;
+    tree.allNodes_.resize(nNodes);
 
     std::getline(is, line);
     while ((line.find("BELIEFTREE-END") == std::string::npos)) {
         long nodeId;
-        std::istringstream(line) >> tmpStr >> nodeId;	
+        std::istringstream(line) >> tmpStr >> nodeId;
         BeliefNode *node = tree.getNode(nodeId);
         load(*node, is);
         node->recalculateValue();

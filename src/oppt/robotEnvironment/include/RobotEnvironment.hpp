@@ -63,7 +63,7 @@ public:
 
     /**
      * @brief Clones the RobotEnvironment
-     * @return A RobotEnvironmentSharedPtr to an independend instance of the cloned environment
+     * @return A RobotEnvironmentSharedPtr to an independent instance of the cloned environment
      */
     RobotEnvironmentSharedPtr clone(const unsigned int& uid = oppt::UID::getUniqueId());
 
@@ -139,9 +139,9 @@ public:
     RewardPlugin *const getRewardPlugin() const;
 
     /**
-     * @brief Sample an inital state
+     * @brief Sample an initial state
      *
-     * Samples an intial RobotState from the set of user defined-inital states using uniform sampling
+     * Samples an initial RobotState from the set of user defined-inital states using uniform sampling
      *
      * @return A shared pointer to the sampled initial state
      */
@@ -172,7 +172,7 @@ public:
 
     void loadRewardPlugin(const std::string& optionsFile);
 
-    void loadTerminalPlugin(const std::string& optionsFile);  
+    void loadTerminalPlugin(const std::string& optionsFile);
 
 private:
     /**template <class RobotType>

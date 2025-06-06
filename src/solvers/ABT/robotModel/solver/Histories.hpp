@@ -8,7 +8,7 @@ class OPPTHistories: public Histories
 {
 public:
     OPPTHistories();
-protected:    
+protected:
     virtual HistorySequence* createSequence() override;
 };
 }

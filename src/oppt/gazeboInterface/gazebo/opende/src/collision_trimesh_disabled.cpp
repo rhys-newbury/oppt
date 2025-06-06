@@ -57,7 +57,7 @@ void* dGeomTriMeshDataGet(dTriMeshDataID g, int data_id) { return 0; }
 ODE_API void dGeomTriMeshSetLastTransform( dGeomID g, dMatrix4 last_trans ) {}
 ODE_API dReal* dGeomTriMeshGetLastTransform( dGeomID g ) { return identity; }
 
-dGeomID dCreateTriMesh(dSpaceID space, 
+dGeomID dCreateTriMesh(dSpaceID space,
 		       dTriMeshDataID Data,
 		       dTriCallback* Callback,
 		       dTriArrayCallback* ArrayCallback,
@@ -76,20 +76,20 @@ dTriMeshDataID dGeomTriMeshGetData(dGeomID g) { return 0; }
 
 
 void dGeomTriMeshDataBuildSingle(dTriMeshDataID g,
-                                 const void* Vertices, int VertexStride, int VertexCount, 
+                                 const void* Vertices, int VertexStride, int VertexCount,
                                  const void* Indices, int IndexCount, int TriStride) { }
 
 void dGeomTriMeshDataBuildSingle1(dTriMeshDataID g,
-                                  const void* Vertices, int VertexStride, int VertexCount, 
+                                  const void* Vertices, int VertexStride, int VertexCount,
                                   const void* Indices, int IndexCount, int TriStride,
                                   const void* Normals) { }
 
-void dGeomTriMeshDataBuildDouble(dTriMeshDataID g, 
-                                 const void* Vertices,  int VertexStride, int VertexCount, 
+void dGeomTriMeshDataBuildDouble(dTriMeshDataID g,
+                                 const void* Vertices,  int VertexStride, int VertexCount,
                                  const void* Indices, int IndexCount, int TriStride) { }
 
-void dGeomTriMeshDataBuildDouble1(dTriMeshDataID g, 
-                                  const void* Vertices,  int VertexStride, int VertexCount, 
+void dGeomTriMeshDataBuildDouble1(dTriMeshDataID g,
+                                  const void* Vertices,  int VertexStride, int VertexCount,
                                   const void* Indices, int IndexCount, int TriStride,
 								  const void* Normals) { }
 
@@ -129,5 +129,3 @@ int dGeomTriMeshGetTriangleCount (dGeomID g) { return 0; }
 void dGeomTriMeshDataUpdate(dTriMeshDataID g) {}
 
 #endif // !dTRIMESH_ENABLED
-
-

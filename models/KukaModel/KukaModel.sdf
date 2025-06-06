@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version='1.6'>
-  <model name='KukaModel'> 
+  <model name='KukaModel'>
     <link name='lwr_base_link'>
       <pose frame=''>0 0 0.0 0 -0 0</pose>
       <inertial>
@@ -39,7 +39,7 @@
             <uri>file://KukaModel/meshes/lwr4plus/visual/base.STL</uri>
           </mesh>
         </geometry>
-        <material>          
+        <material>
           <ambient>1.0 0.487 0 1.0</ambient>
         </material>
       </visual>
@@ -57,7 +57,7 @@
           </limit>
           <xyz>0 0 1</xyz>
         </axis>
-      </joint>       
+      </joint>
     <link name='lwr_1_link'>
       <pose frame=''>0 0 0.11 0 -0 0</pose>
       <inertial>
@@ -95,8 +95,8 @@
             <scale>1 1 1</scale>
             <uri>file://KukaModel/meshes/lwr4plus/visual/link_1.STL</uri>
           </mesh>
-        </geometry>        
-        <material>          
+        </geometry>
+        <material>
           <ambient>1.0 0.487 0 1.0</ambient>
         </material>
       </visual>
@@ -172,7 +172,7 @@
             <uri>file://KukaModel/meshes/lwr4plus/visual/link_2.STL</uri>
           </mesh>
         </geometry>
-        <material>          
+        <material>
           <ambient>1.0 0.487 0 1.0</ambient>
         </material>
       </visual>
@@ -254,7 +254,7 @@
             <uri>file://KukaModel/meshes/lwr4plus/visual/link_3.STL</uri>
           </mesh>
         </geometry>
-        <material>          
+        <material>
           <ambient>1.0 0.487 0 1.0</ambient>
         </material>
       </visual>
@@ -336,7 +336,7 @@
             <uri>file://KukaModel/meshes/lwr4plus/visual/link_4.STL</uri>
           </mesh>
         </geometry>
-        <material>          
+        <material>
           <ambient>1.0 0.487 0 1.0</ambient>
         </material>
       </visual>
@@ -418,10 +418,10 @@
             <uri>file://KukaModel/meshes/lwr4plus/visual/link_5.STL</uri>
           </mesh>
         </geometry>
-        <material>          
+        <material>
           <ambient>1.0 0.487 0 1.0</ambient>
         </material>
-      </visual>      
+      </visual>
       <gravity>1</gravity>
       <velocity_decay/>
       <gravity>1</gravity>
@@ -493,7 +493,7 @@
             <uri>file://KukaModel/meshes/lwr4plus/visual/link_6.STL</uri>
           </mesh>
         </geometry>
-        <material>          
+        <material>
           <ambient>0.7 0.7 0.7 1.0</ambient>
         </material>
       </visual>
@@ -575,10 +575,10 @@
             <uri>file://KukaModel/meshes/lwr4plus/visual/link_7.STL</uri>
           </mesh>
         </geometry>
-        <material>          
+        <material>
           <ambient>0.3 0.3 0.3 1.0</ambient>
         </material>
-      </visual>      
+      </visual>
       <gravity>1</gravity>
       <velocity_decay/>
       <gravity>1</gravity>

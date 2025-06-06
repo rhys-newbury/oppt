@@ -1,7 +1,7 @@
 /*! \file
 * \brief Shutdown policies.
 *
-* This file contains shutdown policies for thread_pool. 
+* This file contains shutdown policies for thread_pool.
 * A shutdown policy controls the pool's behavior from the time
 * when the pool is not referenced any longer.
 *
@@ -26,11 +26,11 @@ namespace boost { namespace threadpool
 {
 
 
-/*! \brief ShutdownPolicy which waits for the completion of all tasks 
+/*! \brief ShutdownPolicy which waits for the completion of all tasks
   *          and the worker termination afterwards.
     *
   * \param Pool The pool's core type.
-  */ 
+  */
   template<typename Pool>
   class wait_for_all_tasks
   {
@@ -43,11 +43,11 @@ namespace boost { namespace threadpool
   };
 
 
-  /*! \brief ShutdownPolicy which waits for the completion of all active tasks 
+  /*! \brief ShutdownPolicy which waits for the completion of all active tasks
   *          and the worker termination afterwards.
   *
   * \param Pool The pool's core type.
-  */ 
+  */
   template<typename Pool>
   class wait_for_active_tasks
   {
@@ -66,7 +66,7 @@ namespace boost { namespace threadpool
   * This policy does not wait for any tasks. Nevertheless all active tasks will be processed completely.
   *
   * \param Pool The pool's core type.
-  */ 
+  */
   template<typename Pool>
   class immediately
   {

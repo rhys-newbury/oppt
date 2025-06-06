@@ -32,12 +32,12 @@ namespace shared {
  * enumerated observation mapping approach (EnumeratedObservationPool) to store the possible
  * observations from each ActionNode.
  */
-class RobotObservation : public abt::DiscretizedPoint {    
+class RobotObservation : public abt::DiscretizedPoint {
 
   public:
     /** Constructs a new observation. */
     RobotObservation(const oppt::ObservationSharedPtr &observation);
-    
+
     virtual ~RobotObservation() = default;
     _NO_COPY_OR_MOVE(RobotObservation);
 
@@ -46,16 +46,16 @@ class RobotObservation : public abt::DiscretizedPoint {
     bool equals(abt::Observation const &otherObs) const override;
     std::size_t hash() const override;
     void print(std::ostream &os) const override;
-    
+
     virtual void serialize(std::ostream &os, const std::string prefix="") const override;
 
     long getBinNumber() const override;
-    
+
     oppt::ObservationSharedPtr getOpptObservation() const;
-    
+
   private:
     oppt::ObservationSharedPtr observation_;
-  
+
 };
 } /* namespace manipulator */
 

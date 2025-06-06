@@ -4,7 +4,7 @@
 
 
 dReal _dDot (const dReal *a, const dReal *b, int n)
-{  
+{
   dReal p0,q0,m0,p1,q1,m1,sum;
   sum = 0;
   n -= 2;
@@ -36,4 +36,3 @@ dReal dDot (const dReal *a, const dReal *b, int n)
 {
   return _dDot (a, b, n);
 }
-

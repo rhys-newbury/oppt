@@ -67,4 +67,3 @@ HPoint& HPoint::operator*=(const Matrix4x4& mat)
 
 	return	*this;
 }
-

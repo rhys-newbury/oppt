@@ -2,7 +2,7 @@
 #define GIM_VECTOR_H_INCLUDED
 
 /*! \file gim_geometry.h
-\author Francisco León
+\author Francisco Leï¿½n
 */
 /*
 -----------------------------------------------------------------------------
@@ -921,7 +921,7 @@ Last column is added as the position
 /** inverse transpose of matrix times vector
  *
  * This macro computes inverse transpose of matrix m,
- * and multiplies vector v into it, to yeild vector p
+ * and multiplies vector v into it, to yield vector p
  *
  * DANGER !!! Do Not use this on normal vectors!!!
  * It will leave normals the wrong length !!!
@@ -948,7 +948,7 @@ Last column is added as the position
  * and then renormalize the vector
  *
  * This macro computes inverse transpose of matrix m,
- * and multiplies vector v into it, to yeild vector p
+ * and multiplies vector v into it, to yield vector p
  * Vector p is then normalized.
  */
 #define NORM_XFORM_2X2(p,m,v)					\
@@ -973,7 +973,7 @@ Last column is added as the position
 
 /** outer product of vector times vector transpose
  *
- * The outer product of vector v and vector transpose t yeilds
+ * The outer product of vector v and vector transpose t yields
  * dyadic matrix m.
  */
 #define OUTER_PRODUCT_2X2(m,v,t)				\
@@ -988,7 +988,7 @@ Last column is added as the position
 
 /** outer product of vector times vector transpose
  *
- * The outer product of vector v and vector transpose t yeilds
+ * The outer product of vector v and vector transpose t yields
  * dyadic matrix m.
  */
 #define OUTER_PRODUCT_3X3(m,v,t)				\
@@ -1009,7 +1009,7 @@ Last column is added as the position
 
 /** outer product of vector times vector transpose
  *
- * The outer product of vector v and vector transpose t yeilds
+ * The outer product of vector v and vector transpose t yields
  * dyadic matrix m.
  */
 #define OUTER_PRODUCT_4X4(m,v,t)				\
@@ -1038,7 +1038,7 @@ Last column is added as the position
 
 /** outer product of vector times vector transpose
  *
- * The outer product of vector v and vector transpose t yeilds
+ * The outer product of vector v and vector transpose t yields
  * dyadic matrix m.
  */
 #define ACCUM_OUTER_PRODUCT_2X2(m,v,t)				\
@@ -1053,7 +1053,7 @@ Last column is added as the position
 
 /** outer product of vector times vector transpose
  *
- * The outer product of vector v and vector transpose t yeilds
+ * The outer product of vector v and vector transpose t yields
  * dyadic matrix m.
  */
 #define ACCUM_OUTER_PRODUCT_3X3(m,v,t)				\
@@ -1074,7 +1074,7 @@ Last column is added as the position
 
 /** outer product of vector times vector transpose
  *
- * The outer product of vector v and vector transpose t yeilds
+ * The outer product of vector v and vector transpose t yields
  * dyadic matrix m.
  */
 #define ACCUM_OUTER_PRODUCT_4X4(m,v,t)				\
@@ -1476,7 +1476,7 @@ Last column is added as the position
 \param vorigin A vec3f with the origin of the ray
 \param vdir A vec3f with the direction of the ray
 \param tparam Output parameter
-\param tmax Max lenght of the ray
+\param tmax Max length of the ray
 \param is_intersected 1 if the ray collides the box, else false
 
 */
@@ -1760,7 +1760,7 @@ intersection_type must have the following values
   \param p2 Plane 2
   \param p Contains the origin of the ray upon returning if planes intersect
   \param d Contains the direction of the ray upon returning if planes intersect
-  \param dointersect 1 if the planes intersect, 0 if paralell.
+  \param dointersect 1 if the planes intersect, 0 if parallel.
 
 */
 #define INTERSECT_PLANES(p1,p2,p,d,dointersect) \

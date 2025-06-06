@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #include "ChangesParser.hpp"
@@ -41,7 +41,7 @@ void ChangesParser::parseChanges(const std::string& changesFile,
         infile >> output;
         if (output.find("add") != std::string::npos) {
             std::string sdfString = "";
-            if (parseAddBody(infile, sdfString)) {		
+            if (parseAddBody(infile, sdfString)) {
                 auto addBodyChange = std::make_shared<BodyAddedChangeSDF>(sdfString, true);
                 changes.at(t).push_back(addBodyChange);
             }
@@ -115,15 +115,15 @@ bool ChangesParser::parseAddBody(std::ifstream& ifstream, std::string& sdfString
 
     if (output.find("<sdf") != std::string::npos) {
         // Parse an sdf string
-	sdfString = output + " ";        
+	sdfString = output + " ";
 	while (output.find("</sdf>") == std::string::npos) {
 	    ifstream >> output;
-	    sdfString += output + " ";	    
-	}	
-	
+	    sdfString += output + " ";
+	}
+
         return true;
     }
-    
+
     if (!resources::FileExists(output)) {
         WARNING("File '" + output + "' doesn't exist. Ignoring change");
         return false;

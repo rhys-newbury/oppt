@@ -106,15 +106,15 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 {
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)paoDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicord32 aoNewValue = --(*paoDestination);
-	
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	atomicord32 aoResult = aoNewValue;
 	return aoResult;
 }
@@ -124,17 +124,17 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 {
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)paoDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicord32 aoOldValue = *paoDestination;
 
 	*paoDestination = aoExchange;
-	
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	atomicord32 aoResult = aoOldValue;
 	return aoResult;
 }
@@ -143,17 +143,17 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 {
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)paoDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicord32 aoOldValue = *paoDestination;
 
 	*paoDestination += aoAddend;
-	
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	atomicord32 aoResult = aoOldValue;
 	return aoResult;
 }
@@ -164,10 +164,10 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)paoDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicord32 aoOldValue = *paoDestination;
 
 	if (aoOldValue == aoComparand)
@@ -176,10 +176,10 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 
 		bResult = true;
 	}
-	
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	return bResult;
 }
 
@@ -188,17 +188,17 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 {
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)paoDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicord32 aoOldValue = *paoDestination;
 
 	*paoDestination &= aoBitMask;
-	
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	atomicord32 aoResult = aoOldValue;
 	return aoResult;
 }
@@ -207,17 +207,17 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 {
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)paoDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicord32 aoOldValue = *paoDestination;
-	
+
 	*paoDestination |= aoBitMask;
-	
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	atomicord32 aoResult = aoOldValue;
 	return aoResult;
 }
@@ -226,17 +226,17 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 {
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)paoDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicord32 aoOldValue = *paoDestination;
-	
+
 	*paoDestination ^= aoBitMask;
-	
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	atomicord32 aoResult = aoOldValue;
 	return aoResult;
 }
@@ -252,17 +252,17 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 {
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)papDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicptr apOldValue = *papDestination;
-	
+
 	*papDestination = apExchange;
-	
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	atomicptr apResult = apOldValue;
 	return apResult;
 }
@@ -273,22 +273,22 @@ static inline unsigned int DeriveAtomicMutexIndex(void *pv_Destination)
 
 	const unsigned int uiMutexIndex = DeriveAtomicMutexIndex((void *)papDestination);
 	pthread_mutex_t *ptmMutexToBeUsed = g_apmAtomicMutexes + uiMutexIndex;
-	
+
 	int iLockResult = pthread_mutex_lock(ptmMutexToBeUsed);
 	OU_CHECK(iLockResult == EOK);
-	
+
 	const atomicptr apOldValue = *papDestination;
-	
+
 	if (apOldValue == apComparand)
 	{
 		*papDestination = apExchange;
 
 		bResult = true;
 	}
-		
+
 	int iUnlockResult = pthread_mutex_unlock(ptmMutexToBeUsed);
 	OU_CHECK(iUnlockResult == EOK);
-	
+
 	return bResult;
 }
 
@@ -316,7 +316,7 @@ static bool CreateAtomicMutexesWithAttributes(pthread_mutexattr_t *pmaMutexAttri
 	for (; nMutexIndex != nMutexCount; ++nMutexIndex)
 	{
 		int iMutexInitResult = pthread_mutex_init(g_apmAtomicMutexes + nMutexIndex, pmaMutexAttributes);
-		
+
 		if (iMutexInitResult != EOK)
 		{
 			if (nMutexIndex != 0)
@@ -337,9 +337,9 @@ static bool CreateAtomicMutexes()
 	bool bResult = false;
 
 	pthread_mutexattr_t maMutexAttributes;
-	
+
 	int iAttrInitResult = pthread_mutexattr_init(&maMutexAttributes);
-	
+
 	if (iAttrInitResult == EOK)
 	{
 		bResult = CreateAtomicMutexesWithAttributes(&maMutexAttributes);
@@ -347,7 +347,7 @@ static bool CreateAtomicMutexes()
 		int iAttrDestroyResult = pthread_mutexattr_destroy(&maMutexAttributes);
 		OU_VERIFY(iAttrDestroyResult == EOK); // Ignore error
 	}
-	
+
 	return bResult;
 }
 
@@ -355,7 +355,7 @@ static bool CreateAtomicMutexes()
 static bool InitializeAtomicAPIValidated()
 {
 	bool bResult = false;
-	
+
 	do
 	{
 		if (!CreateAtomicMutexes())
@@ -366,7 +366,7 @@ static bool InitializeAtomicAPIValidated()
 		bResult = true;
 	}
 	while (false);
-	
+
 	return bResult;
 }
 
@@ -381,7 +381,7 @@ static void FinalizeAtomicAPIValidated()
 	OU_ASSERT(g_uiAtomicAPIInitializationCount != 0U - 1U);
 
 	bool bResult = false;
-	
+
 	do
 	{
 		if (g_uiAtomicAPIInitializationCount == 0) // Initialization/finalization must be called from main thread
@@ -391,7 +391,7 @@ static void FinalizeAtomicAPIValidated()
 				break;
 			}
 		}
-	
+
 		++g_uiAtomicAPIInitializationCount;
 
 		bResult = true;
@@ -434,4 +434,3 @@ static void FinalizeAtomicAPIValidated()
 
 
 END_NAMESPACE_OU()
-

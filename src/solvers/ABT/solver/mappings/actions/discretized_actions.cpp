@@ -173,7 +173,7 @@ bool DiscretizedActionMapEntry::update(long deltaNVisits, FloatType deltaTotalQ)
     }
 
     if (!std::isfinite(deltaTotalQ)) {
-        debug::show_message("ERROR: Non-finite delta value!");        
+        debug::show_message("ERROR: Non-finite delta value!");
     }
 
     if (deltaNVisits > 0 && !isLegal_) {
@@ -268,8 +268,8 @@ void DiscretizedActionTextSerializer::saveActionMapping(
                     std::make_pair(entry.meanQValue_, entry.binNumber_), &entry);
         }
     }
-    if (visitedCount != discMap.getNumberOfVisitedEntries()) {    
-        debug::show_message("ERROR: incorrect number of visited entries!");        
+    if (visitedCount != discMap.getNumberOfVisitedEntries()) {
+        debug::show_message("ERROR: incorrect number of visited entries!");
     }
 
     for (auto it = entriesByValue.rbegin(); it != entriesByValue.rend(); it++) {
@@ -376,6 +376,3 @@ void DiscretizedActionTextSerializer::loadActionMapping(DiscretizedActionMap &di
 }
 
 } /* namespace abt */
-
-
-

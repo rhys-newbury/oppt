@@ -23,4 +23,3 @@ void dSolveLCP_bullet_lemke(int _m, dReal *_A, dReal *_x, dReal *_b,
   dReal *_lo, dReal *_hi);
 #endif
 #endif
-

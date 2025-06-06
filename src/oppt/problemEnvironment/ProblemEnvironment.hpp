@@ -292,7 +292,7 @@ public:
             return 2;
         }
     }
-    
+
     template<class SolverType, class OptionsType>
     int setup(int argc, char const* argv[]) {
         solver_ = std::make_unique<SolverType>();
@@ -943,7 +943,7 @@ private:
             solver_->stepFinished(currentStep);
             onStepFinishedInternalFn_(run, currentStep);
 
-            // Update the viewer            
+            // Update the viewer
             if (viewer && viewer->viewerRunning())
                 updateViewer(currentState, beliefParticles);
 
@@ -954,7 +954,7 @@ private:
                 break;
         }
 
-        FloatType totalTimeTaken = (oppt::clock_ms() - t0) / 1000.0;        
+        FloatType totalTimeTaken = (oppt::clock_ms() - t0) / 1000.0;
 
         stepResult.serialize(os);
 

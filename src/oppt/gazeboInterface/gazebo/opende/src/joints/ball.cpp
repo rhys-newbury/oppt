@@ -39,7 +39,7 @@ dxJointBall::dxJointBall( dxWorld *w ) :
 }
 
 
-void 
+void
 dxJointBall::getSureMaxInfo( SureMaxInfo* info )
 {
     info->max_m = 3;
@@ -187,6 +187,3 @@ dxJointBall::setRelativeValues()
     dJointGetBallAnchor(this, anchor);
     setAnchors( this, anchor[0], anchor[1], anchor[2], anchor1, anchor2 );
 }
-
-
-

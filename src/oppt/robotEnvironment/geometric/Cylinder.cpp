@@ -25,19 +25,19 @@ Cylinder::Cylinder(const std::string& name,
                    const Pose& worldPose):
     Geometry(CYLINDER, name, worldPose),
     radius_(radius),
-    length_(length) {    
-    
+    length_(length) {
+
 }
 
 GeometryUniquePtr Cylinder::shallowCopy() const {
     std::string name = name_;
     FloatType radius = radius_;
-    FloatType length = length_;    
-    Pose worldPose(worldPose_);    
+    FloatType length = length_;
+    Pose worldPose(worldPose_);
     GeometryUniquePtr copiedGeometry(new Cylinder(name, radius, length, worldPose));
     copiedGeometry->setColor(getColor());
     copiedGeometry->parentBody_ = parentBody_;
-    return std::move(copiedGeometry);    
+    return std::move(copiedGeometry);
 }
 
 FloatType Cylinder::getRadius() const {

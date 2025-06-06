@@ -68,12 +68,12 @@ int dCollideRayCylinder (dxGeom *o1, dxGeom *o2, int flags,
 
 // Cylinder - Box/Sphere by (C) CroTeam
 // Ported by Nguyen Binh
-int dCollideCylinderBox(dxGeom *o1, dxGeom *o2, 
+int dCollideCylinderBox(dxGeom *o1, dxGeom *o2,
                         int flags, dContactGeom *contact, int skip);
-int dCollideCylinderSphere(dxGeom *gCylinder, dxGeom *gSphere, 
-                           int flags, dContactGeom *contact, int skip); 
-int dCollideCylinderPlane(dxGeom *gCylinder, dxGeom *gPlane, 
-                           int flags, dContactGeom *contact, int skip); 
+int dCollideCylinderSphere(dxGeom *gCylinder, dxGeom *gSphere,
+                           int flags, dContactGeom *contact, int skip);
+int dCollideCylinderPlane(dxGeom *gCylinder, dxGeom *gPlane,
+                           int flags, dContactGeom *contact, int skip);
 
 //--> Convex Collision
 int dCollideConvexPlane (dxGeom *o1, dxGeom *o2, int flags,
@@ -84,14 +84,14 @@ int dCollideConvexBox (dxGeom *o1, dxGeom *o2, int flags,
 		       dContactGeom *contact, int skip);
 int dCollideConvexCapsule (dxGeom *o1, dxGeom *o2,
 			   int flags, dContactGeom *contact, int skip);
-int dCollideConvexConvex (dxGeom *o1, dxGeom *o2, int flags, 
+int dCollideConvexConvex (dxGeom *o1, dxGeom *o2, int flags,
 			  dContactGeom *contact, int skip);
-int dCollideRayConvex (dxGeom *o1, dxGeom *o2, int flags, 
+int dCollideRayConvex (dxGeom *o1, dxGeom *o2, int flags,
 		       dContactGeom *contact, int skip);
 //<-- Convex Collision
 
 // dHeightfield
-int dCollideHeightfield( dxGeom *o1, dxGeom *o2, 
+int dCollideHeightfield( dxGeom *o1, dxGeom *o2,
 						 int flags, dContactGeom *contact, int skip );
 
 //****************************************************************************
@@ -138,12 +138,12 @@ struct dxRay : public dxGeom {
   void computeAABB();
 };
 
-struct dxConvex : public dxGeom 
-{  
+struct dxConvex : public dxGeom
+{
   dReal *planes; /*!< An array of planes in the form:
 		   normal X, normal Y, normal Z,Distance
 		 */
-  dReal *points; /*!< An array of points X,Y,Z */  
+  dReal *points; /*!< An array of points X,Y,Z */
   unsigned int *polygons; /*! An array of indices to the points of each polygon, it should be the number of vertices followed by that amount of indices to "points" in counter clockwise order*/
   unsigned int planecount; /*!< Amount of planes in planes */
   unsigned int pointcount;/*!< Amount of points in points */
@@ -178,13 +178,13 @@ struct dxConvex : public dxGeom
 		dMultiply1_331 (rdir,final_posr->R,dir);
 		dReal max = dCalcVectorDot3(points,rdir);
 		dReal tmp;
-		for (unsigned int i = 1; i < pointcount; ++i) 
+		for (unsigned int i = 1; i < pointcount; ++i)
 		{
 			tmp = dCalcVectorDot3(points+(i*3),rdir);
-			if (tmp > max) 
+			if (tmp > max)
 			{
 				index=i;
-				max = tmp; 
+				max = tmp;
 			}
 		}
 		return index;
@@ -215,7 +215,7 @@ struct dxConvex : public dxGeom
 	  // index of extreme vertex corresponding to this polygon
 	  int vertex;
   };
-  // This is for extrem feature query and not the usual level BSP structure (that comes later)
+  // This is for extreme feature query and not the usual level BSP structure (that comes later)
   struct BSPNode
   {
 	// Normal index (interior node), vertex index (leaf node)

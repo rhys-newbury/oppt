@@ -32,7 +32,7 @@ public:
 
     virtual ~DefaultInitialBeliefPlugin() = default;
 
-    virtual bool load(const std::string& optionsFile) override {        
+    virtual bool load(const std::string& optionsFile) override {
         parseOptions_<DefaultInitialBeliefOptions>(optionsFile);
         auto options = static_cast<DefaultInitialBeliefOptions*>(options_.get());
         unsigned int numDimensions = robotEnvironment_->getRobot()->getStateSpace()->getNumDimensions();
@@ -54,7 +54,7 @@ public:
         // Sample an initial state vector
         VectorFloat initialStateVec = toStdVec<FloatType>(uniformDistribution_->sample(1).col(0));
 
-        // First construct an intial world state based in the intial state vector
+        // First construct an initial world state based in the initial state vector
         robotEnvironment_->getGazeboInterface()->makeInitialWorldState(initialStateVec);
 
         // Then get the initial world state

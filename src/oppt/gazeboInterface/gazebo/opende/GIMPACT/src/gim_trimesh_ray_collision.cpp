@@ -62,12 +62,12 @@ int gim_trimesh_ray_collision(GIM_TRIMESH * trimesh,vec3f origin,vec3f dir, GREA
 	for(unsigned int i=0;i<collision_result.m_size;i++)
 	{
 		gim_trimesh_get_triangle_data(trimesh,boxesresult[i],&tridata);
-        
+
 		// flip plane for correct result in ODE
 		// for more info: martijn@bytehazard.com
 		vec4f flippedPlane;
 		VEC_SCALE_4(flippedPlane, -1.0f, tridata.m_planes.m_planes[0]);
-        
+
 		RAY_TRIANGLE_INTERSECTION(origin,dir,tridata.m_vertices[0],tridata.m_vertices[1],tridata.m_vertices[2],flippedPlane,pout,u,v,tparam,tmax,does_intersect);
 		if(does_intersect)
 		{

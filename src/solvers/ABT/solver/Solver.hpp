@@ -64,7 +64,7 @@ class StatePool;
  *
  * The core functionality of the Solver lies in three methods:
  * - improvePolicy(), which incrementally improves the policy stored within the solver by
- *      generating new history sequences starting from a specific belief node. * 
+ *      generating new history sequences starting from a specific belief node. *
  *      and the action and observation taken to get there.
  * - applyChanges(), which updates the histories to account for changes in the model, and also
  *      updates the tree with the effects of those changes so that the policy will remain valid.
@@ -121,7 +121,7 @@ public:
      * - timeout is the maximum allowed time in milliseconds (-1 => default, 0 => no timeout)
      */
     long improvePolicy(BeliefNode* startNode = nullptr,
-                       long numberOfHistories = -1, long maximumDepth = -1, FloatType timeout = -1);    
+                       long numberOfHistories = -1, long maximumDepth = -1, FloatType timeout = -1);
 
     /** Resets the tree, so that the given belief will be the new root. */
     void resetTree(BeliefNode* newRoot);
@@ -170,7 +170,7 @@ public:
     /** Updates the approximate q-values of actions in the belief tree based on this history
      * sequence.
      *  - Use sgn=-1 to do a negative backup
-     *  - Use firstEntryId > 0 to backup only part of the seqeunce instead of all of it.
+     *  - Use firstEntryId > 0 to backup only part of the sequence instead of all of it.
      *  - Use propagateQChanges = false to defer backpropagation and only use the immediate values
      *   when updating.
      *   This is useful for batched backups as it saves on the cost of recalculating the estimate
@@ -235,7 +235,7 @@ protected:
     /* ------------------ Private data fields ------------------- */
     /** The POMDP model */
     std::unique_ptr<Model> model_;
-    /** The configuration setings. */
+    /** The configuration settings. */
     oppt::Options const* options_;
 
     /** The serializer to be used with this solver. */

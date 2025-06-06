@@ -39,7 +39,7 @@ RUN apt remove -y ros-noetic-fcl libfcl-dev && \
 
 # Install spatialindex
 RUN wget http://download.osgeo.org/libspatialindex/spatialindex-src-1.8.5.tar.gz && \
-    tar zxfv spatialindex-src-1.8.5.tar.gz && \ 
+    tar zxfv spatialindex-src-1.8.5.tar.gz && \
     cd spatialindex-src-1.8.5 && \
     mkdir build && cd build && \
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local .. && \
@@ -54,4 +54,4 @@ COPY . .
 #     mkdir build && cd build && \
 #     cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=. .. && \
 #     make -j $(($(nproc) - 1)) && make install && \
-#     echo 'source /app/oppt/src/build/share/oppt/setup.sh' >> ~/.bashrc 
+#     echo 'source /app/oppt/src/build/share/oppt/setup.sh' >> ~/.bashrc

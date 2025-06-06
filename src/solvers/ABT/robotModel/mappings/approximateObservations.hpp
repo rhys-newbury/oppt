@@ -52,7 +52,7 @@ public:
 
 private:
     void setTotalVisitCount(long totalVisitCount);
-    
+
     void addToEntries(std::unique_ptr<abt::ApproximateObservationMapEntry> entry);
 
 };
@@ -63,16 +63,16 @@ public:
     friend class ApproximateABTObservationMap;
     friend class shared::RobotSerializer;
     virtual ~ApproximateABTObservationMapEntry();
-    
+
 private:
     void setMapping(ApproximateABTObservationMap *mapping);
-    
+
     void setObservation(std::unique_ptr<abt::Observation> observation);
-    
-    void setVisitCount(long &visitCount);        
-        
+
+    void setVisitCount(long &visitCount);
+
     void setChildNode(std::unique_ptr<abt::BeliefNode> child);
-    
+
 };
 
 }

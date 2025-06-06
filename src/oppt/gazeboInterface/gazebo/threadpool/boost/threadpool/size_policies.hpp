@@ -1,7 +1,7 @@
 /*! \file
 * \brief Size policies.
 *
-* This file contains size policies for thread_pool. A size 
+* This file contains size policies for thread_pool. A size
 * policy controls the number of worker threads in the pool.
 *
 * Copyright (c) 2005-2007 Philipp Henkel
@@ -27,7 +27,7 @@ namespace boost { namespace threadpool
   /*! \brief SizePolicyController which provides no functionality.
   *
   * \param Pool The pool's core type.
-  */ 
+  */
   template<typename Pool>
   struct empty_controller
   {
@@ -38,7 +38,7 @@ namespace boost { namespace threadpool
   /*! \brief SizePolicyController which allows resizing.
   *
   * \param Pool The pool's core type.
-  */ 
+  */
   template< typename Pool >
   class resize_controller
   {
@@ -63,7 +63,7 @@ namespace boost { namespace threadpool
   /*! \brief SizePolicy which preserves the thread count.
   *
   * \param Pool The pool's core type.
-  */ 
+  */
   template<typename Pool>
   class static_size
   {

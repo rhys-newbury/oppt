@@ -78,4 +78,3 @@ void SensorInterface::getCombinedObservation(VectorFloat& observation)
 
 
 }
-

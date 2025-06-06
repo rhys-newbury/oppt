@@ -146,7 +146,7 @@ rows/columns and manipulate C.
 // rows will be swapped by exchanging row pointers. otherwise the data will
 // be copied.
 
-static void swapRowsAndCols (ATYPE A, int n, int i1, int i2, int /*nskip*/, 
+static void swapRowsAndCols (ATYPE A, int n, int i1, int i2, int /*nskip*/,
   int do_fast_row_swaps)
 {
   //dAASSERT (A && n > 0 && i1 >= 0 && i2 >= 0 && i1 < n && i2 < n &&
@@ -224,21 +224,21 @@ static void swapProblem (ATYPE A, dReal *x, dReal *b, dReal *w, dReal *lo,
   bool tmpb;
   dIASSERT (n>0 && i1 >=0 && i2 >= 0 && i1 < n && i2 < n && nskip >= n && i1 <= i2);
   if (i1==i2) return;
-  
+
   swapRowsAndCols (A,n,i1,i2,nskip,do_fast_row_swaps);
-  
+
   tmpr = x[i1];
   x[i1] = x[i2];
   x[i2] = tmpr;
-  
+
   tmpr = b[i1];
   b[i1] = b[i2];
   b[i2] = tmpr;
-  
+
   tmpr = w[i1];
   w[i1] = w[i2];
   w[i2] = tmpr;
-  
+
   tmpr = lo[i1];
   lo[i1] = lo[i2];
   lo[i2] = tmpr;
@@ -444,7 +444,7 @@ dLCP::dLCP (int _n, int _nskip, int _nub, dReal *_Adata, dReal *_x, dReal *_b, d
         i1 = dRandInt(n-nub)+nub;
         i2 = dRandInt(n-nub)+nub;
       }
-      while (i1 > i2); 
+      while (i1 > i2);
       //printf ("--> %d %d\n",i1,i2);
       swapProblem (m_A,m_x,m_b,m_w,m_lo,m_hi,m_p,m_state,m_findex,n,i1,i2,m_nskip,0);
     }
@@ -613,7 +613,7 @@ void dLCP::transfer_i_from_N_to_C (int i)
   // @@@ TO DO LATER
   // if we just finish here then we'll go back and re-solve for
   // delta_x. but actually we can be more efficient and incrementally
-  // update delta_x here. but if we do this, we wont have ell and Dell
+  // update delta_x here. but if we do this, we won't have ell and Dell
   // to use in updating the factorization later.
 
 # ifdef DEBUG_LCP
@@ -867,7 +867,7 @@ void dSolveLCP (dxWorldProcessContext *context, int n, dReal *A, dReal *x, dReal
     // if we've hit the first friction index, we have to compute the lo and
     // hi values based on the values of x already computed. we have been
     // permuting the indexes, so the values stored in the findex vector are
-    // no longer valid. thus we have to temporarily unpermute the x vector. 
+    // no longer valid. thus we have to temporarily unpermute the x vector.
     // for the purposes of this computation, 0*infinity = 0 ... so if the
     // contact constraint's normal force is 0, there should be no tangential
     // force applied.
@@ -949,7 +949,7 @@ void dSolveLCP (dxWorldProcessContext *context, int n, dReal *A, dReal *x, dReal
         // compute: delta_x(C) = -dir*A(C,C)\A(C,i)
         lcp.solve1 (delta_x,i,dir);
 
-        // note that delta_x[i] = dirf, but we wont bother to set it
+        // note that delta_x[i] = dirf, but we won't bother to set it
 
         // compute: delta_w = A*delta_x ... note we only care about
         // delta_w(N) and delta_w(i), the rest is ignored
@@ -1166,12 +1166,12 @@ extern "C" ODE_API int dTestSolveLCP()
   dReal *w = context->AllocateArray<dReal> (n);
   dReal *lo = context->AllocateArray<dReal> (n);
   dReal *hi = context->AllocateArray<dReal> (n);
-  
+
   dReal *A2 = context->AllocateArray<dReal> (n*nskip);
   dReal *b2 = context->AllocateArray<dReal> (n);
   dReal *lo2 = context->AllocateArray<dReal> (n);
   dReal *hi2 = context->AllocateArray<dReal> (n);
-  
+
   dReal *tmp1 = context->AllocateArray<dReal> (n);
   dReal *tmp2 = context->AllocateArray<dReal> (n);
 
@@ -1267,7 +1267,7 @@ extern "C" ODE_API int dTestSolveLCP()
       // pacifier
       printf ("passed: NL=%3d NH=%3d C=%3d   ",n1,n2,n3);
       printf ("time=%10.3f ms  avg=%10.4f\n",time * 1000.0,average);
-    
+
     } END_STATE_SAVE(context, saveInner);
   }
 

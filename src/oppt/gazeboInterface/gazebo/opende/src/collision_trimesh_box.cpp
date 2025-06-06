@@ -101,7 +101,7 @@ struct sTrimeshBoxColliderData
 
 	void SetupInitialContext(dxTriMesh *TriMesh, dxGeom *BoxGeom,
 		int Flags, dContactGeom* Contacts, int Stride);
-	int TestCollisionForSingleTriangle(int ctContacts0, int Triint, 
+	int TestCollisionForSingleTriangle(int ctContacts0, int Triint,
 		dVector3 dv[3], bool &bOutFinishSearching);
 
 	bool _cldTestNormal(dReal fp0, dReal fR, dVector3 vNormal, int iAxis);
@@ -215,7 +215,7 @@ bool sTrimeshBoxColliderData::_cldTestFace(dReal fp0, dReal fp1, dReal fp2, dRea
   dReal fDepthMin = fR - fMin;
   dReal fDepthMax = fMax + fR;
 
-  // if we dont't have overlapping interval
+  // if we don't have overlapping interval
   if ( fDepthMin < 0 || fDepthMax < 0 ) {
     // do nothing
     return false;
@@ -282,11 +282,11 @@ bool sTrimeshBoxColliderData::_cldTestEdge(dReal fp0, dReal fp1, dReal fR, dReal
     fMax = fp0;
   }
 
-  // check if we overlapp
+  // check if we overlap
   dReal fDepthMin = fR - fMin;
   dReal fDepthMax = fMax + fR;
 
-  // if we don't overlapp
+  // if we don't overlap
   if ( fDepthMin < 0 || fDepthMax < 0 ) {
     // do nothing
     return false;
@@ -403,8 +403,8 @@ bool sTrimeshBoxColliderData::_cldTestSeparatingAxes(const dVector3 &v0, const d
   // calculate length of face normal
   dReal fNLen = LENGTHOF(m_vN);
 
-  // Even though all triangles might be initially valid, 
-  // a triangle may degenerate into a segment after applying 
+  // Even though all triangles might be initially valid,
+  // a triangle may degenerate into a segment after applying
   // space transformation.
   if (_dequal(fNLen, 0.0))
   {
@@ -833,7 +833,7 @@ void sTrimeshBoxColliderData::_cldClipping(const dVector3 &v0, const dVector3 &v
         avPoints[3][x] = vCenter[x] + (m_vBoxHalfSize[iB1] * vRotCol[x]) + (m_vBoxHalfSize[iB2] * vRotCol2[x]);
     }
 
-    // clip Box face with 4 planes of triangle (1 face plane, 3 egde planes)
+    // clip Box face with 4 planes of triangle (1 face plane, 3 edge planes)
     dVector3 avTempArray1[9];
     dVector3 avTempArray2[9];
     dVector4 plPlane;
@@ -907,7 +907,7 @@ void sTrimeshBoxColliderData::_cldClipping(const dVector3 &v0, const dVector3 &v
 
 #if 0 //#ifdef ORIG -- if to use conditional define, GenerateContact must be moved into #else
       dContactGeom* Contact = SAFECONTACT(m_iFlags, m_ContactGeoms, m_ctContacts, m_iStride);
-	  
+
       Contact->depth = -fTempDepth;
       SET(Contact->normal,m_vBestNormal);
       SET(Contact->pos,vPntTmp);
@@ -1115,7 +1115,7 @@ void sTrimeshBoxColliderData::SetupInitialContext(dxTriMesh *TriMesh, dxGeom *Bo
   m_vBestNormal[2]=0;
 }
 
-int sTrimeshBoxColliderData::TestCollisionForSingleTriangle(int ctContacts0, int Triint, 
+int sTrimeshBoxColliderData::TestCollisionForSingleTriangle(int ctContacts0, int Triint,
 	dVector3 dv[3], bool &bOutFinishSearching)
 {
 	// test this triangle
@@ -1135,13 +1135,13 @@ int sTrimeshBoxColliderData::TestCollisionForSingleTriangle(int ctContacts0, int
 	See also comments in GenerateContact()
 	*/
 	bOutFinishSearching = ((m_ctContacts | CONTACTS_UNIMPORTANT) == (m_iFlags & (NUMC_MASK | CONTACTS_UNIMPORTANT)));
-	
+
 	return ctContacts0;
 }
 
 // OPCODE version of box to mesh collider
 #if dTRIMESH_OPCODE
-static void dQueryBTLPotentialCollisionTriangles(OBBCollider &Collider, 
+static void dQueryBTLPotentialCollisionTriangles(OBBCollider &Collider,
   const sTrimeshBoxColliderData &cData, dxTriMesh *TriMesh, dxGeom *BoxGeom,
   OBBCache &BoxCache)
 {
@@ -1155,7 +1155,7 @@ static void dQueryBTLPotentialCollisionTriangles(OBBCollider &Collider,
   Box.mCenter.y = vPosBox[1];
   Box.mCenter.z = vPosBox[2];
 
-  // It is a potential issue to explicitly cast to float 
+  // It is a potential issue to explicitly cast to float
   // if custom width floating point type is introduced in OPCODE.
   // It is necessary to make a typedef and cast to it
   // (e.g. typedef float opc_float;)
@@ -1284,7 +1284,7 @@ int dCollideBTL(dxGeom* g1, dxGeom* BoxGeom, int Flags, dContactGeom* Contacts, 
   dIASSERT (BoxGeom->type == dBoxClass);
   dIASSERT ((Flags & NUMC_MASK) >= 1);
 
-  
+
   dxTriMesh* TriMesh = (dxTriMesh*)g1;
 
   g1 -> recomputeAABB();
@@ -1324,7 +1324,7 @@ int dCollideBTL(dxGeom* g1, dxGeom* BoxGeom, int Flags, dContactGeom* Contacts, 
 	gim_trimesh_locks_work_data(ptrimesh);
 
     int ctContacts0 = 0;
-	
+
 	for(unsigned int i=0;i<collision_result.m_size;i++)
 	{
 		dVector3 dv[3];
@@ -1363,18 +1363,18 @@ GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,
 {
 	/*
 		NOTE by Oleh_Derevenko:
-		This function is called after maximal number of contacts has already been 
+		This function is called after maximal number of contacts has already been
 		collected because it has a side effect of replacing penetration depth of
 		existing contact with larger penetration depth of another matching normal contact.
 		If this logic is not necessary any more, you can bail out on reach of contact
-		number maximum immediately in dCollideBTL(). You will also need to correct 
+		number maximum immediately in dCollideBTL(). You will also need to correct
 		conditional statements after invocations of GenerateContact() in _cldClipping().
 	*/
-	do 
+	do
 	{
 		dContactGeom* Contact;
 		dVector3 diff;
-		
+
 		if (!(in_Flags & CONTACTS_UNIMPORTANT))
 		{
 			bool duplicate = false;
@@ -1398,10 +1398,10 @@ GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,
 							There may be a case when two normals are close to each other but not duplicate
 							while third normal is detected to be duplicate for both of them.
 							This is the only reason I can think of, there is no "break" statement.
-							Perhaps author considered it to be logical that the third normal would 
-							replace the depth in both of initial contacts. 
+							Perhaps author considered it to be logical that the third normal would
+							replace the depth in both of initial contacts.
 							However, I consider it a questionable practice which should not
-							be applied without deep understanding of underlaying physics.
+							be applied without deep understanding of underlying physics.
 							Even more, is this situation with close normal triplet acceptable at all?
 							Should not be two initial contacts reduced to one (replaced with the latter)?
 							If you know the answers for these questions, you may want to change this code.
@@ -1437,7 +1437,7 @@ GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,
 
 		Contact->g1 = in_g1;
 		Contact->g2 = in_g2;
-  
+
 		Contact->side1 = TriIndex;
 		Contact->side2 = -1;
 

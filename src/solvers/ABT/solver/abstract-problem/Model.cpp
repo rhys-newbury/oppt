@@ -57,7 +57,7 @@ oppt::Options const *Model::getOptions() const {
     return options_.get();
 }
 
-void Model::updateModel(StepResult &stepResult, 
+void Model::updateModel(StepResult &stepResult,
                         std::vector<State const *> &particles,
                         std::vector<std::vector<FloatType>> &particleColors) {
 

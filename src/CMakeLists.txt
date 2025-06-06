@@ -5,17 +5,21 @@ cmake_policy(SET CMP0012 NEW)
 
 # Default to RelWithDebInfo build if not specified
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE RelWithDebInfo)
+  set(CMAKE_BUILD_TYPE RelWithDebInfo)
 endif()
 
 string(TOUPPER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE)
-if(NOT CMAKE_BUILD_TYPE MATCHES RELWITHDEBINFO AND
-   NOT CMAKE_BUILD_TYPE MATCHES DEBUG AND
-   NOT CMAKE_BUILD_TYPE MATCHES RELEASE)
-    message(FATAL_ERROR "${CMAKE_BUILD_TYPE} is not a valid build type. Use Debug, Release, or RelWithDebInfo.")
+if(NOT CMAKE_BUILD_TYPE MATCHES RELWITHDEBINFO
+   AND NOT CMAKE_BUILD_TYPE MATCHES DEBUG
+   AND NOT CMAKE_BUILD_TYPE MATCHES RELEASE)
+  message(
+    FATAL_ERROR
+      "${CMAKE_BUILD_TYPE} is not a valid build type. Use Debug, Release, or RelWithDebInfo."
+  )
 endif()
 
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -DEIGEN_NO_DEBUG")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
+    "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -DEIGEN_NO_DEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DEIGEN_NO_DEBUG")
 
 # Build flags
@@ -37,15 +41,16 @@ set(OPPT_CMAKE_DIR ${ROOT_PATH}/../cmake)
 include(${OPPT_CMAKE_DIR}/SearchForStuff.cmake)
 
 if(GZ_GT_10)
-    set(REQUIRED_CXX_STANDARD 17)
+  set(REQUIRED_CXX_STANDARD 17)
 else()
-    set(REQUIRED_CXX_STANDARD 11)
+  set(REQUIRED_CXX_STANDARD 11)
 endif()
 
 # Include macro template
-configure_package_config_file("${OPPT_CMAKE_DIR}/opptMacros.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/opptMacros.cmake"
-    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/oppt")
+configure_package_config_file(
+  "${OPPT_CMAKE_DIR}/opptMacros.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/opptMacros.cmake"
+  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/oppt")
 
 include(${CMAKE_CURRENT_BINARY_DIR}/opptMacros.cmake)
 
@@ -64,13 +69,11 @@ include(${ROOT_PATH}/oppt/solver/CMakeLists.txt)
 include(${ROOT_PATH}/oppt/CMakeLists.txt)
 
 if(USE_RVIZ AND BUILD_VIEWER)
-    include(${ROOT_PATH}/oppt/viewerPublisher/CMakeLists.txt)
+  include(${ROOT_PATH}/oppt/viewerPublisher/CMakeLists.txt)
 endif()
 
 # Source and library setup
-set(COMMON_SRCS
-    ${THIRD_PARTY_SRC}
-    ${CMAKE_CURRENT_LIST_DIR}/oppt/global.cpp)
+set(COMMON_SRCS ${THIRD_PARTY_SRC} ${CMAKE_CURRENT_LIST_DIR}/oppt/global.cpp)
 
 set(OPPT_SRC
     ${COMMON_SRCS}
@@ -104,90 +107,88 @@ set(THIRD_PARTY_LIBS
 
 # OPPT shared library
 add_library(oppt SHARED ${OPPT_SRC})
-target_include_directories(oppt PUBLIC $<INSTALL_INTERFACE:include> ${oppt_INCLUDE_TARGETS})
+target_include_directories(oppt PUBLIC $<INSTALL_INTERFACE:include>
+                                       ${oppt_INCLUDE_TARGETS})
 target_link_libraries(oppt ${THIRD_PARTY_LIBS})
-set_target_properties(oppt PROPERTIES CXX_STANDARD ${REQUIRED_CXX_STANDARD} CXX_STANDARD_REQUIRED YES)
+set_target_properties(oppt PROPERTIES CXX_STANDARD ${REQUIRED_CXX_STANDARD}
+                                      CXX_STANDARD_REQUIRED YES)
 
-install(TARGETS oppt
-    EXPORT "opptTargets"
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(
+  TARGETS oppt
+  EXPORT "opptTargets"
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 # Plugins and solvers
 if(BUILD_PLUGINS)
-    message(STATUS "Compiling OPPT plugins")
-    add_subdirectory(${ROOT_PATH}/plugins/)
+  message(STATUS "Compiling OPPT plugins")
+  add_subdirectory(${ROOT_PATH}/plugins/)
 endif()
 
 if(BUILD_SOLVERS)
-    message(STATUS "Compiling solvers")
-    add_subdirectory(${ROOT_PATH}/solvers/)
+  message(STATUS "Compiling solvers")
+  add_subdirectory(${ROOT_PATH}/solvers/)
 endif()
 
 if(USE_RVIZ AND BUILD_VIEWER)
-    message(STATUS "Compiling OPPT viewer")
-    add_subdirectory(${ROOT_PATH}/viewer/)
+  message(STATUS "Compiling OPPT viewer")
+  add_subdirectory(${ROOT_PATH}/viewer/)
 endif()
 
 # Install OPPT configuration
-configure_package_config_file("${OPPT_CMAKE_DIR}/opptConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/opptConfig.cmake"
-    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/oppt"
-    PATH_VARS CMAKE_INSTALL_INCLUDEDIR)
+configure_package_config_file(
+  "${OPPT_CMAKE_DIR}/opptConfig.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/opptConfig.cmake"
+  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/oppt"
+  PATH_VARS CMAKE_INSTALL_INCLUDEDIR)
 
-install(EXPORT opptTargets
-    FILE "opptTargets.cmake"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/oppt")
+install(
+  EXPORT opptTargets
+  FILE "opptTargets.cmake"
+  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/oppt")
 
-install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/opptConfig.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/opptMacros.cmake"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/oppt")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/opptConfig.cmake"
+              "${CMAKE_CURRENT_BINARY_DIR}/opptMacros.cmake"
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/oppt")
 
-install(FILES ${ROOT_PATH}/../setup.sh DESTINATION ${CMAKE_INSTALL_DATADIR}/oppt/)
-install(DIRECTORY ${ROOT_PATH}/../models DESTINATION ${CMAKE_INSTALL_DATADIR}/oppt/)
+install(FILES ${ROOT_PATH}/../setup.sh
+        DESTINATION ${CMAKE_INSTALL_DATADIR}/oppt/)
+install(DIRECTORY ${ROOT_PATH}/../models
+        DESTINATION ${CMAKE_INSTALL_DATADIR}/oppt/)
 
 # Optional: Doxygen documentation
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
-    set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/../docs/Doxyfile.in)
-    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
-    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-    add_custom_target(doc
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Generating API documentation with Doxygen"
-        VERBATIM)
+  set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/../docs/Doxyfile.in)
+  set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+  configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+  add_custom_target(
+    doc
+    COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Generating API documentation with Doxygen"
+    VERBATIM)
 endif()
 
 # Python bindings
 include(${OPPT_CMAKE_DIR}/CPM.cmake)
 
-cpmaddpackage(
-     NAME pybind11
-     GITHUB_REPOSITORY pybind/pybind11
-     VERSION 2.12.0)
+cpmaddpackage(NAME pybind11 GITHUB_REPOSITORY pybind/pybind11 VERSION 2.12.0)
 
 pybind11_add_module(oppt_py bindings.cpp)
 
 target_include_directories(oppt_py PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(oppt_py
-    PUBLIC
-        oppt
-        abt_solver
-        ${GAZEBO_LIBRARIES}
-        ${THIRD_PARTY_LIBS}
-)
+target_link_libraries(oppt_py PUBLIC oppt abt_solver ${GAZEBO_LIBRARIES}
+                                     ${THIRD_PARTY_LIBS})
 
-target_link_options(oppt_py PRIVATE
-    "-Wl,--no-as-needed"
-    "-rdynamic"
-    "-Wl,--export-dynamic"
-)
+target_link_options(oppt_py PRIVATE "-Wl,--no-as-needed" "-rdynamic"
+                    "-Wl,--export-dynamic")
 
-set_target_properties(oppt_py PROPERTIES
-    ENABLE_EXPORTS ON
-    LINK_FLAGS "-rdynamic -Wl,--export-dynamic"
-)
+set_target_properties(
+  oppt_py PROPERTIES ENABLE_EXPORTS ON LINK_FLAGS
+                                       "-rdynamic -Wl,--export-dynamic")
 
-target_link_libraries(oppt_py PUBLIC oppt abt_solver ${GAZEBO_LIBRARIES} ${THIRD_PARTY_LIBS})
+target_link_libraries(oppt_py PUBLIC oppt abt_solver ${GAZEBO_LIBRARIES}
+                                     ${THIRD_PARTY_LIBS})
+
+install(TARGETS oppt_py LIBRARY DESTINATION ".")

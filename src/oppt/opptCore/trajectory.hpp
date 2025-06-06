@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #ifndef __OPPT_TRAJECTORY_HPP__
@@ -31,7 +31,7 @@ class Trajectory: public OpptUserData
 public:
     /** @brief Default constructor */
     Trajectory() {}
-    
+
     /** @brief Default destructor */
     virtual ~Trajectory() {}
 
@@ -60,7 +60,7 @@ public:
         copiedTrajectory->observationTrajectory = observationTrajectory;
         copiedTrajectory->durations = durations;
         return std::move(copiedTrajectory);
-    } 
+    }
 
     friend std::ostream& operator<< (std::ostream& out, const Trajectory& trajectory) {
         for (size_t i = 0; i != trajectory.stateTrajectory.size(); i++) {

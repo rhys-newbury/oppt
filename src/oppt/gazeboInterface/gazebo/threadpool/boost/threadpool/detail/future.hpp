@@ -1,7 +1,7 @@
 /*! \file
 * \brief TODO.
 *
-* TODO. 
+* TODO.
 *
 * Copyright (c) 2005-2007 Philipp Henkel
 *
@@ -29,10 +29,10 @@
 #include <boost/static_assert.hpp>
 #include <boost/type_traits.hpp>
 
-namespace boost { namespace threadpool { namespace detail 
+namespace boost { namespace threadpool { namespace detail
 {
 
-template<class Result> 
+template<class Result>
 class future_impl
 {
 public:
@@ -46,7 +46,7 @@ private:
     volatile future_result_type m_result;
 
     mutable mutex m_monitor;
-    mutable condition m_condition_ready;	
+    mutable condition m_condition_ready;
 
     volatile bool m_is_cancelled;
     volatile bool m_executing;
@@ -64,7 +64,7 @@ public:
 
   bool ready() const volatile
   {
-    return m_ready; 
+    return m_ready;
   }
 
   void wait() const volatile
@@ -102,7 +102,7 @@ public:
       throw_exception_( this );
     }
 */
- 
+
     return *(const_cast<const future_result_type*>(&m_result));
   }
 
@@ -195,7 +195,7 @@ public:
       m_future->set_execution_status(true);
       if(!m_future->is_cancelled())
       {
-        // TODO future exeception handling 
+        // TODO future exception handling
         m_future->set_value(m_function());
       }
       m_future->set_execution_status(false); // TODO consider exceptions
@@ -211,5 +211,3 @@ public:
 } } } // namespace boost::threadpool::detail
 
 #endif // THREADPOOL_DETAIL_FUTURE_IMPL_HPP_INCLUDED
-
-

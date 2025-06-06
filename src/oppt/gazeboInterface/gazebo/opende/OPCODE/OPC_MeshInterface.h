@@ -23,7 +23,7 @@
 	struct VertexPointers
 	{
 		const Point*	Vertex[3];
-		
+
 		bool BackfaceCulling(const Point& source)
 		{
 			const Point& p0 = *Vertex[0];
@@ -170,8 +170,8 @@
 												(mObjCallback)(index, vp, mUserData);
 #else
 	#ifdef OPC_USE_STRIDE
-												// Since there was conditional statement "if (Single)" which was unpredictable for compiler 
-												// and required both branches to be always generated what made inlining a questionable 
+												// Since there was conditional statement "if (Single)" which was unpredictable for compiler
+												// and required both branches to be always generated what made inlining a questionable
 												// benefit, I consider it better to introduce a forced call
 												// but get rig of branching and dead code injection.
 												((*this).*mFetchTriangle)(vp, index, vc);
@@ -192,8 +192,8 @@
 												else { (mObjCallback)(index, vpe.vp, mUserData); return false; }
 #else
 	#ifdef OPC_USE_STRIDE
-												// Since there was conditional statement "if (Single)" which was unpredictable for compiler 
-												// and required both branches to be always generated what made inlining a questionable 
+												// Since there was conditional statement "if (Single)" which was unpredictable for compiler
+												// and required both branches to be always generated what made inlining a questionable
 												// benefit, I consider it better to introduce a forced call
 												// but get rig of branching and dead code injection.
 												((*this).*mFetchExTriangle)(vpe, index, vc);

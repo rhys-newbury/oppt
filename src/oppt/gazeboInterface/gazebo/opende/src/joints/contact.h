@@ -42,4 +42,3 @@ struct dxJointContact : public dxJoint
 
 
 #endif
-

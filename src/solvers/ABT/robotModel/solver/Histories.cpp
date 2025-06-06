@@ -13,7 +13,7 @@ OPPTHistories::OPPTHistories():
 }
 
 HistorySequence* OPPTHistories::createSequence()
-{   
+{
     std::unique_ptr<HistorySequence> histSeq(
             std::make_unique<OPPTHistorySequence>(sequencesById_.size()));
     HistorySequence *rawPtr = histSeq.get();

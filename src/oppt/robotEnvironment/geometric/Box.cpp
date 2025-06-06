@@ -23,8 +23,8 @@ Box::Box(const std::string& name,
          const oppt::VectorFloat& dimensions,
          const Pose& worldPose):
     Geometry(BOX, name, worldPose),
-    dimensions_(dimensions) {    
-    
+    dimensions_(dimensions) {
+
 }
 
 VectorFloat Box::getDimensions() const {
@@ -33,12 +33,12 @@ VectorFloat Box::getDimensions() const {
 
 GeometryUniquePtr Box::shallowCopy() const {
     std::string name = name_;
-    Pose worldPose(worldPose_);    
+    Pose worldPose(worldPose_);
     VectorFloat dimensions = dimensions_;
-    GeometryUniquePtr copiedGeometry(new Box(name, dimensions, worldPose));    
+    GeometryUniquePtr copiedGeometry(new Box(name, dimensions, worldPose));
     copiedGeometry->setColor(getColor());
     copiedGeometry->parentBody_ = parentBody_;
-    return std::move(copiedGeometry);    
+    return std::move(copiedGeometry);
 }
 
 std::string Box::toSDFString() const {

@@ -123,7 +123,7 @@ dxJointDBall::getInfo2( dReal worldFPS, dReal /*worldERP*/, const Info2 *info )
         dSetCrossMatrixPlus(a2m, relA2, 4);
         dMultiply1_331(info->J2a, a2m, q);
     }
-    
+
     const dReal k = worldFPS * this->erp;
     info->c[0] = k * (targetDistance - dCalcPointsDistance3(globalA1, globalA2));
 }
@@ -198,7 +198,7 @@ dxJointDBall::getInfo2( Info2 *info )
         dSetCrossMatrixPlus(a2m, relA2, 4);
         dMultiply1_331(info->J2a, a2m, q);
     }
-    
+
     const dReal k = 0.2;  // info->fps * this->erp;
     info->c[0] = k * (targetDistance - dCalcPointsDistance3(globalA1, globalA2));
 }
@@ -377,6 +377,3 @@ dxJointDBall::setRelativeValues()
 {
     updateTargetDistance();
 }
-
-
-

@@ -138,7 +138,7 @@ void quickstep::dxUpdateBodies(
       //   ,b_ptr->facc[0] ,b_ptr->facc[1] ,b_ptr->facc[2]
       //   ,b_ptr->tacc[0] ,b_ptr->tacc[1] ,b_ptr->tacc[2]);
       /* DEBUG PRINTOUTS
-      printf("uncorrect vel [%f %f %f] [%f %f %f]\n"
+      printf("incorrect vel [%f %f %f] [%f %f %f]\n"
         ,b_ptr->lvel[0] ,b_ptr->lvel[1] ,b_ptr->lvel[2]
         ,b_ptr->avel[0] ,b_ptr->avel[1] ,b_ptr->avel[2]);
       */

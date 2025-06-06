@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #ifndef _RRT_CONNECT_HPP_
@@ -36,11 +36,11 @@ public:
 
     ~RRTConnect();
 
-    TrajectorySharedPtr solve(const RobotStateSharedPtr& state, 
+    TrajectorySharedPtr solve(const RobotStateSharedPtr& state,
                               const FloatType& timeout);
 
     void setGoalStates(const std::vector<VectorFloat>& goalStates);
-    
+
     void setIsValidFunction(IsValidFunction isValidFn);
 
     void setDistanceFunction(DistanceFunction distanceFunction);
@@ -64,7 +64,7 @@ private:
 
     InterpolationFunction interpolationFunction_ = nullptr;
 
-    IsValidFunction isValidFn_ = nullptr;    
+    IsValidFunction isValidFn_ = nullptr;
 
 private:
     bool satisfiesGoal_(const Node* node) const;
@@ -82,11 +82,11 @@ private:
 
     TrajectorySharedPtr generateTrajectory_(const Node* nodeTree1, const Node* nodeTree2);
 
-    void shortenPath_(TrajectorySharedPtr& trajectory);    
+    void shortenPath_(TrajectorySharedPtr& trajectory);
 
     const RobotStateSharedPtr interpolate_(const RobotStateSharedPtr& state1,
                                            const RobotStateSharedPtr& state2,
-                                           const FloatType& t) const;    
+                                           const FloatType& t) const;
 };
 }
 

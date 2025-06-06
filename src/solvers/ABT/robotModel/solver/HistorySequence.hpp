@@ -17,7 +17,7 @@ public:
     OPPTHistorySequence();
     /** Constructs an empty history sequence, assigning the given ID. */
     OPPTHistorySequence(long id);
-    
+
 protected:
     virtual abt::HistoryEntry* addEntry();
 

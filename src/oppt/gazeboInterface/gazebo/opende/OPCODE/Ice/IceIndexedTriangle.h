@@ -39,7 +39,7 @@
 								}
 		//! Destructor
 		inline_					~IndexedTriangle()									{}
-		
+
 		//! Vertex-references
 				dTriIndex		mVRef[3];
 

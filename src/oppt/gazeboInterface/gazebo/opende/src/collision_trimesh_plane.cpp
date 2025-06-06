@@ -64,7 +64,7 @@ int dCollideTrimeshPlane( dxGeom *o1, dxGeom *o2, int flags, dContactGeom* conta
 	ConversionArea VC;
 	dReal alpha;
 	dVector3 vertex;
-	
+
 #if !defined(dSINGLE) || 1
 	dVector3 int_vertex;		// Intermediate vertex for double precision mode.
 #endif // dSINGLE
@@ -86,7 +86,7 @@ int dCollideTrimeshPlane( dxGeom *o1, dxGeom *o2, int flags, dContactGeom* conta
 	{
 		// Get triangle, which should also use callback.
 		bool ex_avail = trimesh->Data->Mesh.GetExTriangle( VPE, t, VC);
-		
+
 		// For each vertex.
 		for ( int v = 0; v < 3; ++v )
 		{
@@ -99,7 +99,7 @@ int dCollideTrimeshPlane( dxGeom *o1, dxGeom *o2, int flags, dContactGeom* conta
 				// mark this point as used
 				vertex_use_cache.SetVertexUSEDFlag(VIndex);
 			}
-		
+
 			//
 			// Get Vertex
 			//
@@ -118,7 +118,7 @@ int dCollideTrimeshPlane( dxGeom *o1, dxGeom *o2, int flags, dContactGeom* conta
 			dMultiply0_331( vertex, trimesh_R, int_vertex );
 
 #endif // dSINGLE/dDOUBLE
-			
+
 			vertex[ 0 ] += trimesh_pos[ 0 ];
 			vertex[ 1 ] += trimesh_pos[ 1 ];
 			vertex[ 2 ] += trimesh_pos[ 2 ];
@@ -131,7 +131,7 @@ int dCollideTrimeshPlane( dxGeom *o1, dxGeom *o2, int flags, dContactGeom* conta
 			// If alpha < 0 then point is if front of plane. i.e. no contact
 			// If alpha = 0 then the point is on the plane
 			alpha = plane->p[ 3 ] - dCalcVectorDot3( plane->p, vertex );
-      
+
 			// If alpha > 0 the point is behind the plane. CONTACT!
 			if ( alpha > 0 )
 			{
@@ -237,4 +237,3 @@ int dCollideTrimeshPlane( dxGeom *o1, dxGeom *o2, int flags, dContactGeom* conta
 
 
 #endif // dTRIMESH_ENABLED
-

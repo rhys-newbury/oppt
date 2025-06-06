@@ -22,7 +22,7 @@ HistEntry::HistEntry():
 }
 
 HistEntry::HistEntry(oppt::ActionSharedPtr &parentAction,
-                     oppt::ObservationSharedPtr &parentObservation, 
+                     oppt::ObservationSharedPtr &parentObservation,
                      const unsigned int &stepNum):
   abt::HistoricalData(),
   parentAction_(parentAction),

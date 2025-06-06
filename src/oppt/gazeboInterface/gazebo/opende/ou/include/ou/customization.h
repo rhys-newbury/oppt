@@ -74,7 +74,7 @@ enum EASSERTIONFAILURESEVERITY
 };
 
 
-typedef void (_OU_CONVENTION_CALLBACK *CAssertionFailedProcedure)(EASSERTIONFAILURESEVERITY fsFailureSeverity, 
+typedef void (_OU_CONVENTION_CALLBACK *CAssertionFailedProcedure)(EASSERTIONFAILURESEVERITY fsFailureSeverity,
 	const char *szAssertionExpression, const char *szAssertionFileName, unsigned int uiAssertionSourceLine);
 
 
@@ -94,7 +94,7 @@ public:
 
 private:
 	static CAssertionFailedProcedure g_fnAssertFailureHandler;
-};	
+};
 
 
 //////////////////////////////////////////////////////////////////////////

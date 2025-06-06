@@ -203,7 +203,7 @@ void GazeboInterface::initWorldFromFile(const std::string& gazeboWorldFile,
                     cout << "Gazebo exception: " << e << endl;
                     inc++;
                     if (inc == 1000) {
-                        ERROR("Couldn't initilize gzserver after trying 1000 different ports");
+                        ERROR("Couldn't initialize gzserver after trying 1000 different ports");
                     }
                 }
             }
@@ -434,7 +434,7 @@ void GazeboInterface::processBodyEvents(std::shared_ptr<BodyEventQueue>& bodyEve
             cout << "BODY EVENT: " << bodyEvent.first << endl;
             cout << "BODY NAME: " << bodyName << endl;
             if (bodyEvent.first == "add") {
-                // The name of the world in which the change occured
+                // The name of the world in which the change occurred
                 std::vector<ModelPtr> models = world_->GetModels();
                 for (auto & model : models) {
                     cout << "model name: " << model->GetName() << endl;

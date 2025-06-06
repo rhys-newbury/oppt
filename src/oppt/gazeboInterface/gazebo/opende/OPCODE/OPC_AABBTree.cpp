@@ -130,7 +130,7 @@ udword AABBTreeNode::Split(udword axis, AABBTreeBuilder* builder)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  *	Subdivides the node.
- *	
+ *
  *	          N
  *	        /   \
  *	      /       \
@@ -222,7 +222,7 @@ bool AABBTreeNode::Subdivide(AABBTreeBuilder* builder)
 		udword Min=0;
 		if(Results[1]<Results[Min])	Min = 1;
 		if(Results[2]<Results[Min])	Min = 2;
-		
+
 		// Split along the axis
 		NbPos = Split(Min, builder);
 

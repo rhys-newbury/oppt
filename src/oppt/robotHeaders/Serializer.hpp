@@ -66,7 +66,7 @@ public:
     }
 
     /**
-     * @brief Set the oppt::UserDataSerializerPtr 
+     * @brief Set the oppt::UserDataSerializerPtr
      */
     void setUserDataSerializer(UserDataSerializerPtr userDataSerializer) {
         userDataSerializer_ = std::move(userDataSerializer);

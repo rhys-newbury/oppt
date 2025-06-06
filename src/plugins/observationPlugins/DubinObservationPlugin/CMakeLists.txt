@@ -1,1 +1,2 @@
-ADD_OBSERVATION_PLUGIN(dubinObservationPlugin ${CMAKE_CURRENT_LIST_DIR}/DubinObservationPlugin.cpp)
+add_observation_plugin(dubinObservationPlugin
+                       ${CMAKE_CURRENT_LIST_DIR}/DubinObservationPlugin.cpp)

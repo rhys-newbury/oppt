@@ -30,7 +30,7 @@ public :
 
     virtual ~DefaultObservationPlugin() = default;
 
-    virtual bool load(const std::string& optionsFile) override {        
+    virtual bool load(const std::string& optionsFile) override {
         parseOptions_<DefaultObservationPluginOptions>(optionsFile);
         makeErrorDistribution();
         return true;
@@ -42,7 +42,7 @@ public :
         VectorFloat errorVector;
         auto robot = robotEnvironment_->getRobot();
 
-        // Sample an observation error is neccessary
+        // Sample an observation error is necessary
         if (observationRequest->errorVector.size() != robot->getObservationSpace()->getNumDimensions()) {
             errorVector = toStdVec<FloatType>(errorDistribution_->sample(1));
         } else {
@@ -143,8 +143,8 @@ private:
                     ERROR("Lower bound in lowerUpperBoundUniformDistribution must be smaller than upper bound");
                 lowerBound.push_back(options->lowerUpperBoundUniformDistribution[i][0]);
                 upperBound.push_back(options->lowerUpperBoundUniformDistribution[i][1]);
-            }            
-            
+            }
+
             errorDistribution_ =
                 std::unique_ptr<UniformDistribution<FloatType>>(new UniformDistribution<FloatType>(lowerBound, upperBound, randomEngine));
         } else {

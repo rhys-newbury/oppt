@@ -56,7 +56,7 @@ for geometry objects
 
 // this struct records the parameters passed to dCollideSpaceGeom()
 
-#if dATOMICS_ENABLED 
+#if dATOMICS_ENABLED
 static volatile atomicptr s_cachedPosR = 0; // dxPosR *
 #endif // dATOMICS_ENABLED
 
@@ -297,11 +297,11 @@ int dCollide (dxGeom *o1, dxGeom *o2, int flags, dContactGeom *contact,
   dUASSERT(colliders_initialized,"Please call ODE initialization (dInitODE() or similar) before using the library");
   dUASSERT(o1->type >= 0 && o1->type < dGeomNumClasses,"bad o1 class number");
   dUASSERT(o2->type >= 0 && o2->type < dGeomNumClasses,"bad o2 class number");
-  // Even though comparison for greater or equal to one is used in all the 
+  // Even though comparison for greater or equal to one is used in all the
   // other places, here it is more logical to check for greater than zero
-  // because function does not require any specific number of contact slots - 
+  // because function does not require any specific number of contact slots -
   // it must be just a positive.
-  dUASSERT((flags & NUMC_MASK) > 0, "no contacts requested"); 
+  dUASSERT((flags & NUMC_MASK) > 0, "no contacts requested");
 
   // Extra precaution for zero contact count in parameters
   if ((flags & NUMC_MASK) == 0) return 0;
@@ -462,7 +462,7 @@ void getWorldOffsetPosr(const dxPosR& body_posr, const dxPosR& world_posr, dxPos
 void dxGeom::computePosr()
 {
   // should only be recalced if we need to - ie offset from a body
-  dIASSERT(offset_posr);  
+  dIASSERT(offset_posr);
   dIASSERT(body);
   dIASSERT(final_posr);
 
@@ -635,7 +635,7 @@ void dGeomSetQuaternion (dxGeom *g, const dQuaternion quat)
     dxPosR new_body_posr;
     dQtoR (quat, new_final_posr.R);
     memcpy(new_final_posr.pos, g->final_posr->pos, sizeof(dVector3));
-    
+
     getBodyPosr(*g->offset_posr, new_final_posr, new_body_posr);
     dBodySetRotation(g->body, new_body_posr.R);
     dBodySetPosition(g->body, new_body_posr.pos[0], new_body_posr.pos[1], new_body_posr.pos[2]);
@@ -807,9 +807,9 @@ void dGeomGetRelPointPos (dGeomID g, dReal px, dReal py, dReal pz,
     result[2] = pz;
     return;
   }
-  
+
   g->recomputePosr();
-  
+
   dVector3 prel,p;
   prel[0] = px;
   prel[1] = py;
@@ -834,7 +834,7 @@ void dGeomGetPosRelPoint (dGeomID g, dReal px, dReal py, dReal pz,
   }
 
   g->recomputePosr();
-  
+
   dVector3 prel;
   prel[0] = px - g->final_posr->pos[0];
   prel[1] = py - g->final_posr->pos[1];
@@ -856,7 +856,7 @@ void dGeomVectorToWorld (dGeomID g, dReal px, dReal py, dReal pz,
   }
 
   g->recomputePosr();
-  
+
   dVector3 p;
   p[0] = px;
   p[1] = py;
@@ -878,7 +878,7 @@ void dGeomVectorFromWorld (dGeomID g, dReal px, dReal py, dReal pz,
   }
 
   g->recomputePosr();
-  
+
   dVector3 p;
   p[0] = px;
   p[1] = py;
@@ -1035,18 +1035,18 @@ void dGeomCreateOffset (dxGeom *g)
 {
   dAASSERT (g);
   dUASSERT (g->gflags & GEOM_PLACEABLE,"geom must be placeable");
-  dUASSERT (g->body, "geom must be on a body");  
+  dUASSERT (g->body, "geom must be on a body");
   if (g->offset_posr)
   {
 	return; // already created
   }
   dIASSERT (g->final_posr == &g->body->posr);
-  
+
   g->final_posr = dAllocPosr();
   g->offset_posr = dAllocPosr();
   dSetZero (g->offset_posr->pos,4);
   dRSetIdentity (g->offset_posr->R);
-  
+
   g->gflags |= GEOM_POSR_BAD;
 }
 
@@ -1054,9 +1054,9 @@ void dGeomSetOffsetPosition (dxGeom *g, dReal x, dReal y, dReal z)
 {
   dAASSERT (g);
   dUASSERT (g->gflags & GEOM_PLACEABLE,"geom must be placeable");
-  dUASSERT (g->body, "geom must be on a body");  
+  dUASSERT (g->body, "geom must be on a body");
   CHECK_NOT_LOCKED (g->parent_space);
-  if (!g->offset_posr) 
+  if (!g->offset_posr)
   {
     dGeomCreateOffset(g);
   }
@@ -1070,9 +1070,9 @@ void dGeomSetOffsetRotation (dxGeom *g, const dMatrix3 R)
 {
   dAASSERT (g && R);
   dUASSERT (g->gflags & GEOM_PLACEABLE,"geom must be placeable");
-  dUASSERT (g->body, "geom must be on a body");  
+  dUASSERT (g->body, "geom must be on a body");
   CHECK_NOT_LOCKED (g->parent_space);
-  if (!g->offset_posr) 
+  if (!g->offset_posr)
   {
 	dGeomCreateOffset (g);
   }
@@ -1084,9 +1084,9 @@ void dGeomSetOffsetQuaternion (dxGeom *g, const dQuaternion quat)
 {
   dAASSERT (g && quat);
   dUASSERT (g->gflags & GEOM_PLACEABLE,"geom must be placeable");
-  dUASSERT (g->body, "geom must be on a body");  
+  dUASSERT (g->body, "geom must be on a body");
   CHECK_NOT_LOCKED (g->parent_space);
-  if (!g->offset_posr) 
+  if (!g->offset_posr)
   {
 	dGeomCreateOffset (g);
   }
@@ -1098,9 +1098,9 @@ void dGeomSetOffsetWorldPosition (dxGeom *g, dReal x, dReal y, dReal z)
 {
   dAASSERT (g);
   dUASSERT (g->gflags & GEOM_PLACEABLE,"geom must be placeable");
-  dUASSERT (g->body, "geom must be on a body");  
+  dUASSERT (g->body, "geom must be on a body");
   CHECK_NOT_LOCKED (g->parent_space);
-  if (!g->offset_posr) 
+  if (!g->offset_posr)
   {
 	dGeomCreateOffset(g);
   }
@@ -1112,18 +1112,18 @@ void dGeomSetOffsetWorldRotation (dxGeom *g, const dMatrix3 R)
 {
   dAASSERT (g && R);
   dUASSERT (g->gflags & GEOM_PLACEABLE,"geom must be placeable");
-  dUASSERT (g->body, "geom must be on a body");  
+  dUASSERT (g->body, "geom must be on a body");
   CHECK_NOT_LOCKED (g->parent_space);
-  if (!g->offset_posr) 
+  if (!g->offset_posr)
   {
 	dGeomCreateOffset (g);
   }
   g->recomputePosr();
-  
+
   dxPosR new_final_posr;
   memcpy(new_final_posr.pos, g->final_posr->pos, sizeof(dVector3));
   memcpy(new_final_posr.R, R, sizeof(dMatrix3));
-  
+
   getWorldOffsetPosr(g->body->posr, new_final_posr, *g->offset_posr);
   dGeomMoved (g);
 }
@@ -1132,19 +1132,19 @@ void dGeomSetOffsetWorldQuaternion (dxGeom *g, const dQuaternion quat)
 {
   dAASSERT (g && quat);
   dUASSERT (g->gflags & GEOM_PLACEABLE,"geom must be placeable");
-  dUASSERT (g->body, "geom must be on a body");  
+  dUASSERT (g->body, "geom must be on a body");
   CHECK_NOT_LOCKED (g->parent_space);
-  if (!g->offset_posr) 
+  if (!g->offset_posr)
   {
 	dGeomCreateOffset (g);
   }
 
   g->recomputePosr();
-  
+
   dxPosR new_final_posr;
   memcpy(new_final_posr.pos, g->final_posr->pos, sizeof(dVector3));
   dQtoR (quat, new_final_posr.R);
-  
+
   getWorldOffsetPosr(g->body->posr, new_final_posr, *g->offset_posr);
   dGeomMoved (g);
 }
@@ -1204,11 +1204,11 @@ void dGeomCopyOffsetPosition (dxGeom *g, dVector3 pos)
   }
 }
 
-static const dMatrix3 OFFSET_ROTATION_ZERO = 
-{ 
-	1.0f, 0.0f, 0.0f, 0.0f, 
-	0.0f, 1.0f, 0.0f, 0.0f, 
-	0.0f, 0.0f, 1.0f, 0.0f, 
+static const dMatrix3 OFFSET_ROTATION_ZERO =
+{
+	1.0f, 0.0f, 0.0f, 0.0f,
+	0.0f, 1.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 1.0f, 0.0f,
 };
 
 const dReal * dGeomGetOffsetRotation (dxGeom *g)
@@ -1264,5 +1264,3 @@ void dGeomGetOffsetQuaternion (dxGeom *g, dQuaternion result)
     result[0] = 1;
   }
 }
-
-

@@ -62,7 +62,7 @@ public:
         id_(UID::getUniqueId()),
         cumulativeAngles_() {
 
-    }    
+    }
 
     /** @brief Default destructor */
     virtual ~GazeboWorldState() = default;
@@ -155,7 +155,7 @@ public:
     RobotState() = default;
 
     virtual ~RobotState() = default;
-    
+
     _STATIC_CAST
 
     /**

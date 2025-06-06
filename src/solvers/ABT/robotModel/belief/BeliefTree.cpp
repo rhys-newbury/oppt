@@ -19,7 +19,7 @@ abt::BeliefNode* BeliefTree::reset()
 }
 
 void BeliefTree::addNode(BeliefNode* node)
-{    
+{
     long id = node->id_;
     if (id < 0) {
         // Negative ID => add it to the back of the vector.
@@ -43,10 +43,10 @@ void BeliefTree::removeNode(BeliefNode* node)
     long lastNodeId = allNodes_.size() - 1;
 
     if (id < 0 || id > lastNodeId) {
-        debug::show_message("ERROR: Node ID is out of bounds.");	
+        debug::show_message("ERROR: Node ID is out of bounds.");
         return;
     }
-    
+
     if (allNodes_[id] != node) {
         debug::show_message("ERROR: Node ID does not match index.");
         return;
@@ -63,6 +63,3 @@ void BeliefTree::removeNode(BeliefNode* node)
 }
 
 }
-
-
-

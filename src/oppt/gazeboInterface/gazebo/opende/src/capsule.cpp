@@ -61,7 +61,7 @@ void dxCapsule::computeAABB()
 {
   const dMatrix3& R = final_posr->R;
   const dVector3& pos = final_posr->pos;
-  
+
   dReal xrange = dFabs(R[2]  * lz) * REAL(0.5) + radius;
   dReal yrange = dFabs(R[6]  * lz) * REAL(0.5) + radius;
   dReal zrange = dFabs(R[10] * lz) * REAL(0.5) + radius;
@@ -109,7 +109,7 @@ dReal dGeomCapsulePointDepth (dGeomID g, dReal x, dReal y, dReal z)
 
   const dReal* R = g->final_posr->R;
   const dReal* pos = g->final_posr->pos;
-  
+
   dVector3 a;
   a[0] = x - pos[0];
   a[1] = y - pos[1];
@@ -134,7 +134,7 @@ int dCollideCapsuleSphere (dxGeom *o1, dxGeom *o2, int /*flags*/,
   dIASSERT (o1->type == dCapsuleClass);
   dIASSERT (o2->type == dSphereClass);
   //dIASSERT ((flags & NUMC_MASK) >= 1);
-  
+
   dxCapsule *ccyl = (dxCapsule*) o1;
   dxSphere *sphere = (dxSphere*) o2;
 
@@ -144,7 +144,7 @@ int dCollideCapsuleSphere (dxGeom *o1, dxGeom *o2, int /*flags*/,
   contact->side2 = -1;
 
   // find the point on the cylinder axis that is closest to the sphere
-  dReal alpha = 
+  dReal alpha =
     o1->final_posr->R[2]  * (o2->final_posr->pos[0] - o1->final_posr->pos[0]) +
     o1->final_posr->R[6]  * (o2->final_posr->pos[1] - o1->final_posr->pos[1]) +
     o1->final_posr->R[10] * (o2->final_posr->pos[2] - o1->final_posr->pos[2]);
@@ -299,7 +299,7 @@ int dCollideCapsuleCapsule (dxGeom *o1, dxGeom *o2,
 			      sphere2,cyl2->radius,contact);
     }
   }
-	  
+
   // use the closest point algorithm
   dVector3 a1,a2,b1,b2;
   a1[0] = o1->final_posr->pos[0] + axis1[0]*lz1;
@@ -380,4 +380,3 @@ int dCollideCapsulePlane (dxGeom *o1, dxGeom *o2, int flags,
   }
   return ncontacts;
 }
-

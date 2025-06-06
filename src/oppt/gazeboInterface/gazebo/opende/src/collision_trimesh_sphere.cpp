@@ -36,7 +36,7 @@
 
 // Ripped from Opcode 1.1.
 static bool GetContactData(const dVector3& Center, dReal Radius, const dVector3 Origin, const dVector3 Edge0, const dVector3 Edge1, dReal& Dist, dReal& u, dReal& v){
-  
+
         // now onto the bulk of the collision...
 
 	dVector3 Diff;
@@ -283,15 +283,15 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 			sphereTC = &TriMesh->SphereTCCache[TriMesh->SphereTCCache.size() - 1];
 			sphereTC->Geom = SphereGeom;
 		}
-		
+
 		// Intersect
 		Collider.SetTemporalCoherence(true);
-		Collider.Collide(*sphereTC, Sphere, TriMesh->Data->BVTree, null, 
+		Collider.Collide(*sphereTC, Sphere, TriMesh->Data->BVTree, null,
 						 &MakeMatrix(TLPosition, TLRotation, amatrix));
 	}
 	else {
 		Collider.SetTemporalCoherence(false);
-		Collider.Collide(pccColliderCache->defaultSphereCache, Sphere, TriMesh->Data->BVTree, null, 
+		Collider.Collide(pccColliderCache->defaultSphereCache, Sphere, TriMesh->Data->BVTree, null,
 						 &MakeMatrix(TLPosition, TLRotation, amatrix));
  	}
 
@@ -320,7 +320,7 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 			dVector3 dv[3];
 			if (!Callback(TriMesh, SphereGeom, TriIndex))
 				continue;
-			
+
 			FetchTriangle(TriMesh, TriIndex, TLPosition, TLRotation, dv);
 
 			dVector3& v0 = dv[0];
@@ -343,8 +343,8 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 			dVector4 Plane;
 			dCalcVectorCross3(Plane, vu, vv);
 
-			// Even though all triangles might be initially valid, 
-			// a triangle may degenerate into a segment after applying 
+			// Even though all triangles might be initially valid,
+			// a triangle may degenerate into a segment after applying
 			// space transformation.
 			if (!dSafeNormalize3(Plane)) {
 				continue;
@@ -354,9 +354,9 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 				* triangle's plane, allow a contact to be generated.
 				* If the center of the sphere made it into the positive halfspace of a
 				* back-facing triangle, then the physics update and/or velocity needs
-				* to be adjusted (penetration has occured anyway).
+				* to be adjusted (penetration has occurred anyway).
 				*/
-		  
+
 			dReal side = dCalcVectorDot3(Plane,Position) - dCalcVectorDot3(Plane, v0);
 
 			if(side < REAL(0.0)) {
@@ -380,7 +380,7 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 			ContactPos[1] = (v0[1] * w) + (v1[1] * u) + (v2[1] * v);
 			ContactPos[2] = (v0[2] * w) + (v1[2] * u) + (v2[2] * v);
 
-			// Depth returned from GetContactData is depth along 
+			// Depth returned from GetContactData is depth along
 			// contact point - sphere center direction
 			// we'll project it to contact normal
 			dVector3 dir;
@@ -388,7 +388,7 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 			dir[1] = Position[1]-ContactPos[1];
 			dir[2] = Position[2]-ContactPos[2];
 			dReal dirProj = dCalcVectorDot3(dir, Plane) / dSqrt(dCalcVectorDot3(dir, dir));
-			
+
 			// Since Depth already had a requirement to be non-negative,
 			// negative direction projections should not be allowed as well,
 			// as otherwise the multiplication will result in negative contact depth.
@@ -411,7 +411,7 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 
 			Contact->depth = Depth * dirProj;
 			//Contact->depth = Radius - side; // (mg) penetration depth is distance along normal not shortest distance
-			
+
 			if (TriMesh->SphereContactsMergeOption != MERGE_CONTACTS_FULLY) {
 				Contact->g1 = TriMesh;
 				Contact->g2 = SphereGeom;
@@ -440,29 +440,29 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 					normal[0] = Contact->normal[0] * Contact->depth;
 					normal[1] = Contact->normal[1] * Contact->depth;
 					normal[2] = Contact->normal[2] * Contact->depth;
-	                
+
 					int TriIndex = Contact->side1;
 
 					for (int i = 1; i < OutTriCount; i++){
 						dContactGeom* TempContact = SAFECONTACT(Flags, Contacts, i, Stride);
-						
+
 						pos[0] += TempContact->pos[0];
 						pos[1] += TempContact->pos[1];
 						pos[2] += TempContact->pos[2];
-						
+
 						normal[0] += TempContact->normal[0] * TempContact->depth;
 						normal[1] += TempContact->normal[1] * TempContact->depth;
 						normal[2] += TempContact->normal[2] * TempContact->depth;
 
 						TriIndex = (TriMesh->TriMergeCallback) ? TriMesh->TriMergeCallback(TriMesh, TriIndex, TempContact->side1) : -1;
 					}
-				
+
 					Contact->side1 = TriIndex;
 
 					Contact->pos[0] = pos[0] / OutTriCount;
 					Contact->pos[1] = pos[1] / OutTriCount;
 					Contact->pos[2] = pos[2] / OutTriCount;
-					
+
 					// Remember to divide in square space.
 					Contact->depth = dSqrt(dCalcVectorDot3(normal, normal) / OutTriCount);
 
@@ -525,7 +525,7 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 	dIASSERT (g1->type == dTriMeshClass);
 	dIASSERT (SphereGeom->type == dSphereClass);
 	dIASSERT ((Flags & NUMC_MASK) >= 1);
-	
+
 	dxTriMesh* TriMesh = (dxTriMesh*)g1;
     dVector3& Position = *(dVector3*)dGeomGetPosition(SphereGeom);
 	dReal Radius = dGeomSphereGetRadius(SphereGeom);
@@ -556,7 +556,7 @@ int dCollideSTL(dxGeom* g1, dxGeom* SphereGeom, int Flags, dContactGeom* Contact
 
     dContactGeom* pcontact;
 	unsigned i;
-	
+
 	for (i=0;i<contactcount;i++)
 	{
         pcontact = SAFECONTACT(Flags, Contacts, i, Stride);

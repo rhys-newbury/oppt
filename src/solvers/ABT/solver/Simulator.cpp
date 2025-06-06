@@ -146,22 +146,22 @@ FloatType Simulator::runSimulation(std::ofstream& os)
     return totalDiscountedReward_;
 }
 bool Simulator::stepSimulation(std::ofstream& os)
-{   
+{
     if (stepCount_ >= maxStepCount_) {
         return false;
     } else if (model_->isTerminal(*getCurrentState())) {
         return false;
-    }    
+    }
 
     std::stringstream prevStream;
     HistoryEntry* currentEntry = actualHistory_->getLastEntry();
     State const* currentState = getCurrentState();
     BeliefNode* currentBelief = agent_->getCurrentBelief();
     if (options_->hasVerboseOutput) {
-        cout << endl << endl << "t-" << stepCount_ << endl;              
+        cout << endl << endl << "t-" << stepCount_ << endl;
         /**cout << "Heuristic Value: " << model_->getHeuristicFunction()(currentEntry,
                 currentState, currentBelief->getHistoricalData()) << endl;*/
-        
+
         cout << "Belief #" << currentBelief->getId() << endl;
 
         abt::HistoricalData* data = currentBelief->getHistoricalData();
@@ -175,7 +175,7 @@ bool Simulator::stepSimulation(std::ofstream& os)
         prevStream << "Before:" << endl;
         solver_->printBelief(currentBelief, prevStream);
     }
-    
+
     ChangeSequence::iterator iter = changeSequence_.find(stepCount_);
     if (iter != changeSequence_.end()) {
         if (options_->hasVerboseOutput) {
@@ -183,8 +183,8 @@ bool Simulator::stepSimulation(std::ofstream& os)
         }
         FloatType changingTimeStart = oppt::clock_ms();
         // Apply all the changes!
-        bool noError = handleChanges(iter->second, 
-                                     hasDynamicChanges_, 
+        bool noError = handleChanges(iter->second,
+                                     hasDynamicChanges_,
                                      static_cast<oppt::ABTExtendedOptions const*>(options_)->resetOnChanges);
         // Update the BeliefNode * in case there was a tree reset.
         currentBelief = agent_->getCurrentBelief();
@@ -274,13 +274,13 @@ bool Simulator::stepSimulation(std::ofstream& os)
         return false;
     }
 
-    FloatType repTime = oppt::clock_ms() - replenishTimeStart;    
+    FloatType repTime = oppt::clock_ms() - replenishTimeStart;
     totalReplenishingTime_ += repTime;
     // Update the agent's belief.
     agent_->updateBelief(*result.action, *result.observation);
     //agent_->setCurrentBelief(repNode);
     currentBelief = agent_->getCurrentBelief();
-    
+
     //visitedBeliefs_->push_back(currentParticles);
 
     //model_->updateModel(result, currentParticles, particleColors);
@@ -323,9 +323,9 @@ bool Simulator::stepSimulation(std::ofstream& os)
     if (currentEntry->getTransitionParameters() != nullptr) {
         currentEntry->getTransitionParameters()->serialize(os);
     }
-    
+
     os << "NUM HISTORIES: " << numHistories << endl;
-    
+
     stepCount_++;
     StateInfo* nextInfo = solver_->getStatePool()->createOrGetInfo(std::move(result.nextState));
     result.nextState = nullptr;

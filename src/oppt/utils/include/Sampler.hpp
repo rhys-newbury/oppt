@@ -47,7 +47,7 @@ public:
   _NO_COPY_BUT_MOVE(UniformDiscreteSampler)
 
   virtual ~UniformDiscreteSampler() = default;
-  
+
   virtual void** sample(RandomGenerator* randGen,
                         void** sampleSet,
                         const unsigned int& sampleSize,

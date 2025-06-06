@@ -180,7 +180,7 @@ dxJointAMotor::setEulerReferenceVectors()
     }
 }
 
-void 
+void
 dxJointAMotor::getSureMaxInfo( SureMaxInfo* info )
 {
     info->max_m = num;
@@ -520,4 +520,3 @@ dxJointAMotor::size() const
 {
     return sizeof( *this );
 }
-

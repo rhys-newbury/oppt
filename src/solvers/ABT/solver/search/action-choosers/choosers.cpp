@@ -14,11 +14,11 @@ using std::endl;
 
 namespace abt {
 namespace choosers {
-std::unique_ptr<Action> max_action(BeliefNode const *node) {    
+std::unique_ptr<Action> max_action(BeliefNode const *node) {
     std::unique_ptr<Action> maxAction = nullptr;
     FloatType maxQValue = -std::numeric_limits<FloatType>::infinity();
 
-    ActionMapping *mapping = node->getMapping();    
+    ActionMapping *mapping = node->getMapping();
     for (ActionMappingEntry const *entry : mapping->getVisitedEntries()) {
         FloatType qValue = entry->getMeanQValue();
         if (qValue > maxQValue) {

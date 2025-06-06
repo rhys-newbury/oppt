@@ -28,7 +28,7 @@ class CollisionReport
 {
 public:
     _NO_COPY_BUT_MOVE(CollisionReport)
-        
+
     CollisionReport() = default;
 
     virtual ~CollisionReport() = default;
@@ -36,7 +36,7 @@ public:
     /**
      * @brief Boolean flag that determines if a collision was detected
      */
-    bool collides = false;    
+    bool collides = false;
 
     /**
      * @brief vector of pairs colliding bodies
@@ -49,11 +49,11 @@ public:
     VectorContacts contacts;
 
     /**
-     * @brief Time (between 0 and 1) of contact. Will be populated in a continuous collision request 
+     * @brief Time (between 0 and 1) of contact. Will be populated in a continuous collision request
      */
     FloatType timeOfContact = 0.0;
 
-    
+
 };
 
 }

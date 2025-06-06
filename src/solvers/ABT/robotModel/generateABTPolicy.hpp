@@ -68,8 +68,8 @@ public:
 
         solverModel =
             std::make_unique<robot::RobotModel>(this->randGen, std::make_unique<robot::RobotOptions>(options));
-        solverModel->setPathPlanner(path_planner);        
-        solverModel->setRobotEnvironment(robotPlanningEnvironment);        
+        solverModel->setPathPlanner(path_planner);
+        solverModel->setRobotEnvironment(robotPlanningEnvironment);
         solverModel->setRewardModel(rewardModel);
         oppt::Solver solver(std::move(solverModel));
 	solver.initializeEmpty();

@@ -18,10 +18,10 @@
 
 namespace oppt
 {
-    
+
 /**
  * Base class for a viewer implementation
- */    
+ */
 class ViewerBase
 {
 public:
@@ -30,12 +30,12 @@ public:
      * @brief Default constructor
      */
     ViewerBase()=default;
-    
+
     /**
      * @brief Default destructor
      */
     virtual ~ViewerBase()=default;
-    
+
     /**
      * @brief Determine if the viewer is running
      */

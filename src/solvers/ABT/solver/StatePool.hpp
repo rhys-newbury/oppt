@@ -99,9 +99,9 @@ class StatePool {
     void resetAffectedStates();
     /** Returns the current set of affected states. */
     std::unordered_set<StateInfo *> getAffectedStates() const;
-    
+
     virtual std::vector<State const*> getStates() const;
-    
+
 protected:
     /** The StateIndex used by this pool. */
     std::unique_ptr<StateIndex> stateIndex_;
@@ -118,7 +118,7 @@ protected:
     /** An unordered mapping of states to their associated StateInfo. */
     StateInfoMap stateInfoMap_;
     /** The vector that actually stores the StateInfo; also allows lookup of states by ID. */
-    std::vector<std::unique_ptr<StateInfo>> statesByIndex_;    
+    std::vector<std::unique_ptr<StateInfo>> statesByIndex_;
 };
 } /* namespace abt */
 

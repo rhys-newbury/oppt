@@ -62,7 +62,7 @@ class EnumeratedActionPool : public abt::DiscretizedActionPool {
     std::vector<std::unique_ptr<DiscretizedPoint>> allActions_;
 };
 
-/** Since we're just using DiscretizedActionMap to do all of the work, we can simply re-use
+/** Since we're just using DiscretizedActionMap to do all of the work, we can simply reuse
  * DiscretizedActionTextSerializer to do the work of serializing enumerated mappigns.
  */
 typedef DiscretizedActionTextSerializer EnumeratedActionTextSerializer;

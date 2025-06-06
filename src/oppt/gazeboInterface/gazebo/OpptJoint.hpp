@@ -45,7 +45,7 @@ public:
     virtual std::vector<FloatType> getCumulativeAngles() const = 0;
 
     virtual void setCumulativeAngles(const std::vector<FloatType> &cumulativeAngles) const = 0;
-    
+
     virtual std::string getName() const = 0;
 
 protected:

@@ -116,16 +116,16 @@ std::vector<ActionSharedPtr> CustomActionSpaceDiscretizer::getAllActionsInOrder(
             for (size_t i = 0; i != currIndex; ++i) {
                 actionVals[i] = lowerLimits[i];
             }
-            
+
             currIndex = 0;
         }
 
         code++;
-        ActionSharedPtr action(new DiscreteVectorAction(actionVals));	
+        ActionSharedPtr action(new DiscreteVectorAction(actionVals));
         action->as<DiscreteVectorAction>()->setBinNumber(code);
-        allActionsOrdered_[code] = action;	
+        allActionsOrdered_[code] = action;
     }
-    
+
     return allActionsOrdered_;
 }
 

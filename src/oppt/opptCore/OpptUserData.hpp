@@ -58,4 +58,4 @@ typedef std::shared_ptr<OpptUserData> OpptUserDataSharedPtr;
 }
 
 #endif
-// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on;

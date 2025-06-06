@@ -34,7 +34,7 @@ public:
 
   SDFParser() = default;
 
-  virtual ~SDFParser() = default; 
+  virtual ~SDFParser() = default;
 
   SDFMarkersSharedPtr parseFromSDFString(std::string& sdfString, const std::string& robotName, const std::string &environmentFile = "") const;
 

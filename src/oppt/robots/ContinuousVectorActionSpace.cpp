@@ -45,7 +45,7 @@ ActionSharedPtr VectorActionNormalizer::denormalizeAction(const ActionSharedPtr&
 ContinuousVectorActionSpace::ContinuousVectorActionSpace(const ActionSpaceInfo& actionSpaceInfo):
     ContinuousActionSpace(actionSpaceInfo)
 {
-    if (actionSpaceInfo.normalized) 
+    if (actionSpaceInfo.normalized)
         actionNormalizer_ = std::unique_ptr<ActionNormalizer>(new VectorActionNormalizer());
 }
 

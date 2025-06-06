@@ -75,7 +75,7 @@ bool DefaultHistoryCorrector::reviseSequence(HistorySequence *sequence) {
 
             entry->transitionParameters_ = getModel()->generateTransition(*state, *entry->action_);
             std::unique_ptr<State> nextState = getModel()->generateNextState(*state,
-                    *entry->action_, entry->transitionParameters_.get());            
+                    *entry->action_, entry->transitionParameters_.get());
             StateInfo *nextStateInfo = getSolver()->getStatePool()->createOrGetInfo(std::move(nextState));
             if (nextStateInfo != nextEntry->getStateInfo()) {
                 nextEntry->registerState(nextStateInfo);

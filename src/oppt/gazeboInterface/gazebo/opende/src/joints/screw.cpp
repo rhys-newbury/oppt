@@ -115,7 +115,7 @@ dxJointScrew::getInfo2( dxJoint::Info2 *info )
 {
     // Added by OSRF
     //
-    // Screw Constraint Overview 
+    // Screw Constraint Overview
     //
     // make 5 constraint rows.
     // given screw axis, first create two orthogonal axis p and q.
@@ -691,7 +691,7 @@ dReal dJointGetScrewPosition ( dJointID j )
 
         if ( joint->flags & dJOINT_REVERSE )
         {
-            // N.B. it could have been simplier to only inverse the sign of
+            // N.B. it could have been simpler to only inverse the sign of
             //      the dCalcVectorDot3 result but this case is exceptional and
             //      doing the check for all case can decrease the performance.
             ax1[0] = -ax1[0];
@@ -861,4 +861,3 @@ dxJointScrew::computeOffset()
         offset[2] = node[0].body->posr.pos[2];
     }
 }
-

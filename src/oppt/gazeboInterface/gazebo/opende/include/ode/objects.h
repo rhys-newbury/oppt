@@ -621,7 +621,7 @@ ODE_API void dWorldSetQuickStepInertiaRatioReduction (dWorldID, bool irr);
 /**
  * @brief Set friction residual exponential smoothing coefficient
  * @ingroup world
- * @param smooth smoothing coefficent (0: no smothing ~ 1: full smoothing)
+ * @param smooth smoothing coefficient (0: no smothing ~ 1: full smoothing)
  */
 ODE_API void dWorldSetQuickStepContactResidualSmoothing (dWorldID, dReal smoo);
 
@@ -1163,7 +1163,7 @@ ODE_API void dBodyDestroy (dBodyID);
 /**
  * @brief Set the body's user-data pointer.
  * @ingroup bodies
- * @param data arbitraty pointer
+ * @param data arbitrary pointer
  */
 ODE_API void  dBodySetData (dBodyID, void *data);
 
@@ -1570,7 +1570,7 @@ ODE_API void dBodySetDynamic (dBodyID);
 ODE_API void dBodySetKinematic (dBodyID);
 
 /**
- * @brief Check wether a body is in kinematic state.
+ * @brief Check whether a body is in kinematic state.
  * @ingroup bodies
  * @return 1 if a body is kinematic or 0 if it is dynamic.
  */
@@ -1593,7 +1593,7 @@ ODE_API void dBodyEnable (dBodyID);
 ODE_API void dBodyDisable (dBodyID);
 
 /**
- * @brief Check wether a body is enabled.
+ * @brief Check whether a body is enabled.
  * @ingroup bodies
  * @return 1 if a body is currently enabled or 0 if it is disabled.
  */
@@ -2051,7 +2051,7 @@ ODE_API void dJointEnable (dJointID);
 ODE_API void dJointDisable (dJointID);
 
 /**
- * @brief Check wether a joint is enabled.
+ * @brief Check whether a joint is enabled.
  * @ingroup joints
  * @return 1 if a joint is currently enabled or 0 if it is disabled.
  */
@@ -2160,7 +2160,7 @@ ODE_API void dJointSetHingeAnchorDelta (dJointID, dReal x, dReal y, dReal z, dRe
 ODE_API void dJointSetHingeAxis (dJointID, dReal x, dReal y, dReal z);
 
 /**
- * @brief Set the Hinge axis as if the 2 bodies were already at angle appart.
+ * @brief Set the Hinge axis as if the 2 bodies were already at angle apart.
  * @ingroup joints
  *
  * This function initialize the Axis and the relative orientation of each body
@@ -2183,7 +2183,7 @@ ODE_API void dJointSetHingeAxis (dJointID, dReal x, dReal y, dReal z);
  *
  * @note Usually the function dJointSetHingeAxis set the current position of body1
  *       and body2 as the zero angle position. This function set the current position
- *       as the if the 2 bodies where \b angle appart.
+ *       as the if the 2 bodies where \b angle apart.
  * @warning Calling dJointSetHingeAnchor or dJointSetHingeAxis will reset the "zero"
  *          angle position.
  */
@@ -2328,7 +2328,7 @@ ODE_API void dJointSetUniversalAxis1 (dJointID, dReal x, dReal y, dReal z);
 
 /**
  * @brief Set the Universal axis1 as if the 2 bodies were already at
- *        offset1 and offset2 appart with respect to axis1 and axis2.
+ *        offset1 and offset2 apart with respect to axis1 and axis2.
  * @ingroup joints
  *
  * This function initialize the axis1 and the relative orientation of
@@ -2354,7 +2354,7 @@ ODE_API void dJointSetUniversalAxis1 (dJointID, dReal x, dReal y, dReal z);
  *
  * @note Usually the function dJointSetHingeAxis set the current position of body1
  *       and body2 as the zero angle position. This function set the current position
- *       as the if the 2 bodies where \b offsets appart.
+ *       as the if the 2 bodies where \b offsets apart.
  *
  * @note Any previous offsets are erased.
  *
@@ -2373,7 +2373,7 @@ ODE_API void dJointSetUniversalAxis2 (dJointID, dReal x, dReal y, dReal z);
 
 /**
  * @brief Set the Universal axis2 as if the 2 bodies were already at
- *        offset1 and offset2 appart with respect to axis1 and axis2.
+ *        offset1 and offset2 apart with respect to axis1 and axis2.
  * @ingroup joints
  *
  * This function initialize the axis2 and the relative orientation of
@@ -2399,7 +2399,7 @@ ODE_API void dJointSetUniversalAxis2 (dJointID, dReal x, dReal y, dReal z);
  *
  * @note Usually the function dJointSetHingeAxis set the current position of body1
  *       and body2 as the zero angle position. This function set the current position
- *       as the if the 2 bodies where \b offsets appart.
+ *       as the if the 2 bodies where \b offsets apart.
  *
  * @note Any previous offsets are erased.
  *
@@ -2478,7 +2478,7 @@ ODE_API void dJointAddPRTorque (dJointID j, dReal torque);
                                                           dReal dx, dReal dy, dReal dz);
 
   /**
-   * @brief Set the PU anchor as if the 2 bodies were already at [dx, dy, dz] appart.
+   * @brief Set the PU anchor as if the 2 bodies were already at [dx, dy, dz] apart.
    * @ingroup joints
    *
    * This function initialize the anchor and the relative position of each body
@@ -2499,11 +2499,11 @@ ODE_API void dJointAddPRTorque (dJointID j, dReal torque);
    * @param x The X position of the anchor point in world frame
    * @param y The Y position of the anchor point in world frame
    * @param z The Z position of the anchor point in world frame
-   * @param dx A delta to be substracted to the X position as if the anchor was set
+   * @param dx A delta to be subtracted to the X position as if the anchor was set
    *           when body1 was at current_position[X] - dx
-   * @param dx A delta to be substracted to the Y position as if the anchor was set
+   * @param dx A delta to be subtracted to the Y position as if the anchor was set
    *           when body1 was at current_position[Y] - dy
-   * @param dx A delta to be substracted to the Z position as if the anchor was set
+   * @param dx A delta to be subtracted to the Z position as if the anchor was set
    *           when body1 was at current_position[Z] - dz
    */
   ODE_API void dJointSetPUAnchorOffset (dJointID, dReal x, dReal y, dReal z,
@@ -2568,7 +2568,7 @@ ODE_API void dJointAddPRTorque (dJointID j, dReal torque);
   ODE_API void dJointSetPistonAnchor (dJointID, dReal x, dReal y, dReal z);
 
   /**
-   * @brief Set the Piston anchor as if the 2 bodies were already at [dx,dy, dz] appart.
+   * @brief Set the Piston anchor as if the 2 bodies were already at [dx,dy, dz] apart.
    * @ingroup joints
    *
    * This function initialize the anchor and the relative position of each body
@@ -2589,11 +2589,11 @@ ODE_API void dJointAddPRTorque (dJointID j, dReal torque);
    * @param x The X position of the anchor point in world frame
    * @param y The Y position of the anchor point in world frame
    * @param z The Z position of the anchor point in world frame
-   * @param dx A delta to be substracted to the X position as if the anchor was set
+   * @param dx A delta to be subtracted to the X position as if the anchor was set
    *           when body1 was at current_position[X] - dx
-   * @param dx A delta to be substracted to the Y position as if the anchor was set
+   * @param dx A delta to be subtracted to the Y position as if the anchor was set
    *           when body1 was at current_position[Y] - dy
-   * @param dx A delta to be substracted to the Z position as if the anchor was set
+   * @param dx A delta to be subtracted to the Z position as if the anchor was set
    *           when body1 was at current_position[Z] - dz
    */
   ODE_API void dJointSetPistonAnchorOffset(dJointID j, dReal x, dReal y, dReal z,

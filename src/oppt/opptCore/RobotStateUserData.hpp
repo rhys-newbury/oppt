@@ -14,7 +14,7 @@ public:
 
 	RobotStateUserData() = default;
 
-	virtual ~RobotStateUserData() = default;	
+	virtual ~RobotStateUserData() = default;
 
 	RobotStateSharedPtr previousState = nullptr;
 

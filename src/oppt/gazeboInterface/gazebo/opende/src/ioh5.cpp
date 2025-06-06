@@ -274,7 +274,7 @@ namespace h5 {
       The H5::Group destructor closes the group automatically.  However, if a
       groupis reused, it must be closed by the caller.
 
-      This function will not ovewrite data but append at the end of
+      This function will not overwrite data but append at the end of
       the list of groups in a file.
   */
   H5::Group  append_problem(H5File *file, const std::string & name ) {

@@ -43,7 +43,7 @@ class SpatialIndexVisitor: public SpatialIndex::IVisitor {
      */
     virtual void visitData(std::vector<const SpatialIndex::IData*> &v) override;
 
-    /** A method following the visitor design patter, allowing each StateInfo to be processed. */
+    /** A method following the visitor design pattern, allowing each StateInfo to be processed. */
     virtual void visit(StateInfo *info) = 0;
 
     /** Returns the StatePool associated with this SpatialIndexVisitor. */

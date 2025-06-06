@@ -37,7 +37,7 @@ Model::StepResult GpsStepGenerator::getStep(HistoryEntry const *entry, State con
     BeliefNode *currentNode = entry->getAssociatedBeliefNode();
     //ActionMapping *mapping = currentNode->getMapping();
 
-    choosers::GpsChooserResponse chooserResponse = choosers::gps_ucb_action(currentNode, *model, options);    
+    choosers::GpsChooserResponse chooserResponse = choosers::gps_ucb_action(currentNode, *model, options);
 
     if (!chooserResponse.actionIsVisited) {
     	choseUnvisitedAction = true;

@@ -57,12 +57,12 @@ void
 dxJointDHinge::getInfo2( dReal worldFPS, dReal worldERP, const Info2* info )
 {
     dxJointDBall::getInfo2( worldFPS, worldERP, info ); // sets row0
-    
+
     const int skip = info->rowskip;
     const int row1 = skip;
     const int row2 = 2*skip;
     const int row3 = 3*skip;
-    
+
     dVector3 globalAxis1;
     dBodyVectorToWorld(node[0].body, axis1[0], axis1[1], axis1[2], globalAxis1);
 
@@ -90,7 +90,7 @@ dxJointDHinge::getInfo2( dReal worldFPS, dReal worldERP, const Info2* info )
         dBodyVectorToWorld(node[1].body, axis2[0], axis2[1], axis2[2], globalAxis2);
     else
         dCopyVector3(globalAxis2, axis2);
-    
+
     // similar to the hinge joint
     dVector3 u;
     dCalcVectorCross3(u, globalAxis1, globalAxis2);

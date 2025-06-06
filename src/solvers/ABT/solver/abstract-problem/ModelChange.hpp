@@ -29,4 +29,3 @@ typedef std::map<long, std::vector<std::unique_ptr<ModelChange>>> ChangeSequence
 } /* namespace abt */
 
 #endif /* SOLVER_MODELCHANGES_HPP_ */
-

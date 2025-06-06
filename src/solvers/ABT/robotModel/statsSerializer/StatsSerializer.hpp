@@ -870,5 +870,3 @@ private:
 }
 
 #endif
-
-

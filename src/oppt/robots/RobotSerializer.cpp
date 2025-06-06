@@ -50,7 +50,7 @@ OpptUserDataSharedPtr RobotSerializer::loadUserData(std::istream& is) const {
 
 
 RobotStateSharedPtr RobotSerializer::loadState(std::istream& is) const
-{    
+{
     RobotStateSharedPtr state = VectorSerializer::loadState(is);
     std::ifstream ifs(worldFile_);
     std::string worldSDFString((std::istreambuf_iterator<char>(ifs)),
@@ -61,8 +61,8 @@ RobotStateSharedPtr RobotSerializer::loadState(std::istream& is) const
     worldSDFString.erase(pos, 6);
 
     std::string s;
-    is >> s;    
-    is >> s;    
+    is >> s;
+    is >> s;
 
     std::vector<RobotStateSharedPtr> subStates;
     if (s.find("SUBSTATES_BEGIN") != std::string::npos) {
@@ -114,8 +114,8 @@ RobotStateSharedPtr RobotSerializer::loadState(std::istream& is) const
         GazeboWorldStatePtr gazeboWorldState = std::make_shared<GazeboWorldState>(std::move(worldState), world_);
         state->setGazeboWorldState(gazeboWorldState);
         //std::getline(is, s);
-        is >> s;        
-        is >> s;        
+        is >> s;
+        is >> s;
     }
 
     if (s.find("USER_DATA_BEGIN") != std::string::npos) {

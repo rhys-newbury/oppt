@@ -47,9 +47,9 @@ public:
     /* ------------------ Saving change sequences -------------------- */
     virtual void saveModelChange(abt::ModelChange const& change, std::ostream& os) override;
     virtual std::unique_ptr<abt::ModelChange> loadModelChange(std::istream& is) override;
-    
+
     virtual std::unique_ptr<abt::ObservationMapping> loadObservationMapping(abt::ActionNode* owner,
-            std::istream& is) override;    
+            std::istream& is) override;
 
 };
 

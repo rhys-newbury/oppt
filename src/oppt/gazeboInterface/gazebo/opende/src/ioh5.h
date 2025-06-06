@@ -359,7 +359,7 @@ H5::DataType   get_array_raw(const H5::CommonFG& g, const std::string &name, R& 
 
 ///////////////////////////////////////////////////////
 ///
-/// Utilities to locate datasets which have nown names but unknown location
+/// Utilities to locate datasets which have known names but unknown location
 /// in the file.
 ///
 ///////////////////////////////////////////////////////

@@ -74,7 +74,7 @@ struct GazeboPropagationRequest {
     /** @brief Enable collision checking */
     bool enableCollision = true;
 
-    /** @brief If collisions are not allowed, the forward propagation will stop when a collision occured */
+    /** @brief If collisions are not allowed, the forward propagation will stop when a collision occurred */
     bool allowCollisions = false;
 };
 
@@ -229,11 +229,11 @@ public:
      * @brief Returns a pointer to the constructed initial world state
      *
      * @param setWorldToInitialWorldState If true (default), the current Gazebo world state will be set to the
-     * intial world state
+     * initial world state
      *
      * @returns A oppt::GazeboWorldStatePtr, representing the initial world state
      */
-    GazeboWorldStatePtr getInitialWorldState(const bool &setWorldToInitialWorldState = true);    
+    GazeboWorldStatePtr getInitialWorldState(const bool &setWorldToInitialWorldState = true);
 
     /**
      * @brief Get the position of a link in world coordinates given a state vector and a GazeboWorldState
@@ -277,7 +277,7 @@ public:
     /**
      * @brief Gets the name of the robot
      */
-    std::string getRobotName() const;    
+    std::string getRobotName() const;
 
     /**
      * @brief Sets a custom CollisionFunction that is being used when stepping the
@@ -377,7 +377,7 @@ public:
 private:
     void makeInitialWorldModelMap();
 
-    void checkSDFValidity(const std::string& worldFile, const std::string& robotName);    
+    void checkSDFValidity(const std::string& worldFile, const std::string& robotName);
 
     LinkPtr findRootLink(const ModelPtr& model);
 

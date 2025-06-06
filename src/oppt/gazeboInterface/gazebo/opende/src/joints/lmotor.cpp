@@ -65,7 +65,7 @@ dxJointLMotor::computeGlobalAxes( dVector3 ax[3] )
     }
 }
 
-void 
+void
 dxJointLMotor::getSureMaxInfo( SureMaxInfo* info )
 {
     info->max_m = num;
@@ -206,4 +206,3 @@ dxJointLMotor::size() const
 {
     return sizeof( *this );
 }
-

@@ -43,13 +43,13 @@ public:
     }
 
     virtual FloatType getHeuristicValue(const HeuristicInfo* heuristicInfo) const override {
-        // To compute a heuristic estimate of the Q-value, we use a simple greddy policy 
-        // that visits and samples all rocks that are good according to the state 
-        // provided in heuristicInfo->currentState and then moves to the goal area        
+        // To compute a heuristic estimate of the Q-value, we use a simple greddy policy
+        // that visits and samples all rocks that are good according to the state
+        // provided in heuristicInfo->currentState and then moves to the goal area
         VectorFloat stateVec =
             heuristicInfo->currentState->as<VectorState>()->asVector();
         FloatType currentDiscount = 1.0;
-        FloatType totalDiscountedReward = 0;        
+        FloatType totalDiscountedReward = 0;
 
         // Collect all the good rocks
         std::set<unsigned int> goodRocks;
@@ -87,7 +87,7 @@ public:
         currentDiscount *= std::pow(heuristicInfo->discountFactor, distToGoal);
         totalDiscountedReward += currentDiscount * exitReward_;
         return totalDiscountedReward;
-    }    
+    }
 
 private:
     // The reward of entering the goal area

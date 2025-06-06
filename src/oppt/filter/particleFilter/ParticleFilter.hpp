@@ -36,7 +36,7 @@ public:
     _NO_COPY_BUT_MOVE(Particle)
 
     virtual ~Particle() = default;
-    
+
     /** @brief Construct from a oppt::RobotStateSharedPtr */
     Particle(const RobotStateSharedPtr& state);
 
@@ -80,7 +80,7 @@ public:
     virtual ~FilterRequest() = default;
 
     /**
-     * @brief The robot environment in which the filtering shoud happen
+     * @brief The robot environment in which the filtering should happen
      */
     RobotEnvironment* robotEnvironment;
 

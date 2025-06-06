@@ -7,16 +7,16 @@ namespace oppt
 
 /*------------------EnumeratedObservationPool------------------*/
 EnumeratedABTObservationPool::EnumeratedABTObservationPool(abt::Solver* solver,
-        std::vector<std::unique_ptr<abt::DiscretizedPoint>> observations):    
+        std::vector<std::unique_ptr<abt::DiscretizedPoint>> observations):
     solver_(solver),
     observations_(std::move(observations))
 {
-    
+
 }
 
 std::unique_ptr<abt::ObservationMapping>
 EnumeratedABTObservationPool::createObservationMapping(abt::ActionNode* owner)
-{    
+{
     return std::make_unique<EnumeratedABTObservationMap>(owner, solver_, observations_);
 }
 
@@ -31,7 +31,7 @@ EnumeratedABTObservationMap::EnumeratedABTObservationMap(abt::ActionNode* owner,
     entries_(std::make_unique<EnumeratedABTObservationMapEntry[]>(nObservations_)),
     nChildren_(0),
     totalVisitCount_(0)
-{    
+{
     for (int i = 0; i < nObservations_; i++) {
         entries_[i].map_ = this;
         entries_[i].index_ = i;
@@ -41,7 +41,7 @@ EnumeratedABTObservationMap::EnumeratedABTObservationMap(abt::ActionNode* owner,
 
 abt::BeliefNode* EnumeratedABTObservationMap::getBelief(
     abt::Observation const& obs) const
-{    
+{
     long code = static_cast<abt::DiscretizedPoint const&>(obs).getBinNumber();
     return entries_[code].getBeliefNode();
 }
@@ -63,7 +63,7 @@ long EnumeratedABTObservationMap::getNChildren() const
 void EnumeratedABTObservationMap::deleteChild(abt::ObservationMappingEntry const* entry)
 {
     totalVisitCount_ -= entry->getVisitCount(); // Negate the visit count.
-    // Now delete the child node.    
+    // Now delete the child node.
     const_cast<EnumeratedABTObservationMapEntry&>(
         static_cast<EnumeratedABTObservationMapEntry const&>(*entry)).childNode_ = nullptr;
 }
@@ -79,7 +79,7 @@ std::vector<abt::ObservationMappingEntry const*> EnumeratedABTObservationMap::ge
     return returnEntries;
 }
 abt::ObservationMappingEntry* EnumeratedABTObservationMap::getEntry(abt::Observation const& obs)
-{    
+{
     long code = static_cast<abt::DiscretizedPoint const&>(obs).getBinNumber();
     return &entries_[code];
 }
@@ -123,4 +123,3 @@ void EnumeratedABTObservationMapEntry::updateVisitCount(long deltaNVisits)
 
 
 }
-

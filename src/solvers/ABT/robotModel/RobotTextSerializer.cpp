@@ -105,7 +105,7 @@ void RobotDiscreteActionTextSerializer::saveActionMapping(abt::ActionMapping con
 }
 
 std::unique_ptr<abt::ActionMapping> RobotDiscreteActionTextSerializer::loadActionMapping(abt::BeliefNode* owner, std::istream& is)
-{    
+{
     std::unique_ptr<oppt::RobotDiscreteActionMapping> discMap = std::make_unique<oppt::RobotDiscreteActionMapping>(
                 owner,
                 static_cast<abt::DiscretizedActionPool*>(getSolver()->getActionPool()),
@@ -126,12 +126,12 @@ void RobotDiscreteActionTextSerializer::loadActionMapping(abt::DiscretizedAction
     for (size_t i = 0; i != numVisits; ++i) {
 	robotDiscreteActionMapping->increaseNumVisitedEntries();
     }
-    
+
     sstr4 >> nChildren >> tmpStr;
     for (size_t i = 0; i != nChildren; ++i) {
 	robotDiscreteActionMapping->increaseNChildren();
     }
-    
+
     //sstr4 >> discMap.nChildren_ >> tmpStr;
     sstr4 >> totalVisitCount;
     robotDiscreteActionMapping->increaseVisitCount(totalVisitCount);
@@ -147,7 +147,7 @@ void RobotDiscreteActionTextSerializer::loadActionMapping(abt::DiscretizedAction
             std::getline(sstr2, actionString, ',');
             long code;
             std::istringstream(actionString) >> code;
-	    robotDiscreteActionMapping->addToBinSequence(code);            
+	    robotDiscreteActionMapping->addToBinSequence(code);
         }
     }
 
@@ -197,7 +197,7 @@ void RobotDiscreteActionTextSerializer::loadActionMapping(abt::DiscretizedAction
             load(*node, is);
         }
     }
-    
+
     // Any bins we are supposed to try must be considered legal.
     for (long binNumber : *(robotDiscreteActionMapping->getBinSequence())) {
         robotDiscreteActionMapping->getEntries()[binNumber].isLegal_ = true;

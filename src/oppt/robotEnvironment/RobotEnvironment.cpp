@@ -626,5 +626,3 @@ bool RobotEnvironment::createRobot(std::string worldFile,
 }
 
 }
-
-

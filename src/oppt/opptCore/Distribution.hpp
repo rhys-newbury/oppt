@@ -44,7 +44,7 @@ public:
     /**
      * Draws samples from the distribution.
      * @param numSamples The number of samples to draw
-     * @return A dynamically sized Eigen::Matrix, where the colums are the samples drawn from the distribution.
+     * @return A dynamically sized Eigen::Matrix, where the columns are the samples drawn from the distribution.
      */
     virtual const Eigen::Matrix < Scalar, Dynamic, -1 > sample(const unsigned int& numSamples) const = 0;
 
@@ -96,7 +96,7 @@ public:
         }
 
     }
-    
+
     UniformDistribution(const UniformDistribution& other):
         Distribution<Scalar>(other.randomEngine_),
         left_(other.left_),
@@ -186,7 +186,7 @@ public:
 
         return *this;
     }
-    
+
     /**
      * @brief Set the mean of the distribution
      */
@@ -224,7 +224,7 @@ public:
     Eigen::Matrix<Scalar, Dynamic, Dynamic> getCovarianceMatrix() const {
         return covariance_;
     }
-    
+
     /**
      * @brief Get the mean
      */

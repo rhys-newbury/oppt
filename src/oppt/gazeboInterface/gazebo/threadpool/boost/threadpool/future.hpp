@@ -1,7 +1,7 @@
 /*! \file
 * \brief TODO.
 *
-* TODO. 
+* TODO.
 *
 * Copyright (c) 2005-2007 Philipp Henkel
 *
@@ -17,7 +17,7 @@
 #define THREADPOOL_FUTURE_HPP_INCLUDED
 
 
-  
+
 #include "./detail/future.hpp"
 #include <boost/utility/enable_if.hpp>
 
@@ -30,16 +30,16 @@
 namespace boost { namespace threadpool
 {
 
-  /*! \brief Experimental. Do not use in production code. TODO. 
+  /*! \brief Experimental. Do not use in production code. TODO.
   *
   * TODO Future
   *
   * \see TODO
   *
-  */ 
+  */
 
 
-template<class Result> 
+template<class Result>
 class future
 {
 private:
@@ -104,7 +104,7 @@ public:
 
 
 template<class Pool, class Function>
-typename disable_if < 
+typename disable_if <
   is_void< typename result_of< Function() >::type >,
   future< typename result_of< Function() >::type >
 >::type
@@ -141,4 +141,3 @@ schedule(Pool& pool, const Function& task)
 } } // namespace boost::threadpool
 
 #endif // THREADPOOL_FUTURE_HPP_INCLUDED
-

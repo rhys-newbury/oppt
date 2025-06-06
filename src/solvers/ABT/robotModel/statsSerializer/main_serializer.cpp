@@ -19,19 +19,19 @@ int main(int argc, char const* argv[])
         cmd.add(pathArg);
         cmd.parse(argc, argv);
         std::string logFilePath(pathArg.getValue());
-        oppt::StatsSerializer serializer;        
+        oppt::StatsSerializer serializer;
 
-        // Try path relative to the current directory        
+        // Try path relative to the current directory
         if (!boost::filesystem::is_directory(logFilePath)) {
-            ERROR("Given path doesn't exist: " + logFilePath);            
+            ERROR("Given path doesn't exist: " + logFilePath);
         }
-        
+
         serializer.setPath(logFilePath);
 	serializer.readLogfiles();
 	LOGGING("Done");
 	return 0;
-        
-        
+
+
 
     } catch (TCLAP::ArgException& e) { // catch any exceptions
         std::cerr << "error: " << e.error() << " for arg " << e.argId() << std::endl;

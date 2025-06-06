@@ -47,13 +47,13 @@ spaces
 void dGeomMoved (dxGeom *geom)
 {
   dAASSERT (geom);
-  
+
   // if geom is offset, mark it as needing a calculate
   if (geom->offset_posr) {
     geom->gflags |= GEOM_POSR_BAD;
   }
-  
-  // from the bottom of the space heirarchy up, process all clean geoms
+
+  // from the bottom of the space hierarchy up, process all clean geoms
   // turning them into dirty geoms.
   dxSpace *parent = geom->parent_space;
 
@@ -597,19 +597,19 @@ void dxHashSpace::collide2 (void *_data, dxGeom *geom,
 			    dNearCallback *callback)
 {
   dAASSERT (geom && callback);
-  
+
   // this could take advantage of the hash structure to avoid
   // O(n2) complexity, but it does not yet.
-  
+
   lock_count++;
   cleanGeoms();
   geom->recomputeAABB();
-  
+
   // intersect bounding boxes
   for (dxGeom *g=first; g; g=g->next) {
     if (GEOM_ENABLED(g)) collideAABBs (g,geom,_data,callback);
   }
-  
+
   lock_count--;
 }
 

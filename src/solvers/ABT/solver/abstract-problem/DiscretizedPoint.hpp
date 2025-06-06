@@ -37,7 +37,7 @@ class DiscretizedPoint : public Point {
     /** Returns the bin number associated with this point. */
     virtual long getBinNumber() const = 0;
 
-    // Simple implementations usinng just the bin number.
+    // Simple implementations using just the bin number.
     virtual bool equals(Point const &otherPoint) const override;
     virtual std::size_t hash() const override;
     virtual void print(std::ostream &os) const override;

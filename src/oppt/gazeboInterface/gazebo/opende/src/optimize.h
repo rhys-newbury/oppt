@@ -12,7 +12,7 @@ struct CvxOptParams
   dReal* A;            // equality constraint matrix
   dReal* b;            // equality constraint vector
   dReal mu;            // mu parameter for convex optimization
-  void* data;          // user data passed to functions 
+  void* data;          // user data passed to functions
   int iterations;      // number of iterations performed (on exit)
   int max_iterations;  // maximum number of iterations to be performed
   dReal beta;          // exponential factor used in backtracking line search
@@ -51,4 +51,3 @@ bool dMakeFeasibleConvex(CvxOptParams& cparams, dReal eps_feas, dReal* x, int n)
 bool dOptimizeConvexPrimalDual(CvxOptParams& cparams, dReal eps_feas, dReal* x, int n);
 
 #endif
-

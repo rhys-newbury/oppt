@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #ifndef __ACT_SPACE_HPP__
@@ -42,7 +42,7 @@ struct ActionSpaceInfo {
 };
 
 class ActionLimits
-{    
+{
 public:
     ActionLimits(const LimitsContainerSharedPtr& limits):
         container_(limits) {
@@ -63,7 +63,7 @@ public:
     virtual const LimitsContainerSharedPtr& getLimits() const {
         return container_;
     }
-    
+
     virtual const LimitsContainerSharedPtr& getRawLimits() const {
         return container_;
     }
@@ -164,12 +164,12 @@ public:
     virtual ~ActionNormalizer()=default;
     /**
      * @brief Normalize an Action
-     */    
+     */
     virtual ActionSharedPtr normalizeAction(const ActionSharedPtr& action) const = 0;
 
     /**
      * @brief Deormalize an Action
-     */    
+     */
     virtual ActionSharedPtr denormalizeAction(const ActionSharedPtr& action) const = 0;
 
     void setActionLimits(oppt::ActionLimitsSharedPtr& actionLimits) {
@@ -195,7 +195,7 @@ public:
     virtual ~ActionSpace() {
         actionLimits_.reset();
         denormalizedActionLimits_.reset();
-        actionSpaceInformation_.reset();        
+        actionSpaceInformation_.reset();
     }
 
     _NO_COPY_BUT_MOVE(ActionSpace)
@@ -216,7 +216,7 @@ public:
      * @brief If the provided Action is out of the action limits, force it into the limits
      */
     bool enforceActionLimits(ActionSharedPtr& action) const;
-    
+
     ActionLimitsSharedPtr getActionLimits() const;
 
     /**
@@ -233,18 +233,18 @@ public:
 
     /**
      * @brief Normalizes an action to [0, 1]
-     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect     
+     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect
      * @param observation The action to normalize
      * @return A shared pointer to the normalized action
-     */    
+     */
     ActionSharedPtr normalizeAction(const ActionSharedPtr& action) const;
 
     /**
      * @brief Denormalizes an action
-     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect     
+     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect
      * @param observation The action to denormalize
      * @return A oppt::ActionSharedPtr to the denormalized action
-     */    
+     */
     ActionSharedPtr denormalizeAction(const ActionSharedPtr& action) const;
 
     /**
@@ -277,7 +277,7 @@ protected:
     ActionSpaceInfo actionSpaceInfo_;
 
     ActionSpaceInformationPtr actionSpaceInformation_;
-    
+
     std::unique_ptr<ActionNormalizer> actionNormalizer_ = nullptr;
 
     std::shared_ptr<ActionSpaceDiscretizer> actionSpaceDiscretizer_ = nullptr;

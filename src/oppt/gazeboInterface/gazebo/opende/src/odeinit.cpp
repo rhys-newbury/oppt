@@ -148,7 +148,7 @@ static bool AllocateThreadCollisionData(EODETLSKIND tkTlsKind)
 	{
 		dIASSERT(!(GZCOdeTls::gzGetDataAllocationFlags(tkTlsKind) & TLD_INTERNAL_COLLISIONDATA_ALLOCATED));
 
-#if dTRIMESH_ENABLED 
+#if dTRIMESH_ENABLED
 
 		TrimeshCollidersCache *pccColliderCache = new TrimeshCollidersCache();
 		if (!GZCOdeTls::AssignTrimeshCollidersCache(tkTlsKind, pccColliderCache))
@@ -174,7 +174,7 @@ static bool AllocateThreadCollisionDataIfNecessary(EODEINITMODE imInitMode, bool
 	bool bResult = false;
 	bOutDataAllocated = false;
 
-	do 
+	do
 	{
 #if dTLS_ENABLED
 		EODETLSKIND tkTlsKind = g_atkTLSKindsByInitMode[imInitMode];
@@ -398,7 +398,7 @@ static bool gzInternalInitODE(unsigned int uiInitFlags)
 {
 	bool bResult = false;
 
-	do 
+	do
 	{
 		EODEINITMODE imInitMode = (uiInitFlags & dInitFlagManualThreadCleanup) ? OIM_MANUALTLSCLEANUP : OIM_AUTOTLSCLEANUP;
 
@@ -535,4 +535,3 @@ void dCloseODE()
 
 	gzInternalCloseODE();
 }
-

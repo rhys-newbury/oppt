@@ -25,18 +25,18 @@
  *                                                                 *
  * cylinder-sphere collider by Christoph Beyer (boernerb@web.de)   *
  *                                                                 *
- * In Cylinder/Sphere-collisions, there are three possibilies:     *
+ * In Cylinder/Sphere-collisions, there are three possibilities:     *
  * 1. collision with the cylinder's nappe                          *
  * 2. collision with one of the cylinder's disc                    *
  * 3. collision with one of the disc's border                      *
  *                                                                 *
  * This collider computes two distances (s, t) and based on them,  *
  * it decides, which collision we have.                            *
- * This collider always generates 1 (or 0, if we have no collison) *
+ * This collider always generates 1 (or 0, if we have no collision) *
  * contacts.                                                       *
  * It is able to "separate" cylinder and sphere in all             *
  * configurations, but it never pays attention to velocity.        *
- * So, in extrem situations, "tunneling-effect" is possible.       *
+ * So, in extreme situations, "tunneling-effect" is possible.       *
  *                                                                 *
  *******************************************************************/
 
@@ -50,7 +50,7 @@
 #include "collision_kernel.h"	// for dxGeom
 #include "collision_util.h"
 
-int dCollideCylinderSphere(dxGeom* Cylinder, dxGeom* Sphere, 
+int dCollideCylinderSphere(dxGeom* Cylinder, dxGeom* Sphere,
                            int /*flags*/, dContactGeom *contact, int /*skip*/)
 {
 	//dIASSERT (skip >= (int)sizeof(dContactGeom));

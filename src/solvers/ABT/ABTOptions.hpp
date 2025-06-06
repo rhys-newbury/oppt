@@ -7,7 +7,7 @@ namespace oppt
 struct ABTExtendedOptions: public shared::SharedOptions {
 public:
     ABTExtendedOptions() = default;
-    virtual ~ABTExtendedOptions() = default;    
+    virtual ~ABTExtendedOptions() = default;
 
     /* The particle filter to use */
     std::string particleFilter = "default";
@@ -81,7 +81,7 @@ public:
         return std::move(parser);
     }
 
-    static void addABTOptions(options::OptionParser* parser) {        
+    static void addABTOptions(options::OptionParser* parser) {
         parser->addOption<std::string>("ABT", "particleFilter", &ABTExtendedOptions::particleFilter);
         parser->addOptionWithDefault<bool>("ABT", "pruneEveryStep",
                                            &ABTExtendedOptions::pruneEveryStep, false);

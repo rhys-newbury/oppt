@@ -81,7 +81,7 @@ int _dSafeNormalize3 (dVector3 a)
   a[0] *= l;
   a[1] *= l;
   a[2] *= l;
-  
+
   return 1;
 }
 

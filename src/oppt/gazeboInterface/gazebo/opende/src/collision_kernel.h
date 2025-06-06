@@ -59,7 +59,7 @@ internal data structures and functions for collision detection.
 // note that GEOM_DIRTY does not imply GEOM_AABB_BAD, as the geom might
 // recalculate its own AABB but does not know how to update the space data
 // structures for the space it is in. but GEOM_AABB_BAD implies GEOM_DIRTY.
-// the valid combinations are: 
+// the valid combinations are:
 //		0
 //		GEOM_DIRTY
 //		GEOM_DIRTY|GEOM_AABB_BAD
@@ -152,7 +152,7 @@ struct dxGeom : public dBase {
   void recomputeAABB() {
     if (gflags & GEOM_AABB_BAD) {
       // our aabb functions assume final_posr is up to date
-      recomputePosr(); 
+      recomputePosr();
       computeAABB();
       gflags &= ~GEOM_AABB_BAD;
     }

@@ -113,8 +113,8 @@ std::pair<ExtendStatus, const Node*> RRTConnect::extend_(RRTTree* tree,
 
 std::pair<ExtendStatus, const Node*> RRTConnect::connect_(RRTTree* tree,
         const RobotStateSharedPtr& qRand)
-{    
-    auto nearestNeighbour = tree->nearestNeighbour(qRand);    
+{
+    auto nearestNeighbour = tree->nearestNeighbour(qRand);
     while (true) {
         auto extendResult = extend_(tree, qRand, nearestNeighbour);
         if (extendResult.first == REACHED || extendResult.first == TRAPPED) {
@@ -179,7 +179,7 @@ TrajectorySharedPtr RRTConnect::solve(const RobotStateSharedPtr& state, const Fl
             }
         }
 
-        startTree = !startTree;        
+        startTree = !startTree;
         if ((oppt::clock_ms() - t0) / 1000.0 > timeout) {
             return nullptr;
         }

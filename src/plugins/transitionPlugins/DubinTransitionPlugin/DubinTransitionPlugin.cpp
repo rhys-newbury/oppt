@@ -29,7 +29,7 @@ public:
 
     virtual ~DubinTransitionPlugin() = default;
 
-    virtual bool load(const std::string& optionsFile) override {        
+    virtual bool load(const std::string& optionsFile) override {
         parseOptions_<DubinTransitionPluginOptions>(optionsFile);
         processError_ =
             static_cast<DubinTransitionPluginOptions*>(options_.get())->processError;
@@ -44,7 +44,7 @@ public:
         auto robot = robotEnvironment_->getRobot();
         VectorFloat errorVector;
 
-        // Sample a control error if neccessary
+        // Sample a control error if necessary
         if (propagationRequest->errorVector.size() != robot->getActionSpace()->getNumDimensions()) {
             errorVector = toStdVec<FloatType>(errorDistribution_->sample(1).col(0));
         } else {
@@ -72,7 +72,7 @@ public:
         resultingState[3] = stateVector[3] + controlDuration_ * (control[0]);
         RobotStateSharedPtr dnS = std::make_shared<oppt::VectorState>(resultingState);
 
-        // Check for collisions        
+        // Check for collisions
         if (propagationRequest->enableCollision) {
             propagationResult->collisionReport = makeCollisionReport(denormalizedInputState, dnS);;
             if (propagationResult->collisionReport->collides && propagationRequest->allowCollisions) {
@@ -92,7 +92,7 @@ public:
         propagationResult->nextState = robot->getStateSpace()->normalizeState(denormalizedNextState);
 
         // Enforce the state constraints
-        robot->getStateSpace()->enforceStateLimits(propagationResult->nextState);        
+        robot->getStateSpace()->enforceStateLimits(propagationResult->nextState);
         propagationResult->nextState->setGazeboWorldState(newWorldState);
         propagationResult->errorVector = errorVector;
         return propagationResult;
@@ -152,7 +152,7 @@ private:
                 robot->getStateSpace()->interpolate(state1N, state2N, t);
             auto interpolatedStateD =
                 robot->getStateSpace()->denormalizeState(interpolatedStateN);
-            robotEnvironment_->getGazeboInterface()->setStateVector(interpolatedStateD->as<VectorState>()->asVector());            
+            robotEnvironment_->getGazeboInterface()->setStateVector(interpolatedStateD->as<VectorState>()->asVector());
             collisionReport = robot->makeDiscreteCollisionReportDirty();
             if (collisionReport->collides)
                 return collisionReport;

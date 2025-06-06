@@ -42,7 +42,7 @@ OpptODEPhysics::OpptODEPhysics(WorldPtr _world):
 
 }
 
-OpptODEPhysics::~OpptODEPhysics() {   
+OpptODEPhysics::~OpptODEPhysics() {
 
 }
 
@@ -136,7 +136,7 @@ CumulativeAnglesVec OpptODEPhysics::getCumulativeAngles() const
 {
     CumulativeAnglesVec cumulativeAngles(jointNameMap_.size());
     size_t idx = 0;
-    for (auto & jointEntry : jointNameMap_) {        
+    for (auto & jointEntry : jointNameMap_) {
         cumulativeAngles[idx] =
             std::make_pair(jointEntry.first, jointNameMap_.at(jointEntry.first)->getCumulativeAngles());
         idx++;
@@ -155,7 +155,7 @@ void OpptODEPhysics::setCumulativeAngles(const CumulativeAnglesVec& cumulativeAn
 void OpptODEPhysics::makeJointNameMap()
 {
     jointNameMap_ = std::unordered_map<std::string, OpptJoint*>();
-    for (auto & jointEntry : jointEntries_) {        
+    for (auto & jointEntry : jointEntries_) {
         auto name = jointEntry.second->getName();
         jointNameMap_[name] = jointEntry.second;
     }

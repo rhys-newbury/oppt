@@ -3,10 +3,10 @@
 *
 * This file contains the threadpool's core class: pool<Task, SchedulingPolicy>.
 *
-* Thread pools are a mechanism for asynchronous and parallel processing 
-* within the same process. The pool class provides a convenient way 
+* Thread pools are a mechanism for asynchronous and parallel processing
+* within the same process. The pool class provides a convenient way
 * for dispatching asynchronous tasks as functions objects. The scheduling
-* of these tasks can be easily controlled by using customized schedulers. 
+* of these tasks can be easily controlled by using customized schedulers.
 *
 * Copyright (c) 2005-2007 Philipp Henkel
 *
@@ -42,37 +42,37 @@ namespace boost { namespace threadpool
 
 
 
-  /*! \brief Thread pool. 
+  /*! \brief Thread pool.
   *
-  * Thread pools are a mechanism for asynchronous and parallel processing 
-  * within the same process. The pool class provides a convenient way 
+  * Thread pools are a mechanism for asynchronous and parallel processing
+  * within the same process. The pool class provides a convenient way
   * for dispatching asynchronous tasks as functions objects. The scheduling
-  * of these tasks can be easily controlled by using customized schedulers. 
+  * of these tasks can be easily controlled by using customized schedulers.
   * A task must not throw an exception.
   *
   * A pool is DefaultConstructible, CopyConstructible and Assignable.
-  * It has reference semantics; all copies of the same pool are equivalent and interchangeable. 
-  * All operations on a pool except assignment are strongly thread safe or sequentially consistent; 
+  * It has reference semantics; all copies of the same pool are equivalent and interchangeable.
+  * All operations on a pool except assignment are strongly thread safe or sequentially consistent;
   * that is, the behavior of concurrent calls is as if the calls have been issued sequentially in an unspecified order.
   *
   * \param Task A function object which implements the operator 'void operator() (void) const'. The operator () is called by the pool to execute the task. Exceptions are ignored.
   * \param SchedulingPolicy A task container which determines how tasks are scheduled. It is guaranteed that this container is accessed only by one thread at a time. The scheduler shall not throw exceptions.
   *
   * \remarks The pool class is thread-safe.
-  * 
+  *
   * \see Tasks: task_func, prio_task_func
   * \see Scheduling policies: fifo_scheduler, lifo_scheduler, prio_scheduler
-  */ 
+  */
   template <
     typename Task                                   = task_func,
     template <typename> class SchedulingPolicy      = fifo_scheduler,
     template <typename> class SizePolicy            = static_size,
     template <typename> class SizePolicyController  = resize_controller,
     template <typename> class ShutdownPolicy        = wait_for_all_tasks
-  > 
-  class thread_pool 
+  >
+  class thread_pool
   {
-    typedef detail::pool_core<Task, 
+    typedef detail::pool_core<Task,
                               SchedulingPolicy,
                               SizePolicy,
                               SizePolicyController,
@@ -83,12 +83,12 @@ namespace boost { namespace threadpool
   public: // Type definitions
     typedef Task task_type;                                   //!< Indicates the task's type.
     typedef SchedulingPolicy<task_type> scheduler_type;       //!< Indicates the scheduler's type.
- /*   typedef thread_pool<Task, 
+ /*   typedef thread_pool<Task,
                         SchedulingPolicy,
                         SizePolicy,
                         ShutdownPolicy > pool_type;          //!< Indicates the thread pool's type.
  */
-    typedef SizePolicy<pool_core_type> size_policy_type; 
+    typedef SizePolicy<pool_core_type> size_policy_type;
     typedef SizePolicyController<pool_core_type> size_controller_type;
 
 
@@ -104,7 +104,7 @@ namespace boost { namespace threadpool
     }
 
 
-    /*! Gets the size controller which manages the number of threads in the pool. 
+    /*! Gets the size controller which manages the number of threads in the pool.
     * \return The size controller.
     * \see SizePolicy
     */
@@ -124,27 +124,27 @@ namespace boost { namespace threadpool
 
 
      /*! Schedules a task for asynchronous execution. The task will be executed once only.
-     * \param task The task function object. It should not throw execeptions.
-     * \return true, if the task could be scheduled and false otherwise. 
-     */  
+     * \param task The task function object. It should not throw exceptions.
+     * \return true, if the task could be scheduled and false otherwise.
+     */
      bool schedule(task_type const & task)
-     {	
+     {
        return m_core->schedule(task);
      }
 
 
     /*! Returns the number of tasks which are currently executed.
-    * \return The number of active tasks. 
-    */  
+    * \return The number of active tasks.
+    */
     size_t active() const
     {
       return m_core->active();
     }
 
 
-    /*! Returns the number of tasks which are ready for execution.    
-    * \return The number of pending tasks. 
-    */  
+    /*! Returns the number of tasks which are ready for execution.
+    * \return The number of pending tasks.
+    */
     size_t pending() const
     {
       return m_core->pending();
@@ -152,40 +152,40 @@ namespace boost { namespace threadpool
 
 
     /*! Removes all pending tasks from the pool's scheduler.
-    */  
+    */
     void clear()
-    { 
+    {
       m_core->clear();
-    }    
+    }
 
 
-    /*! Indicates that there are no tasks pending. 
-    * \return true if there are no tasks ready for execution.	
+    /*! Indicates that there are no tasks pending.
+    * \return true if there are no tasks ready for execution.
     * \remarks This function is more efficient that the check 'pending() == 0'.
-    */   
+    */
     bool empty() const
     {
       return m_core->empty();
-    }	
+    }
 
 
     /*! The current thread of execution is blocked until the sum of all active
-    *  and pending tasks is equal or less than a given threshold. 
+    *  and pending tasks is equal or less than a given threshold.
     * \param task_threshold The maximum number of tasks in pool and scheduler.
-    */     
+    */
     void wait(size_t task_threshold = 0) const
     {
       m_core->wait(task_threshold);
-    }	
+    }
 
 
     /*! The current thread of execution is blocked until the timestamp is met
-    * or the sum of all active and pending tasks is equal or less 
-    * than a given threshold.  
+    * or the sum of all active and pending tasks is equal or less
+    * than a given threshold.
     * \param timestamp The time when function returns at the latest.
     * \param task_threshold The maximum number of tasks in pool and scheduler.
     * \return true if the task sum is equal or less than the threshold, false otherwise.
-    */       
+    */
     bool wait(xtime const & timestamp, size_t task_threshold = 0) const
     {
       return m_core->wait(timestamp, task_threshold);
@@ -198,7 +198,7 @@ namespace boost { namespace threadpool
   *
   * The pool's tasks are fifo scheduled task_func functors.
   *
-  */ 
+  */
   typedef thread_pool<task_func, fifo_scheduler, static_size, resize_controller, wait_for_all_tasks> fifo_pool;
 
 
@@ -206,7 +206,7 @@ namespace boost { namespace threadpool
   *
   * The pool's tasks are lifo scheduled task_func functors.
   *
-  */ 
+  */
   typedef thread_pool<task_func, lifo_scheduler, static_size, resize_controller, wait_for_all_tasks> lifo_pool;
 
 
@@ -214,7 +214,7 @@ namespace boost { namespace threadpool
   *
   * The pool's tasks are prioritized prio_task_func functors.
   *
-  */ 
+  */
   typedef thread_pool<prio_task_func, prio_scheduler, static_size, resize_controller, wait_for_all_tasks> prio_pool;
 
 
@@ -222,7 +222,7 @@ namespace boost { namespace threadpool
   *
   * The pool's tasks are fifo scheduled task_func functors.
   *
-  */ 
+  */
   typedef fifo_pool pool;
 
 

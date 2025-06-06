@@ -27,7 +27,7 @@ void OPPTStatePool::cleanup()
     auto it = stateInfosMap_.begin();
     long cleanedStates = 0;
     while (it != stateInfosMap_.end()) {
-        if (static_cast<oppt::StateInfo const*>(it->second.get())->containedInBeliefs_ == 0) {            
+        if (static_cast<oppt::StateInfo const*>(it->second.get())->containedInBeliefs_ == 0) {
             it = stateInfosMap_.erase(it);
             cleanedStates++;
         } else {

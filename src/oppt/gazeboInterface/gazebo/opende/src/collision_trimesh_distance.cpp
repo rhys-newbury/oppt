@@ -1,7 +1,7 @@
 // This file contains some code based on the code from Magic Software.
 // That code is available under a Free Source License Agreement
 // that can be found at http://www.magic-software.com/License/free.pdf
- 
+
 #include <ode/common.h>
 #include <ode/odemath.h>
 #include <ode/collision.h>
@@ -11,18 +11,18 @@
 //------------------------------------------------------------------------------
 /**
   @brief Finds the shortest distance squared between a point and a triangle.
-  
+
   @param pfSParam  Barycentric coordinate of triangle at point closest to p (u)
   @param pfTParam  Barycentric coordinate of triangle at point closest to p (v)
   @return Shortest distance squared.
-  
+
   The third Barycentric coordinate is implicit, ie. w = 1.0 - u - v
-  
+
   Taken from:
   Magic Software, Inc.
   http://www.magic-software.com
 */
-dReal SqrDistancePointTri( const dVector3 p, const dVector3 triOrigin, 
+dReal SqrDistancePointTri( const dVector3 p, const dVector3 triOrigin,
                            const dVector3 triEdge0, const dVector3 triEdge1,
                            dReal* pfSParam, dReal* pfTParam )
 {
@@ -126,7 +126,7 @@ dReal SqrDistancePointTri( const dVector3 p, const dVector3 triOrigin,
         fS = REAL(0.0);
         fT = REAL(0.0);
         fSqrDist = dInfinity;
-      } 
+      }
       else
       {
         dReal fInvDet = REAL(1.0)/fDet;
@@ -271,12 +271,12 @@ dReal SqrDistancePointTri( const dVector3 p, const dVector3 triOrigin,
   @param pfSegP0  t value for seg2 where the shortest distance between
                   the segments exists.
   @return Shortest distance squared.
-  
+
   Taken from:
   Magic Software, Inc.
   http://www.magic-software.com
 */
-dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Direction, 
+dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Direction,
                            const dVector3 seg2Origin, const dVector3 seg2Direction,
                            dReal* pfSegP0, dReal* pfSegP1 )
 {
@@ -299,7 +299,7 @@ dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Directi
     fB1 = dCalcVectorDot3( kNegDiff, seg2Direction );
     fS = fA01*fB1-fA11*fB0;
     fT = fA01*fB0-fA00*fB1;
-        
+
     if ( fS >= REAL(0.0) )
     {
       if ( fS <= fDet )
@@ -422,7 +422,7 @@ dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Directi
         else  // region 8 (corner)
         {
           if ( -fB0 < fA00 )
-          { 
+          {
             fT = REAL(0.0);
             if ( fB0 >= REAL(0.0) )
             {
@@ -458,7 +458,7 @@ dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Directi
         }
       }
     }
-    else 
+    else
     {
       if ( fT >= REAL(0.0) )
       {
@@ -625,21 +625,21 @@ dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Directi
       }
     }
   }
-    
+
   if ( pfSegP0 )
     *pfSegP0 = fS;
-  
+
   if ( pfSegP1 )
     *pfSegP1 = fT;
-    
+
   return dReal(fabs(fSqrDist));
 }
 
 //------------------------------------------------------------------------------
 /**
-  @brief Finds the shortest distance squared between a line segment and 
+  @brief Finds the shortest distance squared between a line segment and
          a triangle.
-         
+
   @param pfSegP   t value for the line segment where the shortest distance between
                   the segment and the triangle occurs.
                   So the point along the segment that is the shortest distance
@@ -647,15 +647,15 @@ dReal SqrDistanceSegments( const dVector3 seg1Origin, const dVector3 seg1Directi
   @param pfTriP0  Barycentric coordinate of triangle at point closest to seg (u)
   @param pfTriP1  Barycentric coordinate of triangle at point closest to seg (v)
   @return Shortest distance squared.
-  
+
   The third Barycentric coordinate is implicit, ie. w = 1.0 - u - v
-         
+
   Taken from:
   Magic Software, Inc.
   http://www.magic-software.com
 */
-dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd, 
-                         const dVector3 triOrigin, 
+dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
+                         const dVector3 triOrigin,
                          const dVector3 triEdge0, const dVector3 triEdge1,
                          dReal* pfSegP, dReal* pfTriP0, dReal* pfTriP1 )
 {
@@ -714,14 +714,14 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
             // min on face s=0 or t=0 or r=0
             Vector3Copy( triOrigin, kTriSegOrigin );
             Vector3Copy( triEdge1, kTriSegDirection );
-            fSqrDist = SqrDistanceSegments( segOrigin, segDirection, 
-                                            kTriSegOrigin, kTriSegDirection, 
+            fSqrDist = SqrDistanceSegments( segOrigin, segDirection,
+                                            kTriSegOrigin, kTriSegDirection,
                                             &fR, &fT );
             fS = REAL(0.0);
             Vector3Copy( triOrigin, kTriSegOrigin );
             Vector3Copy( triEdge0, kTriSegDirection );
-            fSqrDist0 = SqrDistanceSegments( segOrigin, segDirection, 
-                                             kTriSegOrigin, kTriSegDirection, 
+            fSqrDist0 = SqrDistanceSegments( segOrigin, segDirection,
+                                             kTriSegOrigin, kTriSegDirection,
                                              &fR0, &fS0 );
             fT0 = REAL(0.0);
             if ( fSqrDist0 < fSqrDist )
@@ -731,7 +731,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
               fS = fS0;
               fT = fT0;
             }
-            fSqrDist0 = SqrDistancePointTri( segOrigin, triOrigin, triEdge0, triEdge1, 
+            fSqrDist0 = SqrDistancePointTri( segOrigin, triOrigin, triEdge0, triEdge1,
                                              &fS0, &fT0 );
             fR0 = REAL(0.0);
             if ( fSqrDist0 < fSqrDist )
@@ -747,7 +747,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
             // min on face s=0 or r=0
             Vector3Copy( triOrigin, kTriSegOrigin );
             Vector3Copy( triEdge1, kTriSegDirection );
-            fSqrDist = SqrDistanceSegments( segOrigin, segDirection, 
+            fSqrDist = SqrDistanceSegments( segOrigin, segDirection,
                                             kTriSegOrigin, kTriSegDirection,
                                             &fR,&fT );
             fS = REAL(0.0);
@@ -768,8 +768,8 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
           // min on face t=0 or r=0
           Vector3Copy( triOrigin, kTriSegOrigin );
           Vector3Copy( triEdge0, kTriSegDirection );
-          fSqrDist = SqrDistanceSegments( segOrigin, segDirection, 
-                                          kTriSegOrigin, kTriSegDirection, 
+          fSqrDist = SqrDistanceSegments( segOrigin, segDirection,
+                                          kTriSegOrigin, kTriSegDirection,
                                           &fR, &fS );
           fT = REAL(0.0);
           fSqrDist0 = SqrDistancePointTri( segOrigin, triOrigin, triEdge0, triEdge1,
@@ -786,7 +786,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
         else  // region 0m
         {
           // min on face r=0
-          fSqrDist = SqrDistancePointTri( segOrigin, triOrigin, triEdge0, triEdge1, 
+          fSqrDist = SqrDistancePointTri( segOrigin, triOrigin, triEdge0, triEdge1,
                                           &fS, &fT );
           fR = REAL(0.0);
         }
@@ -804,7 +804,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
           fS = REAL(0.0);
           Vector3Add( triOrigin, triEdge0, kTriSegOrigin );
           Vector3Subtract( triEdge1, triEdge0, kTriSegDirection );
-          fSqrDist0 = SqrDistanceSegments( segOrigin, segDirection, 
+          fSqrDist0 = SqrDistanceSegments( segOrigin, segDirection,
                                            kTriSegOrigin, kTriSegDirection,
                                            &fR0, &fT0 );
           fS0 = REAL(1.0) - fT0;
@@ -831,7 +831,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
           // min on face t=0 or s+t=1 or r=0
           Vector3Copy( triOrigin, kTriSegOrigin );
           Vector3Copy( triEdge0, kTriSegDirection );
-          fSqrDist = SqrDistanceSegments( segOrigin, segDirection, 
+          fSqrDist = SqrDistanceSegments( segOrigin, segDirection,
                                           kTriSegOrigin, kTriSegDirection,
                                           &fR, &fS );
           fT = REAL(0.0);
@@ -898,7 +898,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
             fS = REAL(0.0);
             Vector3Copy( triOrigin, kTriSegOrigin );
             Vector3Copy( triEdge0, kTriSegDirection );
-            fSqrDist0 = SqrDistanceSegments( segOrigin, segDirection, 
+            fSqrDist0 = SqrDistanceSegments( segOrigin, segDirection,
                                              kTriSegOrigin, kTriSegDirection,
                                              &fR0, &fS0 );
             fT0 = REAL(0.0);
@@ -1169,7 +1169,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
                                           &fR, &fT );
           fS = REAL(1.0) - fT;
           Vector3Add( segOrigin, segDirection, kPt );
-          fSqrDist0 = SqrDistancePointTri( kPt, triOrigin, triEdge0, triEdge1, 
+          fSqrDist0 = SqrDistancePointTri( kPt, triOrigin, triEdge0, triEdge1,
                                            &fS0, &fT0 );
           fR0 = REAL(1.0);
           if ( fSqrDist0 < fSqrDist )
@@ -1218,7 +1218,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
       fT = fT0;
     }
 
-    fSqrDist0 = SqrDistancePointTri( segOrigin, triOrigin, triEdge0, triEdge1, 
+    fSqrDist0 = SqrDistancePointTri( segOrigin, triOrigin, triEdge0, triEdge1,
                                      &fS0, &fT0 );
     fR0 = REAL(0.0);
     if ( fSqrDist0 < fSqrDist )
@@ -1230,7 +1230,7 @@ dReal SqrDistanceSegTri( const dVector3 segOrigin, const dVector3 segEnd,
     }
 
     Vector3Add( segOrigin, segDirection, kPt );
-    fSqrDist0 = SqrDistancePointTri( kPt, triOrigin, triEdge0, triEdge1, 
+    fSqrDist0 = SqrDistancePointTri( kPt, triOrigin, triEdge0, triEdge1,
                                      &fS0, &fT0 );
     fR0 = REAL(1.0);
     if ( fSqrDist0 < fSqrDist )

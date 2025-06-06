@@ -110,7 +110,7 @@ void RaixSortContext::FreeRanks()
 void RaixSortContext::ReallocateRanksIfNecessary(size_t nNewSize)
 {
 	size_t nCurUtilization = GetCurrentUtilization();
-	
+
 	if (nNewSize != nCurUtilization)
 	{
         size_t nCurSize = GetCurrentSize();
@@ -829,4 +829,3 @@ const uint32* RaixSortContext::RadixSort( const float* input2, uint32 nb )
 	uint32* const Ranks1 = GetRanks1();
 	return Ranks1;
 }
-

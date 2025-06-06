@@ -29,7 +29,7 @@ ObservationSpace::ObservationSpace(const ObservationSpaceInfo& observationSpaceI
     observationLimits_(nullptr),
     denormalizedObservationLimits_(nullptr)
 {
-    
+
 }
 
 ObservationLimitsSharedPtr ObservationSpace::getObservationLimits() const

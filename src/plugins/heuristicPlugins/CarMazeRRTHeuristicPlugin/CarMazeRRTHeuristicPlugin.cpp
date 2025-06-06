@@ -32,9 +32,9 @@ public:
 
     }
 
-    virtual bool load(const std::string& optionsFile) override {        
+    virtual bool load(const std::string& optionsFile) override {
         parseOptions_<RRTHeuristicOptions>(optionsFile);
-        timeout_ = static_cast<RRTHeuristicOptions*>(options_.get())->timeout;       
+        timeout_ = static_cast<RRTHeuristicOptions*>(options_.get())->timeout;
 
         rrtConnect_ =
             std::make_unique<RRTConnect>(robotEnvironment_,
@@ -52,20 +52,20 @@ public:
         DistanceFunction d = [](const RobotStateSharedPtr &s1, const RobotStateSharedPtr &s2){
             VectorFloat s1Vec = s1->as<VectorState>()->asVector();
             VectorFloat s2Vec = s2->as<VectorState>()->asVector();
-            return math::euclideanDistance(s1Vec.data(), s2Vec.data(), 2);            
+            return math::euclideanDistance(s1Vec.data(), s2Vec.data(), 2);
         };
 
         rrtConnect_->setDistanceFunction(d);
-        
+
         return true;
     }
 
     virtual FloatType getHeuristicValue(const HeuristicInfo * heuristicInfo) const override {
         return getHeuristicValueImpl(heuristicInfo);
-    }    
+    }
 
-private:    
-    std::unique_ptr<RRTConnect> rrtConnect_;    
+private:
+    std::unique_ptr<RRTConnect> rrtConnect_;
     FloatType timeout_ = 0.1;
 
 private:
@@ -95,7 +95,7 @@ private:
         PropagationResultSharedPtr propagationResult(new PropagationResult());
         propagationResult->nextState = heuristicInfo->currentState;
         if (!(robotEnvironment_->isValid(propagationResult)))
-            return 0.0;        
+            return 0.0;
         TrajectorySharedPtr trajectory =
             rrtConnect_->solve(heuristicInfo->currentState, timeout_);
         if (!trajectory) {

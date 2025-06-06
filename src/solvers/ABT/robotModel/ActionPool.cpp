@@ -5,7 +5,7 @@ namespace oppt
 RobotDiscreteActionMapping::RobotDiscreteActionMapping(abt::BeliefNode* owner,
         abt::DiscretizedActionPool* pool,
         std::vector<long> binSequence):
-    abt::DiscretizedActionMap(owner, pool, binSequence),    
+    abt::DiscretizedActionMap(owner, pool, binSequence),
     mapEntries_(std::make_unique<RobotDiscretizedActionMapEntry[]>(numberOfBins_))
 {
     for (int i = 0; i < numberOfBins_; i++) {
@@ -258,10 +258,10 @@ void RobotDiscretizedActionMapEntry::setLegal(const bool& legal)
 
 RobotEnumeratedActionPool::RobotEnumeratedActionPool(abt::Model* model,
         const unsigned int& numStepsPerDimension,
-        const unsigned int& numActions,        
+        const unsigned int& numActions,
         std::vector<std::unique_ptr<abt::DiscretizedPoint>> allActions):
     abt::EnumeratedActionPool(model, std::move(allActions)),
-    randGen_(model->getRandomGenerator()),    
+    randGen_(model->getRandomGenerator()),
     numStepsPerDimension_(numStepsPerDimension),
     numActions_(numActions)
 {
@@ -270,8 +270,8 @@ RobotEnumeratedActionPool::RobotEnumeratedActionPool(abt::Model* model,
 
 std::unique_ptr<abt::ActionMapping> RobotEnumeratedActionPool::createActionMapping(abt::BeliefNode* node)
 {
-    std::unique_ptr<abt::ActionMapping> actionMapping(new RobotDiscreteActionMapping(node, 
-                                                                                        this, 
+    std::unique_ptr<abt::ActionMapping> actionMapping(new RobotDiscreteActionMapping(node,
+                                                                                        this,
                                                                                         createBinSequence(node)));
     return std::move(actionMapping);
 }
@@ -288,4 +288,3 @@ std::vector<long> RobotEnumeratedActionPool::createBinSequence(abt::BeliefNode* 
 }
 
 }
-

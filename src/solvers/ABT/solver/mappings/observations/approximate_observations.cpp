@@ -95,14 +95,14 @@ ObservationMappingEntry *ApproximateObservationMap::getEntry(Observation const &
     ObservationMappingEntry const *result = constThis->getEntry(obs);
     return const_cast<ObservationMappingEntry *>(result);
 }
-ObservationMappingEntry const *ApproximateObservationMap::getEntry(Observation const &obs) const {    
-    FloatType shortestDistance = maxDistance_;    
-    ApproximateObservationMapEntry const *bestEntry = nullptr;    
+ObservationMappingEntry const *ApproximateObservationMap::getEntry(Observation const &obs) const {
+    FloatType shortestDistance = maxDistance_;
+    ApproximateObservationMapEntry const *bestEntry = nullptr;
     for (std::unique_ptr<ApproximateObservationMapEntry> const &entry : entries_) {
-        FloatType distance = entry->observation_->distanceTo(obs); 
+        FloatType distance = entry->observation_->distanceTo(obs);
         if (distance <= shortestDistance) {
             shortestDistance = distance;
-            bestEntry = entry.get();	   
+            bestEntry = entry.get();
         }
     }
 
@@ -112,8 +112,8 @@ ObservationMappingEntry const *ApproximateObservationMap::getEntry(Observation c
             cout << "--------------------------" << endl;
             cout << "entry obs: " << *(entry->observation_.get()) << endl;
             cout << "obs: " << obs << endl;
-            FloatType distance = entry->observation_->distanceTo(obs); 
-            cout << "dist: " << distance << endl; 
+            FloatType distance = entry->observation_->distanceTo(obs);
+            cout << "dist: " << distance << endl;
         }
     }*/
 
@@ -220,4 +220,3 @@ std::unique_ptr<ObservationMapping> ApproximateObservationTextSerializer::loadOb
     return std::move(map);
 }
 } /* namespace abt */
-

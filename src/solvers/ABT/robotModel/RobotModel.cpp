@@ -41,14 +41,14 @@ RobotModel::RobotModel(RandomEnginePtr randGen,
     robot_environment_(nullptr),
     heuristicPlugin_(nullptr),
     randGen_(randGen)
-    
+
 {
 
 }
 
 RobotModel::~RobotModel()
 {
-    
+
 }
 
 RandomEnginePtr RobotModel::getRandomEngine() const
@@ -369,7 +369,7 @@ FloatType RobotModel::getDefaultHeuristicValue(abt::HistoryEntry const* entry,
     oppt::RobotStateSharedPtr robotState = static_cast<const shared::RobotState*>(state)->getOpptState();
     //oppt::ActionSharedPtr robotAction = static_cast<shared::RobotAction const *>(entry->getAction());
 
-    heuristicInfo->currentState = static_cast<const shared::RobotState*>(state)->getOpptState();    
+    heuristicInfo->currentState = static_cast<const shared::RobotState*>(state)->getOpptState();
     heuristicInfo->discountFactor = options_->discountFactor;
     if (data) {
         heuristicInfo->currentStep = static_cast<HistEntry const*>(data)->getCurrentStep();

@@ -59,7 +59,7 @@ private:
     FloatType snapToTolerance(const FloatType value, const FloatType tolerance);
 
     oppt::ActionSharedPtr storage;
-    
+
     VectorFloat vectorData_;
 };
 
@@ -81,7 +81,7 @@ public:
     std::unique_ptr<abt::Action> copy() const override;
 
     FloatType distanceTo(abt::Action const& other) const override;
-    
+
     virtual void serialize(std::ostream &os, const std::string prefix="") const override;
 
     void print(std::ostream& os) const override;
@@ -117,7 +117,7 @@ public:
     std::unique_ptr<abt::Action> copy() const override;
 
     FloatType distanceTo(abt::Action const& other) const override;
-    
+
     virtual void serialize(std::ostream &os, const std::string prefix="") const override;
 
     void print(std::ostream& os) const override;
@@ -137,4 +137,3 @@ private:
 }
 
 #endif
-

@@ -94,7 +94,7 @@ public:
 	}
 
 	static TrimeshCollidersCache *GetTrimeshCollidersCache(EODETLSKIND tkTLSKind)
-	{ 
+	{
 		return (TrimeshCollidersCache *)CThreadLocalStorage::UnsafeGetStorageValue(m_ahtkStorageKeys[tkTLSKind], OTI_TRIMESH_TRIMESH_COLLIDER_CACHE);
 	}
 

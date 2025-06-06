@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #include "Tree.hpp"
@@ -81,9 +81,9 @@ void RRTTree::setDistanceFunction(DistanceFunction& distanceFunction)
 
 const Node* RRTTree::allocNode(const Node* parent, const RobotStateSharedPtr& state)
 {
-    nodes_.push_back(new Node(this, 
-                              parent, 
-                              state->as<VectorState>()->asVector()));    
+    nodes_.push_back(new Node(this,
+                              parent,
+                              state->as<VectorState>()->asVector()));
     nodes_[nodes_.size() - 1]->setRobotState(state);
     return nodes_[nodes_.size() - 1];
 }
@@ -101,7 +101,7 @@ void RRTTree::reset()
 }
 
 size_t RRTTree::makeRoot(const RobotStateSharedPtr& state)
-{    
+{
     allocNode(nullptr, state);
     return nodes_.size() - 1;
 }
@@ -113,7 +113,7 @@ const Node* RRTTree::nearestNeighbour(const RobotStateSharedPtr& q)
     FloatType dist = 0;
     VectorFloat qVec = q->as<VectorState>()->asVector();
     for (size_t i = 0; i != nodes_.size(); ++i) {
-        dist = distanceFunction_(nodes_[i]->getRobotState(), 
+        dist = distanceFunction_(nodes_[i]->getRobotState(),
                                  q);
         if (dist < smallestDist) {
             smallestDist = dist;

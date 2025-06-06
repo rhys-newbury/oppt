@@ -34,7 +34,7 @@ dxJointNull::dxJointNull( dxWorld *w ) :
 {
 }
 
-void 
+void
 dxJointNull::getSureMaxInfo( SureMaxInfo* info )
 {
     info->max_m = 0;
@@ -66,5 +66,3 @@ dxJointNull::size() const
 {
     return sizeof( *this );
 }
-
-

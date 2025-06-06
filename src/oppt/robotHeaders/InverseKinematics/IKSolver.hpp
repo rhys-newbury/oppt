@@ -15,7 +15,7 @@ public:
 
 	_NO_COPY_BUT_MOVE(IKSolver)
 
-	_STATIC_CAST	
+	_STATIC_CAST
 
 	virtual std::pair<bool, VectorFloat> solve(const geometric::Pose &pose,
 	        const unsigned int &numAttempts,

@@ -10,7 +10,7 @@ public:
 
 	FloatType exitReward = 0.0;
 
-	FloatType goodRockSamplingReward = 0.0;	
+	FloatType goodRockSamplingReward = 0.0;
 
 	static std::unique_ptr<options::OptionParser> makeParser() {
 		std::unique_ptr<options::OptionParser> parser =

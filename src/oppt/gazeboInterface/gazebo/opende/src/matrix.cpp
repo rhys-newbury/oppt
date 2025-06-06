@@ -71,7 +71,7 @@ void _dMultiply0 (dReal *A, const dReal *B, const dReal *C, int p, int q, int r)
       for (; b != bend; c+=rskip, ++b) {
         sum += (*b)*(*c);
       }
-      (*a) = sum; 
+      (*a) = sum;
     }
   }
 }
@@ -115,7 +115,7 @@ void _dMultiply2 (dReal *A, const dReal *B, const dReal *C, int p, int q, int r)
       for (; c != cend; ++b, ++c) {
         sum += (*b)*(*c);
       }
-      (*a) = sum; 
+      (*a) = sum;
     }
   }
 }
@@ -220,7 +220,7 @@ int _dInvertPDMatrix (const dReal *A, dReal *Ainv, int n, void *tmpbuf/*[nskip*(
     }
     success = true;
   }
-  return success ? 1 : 0;  
+  return success ? 1 : 0;
 }
 
 
@@ -529,4 +529,3 @@ void dRemoveRowCol (dReal *A, int n, int nskip, int r)
 {
   _dRemoveRowCol (A, n, nskip, r);
 }
-

@@ -67,7 +67,7 @@ struct LineContactSet
 
 
 // static void GetTriangleGeometryCallback(udword, VertexPointers&, udword); -- not used
-static void GenerateContact(int, dContactGeom*, int, dxTriMesh*,  dxTriMesh*, 
+static void GenerateContact(int, dContactGeom*, int, dxTriMesh*,  dxTriMesh*,
 							int TriIndex1, int TriIndex2,
                             const dVector3, const dVector3, dReal, int&);
 static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
@@ -76,7 +76,7 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
 inline void dMakeMatrix4(const dVector3 Position, const dMatrix3 Rotation, dMatrix4 &B);
 static void dInvertMatrix4( dMatrix4& B, dMatrix4& Binv );
 //static int IntersectLineSegmentRay(dVector3, dVector3, dVector3, dVector3,  dVector3);
-static bool FindTriSolidIntrsection(const dVector3 Tri[3], 
+static bool FindTriSolidIntrsection(const dVector3 Tri[3],
                                     const dVector4 Planes[6], int numSides,
                                     LineContactSet& ClippedPolygon );
 static void ClipConvexPolygonAgainstPlane( const dVector3, dReal, LineContactSet& );
@@ -139,7 +139,7 @@ SwapNormals(dVector3 *&pen_v, dVector3 *&col_v, dVector3* v1, dVector3* v2,
 
 
 
-int 
+int
 dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Stride)
 {
 	dIASSERT (Stride >= (int)sizeof(dContactGeom));
@@ -312,7 +312,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 								}
 							}
 							else {
-								// Otherwise (in non-co-planar cases), we create a coplanar 
+								// Otherwise (in non-co-planar cases), we create a coplanar
 								//  point -- the middle of the line of intersection -- that
 								//   will be used for various computations down the road
 								for (int j=0; j<3; j++)
@@ -342,7 +342,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 
 								for (int ii=0; ii<3; ii++) {
 									// find the estimated linear translation (ELT) of the vertices
-									//  on face 1, wrt to the center of face 2. 
+									//  on face 1, wrt to the center of face 2.
 
 									// un-transform this vertex by the current transform
 									dMultiply1(orig_pos, InvMatrix1, v1[ii], 4, 4, 1 );
@@ -364,7 +364,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 
 								for (int ii=0; ii<3; ii++) {
 									// find the estimated linear translation (ELT) of the vertices
-									//  on face 2, wrt to the center of face 1. 
+									//  on face 2, wrt to the center of face 1.
 									dMultiply1(orig_pos, InvMatrix2, v2[ii], 4, 4, 1);
 									dMultiply1(old_pos2, ((dxTriMesh*)g2)->last_trans, orig_pos, 4, 4, 1);
 									for (int k=0; k<3; k++) {
@@ -378,8 +378,8 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 
 
 								////////
-								// Estimate the penetration depth.  
-								//                            
+								// Estimate the penetration depth.
+								//
 								dReal    dp;
 								BOOL      badPen = true;
 								dVector3 *pen_v;   // the "penetrating vertices"
@@ -470,7 +470,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									SwapNormals(pen_v, col_v, v1, v2, pen_elt, elt_f1, elt_f2, n, n1, n2);
 
 
-									// Find the three sides (no top or bottom) of the solid defined by 
+									// Find the three sides (no top or bottom) of the solid defined by
 									//  the edges of the penetrated triangle.
 
 									// The dVector4 "plane" structures contain the following information:
@@ -493,7 +493,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									dNormalize3(sn);
 									SMULT( SolidPlanes[0], sn, -1.0 );
 
-									ADD(tmp1, col_v[0], col_v[1]); 
+									ADD(tmp1, col_v[0], col_v[1]);
 									SMULT(tmp1, tmp1, 0.5); // center of edge
 									// distance from center to edge along normal
 									SolidPlanes[0][3] = dCalcVectorDot3(tmp1, SolidPlanes[0]);
@@ -504,7 +504,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									dNormalize3(sn);
 									SMULT( SolidPlanes[1], sn, -1.0 );
 
-									ADD(tmp1, col_v[0], col_v[2]); 
+									ADD(tmp1, col_v[0], col_v[2]);
 									SMULT(tmp1, tmp1, 0.5); // center of edge
 									// distance from center to edge along normal
 									SolidPlanes[1][3] = dCalcVectorDot3(tmp1, SolidPlanes[1]);
@@ -515,7 +515,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									dNormalize3(sn);
 									SMULT( SolidPlanes[2], sn, -1.0 );
 
-									ADD(tmp1, col_v[2], col_v[1]); 
+									ADD(tmp1, col_v[2], col_v[1]);
 									SMULT(tmp1, tmp1, 0.5); // center of edge
 									// distance from center to edge along normal
 									SolidPlanes[2][3] = dCalcVectorDot3(tmp1, SolidPlanes[2]);
@@ -575,7 +575,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									SwapNormals(pen_v, col_v, v1, v2, pen_elt, elt_f1, elt_f2, n, n1, n2);
 
 
-									// Find the three sides (no top or bottom) of the solid created by 
+									// Find the three sides (no top or bottom) of the solid created by
 									//  the penetrated triangle.
 									// The dVector4 "plane" structures contain the following information:
 									//  [0]-[2]: The normal of the face, pointing INWARDS (i.e.
@@ -597,7 +597,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									dNormalize3(sn);
 									SMULT( SolidPlanes[0], sn, -1.0 );
 
-									ADD(tmp1, col_v[0], col_v[1]); 
+									ADD(tmp1, col_v[0], col_v[1]);
 									SMULT(tmp1, tmp1, 0.5); // center of edge
 									// distance from center to edge along normal
 									SolidPlanes[0][3] = dCalcVectorDot3(tmp1, SolidPlanes[0]);
@@ -608,7 +608,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									dNormalize3(sn);
 									SMULT( SolidPlanes[1], sn, -1.0 );
 
-									ADD(tmp1, col_v[0], col_v[2]); 
+									ADD(tmp1, col_v[0], col_v[2]);
 									SMULT(tmp1, tmp1, 0.5); // center of edge
 									// distance from center to edge along normal
 									SolidPlanes[1][3] = dCalcVectorDot3(tmp1, SolidPlanes[1]);
@@ -619,7 +619,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									dNormalize3(sn);
 									SMULT( SolidPlanes[2], sn, -1.0 );
 
-									ADD(tmp1, col_v[2], col_v[1]); 
+									ADD(tmp1, col_v[2], col_v[1]);
 									SMULT(tmp1, tmp1, 0.5); // center of edge
 									// distance from center to edge along normal
 									SolidPlanes[2][3] = dCalcVectorDot3(tmp1, SolidPlanes[2]);
@@ -686,7 +686,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									SwapNormals(pen_v, col_v, v1, v2, pen_elt, elt_f1, elt_f2, n, n1, n2);
 
 									if (dFabs(dCalcVectorDot3(n1, n2)) < REAL(0.01)) {
-										// If we reach this point, we have (close to) perpindicular
+										// If we reach this point, we have (close to) perpendicular
 										//  faces, either resting on each other or sliding in a
 										// direction orthogonal to both surface normals.
 										if (elt_sum_len < DISTANCE_EPSILON) {
@@ -708,8 +708,8 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 											}
 										}
 										else {
-											// The faces are perpindicular, but moving significantly
-											//  This can be sliding, or an unusual edge-straddling 
+											// The faces are perpendicular, but moving significantly
+											//  This can be sliding, or an unusual edge-straddling
 											//  penetration.
 											dVector3 cn;
 
@@ -791,7 +791,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 
 
 								if (badPen && elt_sum_len != 0.0) {
-									// If the direction of motion is perpindicular to both normals
+									// If the direction of motion is perpendicular to both normals
 									if ( (dFabs(dCalcVectorDot3(n1, elt_sum)) < REAL(0.01)) && (dFabs(dCalcVectorDot3(n2, elt_sum)) < REAL(0.01)) ) {
 										dVector3 esn;
 										if (pen_v == v1) {
@@ -871,7 +871,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 									//
 									if (elt_sum_len < VELOCITY_EPSILON) {
 
-										// instead of a "contact_elt_length" threshhold, we'll use an
+										// instead of a "contact_elt_length" threshold, we'll use an
 										//  arbitrary, small one
 										for (int j=0; j<3; j++) {
 											DEPTH(dp, CoplanarPt, pen_v[j], n);
@@ -952,7 +952,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 
 
 								if (badPen) {
-									// Add a tiny contact at the coplanar point                                    
+									// Add a tiny contact at the coplanar point
 									if (-dCalcVectorDot3(elt_sum, n1) > -dCalcVectorDot3(elt_sum, n2)) {
 										SET(ContactNormal, n1);
 									}
@@ -976,10 +976,10 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 
 				// Free memory
 				delete[] firstClippedElt;
-				delete[] secondClippedElt;	
+				delete[] secondClippedElt;
 
 				// Return the number of contacts
-				return OutTriCount; 
+				return OutTriCount;
 			}
 		}
 	}
@@ -987,7 +987,7 @@ dCollideTTL(dxGeom* g1, dxGeom* g2, int Flags, dContactGeom* Contacts, int Strid
 
 	// There was some kind of failure during the Collide call or
 	// there are no faces overlapping
-	return 0;    
+	return 0;
 }
 
 
@@ -1044,7 +1044,7 @@ GetTriangleGeometryCallback(udword triangleindex, VertexPointers& triangle, udwo
 inline void
 dMakeMatrix4(const dVector3 Position, const dMatrix3 Rotation, dMatrix4 &B)
 {
-	B11 = Rotation[0]; B21 = Rotation[1]; B31 = Rotation[2];    B41 = Position[0]; 
+	B11 = Rotation[0]; B21 = Rotation[1]; B31 = Rotation[2];    B41 = Position[0];
 	B12 = Rotation[4]; B22 = Rotation[5]; B32 = Rotation[6];    B42 = Position[1];
 	B13 = Rotation[8]; B23 = Rotation[9]; B33 = Rotation[10];   B43 = Position[2];
 
@@ -1061,9 +1061,9 @@ dInvertMatrix4( dMatrix4& B, dMatrix4& Binv )
         +(B12 * B23 - B13 * B22) * (B31 * B44 - B34 * B41)
         -(B12 * B24 - B14 * B22) * (B31 * B43 - B33 * B41)
         +(B13 * B24 - B14 * B23) * (B31 * B42 - B32 * B41);
-    
-    dAASSERT (det != 0.0);    
-    
+
+    dAASSERT (det != 0.0);
+
     det = 1.0 / det;
 
     Binv11 = (dReal) (det * ((B22 * B33) - (B23 * B32)));
@@ -1097,10 +1097,10 @@ dInvertMatrix4( dMatrix4& B, dMatrix4& Binv )
 //  OPC_TriTriOverlap.h) but we have replicated it here so we don't
 //  have to mess with the internals of OPCODE, as well as so we can
 //  further optimize some of the functions.
-// 
+//
 //  This version computes the line of intersection as well (if they
 //  are not coplanar):
-//  int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3], 
+//  int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
 //                                   dReal U0[3],dReal U1[3],dReal U2[3],
 //                                   int *coplanar,
 //                                   dReal isectpt1[3],dReal isectpt2[3]);
@@ -1112,15 +1112,15 @@ dInvertMatrix4( dMatrix4& B, dMatrix4& Binv )
 //              "coplanar" returns whether the tris are coplanar
 //              isectpt1, isectpt2 are the endpoints of the line of
 //              intersection
-// 
+//
 
 
 
-/* if USE_EPSILON_TEST is true then we do a check: 
+/* if USE_EPSILON_TEST is true then we do a check:
          if |dv|<EPSILON then dv=0.0;
    else no check is done (which is less robust)
 */
-#define USE_EPSILON_TEST TRUE  
+#define USE_EPSILON_TEST TRUE
 #define EPSILON REAL(0.000001)
 
 
@@ -1174,7 +1174,7 @@ dInvertMatrix4( dMatrix4& B, dMatrix4& Binv )
 
 /* this edge to edge test is based on Franlin Antonio's gem:
    "Faster Line Segment Intersection", in Graphics Gems III,
-   pp. 199-202 */ 
+   pp. 199-202 */
 #define EDGE_EDGE_TEST(V0,U0,U1)                      \
   Bx=U0[i0]-U1[i0];                                   \
   By=U0[i1]-U1[i1];                                   \
@@ -1193,7 +1193,7 @@ dInvertMatrix4( dMatrix4& B, dMatrix4& Binv )
     {                                                 \
       if(e<=0 && e>=f) return 1;                      \
     }                                                 \
-  }                                
+  }
 
 #define EDGE_AGAINST_TRI_EDGES(V0,V1,U0,U1,U2) \
 {                                              \
@@ -1211,7 +1211,7 @@ dInvertMatrix4( dMatrix4& B, dMatrix4& Binv )
 #define POINT_IN_TRI(V0,U0,U1,U2)           \
 {                                           \
   dReal a,b,c,d0,d1,d2;                     \
-  /* is T1 completly inside T2? */          \
+  /* is T1 completely inside T2? */          \
   /* check if V0 is inside tri(U0,U1,U2) */ \
   a=U1[i1]-U0[i1];                          \
   b=-(U1[i0]-U0[i0]);                       \
@@ -1245,7 +1245,7 @@ int coplanar_tri_tri(dReal N[3],dReal V0[3],dReal V1[3],dReal V2[3],
    A[2]= dFabs(N[2]);
    if(A[0]>A[1])
    {
-      if(A[0]>A[2])  
+      if(A[0]>A[2])
       {
           i0=1;      /* A[0] is greatest */
           i1=2;
@@ -1261,20 +1261,20 @@ int coplanar_tri_tri(dReal N[3],dReal V0[3],dReal V1[3],dReal V2[3],
       if(A[2]>A[1])
       {
           i0=0;      /* A[2] is greatest */
-          i1=1;                                           
+          i1=1;
       }
       else
       {
           i0=0;      /* A[1] is greatest */
           i1=2;
       }
-    }               
-                
+    }
+
     /* test all edges of triangle 1 against the edges of triangle 2 */
     EDGE_AGAINST_TRI_EDGES(V0,V1,U0,U1,U2);
     EDGE_AGAINST_TRI_EDGES(V1,V2,U0,U1,U2);
     EDGE_AGAINST_TRI_EDGES(V2,V0,U0,U1,U2);
-                
+
     /* finally, test if tri1 is totally contained in tri2 or vice versa */
     POINT_IN_TRI(V0,U0,U1,U2);
     POINT_IN_TRI(U0,V0,V1,V2);
@@ -1334,19 +1334,19 @@ int coplanar_tri_tri(dReal N[3],dReal V0[3],dReal V1[3],dReal V2[3],
 
 
 inline void isect2(dReal VTX0[3],dReal VTX1[3],dReal VTX2[3],dReal VV0,dReal VV1,dReal VV2,
-        dReal D0,dReal D1,dReal D2,dReal *isect0,dReal *isect1,dReal isectpoint0[3],dReal isectpoint1[3]) 
+        dReal D0,dReal D1,dReal D2,dReal *isect0,dReal *isect1,dReal isectpoint0[3],dReal isectpoint1[3])
 {
-  dReal tmp=D0/(D0-D1);          
+  dReal tmp=D0/(D0-D1);
   dReal diff[3];
-  *isect0=VV0+(VV1-VV0)*tmp;         
-  SUB(diff,VTX1,VTX0);              
-  MULT(diff,diff,tmp);               
-  ADD(isectpoint0,diff,VTX0);        
-  tmp=D0/(D0-D2);                    
-  *isect1=VV0+(VV2-VV0)*tmp;          
-  SUB(diff,VTX2,VTX0);                   
-  MULT(diff,diff,tmp);                 
-  ADD(isectpoint1,VTX0,diff);          
+  *isect0=VV0+(VV1-VV0)*tmp;
+  SUB(diff,VTX1,VTX0);
+  MULT(diff,diff,tmp);
+  ADD(isectpoint0,diff,VTX0);
+  tmp=D0/(D0-D2);
+  *isect1=VV0+(VV2-VV0)*tmp;
+  SUB(diff,VTX2,VTX0);
+  MULT(diff,diff,tmp);
+  ADD(isectpoint1,VTX0,diff);
 }
 
 
@@ -1369,33 +1369,33 @@ inline int compute_intervals_isectline(dReal VERT0[3],dReal VERT1[3],dReal VERT2
                        dReal D0D1,dReal D0D2,dReal *isect0,dReal *isect1,
                        dReal isectpoint0[3],dReal isectpoint1[3])
 {
-  if(D0D1>0.0f)                                        
-  {                                                    
-    /* here we know that D0D2<=0.0 */                  
+  if(D0D1>0.0f)
+  {
+    /* here we know that D0D2<=0.0 */
     /* that is D0, D1 are on the same side, D2 on the other or on the plane */
     isect2(VERT2,VERT0,VERT1,VV2,VV0,VV1,D2,D0,D1,isect0,isect1,isectpoint0,isectpoint1);
-  } 
-  else if(D0D2>0.0f)                                   
-    {                                                   
-    /* here we know that d0d1<=0.0 */             
+  }
+  else if(D0D2>0.0f)
+    {
+    /* here we know that d0d1<=0.0 */
     isect2(VERT1,VERT0,VERT2,VV1,VV0,VV2,D1,D0,D2,isect0,isect1,isectpoint0,isectpoint1);
-  }                                                  
-  else if(D1*D2>0.0f || D0!=0.0f)   
-  {                                   
+  }
+  else if(D1*D2>0.0f || D0!=0.0f)
+  {
     /* here we know that d0d1<=0.0 or that D0!=0.0 */
-    isect2(VERT0,VERT1,VERT2,VV0,VV1,VV2,D0,D1,D2,isect0,isect1,isectpoint0,isectpoint1);   
-  }                                                  
-  else if(D1!=0.0f)                                  
-  {                                               
-    isect2(VERT1,VERT0,VERT2,VV1,VV0,VV2,D1,D0,D2,isect0,isect1,isectpoint0,isectpoint1); 
-  }                                         
-  else if(D2!=0.0f)                                  
-  {                                                   
-    isect2(VERT2,VERT0,VERT1,VV2,VV0,VV1,D2,D0,D1,isect0,isect1,isectpoint0,isectpoint1);     
-  }                                                 
-  else                                               
-  {                                                   
-    /* triangles are coplanar */    
+    isect2(VERT0,VERT1,VERT2,VV0,VV1,VV2,D0,D1,D2,isect0,isect1,isectpoint0,isectpoint1);
+  }
+  else if(D1!=0.0f)
+  {
+    isect2(VERT1,VERT0,VERT2,VV1,VV0,VV2,D1,D0,D2,isect0,isect1,isectpoint0,isectpoint1);
+  }
+  else if(D2!=0.0f)
+  {
+    isect2(VERT2,VERT0,VERT1,VV2,VV0,VV1,D2,D0,D1,isect0,isect1,isectpoint0,isectpoint1);
+  }
+  else
+  {
+    /* triangles are coplanar */
     return 1;
   }
   return 0;
@@ -1407,7 +1407,7 @@ inline int compute_intervals_isectline(dReal VERT0[3],dReal VERT1[3],dReal VERT2
     /* here we know that D0D2<=0.0 */                   \
     /* that is D0, D1 are on the same side, D2 on the other or on the plane */ \
     isect2(VERT2,VERT0,VERT1,VV2,VV0,VV1,D2,D0,D1,&isect0,&isect1,isectpoint0,isectpoint1);          \
-  }                                                     
+  }
 #if 0
   else if(D0D2>0.0f)                                    \
   {                                                     \
@@ -1454,17 +1454,17 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
   dReal up0,up1,up2;
   dReal b,c,max;
   int smallest1,smallest2;
-  
+
   /* compute plane equation of triangle(V0,V1,V2) */
   SUB(E1,V1,V0);
   SUB(E2,V2,V0);
   CROSS(N1,E1,E2);
-  
-  // Even though all triangles might be initially valid, 
-  // a triangle may degenerate into a segment after applying 
+
+  // Even though all triangles might be initially valid,
+  // a triangle may degenerate into a segment after applying
   // space transformation.
   //
-  // Oleh_Derevenko: 
+  // Oleh_Derevenko:
   // I'm not quite sure if this routine will fail/assert for zero normal
   // (it's too large and complex to be fully analyzed).
   // However in such a large code block three extra float comparisons
@@ -1497,11 +1497,11 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
   SUB(E2,U2,U0);
   CROSS(N2,E1,E2);
 
-  // Even though all triangles might be initially valid, 
-  // a triangle may degenerate into a segment after applying 
+  // Even though all triangles might be initially valid,
+  // a triangle may degenerate into a segment after applying
   // space transformation.
   //
-  // Oleh_Derevenko: 
+  // Oleh_Derevenko:
   // I'm not quite sure if this routine will fail/assert for zero normal
   // (it's too large and complex to be fully analyzed).
   // However in such a large code block three extra float comparisons
@@ -1525,7 +1525,7 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
 
   dv0dv1=dv0*dv1;
   dv0dv2=dv0*dv2;
-        
+
   if(dv0dv1>0.0f && dv0dv2>0.0f) /* same sign on all of them + not equal 0 ? */
     return 0;                    /* no intersection occurs */
 
@@ -1544,7 +1544,7 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
   vp0=V0[index];
   vp1=V1[index];
   vp2=V2[index];
-  
+
   up0=U0[index];
   up1=U1[index];
   up2=U2[index];
@@ -1552,7 +1552,7 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
   /* compute interval for triangle 1 */
   *coplanar=compute_intervals_isectline(V0,V1,V2,vp0,vp1,vp2,dv0,dv1,dv2,
                                         dv0dv1,dv0dv2,&isect1[0],&isect1[1],isectpointA1,isectpointA2);
-  if(*coplanar) return coplanar_tri_tri(N1,V0,V1,V2,U0,U1,U2);     
+  if(*coplanar) return coplanar_tri_tri(N1,V0,V1,V2,U0,U1,U2);
 
 
   /* compute interval for triangle 2 */
@@ -1590,12 +1590,12 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
     if(isect2[1]>isect1[1])
     {
       if(smallest1==0) { SET(isectpt2,isectpointA2); }
-      else { SET(isectpt2,isectpointA1); }      
+      else { SET(isectpt2,isectpointA1); }
     }
     else
     {
       if(smallest2==0) { SET(isectpt2,isectpointB2); }
-      else { SET(isectpt2,isectpointB1); } 
+      else { SET(isectpt2,isectpointB1); }
     }
   }
   return 1;
@@ -1605,10 +1605,10 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
 
 
 
-// Find the intersectiojn point between a coplanar line segement,
+// Find the intersectiojn point between a coplanar line segment,
 // defined by X1 and X2, and a ray defined by X3 and direction N.
 //
-// This forumla for this calculation is:
+// This formula for this calculation is:
 //               (c x b) . (a x b)
 //   Q = x1 + a -------------------
 //                  | a x b | ^2
@@ -1620,28 +1620,28 @@ static int TriTriIntersectWithIsectLine(dReal V0[3],dReal V1[3],dReal V2[3],
 //  and x4 is (CoplanarPt - n)
 #if 0 // not used anywhere
 static int
-IntersectLineSegmentRay(dVector3 x1, dVector3 x2, dVector3 x3, dVector3 n, 
+IntersectLineSegmentRay(dVector3 x1, dVector3 x2, dVector3 x3, dVector3 n,
                         dVector3 out_pt)
 {
     dVector3 a, b, c, x4;
 
     ADD(x4, x3, n);  // x4 = x3 + n
-    
+
     SUB(a, x2, x1);  // a = x2 - x1
     SUB(b, x4, x3);
     SUB(c, x3, x1);
-    
+
     dVector3 tmp1, tmp2;
     CROSS(tmp1, c, b);
     CROSS(tmp2, a, b);
 
     dReal num, denom;
     num = dCalcVectorDot3(tmp1, tmp2);
-    denom = LENGTH( tmp2 ); 
+    denom = LENGTH( tmp2 );
 
     dReal s;
     s = num /(denom*denom);
-    
+
     for (int i=0; i<3; i++)
         out_pt[i] = x1[i] + a[i]*s;
 
@@ -1662,15 +1662,15 @@ IntersectLineSegmentRay(dVector3 x1, dVector3 x2, dVector3 x3, dVector3 n,
 }
 #endif
 
-// FindTriSolidIntersection - Clips the input trinagle TRI with the 
+// FindTriSolidIntersection - Clips the input triangle TRI with the
 //  sides of a convex bounding solid, described by PLANES, returning
 //  the (convex) clipped polygon in CLIPPEDPOLYGON
 //
 static bool
-FindTriSolidIntrsection(const dVector3 Tri[3], 
+FindTriSolidIntrsection(const dVector3 Tri[3],
                         const dVector4 Planes[6], int numSides,
                         LineContactSet& ClippedPolygon )
-{ 
+{
     // Set up the LineContactSet structure
     for (int k=0; k<3; k++) {
         SET(ClippedPolygon.Points[k], Tri[k]);
@@ -1680,7 +1680,7 @@ FindTriSolidIntrsection(const dVector3 Tri[3],
     // Clip wrt the sides
     for ( int i = 0; i < numSides; i++ )
         ClipConvexPolygonAgainstPlane( Planes[i], Planes[i][3], ClippedPolygon );
-    
+
     return (ClippedPolygon.Count > 0);
 }
 
@@ -1688,8 +1688,8 @@ FindTriSolidIntrsection(const dVector3 Tri[3],
 
 
 // ClipConvexPolygonAgainstPlane - Clip a a convex polygon, described by
-//  CONTACTS, with a plane (described by N and C).  Note:  the input 
-//  vertices are assumed to be in counterclockwise order.  
+//  CONTACTS, with a plane (described by N and C).  Note:  the input
+//  vertices are assumed to be in counterclockwise order.
 //
 // This code is taken from The Nebula Device:
 //  http://nebuladevice.sourceforge.net/cgi-bin/twiki/view/Nebula/WebHome
@@ -1697,13 +1697,13 @@ FindTriSolidIntrsection(const dVector3 Tri[3],
 //  http://nebuladevice.sourceforge.net/doc/source/license.txt
 //
 static void
-ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C, 
+ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
                                LineContactSet& Contacts )
 {
     // test on which side of line are the vertices
     int Positive = 0, Negative = 0, PIndex = -1;
     int Quantity = Contacts.Count;
-    
+
     dReal Test[8];
     for ( int i = 0; i < Contacts.Count; i++ ) {
         // An epsilon is used here because it is possible for the dot product
@@ -1714,7 +1714,7 @@ ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
         // tolerance, and I don't think multiplying by the constant is the best
         // way to do this.
         Test[i] = dCalcVectorDot3(N, Contacts.Points[i]) - C + dFabs(C)*REAL(1e-08);
-            
+
         if (Test[i] >= REAL(0.0)) {
             Positive++;
             if (PIndex < 0) {
@@ -1723,29 +1723,29 @@ ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
         }
         else Negative++;
     }
-    
+
     if (Positive > 0) {
         if (Negative > 0) {
             // plane transversely intersects polygon
             dVector3 CV[8];
             int CQuantity = 0, Cur, Prv;
             dReal T;
-            
+
             if (PIndex > 0) {
                 // first clip vertex on line
                 Cur = PIndex;
                 Prv = Cur - 1;
                 T = Test[Cur] / (Test[Cur] - Test[Prv]);
-                CV[CQuantity][0] = Contacts.Points[Cur][0] 
+                CV[CQuantity][0] = Contacts.Points[Cur][0]
                     + T * (Contacts.Points[Prv][0] - Contacts.Points[Cur][0]);
-                CV[CQuantity][1] = Contacts.Points[Cur][1] 
+                CV[CQuantity][1] = Contacts.Points[Cur][1]
                     + T * (Contacts.Points[Prv][1] - Contacts.Points[Cur][1]);
-                CV[CQuantity][2] = Contacts.Points[Cur][2] 
+                CV[CQuantity][2] = Contacts.Points[Cur][2]
                     + T * (Contacts.Points[Prv][2] - Contacts.Points[Cur][2]);
-                CV[CQuantity][3] = Contacts.Points[Cur][3] 
+                CV[CQuantity][3] = Contacts.Points[Cur][3]
                     + T * (Contacts.Points[Prv][3] - Contacts.Points[Cur][3]);
                 CQuantity++;
-                
+
                 // vertices on positive side of line
                 while (Cur < Quantity && Test[Cur] >= REAL(0.0)) {
                     CV[CQuantity][0] = Contacts.Points[Cur][0];
@@ -1755,7 +1755,7 @@ ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
                     CQuantity++;
                     Cur++;
                 }
-                
+
                 // last clip vertex on line
                 if (Cur < Quantity) {
                     Prv = Cur - 1;
@@ -1764,15 +1764,15 @@ ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
                     Cur = 0;
                     Prv = Quantity - 1;
                 }
-                
+
                 T = Test[Cur] / (Test[Cur] - Test[Prv]);
-                CV[CQuantity][0] = Contacts.Points[Cur][0] 
+                CV[CQuantity][0] = Contacts.Points[Cur][0]
                     + T * (Contacts.Points[Prv][0] - Contacts.Points[Cur][0]);
-                CV[CQuantity][1] = Contacts.Points[Cur][1] 
+                CV[CQuantity][1] = Contacts.Points[Cur][1]
                     + T * (Contacts.Points[Prv][1] - Contacts.Points[Cur][1]);
-                CV[CQuantity][2] = Contacts.Points[Cur][2] 
+                CV[CQuantity][2] = Contacts.Points[Cur][2]
                     + T * (Contacts.Points[Prv][2] - Contacts.Points[Cur][2]);
-                CV[CQuantity][3] = Contacts.Points[Cur][3] 
+                CV[CQuantity][3] = Contacts.Points[Cur][3]
                     + T * (Contacts.Points[Prv][3] - Contacts.Points[Cur][3]);
                 CQuantity++;
             }
@@ -1788,39 +1788,39 @@ ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
                     CQuantity++;
                     Cur++;
                 }
-                
+
                 // last clip vertex on line
                 Prv = Cur - 1;
                 T = Test[Cur] / (Test[Cur] - Test[Prv]);
-                CV[CQuantity][0] = Contacts.Points[Cur][0] 
+                CV[CQuantity][0] = Contacts.Points[Cur][0]
                     + T * (Contacts.Points[Prv][0] - Contacts.Points[Cur][0]);
-                CV[CQuantity][1] = Contacts.Points[Cur][1] 
+                CV[CQuantity][1] = Contacts.Points[Cur][1]
                     + T * (Contacts.Points[Prv][1] - Contacts.Points[Cur][1]);
-                CV[CQuantity][2] = Contacts.Points[Cur][2] 
+                CV[CQuantity][2] = Contacts.Points[Cur][2]
                     + T * (Contacts.Points[Prv][2] - Contacts.Points[Cur][2]);
-                CV[CQuantity][3] = Contacts.Points[Cur][3] 
+                CV[CQuantity][3] = Contacts.Points[Cur][3]
                     + T * (Contacts.Points[Prv][3] - Contacts.Points[Cur][3]);
                 CQuantity++;
-                
+
                 // skip vertices on negative side
                 while (Cur < Quantity && Test[Cur] < REAL(0.0)) {
                     Cur++;
                 }
-          
+
                 // first clip vertex on line
                 if (Cur < Quantity) {
                     Prv = Cur - 1;
                     T = Test[Cur] / (Test[Cur] - Test[Prv]);
-                    CV[CQuantity][0] = Contacts.Points[Cur][0] 
+                    CV[CQuantity][0] = Contacts.Points[Cur][0]
                         + T * (Contacts.Points[Prv][0] - Contacts.Points[Cur][0]);
-                    CV[CQuantity][1] = Contacts.Points[Cur][1] 
+                    CV[CQuantity][1] = Contacts.Points[Cur][1]
                               + T * (Contacts.Points[Prv][1] - Contacts.Points[Cur][1]);
-                    CV[CQuantity][2] = Contacts.Points[Cur][2] 
+                    CV[CQuantity][2] = Contacts.Points[Cur][2]
                         + T * (Contacts.Points[Prv][2] - Contacts.Points[Cur][2]);
-                    CV[CQuantity][3] = Contacts.Points[Cur][3] 
+                    CV[CQuantity][3] = Contacts.Points[Cur][3]
                         + T * (Contacts.Points[Prv][3] - Contacts.Points[Cur][3]);
                     CQuantity++;
-            
+
                     // vertices on positive side of line
                     while (Cur < Quantity && Test[Cur] >= REAL(0.0)) {
                         CV[CQuantity][0] = Contacts.Points[Cur][0];
@@ -1835,13 +1835,13 @@ ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
                     // iCur = 0
                     Prv = Quantity - 1;
                     T = Test[0] / (Test[0] - Test[Prv]);
-                    CV[CQuantity][0] = Contacts.Points[0][0] 
+                    CV[CQuantity][0] = Contacts.Points[0][0]
                         + T * (Contacts.Points[Prv][0] - Contacts.Points[0][0]);
-                    CV[CQuantity][1] = Contacts.Points[0][1] 
+                    CV[CQuantity][1] = Contacts.Points[0][1]
                               + T * (Contacts.Points[Prv][1] - Contacts.Points[0][1]);
-                    CV[CQuantity][2] = Contacts.Points[0][2] 
+                    CV[CQuantity][2] = Contacts.Points[0][2]
                         + T * (Contacts.Points[Prv][2] - Contacts.Points[0][2]);
-                    CV[CQuantity][3] = Contacts.Points[0][3] 
+                    CV[CQuantity][3] = Contacts.Points[0][3]
                         + T * (Contacts.Points[Prv][3] - Contacts.Points[0][3]);
                     CQuantity++;
                 }
@@ -1849,7 +1849,7 @@ ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
             Quantity = CQuantity;
             memcpy( Contacts.Points, CV, CQuantity * sizeof(dVector3) );
         }
-        // else polygon fully on positive side of plane, nothing to do    
+        // else polygon fully on positive side of plane, nothing to do
         Contacts.Count = Quantity;
     }
     else {
@@ -1860,16 +1860,16 @@ ClipConvexPolygonAgainstPlane( const dVector3 N, dReal C,
 
 
 
-// Determine if a potential collision point is 
+// Determine if a potential collision point is
 //
 //
 static int
 ExamineContactPoint(dVector3* v_col, dVector3 in_n, dVector3 in_point)
 {
-    // Cast a ray from in_point, along the collison normal. Does it intersect the
+    // Cast a ray from in_point, along the collision normal. Does it intersect the
     //  collision face.
     dReal t, u, v;
-    
+
     if (!RayTriangleIntersect(in_point, in_n, v_col[0], v_col[1], v_col[2],
                               &t, &u, &v))
         return 0;
@@ -1892,11 +1892,11 @@ RayTriangleIntersect(const dVector3 orig, const dVector3 dir,
 {
     dReal edge1[3], edge2[3], tvec[3], pvec[3], qvec[3];
     dReal det,inv_det;
-    
+
     // find vectors for two edges sharing vert0
     SUB(edge1, vert1, vert0);
     SUB(edge2, vert2, vert0);
-    
+
     // begin calculating determinant - also used to calculate U parameter
     CROSS(pvec, dir, edge2);
 
@@ -1907,7 +1907,7 @@ RayTriangleIntersect(const dVector3 orig, const dVector3 dir,
         return 0;
     inv_det = 1.0 / det;
 
-    // calculate distance from vert0 to ray origin 
+    // calculate distance from vert0 to ray origin
     SUB(tvec, orig, vert0);
 
     // calculate U parameter and test bounds
@@ -1939,22 +1939,22 @@ SimpleUnclippedTest(dVector3 in_CoplanarPt, dVector3 in_v, dVector3 in_elt,
     dReal contact_elt_length;
 
     DEPTH(dp, in_CoplanarPt, in_v, in_n);
-    
+
     if (dp >= 0.0) {
         // if the penetration depth (calculated above) is more than
         //  the contact point's ELT, then we've chosen the wrong face
         //  and should switch faces
         contact_elt_length = dFabs(dCalcVectorDot3(in_elt, in_n));
-        
+
         if (dp == 0.0)
             dp = dMin(DISTANCE_EPSILON, contact_elt_length);
-        
+
         if ((contact_elt_length < SMALL_ELT) && (dp < EXPANDED_ELT_THRESH))
             dp = contact_elt_length;
-        
+
         if ( (dp > 0.0) && (dp <= contact_elt_length)) {
             // Add a contact
-            
+
             if ( ExamineContactPoint(in_col_v, in_n, in_v) ) {
                 out_depth = dp;
                 return true;
@@ -1974,7 +1974,7 @@ SimpleUnclippedTest(dVector3 in_CoplanarPt, dVector3 in_v, dVector3 in_elt,
 //   penetration depth, this new depth is used instead
 //
 static void
-GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,  
+GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,
                 dxTriMesh* in_TriMesh1,  dxTriMesh* in_TriMesh2,
 				int TriIndex1, int TriIndex2,
                 const dVector3 in_ContactPos, const dVector3 in_Normal, dReal in_Depth,
@@ -1982,18 +1982,18 @@ GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,
 {
 	/*
 		NOTE by Oleh_Derevenko:
-		This function is called after maximal number of contacts has already been 
+		This function is called after maximal number of contacts has already been
 		collected because it has a side effect of replacing penetration depth of
 		existing contact with larger penetration depth of another matching normal contact.
 		If this logic is not necessary any more, you can bail out on reach of contact
-		number maximum immediately in dCollideTTL(). You will also need to correct 
+		number maximum immediately in dCollideTTL(). You will also need to correct
 		conditional statements after invocations of GenerateContact() in dCollideTTL().
 	*/
 	dIASSERT(in_Depth >= 0.0);
     //if (in_Depth < 0.0) -- the function is always called with depth >= 0
     //    return;
 
-	do 
+	do
 	{
 		dContactGeom* Contact;
 		dVector3 diff;
@@ -2002,13 +2002,13 @@ GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,
 		{
 			bool duplicate = false;
 
-			for (int i=0; i<OutTriCount; i++) 
+			for (int i=0; i<OutTriCount; i++)
 			{
 				Contact = SAFECONTACT(in_Flags, in_Contacts, i, in_Stride);
 
 				// same position?
 				SUB(diff, in_ContactPos, Contact->pos);
-				if (dCalcVectorDot3(diff, diff) < dEpsilon) 
+				if (dCalcVectorDot3(diff, diff) < dEpsilon)
 				{
 					// same normal?
 					if (REAL(1.0) - dFabs(dCalcVectorDot3(in_Normal, Contact->normal)) < dEpsilon)
@@ -2024,10 +2024,10 @@ GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,
 							There may be a case when two normals are close to each other but no duplicate
 							while third normal is detected to be duplicate for both of them.
 							This is the only reason I can think of, there is no "break" statement.
-							Perhaps author considered it to be logical that the third normal would 
-							replace the depth in both of initial contacts. 
+							Perhaps author considered it to be logical that the third normal would
+							replace the depth in both of initial contacts.
 							However, I consider it a questionable practice which should not
-							be applied without deep understanding of underlaying physics.
+							be applied without deep understanding of underlying physics.
 							Even more, is this situation with close normal triplet acceptable at all?
 							Should not be two initial contacts reduced to one (replaced with the latter)?
 							If you know the answers for these questions, you may want to change this code.
@@ -2042,20 +2042,20 @@ GenerateContact(int in_Flags, dContactGeom* in_Contacts, int in_Stride,
 				break;
 			}
 		}
-		else 
+		else
 		{
 			dIASSERT(OutTriCount < (in_Flags & NUMC_MASK));
 		}
-    
+
 		// Add a new contact
 		Contact = SAFECONTACT(in_Flags, in_Contacts, OutTriCount, in_Stride);
 
 		SET( Contact->pos, in_ContactPos );
 		Contact->pos[3] = 0.0;
-    
+
 		SMULT( Contact->normal, in_Normal, -1.0);
 		Contact->normal[3] = 0.0;
-    
+
 		Contact->depth = in_Depth;
 
 		Contact->g1 = in_TriMesh1;

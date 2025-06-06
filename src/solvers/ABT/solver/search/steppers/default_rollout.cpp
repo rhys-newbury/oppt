@@ -35,7 +35,7 @@ Model::StepResult DefaultRolloutGenerator::getStep(HistoryEntry const *entry, St
     }
 
     // Otherwise, we generate a new step and return it.
-    currentNSteps_++;    
+    currentNSteps_++;
     std::unique_ptr<Action> nextAction = nullptr;
     if (!action) {
         nextAction = model_->getRolloutAction(entry, state, data);

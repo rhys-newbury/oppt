@@ -38,7 +38,7 @@ HistoryEntry::HistoryEntry(HistorySequence* owningSequence, HistoryEntry::IdType
 
 HistoryEntry::~HistoryEntry()
 {
-    
+
 }
 
 /* ----------------- Simple getters ------------------- */
@@ -89,13 +89,13 @@ void HistoryEntry::registerNode(BeliefNode* node, bool addParticle)
     if (associatedBeliefNode_ == node) {
         return;
     }
-    if (associatedBeliefNode_ != nullptr) {	
+    if (associatedBeliefNode_ != nullptr) {
         associatedBeliefNode_->removeParticle(this);
         associatedBeliefNode_ = nullptr;
     }
     if (node != nullptr) {
-        associatedBeliefNode_ = node;	
-        if (addParticle) {	    
+        associatedBeliefNode_ = node;
+        if (addParticle) {
             associatedBeliefNode_->addParticle(this);
         }
     }
@@ -105,12 +105,12 @@ void HistoryEntry::registerState(StateInfo* info)
     if (stateInfo_ == info) {
         return;
     }
-    if (stateInfo_ != nullptr) {        
+    if (stateInfo_ != nullptr) {
         stateInfo_->removeHistoryEntry(this);
         stateInfo_ = nullptr;
     }
     if (info != nullptr) {
-        stateInfo_ = info;	
+        stateInfo_ = info;
         stateInfo_->addHistoryEntry(this);
     }
 }

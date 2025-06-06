@@ -578,7 +578,7 @@ void Solver::updateSequence(HistorySequence* sequence, int sgn, long firstEntryI
         node = (*it)->getAssociatedBeliefNode();
         ActionMapping* mapping = node->getMapping();
         ActionMappingEntry* entry = mapping->getEntry(*(*it)->getAction());
-        // Update the action value and visit count.        
+        // Update the action value and visit count.
         entry->update(sgn, sgn * deltaTotalQ);
 
         // Update the observation visit count.
@@ -678,7 +678,7 @@ void Solver::initialize()
 /* ------------------ Episode sampling methods ------------------- */
 std::function<StateInfo *()> Solver::getStateSampler(BeliefNode* node)
 {
-    // Nullptr => sample initial sates from the model.
+    // Nullptr => sample initial states from the model.
     if (node == nullptr || node->getId() == 0) {
         return [this]() {
             return statePool_->createOrGetInfo(std::move(model_->sampleAnInitState()));
@@ -731,7 +731,7 @@ long Solver::multipleSearches(BeliefNode* startNode, std::function<StateInfo *()
         if (maxNumSearches == 0 && hasTimeout && oppt::clock_ms() >= endTime) {
             break;
         }
-        
+
         singleSearch(startNode, sampler(), maximumDepth);
         numSearches++;
     }
@@ -743,15 +743,15 @@ long Solver::multipleSearches(BeliefNode* startNode, std::function<StateInfo *()
 }
 
 void Solver::singleSearch(BeliefNode* startNode, StateInfo* startStateInfo, long maximumDepth, Action *action)
-{    
+{
     HistorySequence* sequence = histories_->createSequence();
     HistoryEntry* firstEntry = sequence->addEntry();
     firstEntry->registerState(startStateInfo);
     if (startNode == getPolicy()->getRoot())
         firstEntry->registerNode(startNode);
     else
-        firstEntry->registerNode(startNode, false);    
-    continueSearch(sequence, maximumDepth, action);    
+        firstEntry->registerNode(startNode, false);
+    continueSearch(sequence, maximumDepth, action);
 }
 
 void Solver::continueSearch(HistorySequence* sequence, long maximumDepth, Action *action)

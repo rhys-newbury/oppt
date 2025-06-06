@@ -24,7 +24,7 @@ struct CollisionRequest {
 	virtual ~CollisionRequest() = default;
 
 	_STATIC_CAST
-	
+
 	_NO_COPY_BUT_MOVE(CollisionRequest)
 
 	/**

@@ -30,6 +30,3 @@ std::vector<long> EnumeratedActionPool::createBinSequence(BeliefNode */*node*/) 
     return std::move(bins);
 }
 } /* namespace abt */
-
-
-

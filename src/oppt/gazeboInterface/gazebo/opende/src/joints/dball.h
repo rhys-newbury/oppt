@@ -53,4 +53,3 @@ struct dxJointDBall : public dxJoint
 
 
 #endif
-

@@ -137,34 +137,34 @@ BeliefNode::BeliefNode(long int id, abt::ObservationMappingEntry* parentEntry, a
     abt::BeliefNode(id, parentEntry, solver),
     totalNumDynamicsUsed_(0)
 {
-    
+
 }
 
 BeliefNode::BeliefNode(abt::Solver* solver):
     abt::BeliefNode(solver),
     totalNumDynamicsUsed_(0)
 {
-    
+
 }
 
 BeliefNode::BeliefNode(abt::ObservationMappingEntry* parentEntry, abt::Solver* solver):
     abt::BeliefNode(parentEntry, solver),
     totalNumDynamicsUsed_(0)
 {
-    
+
 }
 
 void BeliefNode::clear()
 {
     for (auto &particle: particles_)
-        static_cast<oppt::StateInfo *>(static_cast<abt::HistoryEntry*>(particle)->stateInfo_)->containedInBeliefs_--;  
+        static_cast<oppt::StateInfo *>(static_cast<abt::HistoryEntry*>(particle)->stateInfo_)->containedInBeliefs_--;
     particles_ = oppt::RandomAccessSet<abt::HistoryEntry *>();
 }
 
 void BeliefNode::addParticle(abt::HistoryEntry* newHistEntry)
-{   
-    bool added = particles_.add(newHistEntry);    
-    /**if (added)  {	
+{
+    bool added = particles_.add(newHistEntry);
+    /**if (added)  {
 	static_cast<oppt::StateInfo*>(newHistEntry->stateInfo_)->containedInBeliefs_++;
     }*/
     if (newHistEntry->getId() == 0) {
@@ -173,11 +173,11 @@ void BeliefNode::addParticle(abt::HistoryEntry* newHistEntry)
 }
 
 void BeliefNode::removeParticle(abt::HistoryEntry* histEntry)
-{   
+{
     bool removed = particles_.remove(histEntry);
     if (histEntry->getId() == 0) {
         nStartingSequences_--;
-    } 
+    }
 }
 
 void BeliefNode::registerParticle(abt::HistoryEntry* newHistEntry)
@@ -191,10 +191,10 @@ void BeliefNode::deregisterParticle(abt::HistoryEntry* histEntry)
 }
 
 BeliefNode::~BeliefNode()
-{   
+{
     /**for (auto it = particles_.begin(); it != particles_.end(); ++it) {
 	if (static_cast<oppt::StateInfo *>(static_cast<abt::HistoryEntry*>(*it)->stateInfo_)->containedInBeliefs_ > 0)
-	    static_cast<oppt::StateInfo *>(static_cast<abt::HistoryEntry*>(*it)->stateInfo_)->containedInBeliefs_--;	
+	    static_cast<oppt::StateInfo *>(static_cast<abt::HistoryEntry*>(*it)->stateInfo_)->containedInBeliefs_--;
     }*/
 }
 
@@ -204,5 +204,3 @@ unsigned int BeliefNode::getTotalNumDynamicsUsed() const
 }
 
 }
-
-

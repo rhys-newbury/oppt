@@ -67,11 +67,11 @@ int dRandInt (int n)
 {
   // seems good; xor-fold and modulus
   const unsigned long un = n;
-  // Since there is no memory barrier macro in ODE assign via volatile variable 
+  // Since there is no memory barrier macro in ODE assign via volatile variable
   // to prevent compiler reusing seed as value of `r'
   volatile unsigned long raw_r = dRand();
   unsigned long r = raw_r;
-  
+
   // note: probably more aggressive than it needs to be -- might be
   //       able to get away without one or two of the innermost branches.
   // if (un <= 0x00010000UL) {
@@ -113,7 +113,7 @@ int dRandInt (int n)
     }
   }
 
-  return (int) (r % un);    
+  return (int) (r % un);
 }
 
 
@@ -202,4 +202,3 @@ dReal dMaxDifferenceLowerTriangle (const dReal *A, const dReal *B, int n)
   }
   return max;
 }
-

@@ -258,7 +258,7 @@ void h5dump::pack_bodies()
 void h5dump::pack_constraints()
 {
   nconstraints = 0;
-  // first cound how many active rows we have for regular constraints,
+  // first count how many active rows we have for regular constraints,
   // i.e., not contacts
   nrows  =0;
   for (dxJoint* c = world->firstjoint; c != 0 ; c = (dxJoint  *)c->next) {

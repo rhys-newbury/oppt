@@ -41,7 +41,7 @@ dxJointFixed::dxJointFixed ( dxWorld *w ) :
 }
 
 
-void 
+void
 dxJointFixed::getSureMaxInfo( SureMaxInfo* info )
 {
     info->max_m = 6;
@@ -221,4 +221,3 @@ dxJointFixed::computeInitialRelativeRotation()
         }
     }
 }
-

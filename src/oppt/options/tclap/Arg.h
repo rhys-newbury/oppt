@@ -6,7 +6,7 @@
  *
  *  Copyright (c) 2003, Michael E. Smoot .
  *  Copyright (c) 2004, Michael E. Smoot, Daniel Aarno .
- *  All rights reverved.
+ *  All rights reserved.
  *
  *  See the file COPYING in the top directory of this distribution for
  *  more information.
@@ -98,7 +98,7 @@ class Arg
 		std::string _flag;
 
 		/**
-		 * A single work namd indentifying the argument.
+		 * A single work named identifying the argument.
 		 * This value (preceded by two dashed {--}) can also be used
 		 * to identify an argument on the command line.  Note that the
 		 * _name does NOT include the two dashes as part of the _name. The
@@ -226,7 +226,7 @@ class Arg
 		static char flagStartChar() { return TCLAP_FLAGSTARTCHAR; }
 
 		/**
-		 * The sting that indicates the beginning of a flag.  Defaults to "-", but
+		 * Thestring that indicates the beginning of a flag.  Defaults to "-", but
 		 * clients can define TCLAP_FLAGSTARTSTRING to override. Should be the same
 		 * as TCLAP_FLAGSTARTCHAR.
 		 */
@@ -236,7 +236,7 @@ class Arg
 		static const std::string flagStartString() { return TCLAP_FLAGSTARTSTRING; }
 
 		/**
-		 * The sting that indicates the beginning of a name.  Defaults to "--", but
+		 * Thestring that indicates the beginning of a name.  Defaults to "--", but
 		 *  clients can define TCLAP_NAMESTARTSTRING to override.
 		 */
 #ifndef TCLAP_NAMESTARTSTRING
@@ -689,4 +689,3 @@ inline void Arg::reset()
 } //namespace TCLAP
 
 #endif
-

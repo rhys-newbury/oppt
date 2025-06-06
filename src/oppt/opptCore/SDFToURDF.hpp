@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #ifndef __SDF_TO_URDF_HPP__
@@ -62,7 +62,7 @@ public:
     }
 
     /**
-     * Recusively gets the transformation to a child frame, starting from the frame of this node
+     * Recursively gets the transformation to a child frame, starting from the frame of this node
      * */
     Matrix4f getTransformationTo(std::string frame, Matrix4f& currentTransformation) {
         Matrix4f newTransform = Matrixdf::Identity(4, 4);
@@ -231,7 +231,7 @@ public:
         urdfString += "'>";
         urdfString += processLinks(xmlDoc);
         urdfString += processJoints(xmlDoc);
-        urdfString += "</robot>";        
+        urdfString += "</robot>";
         return urdfString;
     }
 
@@ -279,7 +279,7 @@ private:
         sdfString += "\n   <parent>_root_link_</parent>";
         sdfString += "\n  </joint>";
         sdfString += "\n </model>";
-        sdfString += "\n</sdf>";        
+        sdfString += "\n</sdf>";
         return sdfString;
     }
 
@@ -360,8 +360,8 @@ private:
             if (childPoseXml) {
                 childPoseRelativeToParent = getPoseRelativeToParent(childPoseXml, currentNode);
             }
-            
-            NodePtr childNode(new TransformationNode(child));            
+
+            NodePtr childNode(new TransformationNode(child));
             currentNode->addChild(childNode, childPoseRelativeToParent);
             NodePtr nextNode = tfTree_->getNode(child);
             if (!nextNode) {
@@ -375,13 +375,13 @@ private:
     std::string getRootLinkName(TiXmlElement* robotXml = nullptr) {
         if (!robotXml) {
             robotXml = robotXml_;
-        }        
-        
+        }
+
 	if (!robotXml || !robotXml->FirstChild("joint")) {
 	    std::string returnString("");
 	    return returnString;
 	}
-        
+
         TiXmlElement* jointXml = robotXml->FirstChildElement("joint");
         VectorString parents;
         VectorString children;
@@ -435,7 +435,7 @@ private:
         }
 
         robotXml_ = sdfXml->FirstChildElement("model");
-        NodePtr root = findRoot();        
+        NodePtr root = findRoot();
         tfTree_->setRoot(root);
         Matrix4f currentTransform = Matrixdf::Identity(4, 4);
         parseChildNodes(root);
@@ -664,7 +664,7 @@ private:
             TiXmlElement* poseXml = inertialXml->FirstChildElement("pose");
             if (poseXml) {
                 //Matrix4f inertiaPose = getPoseMatrix(poseXml);
-                std::string linkName(linkXml->Attribute("name"));                
+                std::string linkName(linkXml->Attribute("name"));
                 NodePtr node = tfTree_->getNode(linkName);
                 Matrix4f poseRelativeToLink(getPoseRelativeToParent(poseXml, node, true));
                 returnString += matrixToOriginStr(poseRelativeToLink);
@@ -914,4 +914,3 @@ private:
 }
 
 #endif
-

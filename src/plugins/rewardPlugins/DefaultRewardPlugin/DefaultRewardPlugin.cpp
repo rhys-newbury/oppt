@@ -42,7 +42,7 @@ public :
         if (!propagationResult->collisionReport) {
             oppt::CollisionReportSharedPtr collisionReport =
                 robotEnvironment_->getRobot()->makeDiscreteCollisionReport(propagationResult->nextState);
-            propagationResult->collisionReport = collisionReport;            
+            propagationResult->collisionReport = collisionReport;
         }
 
         if (propagationResult->collisionReport->collides)
@@ -50,7 +50,7 @@ public :
 
         if (!(robotEnvironment_->isValid(propagationResult)))
             return -options->illegalMovePenalty;
-        
+
         if (robotEnvironment_->isTerminal(propagationResult))
             return options->exitReward;
 

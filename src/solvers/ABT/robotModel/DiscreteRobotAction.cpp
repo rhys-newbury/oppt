@@ -33,19 +33,19 @@ DiscreteRobotAction::DiscreteRobotAction(const oppt::ActionSharedPtr& action):
 }
 
 std::unique_ptr<abt::Action> DiscreteRobotAction::copy() const
-{    
+{
     return std::make_unique<DiscreteRobotAction>(action_);
 }
 
 FloatType DiscreteRobotAction::distanceTo(abt::Action const& other) const
-{    
-    oppt::ActionSharedPtr otherAction = static_cast<DiscreteRobotAction const &>(other).getOpptAction();    
-    return action_->distanceTo(otherAction);    
+{
+    oppt::ActionSharedPtr otherAction = static_cast<DiscreteRobotAction const &>(other).getOpptAction();
+    return action_->distanceTo(otherAction);
 }
 
 void DiscreteRobotAction::print(std::ostream& os) const
 {
-    action_->print(os);    
+    action_->print(os);
 }
 
 void DiscreteRobotAction::serialize(std::ostream &os, const std::string prefix) const {
@@ -60,8 +60,8 @@ const oppt::ActionSharedPtr DiscreteRobotAction::getOpptAction() const
 }
 
 long DiscreteRobotAction::getBinNumber() const
-{    
-    return static_cast<oppt::DiscreteVectorAction *>(action_.get())->getBinNumber();    
+{
+    return static_cast<oppt::DiscreteVectorAction *>(action_.get())->getBinNumber();
 }
 
 }

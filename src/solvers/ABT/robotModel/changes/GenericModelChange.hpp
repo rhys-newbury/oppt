@@ -13,11 +13,11 @@ public:
         environmentChange_(environmentChange){
 
     }
-    
+
     EnvironmentChangeSharedPtr getChange() const {
 	return environmentChange_;
     }
-    
+
 private:
    EnvironmentChangeSharedPtr environmentChange_;
 

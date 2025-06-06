@@ -13,7 +13,9 @@ boost_1_48_0
 # Automatically generated documentation
 #docs/html
 #docs/generated
-
+**.egg-info
+.local
+bin
 # Binaries
 /builds
 /build

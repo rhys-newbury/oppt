@@ -29,12 +29,12 @@ EnumeratedObservationPool::EnumeratedObservationPool(Solver* solver,
     solver_(solver),
     observations_(std::move(observations))
 {
-    
+
 }
 
 std::unique_ptr<ObservationMapping>
 EnumeratedObservationPool::createObservationMapping(ActionNode* owner)
-{    
+{
     return std::make_unique<EnumeratedObservationMap>(owner, solver_, observations_);
 }
 
@@ -212,6 +212,3 @@ EnumeratedObservationTextSerializer::loadObservationMapping(ActionNode* owner,
     return std::move(map);
 }
 } /* namespace abt */
-
-
-

@@ -1,16 +1,16 @@
 /**
  * Copyright 2017
- * 
+ *
  * This file is part of On-line POMDP Planning Toolkit (OPPT).
- * OPPT is free software: you can redistribute it and/or modify it under the terms of the 
- * GNU General Public License published by the Free Software Foundation, 
+ * OPPT is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License published by the Free Software Foundation,
  * either version 2 of the License, or (at your option) any later version.
- * 
- * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ *
+ * OPPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License along with OPPT. 
+ *
+ * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
 #include "oppt/robotHeaders/Observation.hpp"
@@ -80,7 +80,7 @@ FloatType VectorObservation::distanceTo(const Observation& otherObservation) con
 {
     VectorFloat otherObservationVec =
         static_cast<const VectorObservation&>(otherObservation).asVector();
-    return math::euclideanDistance(observationVec_, otherObservationVec);    
+    return math::euclideanDistance(observationVec_, otherObservationVec);
     /**FloatType distance = 0.0;
     for (size_t i = 0; i < otherObservationVec.size(); i++) {
         distance += std::pow(observationVec_[i] - otherObservationVec[i], 2);
@@ -110,19 +110,19 @@ bool DiscreteVectorObservation::equals(const Observation& otherObservation) cons
     return static_cast<const DiscreteVectorObservation *>(&otherObservation)->getBinNumber() == binNumber_;
 }
 
-FloatType DiscreteVectorObservation::distanceTo(const Observation& otherObservation) const {    
+FloatType DiscreteVectorObservation::distanceTo(const Observation& otherObservation) const {
     if (equals(otherObservation))
         return 0.0;
     return std::numeric_limits<FloatType>::infinity();
 }
 
 long DiscreteVectorObservation::getBinNumber() const
-{   
+{
     return binNumber_;
 }
 
 void DiscreteVectorObservation::setBinNumber(long binNumber)
-{    
+{
     binNumber_ = binNumber;
 }
 

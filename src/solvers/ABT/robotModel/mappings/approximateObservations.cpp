@@ -9,7 +9,7 @@ namespace oppt
 {
 
 ApproximateABTObservationPool::ApproximateABTObservationPool(abt::Solver* solver, FloatType maxDistance):
-    abt::ApproximateObservationPool(solver, maxDistance)    
+    abt::ApproximateObservationPool(solver, maxDistance)
 {
 
 }
@@ -27,7 +27,7 @@ ApproximateABTObservationMap::ApproximateABTObservationMap(abt::ActionNode* owne
 }
 
 abt::BeliefNode* ApproximateABTObservationMap::createBelief(const abt::Observation& obs)
-{    
+{
     std::unique_ptr<ApproximateABTObservationMapEntry> entry = (
                 std::make_unique<ApproximateABTObservationMapEntry>());
     entry->map_ = this;
@@ -44,7 +44,7 @@ void ApproximateABTObservationMap::setTotalVisitCount(long int totalVisitCount)
 }
 
 ApproximateABTObservationMapEntry::~ApproximateABTObservationMapEntry() {
-    
+
 }
 
 void ApproximateABTObservationMapEntry::setVisitCount(long int& visitCount)
@@ -69,7 +69,7 @@ void ApproximateABTObservationMapEntry::setChildNode(std::unique_ptr< abt::Belie
 
 void ApproximateABTObservationMap::addToEntries(std::unique_ptr< abt::ApproximateObservationMapEntry > entry)
 {
-    entries_.push_back(std::move(entry));    
+    entries_.push_back(std::move(entry));
 }
 
 }

@@ -30,7 +30,7 @@ struct GpsMaxRecommendationOptions {
 
 	/** This is the maximum number of dimensions gps search expects at compile time.
 	 *
-	 * Gps search uses template code which must be instanciated at compile time. This
+	 * Gps search uses template code which must be instantiated at compile time. This
 	 * value determines up to which dimensionality the code is generated.
 	 *
 	 * Setting this value high will slow down compilation and bloat the final executable.
@@ -54,7 +54,7 @@ struct GpsChooserOptions {
 
 	/** This is the maximum number of dimensions gps search expects at compile time.
 	 *
-	 * Gps search uses template code which must be instanciated at compile time. This
+	 * Gps search uses template code which must be instantiated at compile time. This
 	 * value determines up to which dimensionality the code is generated.
 	 *
 	 * Setting this value high will slow down compilation and bloat the final executable.

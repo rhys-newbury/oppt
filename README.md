@@ -11,7 +11,7 @@ OPPT provides an installation script that installs all the dependencies:
 
 	cd <oppt_root_folder>
 	chmod +x install_dependencies.sh && ./install_dependencies.sh --use-ros
-	
+
 This script will install the dependencies inside the */usr/local* folder, hence, it will ask you for your sudo password. It has been tested on a clean Ubuntu 16.04, 18.04 and 20.04 installation.
 If you wish to not install the optional ROS dependency, run the above command without the "--use-ros" option.
 
@@ -20,9 +20,9 @@ If you wish to not install the optional ROS dependency, run the above command wi
 1. Install the core dependencies
 
         sudo apt-get install build-essential git cmake mercurial pkg-config libboost-all-dev libtinyxml-dev libeigen3-dev libassimp-dev libfcl-dev
-        
+
 2. Install Gazebo and its dependencies by following the instructions according to the [Gazebo website](http://gazebosim.org/tutorials?tut=install_ubuntu&cat=install). Both *gazebo<GAZEBO_VERSION>* and *libgazebo<GAZEBO_VERSION>_dev* are required, where *<GAZEBO_VERSION>* depends on your Ubuntu version.
-        
+
 3. Download and install libspatialindex-1.8.5
 
         wget http://download.osgeo.org/libspatialindex/spatialindex-src-1.8.5.tar.gz
@@ -31,7 +31,7 @@ If you wish to not install the optional ROS dependency, run the above command wi
         mkdir build && cd build
         cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..
         make -j2 && sudo make install
-        
+
 4. (Optional) If you want to use the GUI provided in OPPT or the Inverse Kinematics functionality, you need to have a working installation of ROS (at least the ROS-base stack along with the rviz, kdl-parser and trac-ik stack). Furthermore your ROS environment has to be set up (please refer to http://wiki.ros.org/<ROS DISTRIBUTION>/Installation/Ubuntu section 1.6). If you do not have ROS installation, you can install it using
 
         sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -39,14 +39,14 @@ If you wish to not install the optional ROS dependency, run the above command wi
         sudo apt-get install ros-<ROS DISTRIBUTION>-ros-base ros-<ROS DISTRIBUTION>-rviz ros-<ROS DISTRIBUTION>-kdl-parser ros-<ROS DISTRIBUTION>-trac-ik ros-<ROS DISTRIBUTION>-trac-ik-lib
 
 where *<ROS_DISTRIBUTION>* is the ROS distribution corresponding to your Ubuntu version.
-        
+
 ## Setting-up ROS Kinect (optional)
 If you have a working ROS installation, make sure that the ROS environment is set-up properly.
 For a clean ROS installation, this is done via
 
     source /opt/ros/<ROS DISTRIBUTION>/setup.sh
-    
-If you fail to do this, you won't be able to use the viewer.        
+
+If you fail to do this, you won't be able to use the viewer.
 
 ## Building and installing OPPT
 
@@ -71,18 +71,18 @@ In order to obtain resources such as SDF models, plugins, etc., OPPT uses a file
 
     oppt::FileExists("filename")
     oppt::FindFile("filename")
-    
-which locates resources inside folders specified in the 
+
+which locates resources inside folders specified in the
 
     OPPT_RESOURCE_PATH
-    
+
 environment variable. To configure your current environment, either call
 
     source <oppt_install_location>/share/oppt/setup.sh
-    
+
 or add this line to your bash environment file
-    
-This will add the 
+
+This will add the
 
     <oppt_install_location>/share/oppt/models
     <oppt_install_location>/share/oppt/plugins
@@ -91,35 +91,35 @@ folders to the resource environment variable. If you want to add additional fold
 
     export OPPT_RESOURCE_PATH=$OPPT_RESOURCE_PATH:<additional_folder>
 
-## Quick start 
+## Quick start
 
 After the OPPT environment has been configured, navigate to the
 
     <oppt_root_folder>/bin
-    
+
 directory. Here you should see the 'abt' executable.
 The problem configuration files for the problems that ship with OPPT are inside the
 
     <oppt_root_folder>/cfg
-    
+
 directory. To run the ABT solver for any of the problems, run
 
     ./abt --cfg <oppt_root_folder>/cfg/<ProblemConfigurationFile>.cfg
-    
+
 Note that the path to the problem configuration file must be an absolute path.
 
 If you want a visualization of the simulation runs, open a separate terminal and run
 
     opptViewer
-    
+
 BEFORE running the ABT solver.
 
-## Documentation        
+## Documentation
 
-The OPPT HTML documentation can be found inside the 
+The OPPT HTML documentation can be found inside the
 
 	<oppt_root_folder>/docs/html
-	
+
 folder
 
 ## Changelog
@@ -143,7 +143,7 @@ folder
 ### v0.5
 * When running multiple OPPT processes on the same machine, make sure that only the first one can use the viewer.
 * Fixed a bug where state vectors are not correctly applied when the state description contains linkPositionX, linkPositionY and linkPositionZ variables.
-* Make the specification of the 'planningEnvironmentPath' and 'executionEnvironmentPath' in the problem configuration file optional. This allows for the definition of general POMDP problems that are not dependend on geometrical or physical robot/environment models. In case these two options are not specified, the physics engine and the collision checking won't be initialized.
+* Make the specification of the 'planningEnvironmentPath' and 'executionEnvironmentPath' in the problem configuration file optional. This allows for the definition of general POMDP problems that are not dependent on geometrical or physical robot/environment models. In case these two options are not specified, the physics engine and the collision checking won't be initialized.
 * Fixes in installation script.
 
 ### v0.6
@@ -173,4 +173,4 @@ Marcus Hoerger, Hanna Kurniawati, and Alberto Elfes. A Software Framework for Pl
 
 ## Contact
 For questions, bug reports or suggestions please contact
-Marcus Hoerger, E-Mail: hoergems@gmail.com 
+Marcus Hoerger, E-Mail: hoergems@gmail.com

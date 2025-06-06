@@ -37,7 +37,7 @@
       <background>0.7 0.7 0.7 1</background>
       <shadows>1</shadows>
     </scene>
-    
+
     <model name="foor">
       <pose frame=''>0 0 -0.05 0 0 0</pose>
       <static>1</static>
@@ -48,7 +48,7 @@
             <size>2 2 0.005</size>
           </box>
         </geometry>
-        <material>            
+        <material>
             <ambient>1 1 1 1.0</ambient>
           </material>
       </visual>
@@ -61,7 +61,7 @@
       </collision>
     </link>
   </model>
-  
+
 <model name="border1">
   <pose frame=''>0 -1 0.000000 -0.000000 0.000000 -0.000000</pose>
   <static>1</static>
@@ -191,14 +191,14 @@
 <model name="beacon1">
   <pose frame=''>-0.7 0.7 0.000000 -0.000000 0.000000 -0.000000</pose>
   <static>1</static>
-  <link name="beacon1_link">    
+  <link name="beacon1_link">
     <visual name='beacon1_visual'>
       <geometry>
         <box>
           <size>0.075 0.075 0.075</size>
         </box>
       </geometry>
-      <material>            
+      <material>
         <ambient>0.46274509803921568627 0.6980392156862745098 1 1.0</ambient>
       </material>
     </visual>
@@ -208,14 +208,14 @@
 <model name="beacon2">
   <pose frame=''>0.7 -0.7 0.000000 -0.000000 0.000000 -0.000000</pose>
   <static>1</static>
-  <link name="beacon2_link">    
+  <link name="beacon2_link">
     <visual name='beacon2_visual'>
       <geometry>
         <box>
           <size>0.075 0.075 0.075</size>
         </box>
       </geometry>
-      <material>            
+      <material>
         <ambient>0.46274509803921568627 0.6980392156862745098 1 1.0</ambient>
       </material>
     </visual>
@@ -224,7 +224,7 @@
 
   <include>
     <pose>-0.7 -0.7 0.0 0 0 0</pose>
-    <uri>model://Dubin</uri>    
+    <uri>model://Dubin</uri>
   </include>
 
 <light name='user_point_light_0' type='point'>
@@ -242,4 +242,3 @@
     </light>
 </world>
 </sdf>
-

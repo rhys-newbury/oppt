@@ -1,1 +1,2 @@
-ADD_TRANSITION_PLUGIN(defaultTransitionPlugin ${CMAKE_CURRENT_LIST_DIR}/DefaultTransitionPlugin.cpp)
+add_transition_plugin(defaultTransitionPlugin
+                      ${CMAKE_CURRENT_LIST_DIR}/DefaultTransitionPlugin.cpp)

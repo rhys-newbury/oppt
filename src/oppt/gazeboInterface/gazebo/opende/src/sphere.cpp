@@ -96,7 +96,7 @@ dReal dGeomSpherePointDepth (dGeomID g, dReal x, dReal y, dReal z)
 {
   dUASSERT (g && g->type == dSphereClass,"argument not a sphere");
   g->recomputePosr();
-  
+
   dxSphere *s = (dxSphere*) g;
   dReal * pos = s->final_posr->pos;
   return s->radius - dSqrt ((x-pos[0])*(x-pos[0]) +
@@ -114,7 +114,7 @@ int dCollideSphereSphere (dxGeom *o1, dxGeom *o2, int /*flags*/,
   dIASSERT (o1->type == dSphereClass);
   dIASSERT (o2->type == dSphereClass);
   //dIASSERT ((flags & NUMC_MASK) >= 1);
-  
+
   dxSphere *sphere1 = (dxSphere*) o1;
   dxSphere *sphere2 = (dxSphere*) o2;
 
@@ -135,7 +135,7 @@ int dCollideSphereBox (dxGeom *o1, dxGeom *o2, int /*flags*/,
   dIASSERT (o1->type == dSphereClass);
   dIASSERT (o2->type == dBoxClass);
   //dIASSERT ((flags & NUMC_MASK) >= 1);
-  
+
   // this is easy. get the sphere center `p' relative to the box, and then clip
   // that to the boundary of the box (call that point `q'). if q is on the
   // boundary of the box and |p-q| is <= sphere radius, they touch.
@@ -234,7 +234,7 @@ int dCollideSpherePlane (dxGeom *o1, dxGeom *o2, int /*flags*/,
   contact->g2 = o2;
   contact->side1 = -1;
   contact->side2 = -1;
-  
+
   dReal k = dCalcVectorDot3 (o1->final_posr->pos,plane->p);
   dReal depth = plane->p[3] - k + sphere->radius;
   if (depth >= 0) {

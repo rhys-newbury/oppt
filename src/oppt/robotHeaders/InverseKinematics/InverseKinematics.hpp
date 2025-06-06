@@ -61,7 +61,7 @@ protected:
 
 	std::map<std::string, FloatType> fixedJoints_;
 
-	std::map<unsigned int, FloatType> fixedJointAngles_;	
+	std::map<unsigned int, FloatType> fixedJointAngles_;
 
 protected:
 	FloatType sampleRandomAngle(const FloatType &lower, const FloatType &upper);

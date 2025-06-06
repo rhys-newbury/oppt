@@ -52,7 +52,7 @@ to be implemented. the first `nub' variables are assumed to have findex < 0.
 
 struct dxWorldProcessContext;
 
-void dSolveLCP (dxWorldProcessContext *context, 
+void dSolveLCP (dxWorldProcessContext *context,
   int n, dReal *A, dReal *x, dReal *b, dReal *w,
 	int nub, dReal *lo, dReal *hi, int *findex);
 

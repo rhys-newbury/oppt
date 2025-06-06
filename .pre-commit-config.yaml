@@ -1,0 +1,58 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-symlinks
+      - id: destroyed-symlinks
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-ast
+      - id: check-added-large-files
+        args: ["--maxkb=2000"]
+      - id: check-merge-conflict
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: detect-private-key
+      - id: debug-statements
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
+        args:
+          - --skip=*.ipynb
+          - -w
+          - -L=strat,numer,foor,toleranz,thi,clen,Smoot,smoot,te,tempRay
+  - repo: https://github.com/python/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    # Ruff version.
+    rev: "v0.11.9"
+    hooks:
+      - id: ruff
+  - repo: https://github.com/pocc/pre-commit-hooks
+    rev: v1.3.5
+    hooks:
+      - id: cppcheck
+        args:
+          - --inline-suppr
+          - --suppress=unusedStructMember
+          - --suppress=unmatchedSuppression
+          - --suppress=missingIncludeSystem
+          - --suppress=unusedFunction
+          - --suppress=missingInclude
+          - --suppress=passedByValue
+          - --suppress=unreadVariable
+          - --suppress=unassignedVariable # Fails to recognise some structured bindings
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
+    rev: v0.6.13
+    hooks:
+      - id: cmake-format
+        additional_dependencies: [pyyaml>=5.1]
+
+exclude: docs/

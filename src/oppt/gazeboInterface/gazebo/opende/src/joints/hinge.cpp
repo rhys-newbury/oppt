@@ -43,7 +43,7 @@ dxJointHinge::dxJointHinge( dxWorld *w ) :
 }
 
 
-void 
+void
 dxJointHinge::getSureMaxInfo( SureMaxInfo* info )
 {
     info->max_m = 6;
@@ -69,7 +69,7 @@ dxJointHinge::getInfo1( dxJoint::Info1 *info )
                                      axis1, qrel );
         // From angle, update cumulative_angle, which does not wrap.
         // Assume this is called only once per time step.
-        cumulative_angle = 
+        cumulative_angle =
           dShortestAngularDistanceUpdate(cumulative_angle,angle);
 
         if ( limot.testRotationalLimit( cumulative_angle ) )
@@ -451,4 +451,3 @@ dxJointHinge::computeInitialRelativeRotation()
         }
     }
 }
-

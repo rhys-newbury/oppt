@@ -39,4 +39,3 @@
 	};
 
 #endif // __ICERANDOM_H__
-

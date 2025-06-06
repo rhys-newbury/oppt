@@ -50,7 +50,7 @@ class StateLimits
 
 public:
     StateLimits(const LimitsContainerSharedPtr& limits):
-        container_(limits) { 
+        container_(limits) {
     }
 
     _NO_COPY_BUT_MOVE(StateLimits)
@@ -59,7 +59,7 @@ public:
 
     virtual ~StateLimits() {
         container_.reset();
-    }    
+    }
 
     virtual bool enforceLimits(oppt::RobotState &state) const = 0;
 
@@ -90,7 +90,7 @@ public:
     virtual ~VectorStateLimits() = default;
 
     virtual bool enforceLimits(oppt::RobotState &state) const override {
-        VectorFloat *stateVec = &(static_cast<oppt::VectorState &>(state).state_);        
+        VectorFloat *stateVec = &(static_cast<oppt::VectorState &>(state).state_);
         bool enforced = false;
         for (size_t i = 0; i != (*stateVec).size(); ++i) {
             if ((*stateVec)[i] < lowerLimits_[i]) {
@@ -141,7 +141,7 @@ public:
     }
 
     virtual bool enforceLimits(oppt::RobotState &state) const override  {
-        VectorFloat *stateVec = &(static_cast<oppt::VectorState &>(state).state_);        
+        VectorFloat *stateVec = &(static_cast<oppt::VectorState &>(state).state_);
         bool enforced = false;
         for (size_t i = 0; i != (*stateVec).size(); ++i) {
             if ((*stateVec)[i] < 0) {
@@ -245,7 +245,7 @@ public:
             return false;
 
         } else {
-            return enforceStateLimits(*(state.get()));            
+            return enforceStateLimits(*(state.get()));
         }
     }
 
@@ -314,10 +314,10 @@ public:
 
     /**
      * @brief Normalizes a RobotState to [0, 1]
-     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect     
+     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect
      * @param state The RobotState to normalize
      * @return A shared pointer to the normalized RobotState
-     */    
+     */
     RobotStateSharedPtr normalizeState(const RobotStateSharedPtr& state) const {
         if (!stateNormalizer_)
             return state;
@@ -326,10 +326,10 @@ public:
 
     /**
      * @brief Denormalizes a RobotState
-     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect     
+     * If the oppt::ProblemEnvironmentOptions::normalizedSpaces is false, this method has no effect
      * @param state The RobotState to denormalize
      * @return A shared pointer to the denormalized RobotState
-     */    
+     */
     RobotStateSharedPtr denormalizeState(const RobotStateSharedPtr& state) const {
         if (!stateNormalizer_)
             return state;
@@ -519,4 +519,3 @@ private:
 }
 
 #endif
-
