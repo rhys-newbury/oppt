@@ -30,8 +30,8 @@ option(BUILD_VIEWER "Build the viewer" ON)
 add_definitions(-DUSE_DOUBLE_PRECISION=true)
 
 # Setup paths
-set(ROOT_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+set(ROOT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/src")
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 add_definitions(-DROOT_PATH=${ROOT_PATH})
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${ROOT_PATH}/../bin")
@@ -73,7 +73,7 @@ if(USE_RVIZ AND BUILD_VIEWER)
 endif()
 
 # Source and library setup
-set(COMMON_SRCS ${THIRD_PARTY_SRC} ${CMAKE_CURRENT_LIST_DIR}/oppt/global.cpp)
+set(COMMON_SRCS ${THIRD_PARTY_SRC} ${CMAKE_CURRENT_LIST_DIR}/src/oppt/global.cpp)
 
 set(OPPT_SRC
     ${COMMON_SRCS}
@@ -158,7 +158,7 @@ install(DIRECTORY ${ROOT_PATH}/../models
 # Optional: Doxygen documentation
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
-  set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/../docs/Doxyfile.in)
+  set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in)
   set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
   configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
   add_custom_target(
@@ -174,9 +174,9 @@ include(${OPPT_CMAKE_DIR}/CPM.cmake)
 
 cpmaddpackage(NAME pybind11 GITHUB_REPOSITORY pybind/pybind11 VERSION 2.12.0)
 
-pybind11_add_module(oppt_py bindings.cpp)
+pybind11_add_module(oppt_py src/bindings.cpp)
 
-target_include_directories(oppt_py PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(oppt_py PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 target_link_libraries(oppt_py PUBLIC oppt abt_solver ${GAZEBO_LIBRARIES}
                                      ${THIRD_PARTY_LIBS})
