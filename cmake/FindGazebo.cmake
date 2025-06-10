@@ -3,7 +3,7 @@
 # gazebo_FOUND       - True if Gazebo found. gazebo_INCLUDE_DIRS - where to find
 # Gazebo headersz gazebo_LIBRARIES   - Gazebo library.
 #
-
+find_package(PkgConfig REQUIRED)
 find_package(gazebo REQUIRED)
 if(NOT gazebo_FOUND)
   message(FATAL_ERROR "Gazebo could not be found")
@@ -28,5 +28,6 @@ find_path(GAZEBO_INCLUDE_PATH "gazebo.hh"
 if(NOT GAZEBO_INCLUDE_PATH)
   message(FATAL_ERROR "Gazebo header could not be found")
 endif()
-list(APPEND GAZEBO_INCLUDE_DIRS "${GAZEBO_INCLUDE_PATH}")
+find_package(ignition-math4 REQUIRED)
+list(APPEND GAZEBO_INCLUDE_DIRS "${GAZEBO_INCLUDE_PATH}" "${ignition-math4_INCLUDE_DIRS}")
 message("-- Found Gazebo ${gazebo_VERSION}")

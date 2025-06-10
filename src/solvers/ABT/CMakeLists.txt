@@ -39,7 +39,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 add_library(abt_solver STATIC ${ABT_SRC})
 target_include_directories(abt_solver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(abt_solver PUBLIC oppt) # or whatever else it needs
+target_link_libraries(abt_solver PUBLIC oppt spatialindex_iface ${SDF_LIBRARIES}) # or whatever else it needs
 
 add_executable(abt ${CMAKE_CURRENT_LIST_DIR}/main_abt_robot.cpp ${ABT_SRC})
-target_link_libraries(abt oppt)
+target_link_libraries(abt oppt spatialindex_iface ${SDF_LIBRARIES} ${Boost_LIBRARIES} ${SDF_LIBRARIES})

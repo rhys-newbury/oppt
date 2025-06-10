@@ -10,6 +10,11 @@ authors = [{ name = "Your Name" }]
 requires-python = ">=3.7"
 
 [tool.scikit-build]
+wheel.packages = ["oppt_py"]
 minimum-version = "0.7"
-cmake.source-dir = "."
-cmake.define = { CMAKE_CXX_COMPILER_LAUNCHER = "ccache" }
+
+[tool.scikit-build.cmake]
+args = [
+  "-DCMAKE_PREFIX_PATH=/usr/local"
+]
+source-dir = "."

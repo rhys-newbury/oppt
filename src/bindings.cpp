@@ -7,12 +7,7 @@
 #include "solvers/ABT/solverABT.hpp"
 #include "solvers/ABT/ABTOptions.hpp"
 #include "solvers/ABT/robotModel/solver/Solver.hpp"
-// #include "solvers/ABT/solverABT.hpp"
 
-// #include <gazebo/gazebo.hh>
-// #include <gazebo/common/Events.hh>
-// #include <gazebo/common/UpdateInfo.hh>
-// #include <typeinfo>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -25,18 +20,6 @@ void set_env(const std::string& name, const std::string& value) {
     setenv(name.c_str(), value.c_str(), 1); // overwrite = 1
 #endif
 }
-
-
-// namespace {
-//     struct DummyGazeboEvent : public gazebo::event::Event {
-//         void Disconnect(int) override {}
-//     };
-
-//     // This ensures RTTI info is generated and kept in dynamic symbol table
-//     __attribute__((used))
-//     const std::type_info* force_gazebo_event_rtti_export = &typeid(DummyGazeboEvent);
-// }
-
 
 namespace py = pybind11;
 using namespace oppt;
