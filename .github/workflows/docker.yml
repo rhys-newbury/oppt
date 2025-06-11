@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build and Push Image
 
 on: [push]
 
@@ -6,8 +6,7 @@ jobs:
   docker-build:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/oppt:latest
-
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/oppt
 
     permissions:
       contents: read
@@ -29,8 +28,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Normalize tag name
-        run: echo "IMAGE_TAG=$(echo $IMAGE_NAME | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+      - name: Set image tags
+        run: |
+          IMAGE_NAME_LOWER=$(echo "${IMAGE_NAME}" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE_TAG_LATEST=${IMAGE_NAME_LOWER}:latest" >> $GITHUB_ENV
+          echo "IMAGE_TAG_SHA=${IMAGE_NAME_LOWER}:${GITHUB_SHA}" >> $GITHUB_ENV
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
@@ -38,6 +40,8 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ env.IMAGE_TAG }}
-          cache-from: type=registry,ref=${{ env.IMAGE_TAG }}
-          cache-to: type=registry,ref=${{ env.IMAGE_TAG }},mode=max
+          tags: |
+            ${{ env.IMAGE_TAG_LATEST }}
+            ${{ env.IMAGE_TAG_SHA }}
+          cache-from: type=registry,ref=${{ env.IMAGE_TAG_LATEST }}
+          cache-to: type=registry,ref=${{ env.IMAGE_TAG_LATEST }},mode=max

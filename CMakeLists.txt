@@ -107,6 +107,12 @@ if (NOT assimp_FOUND)
   )
 endif()
 
+CPMAddPackage(
+  NAME fcl
+  GITHUB_REPOSITORY flexible-collision-library/fcl
+  GIT_TAG fcl-0.5  # Specify the version you want to use
+)
+
 if(GZ_GT_10)
   set(REQUIRED_CXX_STANDARD 17)
 else()
@@ -177,7 +183,7 @@ target_link_libraries(oppt
     ${catkin_LIBRARIES}
     ${TCLAP_LIBRARIES}
     ${URDFDOM_LIBRARIES}
-    ${FCL_LIBRARIES}
+    fcl
     ${kdl_parser_LIBRARIES}
     ${trac_ik_lib_LIBRARIES}
     ${TINYXML_LIBRARIES}
@@ -265,7 +271,7 @@ target_link_libraries(_oppt_py
     abt_solver
     ${GAZEBO_LIBRARIES}
     ${Boost_LIBRARIES}
-    ${FCL_LIBRARIES}
+    fcl
     Eigen
     spatialindex_iface
 )
@@ -278,4 +284,15 @@ target_link_options(_oppt_py PRIVATE
 set_target_properties(_oppt_py PROPERTIES
   ENABLE_EXPORTS ON
   CXX_STANDARD ${REQUIRED_CXX_STANDARD}
+  INSTALL_RPATH "$ORIGIN"
+  BUILD_RPATH "$ORIGIN"  
+)
+
+install(TARGETS _oppt_py
+    LIBRARY DESTINATION oppt_py  
+)
+
+install(FILES
+  ${spatialindex_BINARY_DIR}/bin/libspatialindex.so.4
+  DESTINATION oppt_py
 )

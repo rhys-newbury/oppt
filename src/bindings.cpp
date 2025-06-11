@@ -38,21 +38,35 @@ std::shared_ptr<ProblemEnvironment> create_abt_env() {
 }
 
 
-PYBIND11_MODULE(oppt_py, m) {
+PYBIND11_MODULE(_oppt_py, m) {
 
     try {
         py::object pathlib = py::module_::import("pathlib");
-        py::object sys = py::module_::import("sys");
 
-        // This file: <site-packages>/oppt_py.cpython-XY.so
-        py::object module_file = py::module_::import("__main__").attr("__file__");
-        py::object mod_path = pathlib.attr("Path")(module_file).attr("parent");
+        // This gets the path to _oppt_py.so inside oppt_py/
+        py::object oppt_module = py::module_::import("oppt_py");
+        py::object oppt_file = oppt_module.attr("__file__");  // e.g. /usr/.../oppt_py/_oppt_py.so
+        py::object oppt_path = pathlib.attr("Path")(oppt_file);
 
-        // plugins directory is sibling: <site-packages>/plugins
-        py::object plugins_path = mod_path.attr("__truediv__")("plugins");
+        // Go up two levels (from oppt_py/_oppt_py.so → site-packages → root)
+        py::object site_packages = oppt_path.attr("parent").attr("parent");
+
+        // Append share/oppt/plugins
+        py::object plugins_path = site_packages
+            .attr("__truediv__")("share")
+            .attr("__truediv__")("oppt")
+            .attr("__truediv__")("plugins");
+
+        py::object models_path = site_packages
+            .attr("__truediv__")("share")
+            .attr("__truediv__")("oppt")
+            .attr("__truediv__")("models");
+
         std::string plugin_str = py::str(plugins_path);
-
-        set_env("OPPT_RESOURCE_PATH", plugin_str);
+        std::string model_str = py::str(models_path);       
+        std::string full_path = plugin_str + ":" + model_str;
+ 
+        set_env("OPPT_RESOURCE_PATH", full_path);
 
     } catch (const std::exception& e) {
         // Fallback: don’t crash if something went wrong

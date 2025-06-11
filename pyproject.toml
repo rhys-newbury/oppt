@@ -1,6 +1,15 @@
 [build-system]
-requires = ["scikit-build-core[pyproject]>=0.7.0"]
+requires = ["scikit-build-core", "pybind11"]
 build-backend = "scikit_build_core.build"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.cibuildwheel]
+manylinux-x86_64-image = "manylinux_2_28"
+manylinux-aarch64-image = "manylinux_2_28"
+manylinux-pypy_x86_64-image = "manylinux_2_28"
+manylinux-pypy_aarch64-image = "manylinux_2_28"
 
 [project]
 name = "oppt_py"
@@ -8,13 +17,3 @@ version = "0.0.1"
 description = "Python bindings for OPPT (CMake/pybind11)"
 authors = [{ name = "Your Name" }]
 requires-python = ">=3.7"
-
-[tool.scikit-build]
-wheel.packages = ["oppt_py"]
-minimum-version = "0.7"
-
-[tool.scikit-build.cmake]
-args = [
-  "-DCMAKE_PREFIX_PATH=/usr/local"
-]
-source-dir = "."
