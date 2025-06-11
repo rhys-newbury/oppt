@@ -40,39 +40,6 @@ std::shared_ptr<ProblemEnvironment> create_abt_env() {
 
 PYBIND11_MODULE(_oppt_py, m) {
 
-    try {
-        py::object pathlib = py::module_::import("pathlib");
-
-        // This gets the path to _oppt_py.so inside oppt_py/
-        py::object oppt_module = py::module_::import("oppt_py");
-        py::object oppt_file = oppt_module.attr("__file__");  // e.g. /usr/.../oppt_py/_oppt_py.so
-        py::object oppt_path = pathlib.attr("Path")(oppt_file);
-
-        // Go up two levels (from oppt_py/_oppt_py.so → site-packages → root)
-        py::object site_packages = oppt_path.attr("parent").attr("parent");
-
-        // Append share/oppt/plugins
-        py::object plugins_path = site_packages
-            .attr("__truediv__")("share")
-            .attr("__truediv__")("oppt")
-            .attr("__truediv__")("plugins");
-
-        py::object models_path = site_packages
-            .attr("__truediv__")("share")
-            .attr("__truediv__")("oppt")
-            .attr("__truediv__")("models");
-
-        std::string plugin_str = py::str(plugins_path);
-        std::string model_str = py::str(models_path);       
-        std::string full_path = plugin_str + ":" + model_str;
- 
-        set_env("OPPT_RESOURCE_PATH", full_path);
-
-    } catch (const std::exception& e) {
-        // Fallback: don’t crash if something went wrong
-        py::print("Warning: could not set OPPT_RESOURCE_PATH:", e.what());
-    }
-
     py::class_<RunSummary>(m, "RunSummary")
     .def_readonly("mean_num_steps", &RunSummary::meanNumSteps)
     .def_readonly("mean_planning_time_per_step", &RunSummary::meanPlanningTimePerStep)
