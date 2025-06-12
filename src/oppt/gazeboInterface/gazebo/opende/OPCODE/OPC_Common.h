@@ -17,8 +17,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Include Guard
-#ifndef __OPC_COMMON_H__
-#define __OPC_COMMON_H__
+#pragma once
 #include <cmath>
 
 inline bool _opc_equal(const double &_a, const double &_b,
@@ -124,4 +123,3 @@ inline bool _opc_equal(const float &_a, const double &_b,
 		dest.z = trans.z + source.x * rot.m[0][2] + source.y * rot.m[1][2] + source.z * rot.m[2][2];
 	}
 
-#endif //__OPC_COMMON_H__

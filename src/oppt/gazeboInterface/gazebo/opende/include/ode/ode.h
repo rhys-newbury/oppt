@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_ODE_H_
-#define _ODE_ODE_H_
+#pragma once
 
 /* include *everything* here */
 
@@ -45,4 +44,3 @@
 #include <ode/odecpp_collision.h>
 #include <ode/export-dif.h>
 
-#endif

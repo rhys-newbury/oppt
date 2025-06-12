@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_SCREW_H_
-#define _ODE_JOINT_SCREW_H_
+#pragma once
 
 #include "joint.h"
 
@@ -55,4 +54,3 @@ struct dxJointScrew : public dxJoint
 
 
 
-#endif

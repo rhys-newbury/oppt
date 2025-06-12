@@ -17,8 +17,7 @@
  * as well as a serialization class providing methods to serialize this particular kind of
  * action pool and action mapping.
  */
-#ifndef SOLVER_DISCRETIZED_ACTIONS_HPP_
-#define SOLVER_DISCRETIZED_ACTIONS_HPP_
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -212,4 +211,3 @@ class DiscretizedActionTextSerializer: virtual public abt::Serializer {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_DISCRETIZED_ACTIONS_HPP_ */

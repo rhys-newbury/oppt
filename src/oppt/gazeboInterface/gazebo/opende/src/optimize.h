@@ -1,5 +1,4 @@
-#ifndef _ODE_OPTIMIZE_H
-#define _ODE_OPTIMIZE_H
+#pragma once
 
 #include <ode/odemath.h>
 #include <vector>
@@ -50,4 +49,3 @@ bool dSolveLCPIP(dReal* M, dReal* q, dReal* x, int n, dReal eps_feas);
 bool dMakeFeasibleConvex(CvxOptParams& cparams, dReal eps_feas, dReal* x, int n);
 bool dOptimizeConvexPrimalDual(CvxOptParams& cparams, dReal eps_feas, dReal* x, int n);
 
-#endif

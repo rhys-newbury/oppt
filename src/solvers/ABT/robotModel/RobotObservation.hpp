@@ -2,8 +2,7 @@
  *
  * Defines the ManipulatorObservation class, which represents an observation in the Manipulator POMDP.
  */
-#ifndef Robot_OBSERVATION_HPP_
-#define Robot_OBSERVATION_HPP_
+#pragma once
 
 #include <cstddef>                      // for size_t
 
@@ -59,4 +58,3 @@ class RobotObservation : public abt::DiscretizedPoint {
 };
 } /* namespace manipulator */
 
-#endif /* MANIPULATOR_OBSERVATION_HPP_ */

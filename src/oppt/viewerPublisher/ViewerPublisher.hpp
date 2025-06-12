@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _VIEWER_PUBLISHER_HPP_
-#define _VIEWER_PUBLISHER_HPP_
+#pragma once
 #include <ros/ros.h>
 #include "oppt/opptCore/core.hpp"
 #include "oppt/opptCore/Viewer.hpp"
@@ -117,4 +116,3 @@ private:
 };
 }
 
-#endif

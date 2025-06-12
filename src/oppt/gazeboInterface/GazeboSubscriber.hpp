@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _GAZEBO_SUBSCRIBER_HPP_
-#define _GAZEBO_SUBSCRIBER_HPP_
+#pragma once
 #include <gazebo/transport/TransportTypes.hh>
 #include <gazebo/transport/Node.hh>
 #include "oppt/opptCore/core.hpp"
@@ -78,4 +77,3 @@ private:
 };
 }
 
-#endif

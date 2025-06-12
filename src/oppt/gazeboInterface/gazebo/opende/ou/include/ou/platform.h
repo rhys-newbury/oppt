@@ -24,8 +24,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef __OU_PLATFORM_H_INCLUDED
-#define __OU_PLATFORM_H_INCLUDED
+#pragma once
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -369,4 +368,3 @@
 #endif // #if !defined(__OU_INLINES_DEFINED)
 
 
-#endif // #ifndef __OU_PLATFORM_H_INCLUDED

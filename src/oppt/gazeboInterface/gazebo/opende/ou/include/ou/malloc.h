@@ -24,8 +24,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef __OU_MALLOC_H_INCLUDED
-#define __OU_MALLOC_H_INCLUDED
+#pragma once
 
 
 #include <ou/namespace.h>
@@ -45,4 +44,3 @@ void _OU_CONVENTION_API FreeMemoryBlock(void *pv_ExistingBlock);
 END_NAMESPACE_OU()
 
 
-#endif // #ifndef __OU_MALLOC_H_INCLUDED

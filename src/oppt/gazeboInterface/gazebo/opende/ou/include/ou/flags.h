@@ -24,12 +24,10 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef __OU_FLAGS_H_INCLUDED
-#define __OU_FLAGS_H_INCLUDED
+#pragma once
 
 
 #include <ou/simpleflags.h>
 #include <ou/atomicflags.h>
 
 
-#endif // #ifndef __OU_FLAGS_H_INCLUDED

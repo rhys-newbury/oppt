@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _OPPT_COLLISION_OBJECT_HPP_
-#define _OPPT_COLLISION_OBJECT_HPP_
+#pragma once
 #include "typedefs.hpp"
 
 namespace oppt {
@@ -89,4 +88,3 @@ struct Contact {
 
 }
 
-#endif

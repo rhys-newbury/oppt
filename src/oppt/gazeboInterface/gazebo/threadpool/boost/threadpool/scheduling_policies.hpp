@@ -19,8 +19,7 @@
 */
 
 
-#ifndef THREADPOOL_SCHEDULING_POLICIES_HPP_INCLUDED
-#define THREADPOOL_SCHEDULING_POLICIES_HPP_INCLUDED
+#pragma once
 
 
 #include <queue>
@@ -258,4 +257,3 @@ namespace boost { namespace threadpool
 } } // namespace boost::threadpool
 
 
-#endif // THREADPOOL_SCHEDULING_POLICIES_HPP_INCLUDED

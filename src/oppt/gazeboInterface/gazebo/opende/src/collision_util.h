@@ -26,8 +26,7 @@ some useful collision utility stuff.
 
 */
 
-#ifndef _ODE_COLLISION_UTIL_H_
-#define _ODE_COLLISION_UTIL_H_
+#pragma once
 
 #include <ode/common.h>
 #include <ode/contact.h>
@@ -315,4 +314,3 @@ inline void dQuatInv(const dQuaternion& source, dQuaternion& dest)
 }
 
 
-#endif

@@ -2,8 +2,7 @@
  *
  * Contains the RandomAccessSet class, which represents a basic set with random access.
  */
-#ifndef SOLVER_RANDOMACCESSSET_HPP_
-#define SOLVER_RANDOMACCESSSET_HPP_
+#pragma once
 
 #include <iostream>
 #include <initializer_list>
@@ -112,4 +111,3 @@ class RandomAccessSet {
 };
 } /* namespace oppt */
 
-#endif /* SOLVER_RANDOMACCESSSET_HPP_ */

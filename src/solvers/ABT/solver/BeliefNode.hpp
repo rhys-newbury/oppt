@@ -5,8 +5,7 @@
  * The core data stored by a belief node is the set of particles (history entries) associated with
  * this node, as well as an ActionMapping and a back-pointer.
  */
-#ifndef SOLVER_BELIEFNODE_HPP_
-#define SOLVER_BELIEFNODE_HPP_
+#pragma once
 
 #include <functional>
 #include <map>                          // for map, map<>::value_compare
@@ -203,4 +202,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_BELIEFNODE_HPP_ */

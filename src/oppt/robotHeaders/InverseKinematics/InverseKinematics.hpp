@@ -1,5 +1,4 @@
-#ifndef __INVERSE_KINEMATICS_HPP__
-#define __INVERSE_KINEMATICS_HPP__
+#pragma once
 #include <kdl_parser/kdl_parser.hpp>
 #include <kdl/kdl.hpp>
 #include <kdl/jntarray.hpp>
@@ -75,4 +74,3 @@ protected:
 };
 }
 
-#endif

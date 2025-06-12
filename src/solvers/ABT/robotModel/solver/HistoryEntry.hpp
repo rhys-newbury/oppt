@@ -1,5 +1,4 @@
-#ifndef _OPPT_HISTORY_ENTRY_HPP_
-#define _OPPT_HISTORY_ENTRY_HPP_
+#pragma once
 #include "solvers/ABT/solver/HistoryEntry.hpp"
 
 namespace abt
@@ -17,4 +16,3 @@ protected:
 };
 }
 
-#endif

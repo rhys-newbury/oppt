@@ -1,5 +1,4 @@
-#ifndef __ABT_BELIEF_TREE_HPP__
-#define __ABT_BELIEF_TREE_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "solvers/ABT/solver/BeliefTree.hpp"
 #include "BeliefNode.hpp"
@@ -26,4 +25,3 @@ protected:
 };
 }
 
-#endif

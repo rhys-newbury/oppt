@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_PR_H_
-#define _ODE_JOINT_PR_H_
+#pragma once
 
 #include "joint.h"
 
@@ -93,4 +92,3 @@ struct dxJointPR : public dxJoint
 
 
 
-#endif

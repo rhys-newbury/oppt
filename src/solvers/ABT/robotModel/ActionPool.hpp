@@ -1,5 +1,4 @@
-#ifndef __ROBOT_ACTION_POOL_HPP__
-#define __ROBOT_ACTION_POOL_HPP__
+#pragma once
 #include "solvers/ABT/solver/mappings/actions/enumerated_actions.hpp"
 #include "oppt/robotHeaders/ActionSpace.hpp"
 #include "RobotAction.hpp"
@@ -118,4 +117,3 @@ private:
 
 }
 
-#endif

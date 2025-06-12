@@ -20,8 +20,7 @@
  * as well as a serialization class providing methods to serialize this particular kind of
  * action pool and action mapping.
  */
-#ifndef SOLVER_CONTINUOUS_ACTIONS_HPP_
-#define SOLVER_CONTINUOUS_ACTIONS_HPP_
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -633,4 +632,3 @@ void ChooserDataBase<Derived>::accessInitialisationDummy() {
 
 } /* namespace abt */
 
-#endif /* SOLVER_CONTINUOUS_ACTIONS_HPP_ */

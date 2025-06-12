@@ -8,8 +8,7 @@
  * allows the mapping to determine the enumeration number associated with any observation. Each
  * mapping simply stores its entries in an array, where the array index is the enumeration number.
  */
-#ifndef SOLVER_ENUMERATED_OBSERVATIONS_HPP_
-#define SOLVER_ENUMERATED_OBSERVATIONS_HPP_
+#pragma once
 
 #include <iostream>
 #include <memory>
@@ -162,4 +161,3 @@ class EnumeratedObservationTextSerializer: virtual public abt::Serializer {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_ENUMERATED_OBSERVATIONS_HPP_ */

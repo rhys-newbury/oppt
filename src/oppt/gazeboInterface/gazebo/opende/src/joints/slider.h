@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_SLIDER_H_
-#define _ODE_JOINT_SLIDER_H_
+#pragma once
 
 #include "joint.h"
 
@@ -52,4 +51,3 @@ struct dxJointSlider : public dxJoint
 };
 
 
-#endif

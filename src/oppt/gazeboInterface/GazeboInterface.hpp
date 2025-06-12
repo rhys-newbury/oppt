@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __GAZEBO_INTERFACE_HPP__
-#define __GAZEBO_INTERFACE_HPP__
+#pragma once
 #include <boost/scoped_ptr.hpp>
 #include <boost/thread.hpp>
 #include <gazebo/physics/PhysicsIface.hh>
@@ -564,4 +563,3 @@ private:
 };
 }
 
-#endif

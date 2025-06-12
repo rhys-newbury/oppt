@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_CORE_HPP__
-#define __OPPT_CORE_HPP__
+#pragma once
 #include "typedefs.hpp"
 #include "constants.hpp"
 #include "utils.hpp"
@@ -34,4 +33,3 @@
 #include "Filter.hpp"
 #include "UID.hpp"
 
-#endif

@@ -8,8 +8,7 @@
  * the enumerated action case is handled simply by providing implementations for the pure virtual
  * methods of DiscretizedActionPool.
  */
-#ifndef SOLVER_ENUMERATED_ACTIONS_HPP_
-#define SOLVER_ENUMERATED_ACTIONS_HPP_
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -68,4 +67,3 @@ class EnumeratedActionPool : public abt::DiscretizedActionPool {
 typedef DiscretizedActionTextSerializer EnumeratedActionTextSerializer;
 } /* namespace abt */
 
-#endif /* SOLVER_ENUMERATED_ACTIONS_HPP_ */

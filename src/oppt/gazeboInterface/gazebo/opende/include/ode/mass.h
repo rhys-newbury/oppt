@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_MASS_H_
-#define _ODE_MASS_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -141,4 +140,3 @@ struct dMass {
 }
 #endif
 
-#endif

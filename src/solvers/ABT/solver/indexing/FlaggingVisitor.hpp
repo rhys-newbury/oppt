@@ -3,8 +3,7 @@
  * Defines the FlaggingVisitor class, which is useful for flagging affected states that are looked
  * up via an RTree-based StateIndex.
  */
-#ifndef SOLVER_FLAGGINGVISITOR_HPP_
-#define SOLVER_FLAGGINGVISITOR_HPP_
+#pragma once
 
 #include "solvers/ABT/solver/changes/ChangeFlags.hpp"
 
@@ -38,4 +37,3 @@ class FlaggingVisitor: public abt::SpatialIndexVisitor {
 
 } /* namespace abt */
 
-#endif /* SOLVER_FLAGGINGVISITOR_HPP_ */

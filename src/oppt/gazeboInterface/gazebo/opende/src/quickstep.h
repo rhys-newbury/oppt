@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_QUICK_STEP_H_
-#define _ODE_QUICK_STEP_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -33,4 +32,3 @@ void dxQuickStepper (dxWorldProcessContext *context,
 		    dxJoint * const *_joint, int _nj, dReal stepsize);
 
 
-#endif

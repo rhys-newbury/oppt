@@ -1,5 +1,4 @@
-#ifndef GIM_TRIMESH_H_INCLUDED
-#define GIM_TRIMESH_H_INCLUDED
+#pragma once
 /*! \file gim_trimesh.h
 \author Francisco Le�n
 */
@@ -541,4 +540,3 @@ int gim_trimesh_ray_closest_collision(GIM_TRIMESH * trimesh,vec3f origin,vec3f d
 
 
 
-#endif // GIM_TRIMESH_H_INCLUDED

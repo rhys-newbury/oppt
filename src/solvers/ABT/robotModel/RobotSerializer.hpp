@@ -1,5 +1,4 @@
-#ifndef ROBOT_SERIALIZER_HPP_
-#define ROBOT_SERIALIZER_HPP_
+#pragma once
 
 #include <iosfwd>                       // for istream, ostream
 #include <memory>                       // for unique_ptr
@@ -55,4 +54,3 @@ public:
 
 }
 
-#endif

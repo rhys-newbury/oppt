@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _OPPT_ODE_PHYSICS_HPP_
-#define _OPPT_ODE_PHYSICS_HPP_
+#pragma once
 #include <unordered_map>
 #include <gazebo/physics/ode/ODEPhysics.hh>
 #include <gazebo/physics/Joint.hh>
@@ -67,4 +66,3 @@ private:
 
 void RegisterOpptODEPhysics();
 
-#endif

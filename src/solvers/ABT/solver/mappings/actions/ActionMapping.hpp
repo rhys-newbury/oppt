@@ -9,8 +9,7 @@
  * The purpose of this abstract class is to allow different actions to be grouped together in
  * customizable ways.
  */
-#ifndef SOLVER_ACTIONMAPPING_HPP_
-#define SOLVER_ACTIONMAPPING_HPP_
+#pragma once
 
 #include "oppt/global.hpp"
 
@@ -101,4 +100,3 @@ private:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_ACTIONMAPPING_HPP_ */

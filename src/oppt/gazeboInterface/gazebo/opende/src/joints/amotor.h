@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_AMOTOR_H_
-#define _ODE_JOINT_AMOTOR_H_
+#pragma once
 
 #include "joint.h"
 
@@ -55,4 +54,3 @@ struct dxJointAMotor : public dxJoint
 };
 
 
-#endif

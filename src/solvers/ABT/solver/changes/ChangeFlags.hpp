@@ -6,8 +6,7 @@
  * This file also defines some basic operators (Bitwise OR, AND, NOT) to allow combinations of
  * flags, even thoug this class is used as a strict enum.
  */
-#ifndef SOLVER_CHANGEFLAGS_HPP_
-#define SOLVER_CHANGEFLAGS_HPP_
+#pragma once
 
 #include <cstdint>
 
@@ -93,4 +92,3 @@ inline bool has_flags(ChangeFlags value, ChangeFlags flags) {
 } /* namespace changes */
 } /* namespace abt */
 
-#endif /* SOLVER_CHANGEFLAGS_HPP_ */

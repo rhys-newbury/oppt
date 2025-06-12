@@ -24,8 +24,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef __OU_MACROS_H_INCLUDED
-#define __OU_MACROS_H_INCLUDED
+#pragma once
 
 
 #include <stddef.h>
@@ -76,4 +75,3 @@
 #define OU_IN_SIZET_RANGE(Value, Min, Max) ((size_t)((size_t)(Value) - (size_t)(Min)) < (size_t)((size_t)(Max) - (size_t)(Min)))
 
 
-#endif // #ifndef __OU_MACROS_H_INCLUDED

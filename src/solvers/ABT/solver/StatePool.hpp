@@ -9,8 +9,7 @@
  * The StatePool also stores a StateIndex, the main purpose of which is to provide an efficient
  * way to look up states.
  */
-#ifndef SOLVER_STATEPOOL_HPP_
-#define SOLVER_STATEPOOL_HPP_
+#pragma once
 
 #include <cstddef>                      // for size_t
 
@@ -122,4 +121,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_STATEPOOL_HPP_ */

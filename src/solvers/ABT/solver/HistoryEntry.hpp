@@ -5,8 +5,7 @@
  * The core functionality of the entry is to store a state, action, observation and reward
  * tuple (s, a, o, r), as per the ABT algorithm.
  */
-#ifndef SOLVER_HISTORYENTRY_HPP_
-#define SOLVER_HISTORYENTRY_HPP_
+#pragma once
 
 #include <cstdint>
 
@@ -148,4 +147,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_HISTORYENTRY_HPP_ */

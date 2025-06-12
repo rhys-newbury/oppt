@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _ACTION_SPACE_DISCRETIZER_HPP_
-#define _ACTION_SPACE_DISCRETIZER_HPP_
+#pragma once
 #include "Action.hpp"
 
 namespace oppt
@@ -48,4 +47,3 @@ protected:
 
 }
 
-#endif

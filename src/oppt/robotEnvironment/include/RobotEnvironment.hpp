@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _ROBOT_ENVIRONMENT_HPP_
-#define _ROBOT_ENVIRONMENT_HPP_
+#pragma once
 #include <assert.h>
 #include <iostream>
 #include <fstream>
@@ -304,4 +303,3 @@ private:
 };
 }
 
-#endif

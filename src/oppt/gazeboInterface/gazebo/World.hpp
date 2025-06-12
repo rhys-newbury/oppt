@@ -1,5 +1,4 @@
-#ifndef _GZ_WORLD_WRPR_HPP_
-#define _GZ_WORLD_WRPR_HPP_
+#pragma once
 #include <gazebo/physics/PhysicsIface.hh>
 #include <gazebo/common/common.hh>
 
@@ -29,4 +28,3 @@ private:
 };
 }
 
-#endif

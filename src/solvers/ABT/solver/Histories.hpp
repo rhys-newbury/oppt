@@ -4,8 +4,7 @@
  *
  * This class owns the associated sequences, which are stored in a vector of unique_ptr
  */
-#ifndef SOLVER_HISTORIES_HPP_
-#define SOLVER_HISTORIES_HPP_
+#pragma once
 
 #include <map>                          // for map
 #include <memory>                       // for unique_ptr
@@ -76,4 +75,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_HISTORIES_HPP_ */

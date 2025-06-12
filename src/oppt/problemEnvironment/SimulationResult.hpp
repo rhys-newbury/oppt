@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _SIMULATION_RESULT_HPP_
-#define _SIMULATION_RESULT_HPP_
+#pragma once
 #include "oppt/opptCore/core.hpp"
 
 namespace oppt
@@ -36,4 +35,3 @@ struct SimulationResult {
 };
 }
 
-#endif

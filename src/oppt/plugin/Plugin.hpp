@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_PLUGIN_HPP__
-#define __OPPT_PLUGIN_HPP__
+#pragma once
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dlfcn.h>
@@ -446,4 +445,3 @@ public:
 
 }
 
-#endif

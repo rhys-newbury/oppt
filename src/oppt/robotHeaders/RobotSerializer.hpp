@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __ROBOT_SERIALIZER_HPP__
-#define __ROBOT_SERIALIZER_HPP__
+#pragma once
 #include "oppt/robotHeaders/Serializer.hpp"
 
 namespace oppt
@@ -48,4 +47,3 @@ private:
 
 }
 
-#endif

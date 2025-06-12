@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _SDF_ENVIRONMENT_PARSER_HPP_
-#define _SDF_ENVIRONMENT_PARSER_HPP_
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include <sdf/parser.hh>
 
@@ -95,4 +94,3 @@ private:
 };
 }
 
-#endif

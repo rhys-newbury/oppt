@@ -5,8 +5,7 @@
  * The StateInfo also keeps track of which history entries involve that state, which allows for
  * an efficient way to look up which history entries are affected by certain changes in the model.
  */
-#ifndef SOLVER_STATEINFO_HPP_
-#define SOLVER_STATEINFO_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 #include <unordered_set>                          // for seteset(state.copy());
@@ -92,4 +91,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_STATEINFO_HPP_ */

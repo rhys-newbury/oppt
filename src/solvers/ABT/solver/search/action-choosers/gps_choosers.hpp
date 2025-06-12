@@ -3,8 +3,7 @@
  * Defines some useful basic functions for selecting an action from a belief node
  * for the GPS search functionality.
  */
-#ifndef SOLVER_GPS_CHOOSERS_HPP_
-#define SOLVER_GPS_CHOOSERS_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 
@@ -107,4 +106,3 @@ GpsChooserResponse gps_ucb_action(BeliefNode const *node, const Model& model, co
 } /* namespace choosers */
 } /* namespace abt */
 
-#endif /* SOLVER_GPS_CHOOSERS_HPP_ */

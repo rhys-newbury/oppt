@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_STEP_H_
-#define _ODE_STEP_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -35,4 +34,3 @@ void dInternalStepIsland (dxWorldProcessContext *context, dxWorld *world,
 
 
 
-#endif

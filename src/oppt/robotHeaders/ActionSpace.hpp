@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __ACT_SPACE_HPP__
-#define __ACT_SPACE_HPP__
+#pragma once
 #include <string>
 #include <vector>
 #include <iostream>
@@ -329,4 +328,3 @@ public:
 
 }
 
-#endif

@@ -21,8 +21,7 @@
  *****************************************************************************/
 
 
-#ifndef TCLAP_ARG_EXCEPTION_H
-#define TCLAP_ARG_EXCEPTION_H
+#pragma once
 
 #include <string>
 #include <exception>
@@ -196,4 +195,3 @@ private:
 
 } // namespace TCLAP
 
-#endif

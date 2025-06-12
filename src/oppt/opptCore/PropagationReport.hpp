@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __PROPAGATION_REPORT_HPP_
-#define __PROPAGATION_REPORT_HPP_
+#pragma once
 #include "typedefs.hpp"
 #include "OpptUserData.hpp"
 
@@ -100,4 +99,3 @@ struct PropagationResult {
 
 }
 
-#endif

@@ -36,8 +36,7 @@
  */
 
 
-#ifndef _ODE_ARRAY_H_
-#define _ODE_ARRAY_H_
+#pragma once
 
 #include <ode/odeconfig.h>
 
@@ -132,4 +131,3 @@ public:
 };
 
 
-#endif

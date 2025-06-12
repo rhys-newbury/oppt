@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __FILESYSTEM_UTILS_HPP__
-#define __FILESYSTEM_UTILS_HPP__
+#pragma once
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 #include <iostream>
@@ -96,4 +95,3 @@ inline bool copyFile(const std::string& sourcePath,
 
 }
 
-#endif

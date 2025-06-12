@@ -32,8 +32,7 @@ ODE interface to OU library functions.
 */
 
 
-#ifndef _ODE_ODEOU_H_
-#define _ODE_ODEOU_H_
+#pragma once
 
 
 #if dOU_ENABLED
@@ -75,4 +74,3 @@ public:
 #endif // dOU_ENABLED
 
 
-#endif // _ODE_ODEOU_H_

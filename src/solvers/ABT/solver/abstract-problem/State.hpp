@@ -3,8 +3,7 @@
  * Defines the State interface; currently this is the same as Point, so this is just a straight
  * typedef.
  */
-#ifndef SOLVER_STATE_HPP_
-#define SOLVER_STATE_HPP_
+#pragma once
 
 #include "solvers/ABT/solver/abstract-problem/Point.hpp"
 
@@ -13,4 +12,3 @@ namespace abt {
     typedef Point State;
 } /* namespace abt */
 
-#endif /* SOLVER_STATE_HPP_ */

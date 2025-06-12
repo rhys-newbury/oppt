@@ -1,5 +1,4 @@
-#ifndef GIM_MEMORY_H_INCLUDED
-#define GIM_MEMORY_H_INCLUDED
+#pragma once
 /*! \file gim_memory.h
 \author Francisco Le�n
 */
@@ -1053,4 +1052,3 @@ This macro executes a kernel macro or function for each element of the streams
 
 //! @}
 
-#endif // GIM_MEMORY_H_INCLUDED

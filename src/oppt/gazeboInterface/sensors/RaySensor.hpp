@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __RAY_SENSOR_HPP__
-#define __RAY_SENSOR_HPP__
+#pragma once
 #include "GazeboSensor.hpp"
 
 namespace oppt
@@ -34,4 +33,3 @@ public:
 
 }
 
-#endif

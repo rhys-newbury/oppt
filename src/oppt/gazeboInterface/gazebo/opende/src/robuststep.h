@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ROBUST_STEP_H_
-#define _ROBUST_STEP_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -34,4 +33,3 @@ void dRobustStepIsland (dxWorldProcessContext* context, dxWorld *world,
 
 
 
-#endif

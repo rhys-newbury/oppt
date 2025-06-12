@@ -3,8 +3,7 @@
  * Defines the RockSampleAction class, which represents an action for the RockSample problem, and
  * also the ActionType enumeration, which enumerates the different types of actions for RockSample.
  */
-#ifndef MANIPULATOR_ACTION_HPP_
-#define MANIPULATOR_ACTION_HPP_
+#pragma once
 
 #include <cstddef>                      // for size_t
 #include <cstdint>
@@ -136,4 +135,3 @@ private:
 
 }
 
-#endif

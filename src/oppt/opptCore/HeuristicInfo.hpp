@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _HEURISTIC_INFO_HPP_
-#define _HEURISTIC_INFO_HPP_
+#pragma once
 #include "typedefs.hpp"
 #include "logging.hpp"
 
@@ -47,4 +46,3 @@ public:
 
 }
 
-#endif

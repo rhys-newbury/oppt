@@ -6,8 +6,7 @@
  * properly; in particular, the update() method is of crucial importance - it is used to update
  * the visit count and/or q-value estimate for this edge of the
  */
-#ifndef SOLVER_ACTIONMAPPINGENTRY_HPP_
-#define SOLVER_ACTIONMAPPINGENTRY_HPP_
+#pragma once
 
 #include "solvers/ABT/solver/abstract-problem/Action.hpp"
 
@@ -68,4 +67,3 @@ public:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_ACTIONMAPPINGENTRY_HPP_ */

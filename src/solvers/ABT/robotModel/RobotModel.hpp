@@ -2,8 +2,7 @@
  *
  * Contains RockSampleModel, which implements the core Model interface for the RockSample POMDP.
  */
-#ifndef Robot_MODEL_HPP_
-#define Robot_MODEL_HPP_
+#pragma once
 
 //#include <ios>                          // for ostream
 //#include <memory>                       // for unique_ptr
@@ -191,4 +190,3 @@ private:
 };
 } /* namespace Robot */
 
-#endif /* Robot_MODEL_HPP_ */

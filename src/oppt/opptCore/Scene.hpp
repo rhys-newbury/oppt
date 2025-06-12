@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _SCENE_HPP_
-#define _SCENE_HPP_
+#pragma once
 #include "typedefs.hpp"
 #include "geometric/Pose.hpp"
 
@@ -177,4 +176,3 @@ protected:
 };
 }
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef __OPPT_HISTORY_SEQUENCE_
-#define __OPPT_HISTORY_SEQUENCE_
+#pragma once
 #include "solvers/ABT/solver/HistorySequence.hpp"
 
 namespace oppt
@@ -27,4 +26,3 @@ protected:
 };
 }
 
-#endif

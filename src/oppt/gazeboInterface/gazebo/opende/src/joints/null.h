@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_NULL_H_
-#define _ODE_JOINT_NULL_H_
+#pragma once
 
 #include "joint.h"
 
@@ -39,4 +38,3 @@ struct dxJointNull : public dxJoint
     virtual size_t size() const;
 };
 
-#endif

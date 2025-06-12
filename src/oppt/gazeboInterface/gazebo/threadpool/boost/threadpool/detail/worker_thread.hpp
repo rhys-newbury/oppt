@@ -14,8 +14,7 @@
 *
 */
 
-#ifndef THREADPOOL_DETAIL_WORKER_THREAD_HPP_INCLUDED
-#define THREADPOOL_DETAIL_WORKER_THREAD_HPP_INCLUDED
+#pragma once
 
 
 #include "scope_guard.hpp"
@@ -111,4 +110,3 @@ namespace boost { namespace threadpool { namespace detail
 
 } } } // namespace boost::threadpool::detail
 
-#endif // THREADPOOL_DETAIL_WORKER_THREAD_HPP_INCLUDED

@@ -1,5 +1,4 @@
-#ifndef _ROCKSAMPLE_REWARD_OPTIONS_HPP_
-#define _ROCKSAMPLE_REWARD_OPTIONS_HPP_
+#pragma once
 #include "oppt/plugin/PluginOptions.hpp"
 
 namespace oppt
@@ -29,4 +28,3 @@ public:
 
 };
 }
-#endif

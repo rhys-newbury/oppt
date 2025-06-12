@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_DHINGE_
-#define _ODE_JOINT_DHINGE_
+#pragma once
 
 #include "dball.h"
 
@@ -40,4 +39,3 @@ struct dxJointDHinge : public dxJointDBall
 };
 
 
-#endif

@@ -28,8 +28,7 @@ reference:
 #ifdef HDF5_INSTRUMENT
 
 
-#ifndef H5_IO
-#define H5_IO
+#pragma once
 #include <string>
 #include <ode/ode.h>
 #include <unordered_map>
@@ -101,4 +100,3 @@ class h5dump {
 };
 
 #endif // H5_IO
-#endif // HDF5_INSTRUMENT

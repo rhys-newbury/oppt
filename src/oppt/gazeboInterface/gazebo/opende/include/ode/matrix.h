@@ -22,8 +22,7 @@
 
 /* optimized and unoptimized vector and matrix functions */
 
-#ifndef _ODE_MATRIX_H_
-#define _ODE_MATRIX_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -277,4 +276,3 @@ PURE_INLINE size_t _dEstimateLDLTRemoveTmpbufSize(int n2, int nskip)
 }
 #endif
 
-#endif

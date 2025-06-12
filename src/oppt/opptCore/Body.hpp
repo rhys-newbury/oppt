@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_BODY_HPP__
-#define __OPPT_BODY_HPP__
+#pragma once
 #include "includes.hpp"
 #include "typedefs.hpp"
 #include "CollisionReport.hpp"
@@ -163,4 +162,3 @@ bool defaultCollisionFunction(fcl::CollisionObject* o1, fcl::CollisionObject* o2
 
 }
 
-#endif

@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_HINGE2_H_
-#define _ODE_JOINT_HINGE2_H_
+#pragma once
 
 #include "joint.h"
 
@@ -61,4 +60,3 @@ struct dxJointHinge2 : public dxJoint
 
 
 
-#endif

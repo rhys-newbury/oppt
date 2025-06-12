@@ -7,8 +7,7 @@
  * observations can be looked up via a hash function. Doing so allows entries to be stored only
  * for the observations that are actually encountered.
  */
-#ifndef SOLVER_DISCRETE_OBSERVATIONS_HPP_
-#define SOLVER_DISCRETE_OBSERVATIONS_HPP_
+#pragma once
 
 #include <iostream>
 #include <memory>
@@ -161,4 +160,3 @@ class DiscreteObservationTextSerializer: virtual public abt::Serializer {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_DISCRETE_OBSERVATIONS_HPP_ */

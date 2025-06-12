@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _COMMAND_TYPES_HPP_
-#define _COMMAND_TYPES_HPP_
+#pragma once
 
 namespace oppt
 {
@@ -169,4 +168,3 @@ struct AddDisplayProperties {
 
 }
 
-#endif

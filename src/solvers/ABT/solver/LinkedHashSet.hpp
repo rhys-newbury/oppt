@@ -2,8 +2,7 @@
  *
  * Contains the LinkedHashSet class, which stores a set that keeps ordering between elements.
  */
-#ifndef SOLVER_LINKEDHASHSET_HPP_
-#define SOLVER_LINKEDHASHSET_HPP_
+#pragma once
 
 #include <iostream>
 #include <initializer_list>
@@ -103,4 +102,3 @@ class LinkedHashSet {
 };
 } /* namespace oppt */
 
-#endif /* SOLVER_LINKEDHASHSET_HPP_ */

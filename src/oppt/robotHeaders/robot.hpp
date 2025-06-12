@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef ROBOT_INTERFACE_HPP_
-#define ROBOT_INTERFACE_HPP_
+#pragma once
 #include <boost/thread.hpp>
 #include <fcl/BV/BV.h>
 #include <fcl/collision_object.h>
@@ -363,4 +362,3 @@ private:
 
 }
 
-#endif

@@ -3,8 +3,7 @@
  * Defines a basic enumeration of the different states the search for an individual history
  * could be in.
  */
-#ifndef SOLVER_SEARCHSTATUS_HPP_
-#define SOLVER_SEARCHSTATUS_HPP_
+#pragma once
 
 namespace abt {
 
@@ -19,4 +18,3 @@ enum class SearchStatus : long {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_SEARCHSTATUS_HPP_ */

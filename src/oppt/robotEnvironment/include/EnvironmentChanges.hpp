@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __ROBOT_ENVIRONMENT_CHANGES_HPP__
-#define __ROBOT_ENVIRONMENT_CHANGES_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include <queue>
 
@@ -341,4 +340,3 @@ private:
 typedef std::shared_ptr<EnvironmentChanges> EnvironmentChangesPtr;
 }
 
-#endif

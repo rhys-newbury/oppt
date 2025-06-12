@@ -2,8 +2,7 @@
  *
  * Contains the Simulator class, which runs simulations to test the performance of ABT.
  */
-#ifndef SOLVER_SIMULATOR_HPP_
-#define SOLVER_SIMULATOR_HPP_
+#pragma once
 
 #include "oppt/global.hpp"
 
@@ -150,4 +149,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_SIMULATOR_HPP_ */

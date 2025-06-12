@@ -52,8 +52,7 @@
  * The core class is the OptionParser class, which provides an interface for registering
  * options and associated command-line aliases for those options.
  */
-#ifndef OPTION_PARSER_HPP_
-#define OPTION_PARSER_HPP_
+#pragma once
 
 #include <iostream>
 #include <memory>
@@ -596,4 +595,3 @@ template<typename OptionsType> void OptionParser::addSwitchArg(
 }
 } /* namespace options */
 
-#endif /* OPTION_PARSER_HPP_ */

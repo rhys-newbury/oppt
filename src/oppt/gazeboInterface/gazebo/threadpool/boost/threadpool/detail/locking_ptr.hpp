@@ -18,8 +18,7 @@
 */
 
 
-#ifndef THREADPOOL_DETAIL_LOCKING_PTR_HPP_INCLUDED
-#define THREADPOOL_DETAIL_LOCKING_PTR_HPP_INCLUDED
+#pragma once
 
 #include <boost/utility.hpp>
 #include <boost/thread/mutex.hpp>
@@ -81,4 +80,3 @@ namespace boost { namespace threadpool { namespace detail
 } } } // namespace boost::threadpool::detail
 
 
-#endif // THREADPOOL_DETAIL_LOCKING_PTR_HPP_INCLUDED

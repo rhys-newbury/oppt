@@ -9,8 +9,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Include Guard
-#ifndef __ICEMEMORYMACROS_H__
-#define __ICEMEMORYMACROS_H__
+#pragma once
 
 #undef ZeroMemory
 #undef CopyMemory
@@ -86,4 +85,3 @@
 	//! Standard allocation cycle
 	#define SAFE_ALLOC(ptr, type, count)	DELETEARRAY(ptr);	ptr = new type[count];	CHECKALLOC(ptr);
 
-#endif // __ICEMEMORYMACROS_H__

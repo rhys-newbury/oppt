@@ -7,8 +7,7 @@
  * currently just typedef of Vector) within an RTree. This allows for efficient lookup via
  * range-based queries.
  */
-#ifndef SOLVER_VECTOR_HPP_
-#define SOLVER_VECTOR_HPP_
+#pragma once
 
 #include <cstddef>                      // for size_t
 
@@ -51,4 +50,3 @@ public:
 
 } /* namespace abt */
 
-#endif /* SOLVER_VECTOR_HPP_ */

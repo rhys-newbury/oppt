@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __ROBOT_UTILS_HPP_
-#define __ROBOT_UTILS_HPP_
+#pragma once
 #include <iostream>
 
 using std::cout;
@@ -30,4 +29,3 @@ namespace robotutils
 
 }
 
-#endif

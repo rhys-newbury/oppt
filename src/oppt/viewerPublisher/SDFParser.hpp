@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __SDF_PARSER_HPP__
-#define __SDF_PARSER_HPP__
+#pragma once
 #include "Parser.hpp"
 #include <sdf/parser.hh>
 #include "oppt/opptCore/geometric/Box.hpp"
@@ -86,4 +85,3 @@ private:
 
 }
 
-#endif

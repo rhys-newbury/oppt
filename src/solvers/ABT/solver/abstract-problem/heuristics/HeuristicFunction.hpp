@@ -3,8 +3,7 @@
  * Contains a typedef for the "HeuristicFunction" type, which is represented via a function that
  * takes pointers to a history entry, state, and/or historical data, and returns a FloatType value.
  */
-#ifndef SOLVER_HEURISTICFUNCTION_HPP_
-#define SOLVER_HEURISTICFUNCTION_HPP_
+#pragma once
 
 #include <functional>
 
@@ -34,4 +33,3 @@ typedef std::function<FloatType(HistoryEntry const *,
 
 } /* namespace abt */
 
-#endif /* SOLVER_HEURISTICFUNCTION_HPP_ */

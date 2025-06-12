@@ -1,5 +1,4 @@
-#ifndef __TREE_INSPECTOR_HPP__
-#define __TREE_INSPECTOR_HPP__
+#pragma once
 #include "solvers/ABT/solver/Simulator.hpp"
 #include "oppt/opptCore/core.hpp"
 #include "solvers/ABT/solver/mappings/actions/ActionMapping.hpp"
@@ -46,4 +45,3 @@ private:
 
 }
 
-#endif

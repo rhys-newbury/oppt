@@ -26,8 +26,7 @@ stuff common to all spaces
 
 */
 
-#ifndef _ODE_COLLISION_SPACE_INTERNAL_H_
-#define _ODE_COLLISION_SPACE_INTERNAL_H_
+#pragma once
 
 #define ALLOCA(x) dALLOCA16(x)
 
@@ -81,4 +80,3 @@ inline static void collideAABBs (dxGeom *g1, dxGeom *g2,
   callback (data,g1,g2);
 }
 
-#endif

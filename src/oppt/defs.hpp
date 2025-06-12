@@ -17,8 +17,7 @@
  *
  * Some key definitions and macros for C++ programs.
  */
-#ifndef DEFS_HPP_
-#define DEFS_HPP_
+#pragma once
 
 /** A macro for quoting strings. */
 #define QUOTE(str) #str
@@ -120,4 +119,3 @@ namespace std {
 #endif
 #endif
 
-#endif /* DEFS_HPP_ */

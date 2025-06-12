@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_QUICK_STEP_PGS_LCP_H_
-#define _ODE_QUICK_STEP_PGS_LCP_H_
+#pragma once
 
 #include <ode/common.h>
 #include "quickstep_util.h"
@@ -78,4 +77,3 @@ size_t EstimatePGS_LCPMemoryRequirements(int m,int /*nb*/);
 
     } // namespace quickstep
 } // namespace ode
-#endif

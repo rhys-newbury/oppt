@@ -19,8 +19,7 @@
  *
  *****************************************************************************/
 
-#ifndef TCLAP_HELP_VISITOR_H
-#define TCLAP_HELP_VISITOR_H
+#pragma once
 
 #include <oppt/options/tclap/CmdLineInterface.h>
 #include <oppt/options/tclap/CmdLineOutput.h>
@@ -73,4 +72,3 @@ class HelpVisitor: public Visitor
 
 }
 
-#endif

@@ -15,8 +15,7 @@
 */
 
 
-#ifndef THREADPOOL_SIZE_POLICIES_HPP_INCLUDED
-#define THREADPOOL_SIZE_POLICIES_HPP_INCLUDED
+#pragma once
 
 
 
@@ -96,4 +95,3 @@ namespace boost { namespace threadpool
 
 } } // namespace boost::threadpool
 
-#endif // THREADPOOL_SIZE_POLICIES_HPP_INCLUDED

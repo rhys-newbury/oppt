@@ -23,8 +23,7 @@
 // object, body, and world structs.
 
 
-#ifndef _ODE_OBJECT_H_
-#define _ODE_OBJECT_H_
+#pragma once
 
 #include <limits>
 #include <ode/common.h>
@@ -207,4 +206,3 @@ struct dxWorld : public dBase {
 };
 
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef __GPS2_STEP_GENERATOR_HPP__
-#define __GPS2_STEP_GENERATOR_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "solvers/ABT/robotModel/parsers.hpp"
 #include "solvers/ABT/solver/search/SearchStatus.hpp"
@@ -55,4 +54,3 @@ private:
 }
 
 
-#endif

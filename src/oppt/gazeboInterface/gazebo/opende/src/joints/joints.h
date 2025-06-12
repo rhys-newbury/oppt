@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINTS_H_
-#define _ODE_JOINTS_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -46,4 +45,3 @@
 #include "pr.h"
 #include "piston.h"
 
-#endif

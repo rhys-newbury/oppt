@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_GEARBOX_
-#define _ODE_JOINT_GEARBOX_
+#pragma once
 
 #include "joint.h"
 
@@ -47,4 +46,3 @@ struct dxJointGearbox : public dxJoint
     virtual size_t size() const;
 };
 
-#endif

@@ -4,8 +4,7 @@
  * for a sequence of model changes, which is represented by a map from change times to
  * the associated changes at those times.
  */
-#ifndef SOLVER_MODELCHANGE_HPP_
-#define SOLVER_MODELCHANGE_HPP_
+#pragma once
 
 #include <map>
 #include <memory>
@@ -28,4 +27,3 @@ public:
 typedef std::map<long, std::vector<std::unique_ptr<ModelChange>>> ChangeSequence;
 } /* namespace abt */
 
-#endif /* SOLVER_MODELCHANGES_HPP_ */

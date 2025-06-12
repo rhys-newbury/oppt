@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_COMPATIBILITY_H_
-#define _ODE_COMPATIBILITY_H_
+#pragma once
 
 /*
  * ODE's backward compatibility system ensures that as ODE's API
@@ -37,4 +36,3 @@
 #define dWtoDQ(w,q,dq) dDQfromW((dq),(w),(q))
 
 
-#endif

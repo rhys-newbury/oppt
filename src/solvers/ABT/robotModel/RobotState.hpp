@@ -1,5 +1,4 @@
-#ifndef Robot_STATE_HPP_
-#define Robot_STATE_HPP_
+#pragma once
 
 #include <cstddef>                      // for size_t
 
@@ -88,4 +87,3 @@ template<> struct hash<shared::RobotState> {
 };
 } /* namespace std */
 
-#endif /* MANIPULATORSTATE_HPP_ */

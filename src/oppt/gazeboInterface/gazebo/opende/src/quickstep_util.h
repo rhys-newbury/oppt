@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_QUICK_STEP_UTIL_H_
-#define _ODE_QUICK_STEP_UTIL_H_
+#pragma once
 
 #include <ode/common.h>
 #include "gazebo/gazebo_config.h"
@@ -263,4 +262,3 @@ void DYNAMIC_INERTIA(const int infom, const dxJoint::Info2 &Jinfo, const int b1,
                             dRealMutablePtr invMOI, dRealMutablePtr MOI);
     } // namespace quickstep
 } // namespace ode
-#endif

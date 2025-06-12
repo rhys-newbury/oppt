@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _PROBLEM_ENVIRONMENT_OPTIONS_HPP_
-#define _PROBLEM_ENVIRONMENT_OPTIONS_HPP_
+#pragma once
 #include "oppt/options/Options.hpp"
 #include "oppt/opptCore/typedefs.hpp"
 
@@ -239,4 +238,3 @@ typedef std::shared_ptr<ProblemEnvironmentOptions> ProblemEnvironmentOptionsPtr;
 
 }
 
-#endif

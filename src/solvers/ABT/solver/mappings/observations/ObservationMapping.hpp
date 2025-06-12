@@ -9,8 +9,7 @@
  * The purpose of this abstract class is to allow different observations to be grouped together in
  * customizable ways.
  */
-#ifndef SOLVER_OBSERVATIONMAPPING_HPP_
-#define SOLVER_OBSERVATIONMAPPING_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 
@@ -74,4 +73,3 @@ private:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_OBSERVATIONMAPPING_HPP_ */

@@ -1,5 +1,4 @@
-#ifndef __CONTINUOUS_ROBOT_ACTION_CONTAINER_HPP__
-#define __CONTINUOUS_ROBOT_ACTION_CONTAINER_HPP__
+#pragma once
 #include "RobotAction.hpp"
 #include "oppt/robotHeaders/ActionSpace.hpp"
 
@@ -134,4 +133,3 @@ private:
 
 }
 
-#endif

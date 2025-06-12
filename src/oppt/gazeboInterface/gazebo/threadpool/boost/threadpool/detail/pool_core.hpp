@@ -19,8 +19,7 @@
 */
 
 
-#ifndef THREADPOOL_POOL_CORE_HPP_INCLUDED
-#define THREADPOOL_POOL_CORE_HPP_INCLUDED
+#pragma once
 
 
 
@@ -450,4 +449,3 @@ namespace boost { namespace threadpool { namespace detail
 
 } } } // namespace boost::threadpool::detail
 
-#endif // THREADPOOL_POOL_CORE_HPP_INCLUDED

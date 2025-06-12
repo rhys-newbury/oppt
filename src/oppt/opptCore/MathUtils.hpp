@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_MATH_UTILS_HPP__
-#define __OPPT_MATH_UTILS_HPP__
+#pragma once
 #include "typedefs.hpp"
 #include "utils.hpp"
 
@@ -279,4 +278,3 @@ inline FloatType distAngles(const FloatType &angle1, const FloatType &angle2) {
 
 }
 
-#endif

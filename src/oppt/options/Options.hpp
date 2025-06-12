@@ -18,8 +18,7 @@
  * Defines the base Options class. These are the core parameters that ABT requires in order to
  * function correctly.
  */
-#ifndef SOLVER_OPTIONS_HPP_
-#define SOLVER_OPTIONS_HPP_
+#pragma once
 
 #include "oppt/options/option_parser.hpp"
 
@@ -56,4 +55,3 @@ struct Options : options::BaseOptions {
 };
 } /* namespace solver */
 
-#endif /* SOLVER_OPTIONS_HPP_ */

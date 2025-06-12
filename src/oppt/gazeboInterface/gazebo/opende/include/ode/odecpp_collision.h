@@ -23,8 +23,7 @@
 /* C++ interface for new collision API */
 
 
-#ifndef _ODE_ODECPP_COLLISION_H_
-#define _ODE_ODECPP_COLLISION_H_
+#pragma once
 #ifdef __cplusplus
 
 //#include <ode/error.h>
@@ -425,5 +424,4 @@ public:
 
 //}
 
-#endif
 #endif

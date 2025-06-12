@@ -1,5 +1,4 @@
-#ifndef _ABT_OPTIONS_HPP_
-#define _ABT_OPTIONS_HPP_
+#pragma once
 #include "robotModel/SharedOptions.hpp"
 
 namespace oppt
@@ -146,4 +145,3 @@ public:
 };
 }
 
-#endif

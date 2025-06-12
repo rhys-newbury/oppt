@@ -24,8 +24,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef __OU_ATOMIC_H_INCLUDED
-#define __OU_ATOMIC_H_INCLUDED
+#pragma once
 
 
 /**
@@ -1602,4 +1601,3 @@ END_NAMESPACE_OU()
 
 
 
-#endif // #ifndef __OU_ATOMIC_H_INCLUDED

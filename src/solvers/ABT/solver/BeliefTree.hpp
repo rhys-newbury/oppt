@@ -6,8 +6,7 @@
  * simply owns a root node, and keeps track of a vector of all of the nodes in the entire tree
  * for convenient iteration and serialization.
  */
-#ifndef SOLVER_BELIEFTREE_HPP_
-#define SOLVER_BELIEFTREE_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 #include <vector>                       // for vector
@@ -82,4 +81,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_BELIEFTREE_HPP_ */

@@ -7,8 +7,7 @@ http://code.google.com/p/inih/
 
 */
 
-#ifndef __INI_H__
-#define __INI_H__
+#pragma once
 
 /* Make this header file easier to include in C++ code */
 #ifdef __cplusplus
@@ -45,8 +44,7 @@ int ini_parse_file(FILE* file,
 /* Nonzero to allow multi-line value parsing, in the style of Python's
    ConfigParser. If allowed, ini_parse() will call the handler with the same
    name for each subsequent line parsed. */
-#ifndef INI_ALLOW_MULTILINE
-#define INI_ALLOW_MULTILINE 1
+#pragma once
 #endif
 
 /* Nonzero to allow a UTF-8 BOM sequence (0xEF 0xBB 0xBF) at the start of
@@ -72,6 +70,4 @@ int ini_parse_file(FILE* file,
 
 #ifdef __cplusplus
 }
-#endif
 
-#endif /* __INI_H__ */

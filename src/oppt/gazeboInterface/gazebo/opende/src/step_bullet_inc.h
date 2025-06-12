@@ -14,8 +14,7 @@
  * limitations under the License.
  *
 */
-#ifndef _GAZEBO_ODE_STEP_BULLET_INC_H_
-#define _GAZEBO_ODE_STEP_BULLET_INC_H_
+#pragma once
 
 #ifdef HAVE_BULLET
 // This disable warning messages
@@ -27,5 +26,4 @@
 #include "BulletDynamics/MLCPSolvers/btLemkeSolver.h"
 #endif
 #include "BulletDynamics/MLCPSolvers/btSolveProjectedGaussSeidel.h"
-#endif
 #endif

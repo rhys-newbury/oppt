@@ -1,5 +1,4 @@
-#ifndef __ROBOT_UTILS_
-#define __ROBOT_UTILS_
+#pragma once
 #include <vector>
 #include <string>
 #include <iostream>
@@ -23,4 +22,3 @@ void printVector(const std::vector<T>& vec, std::string str)
 
 }
 
-#endif

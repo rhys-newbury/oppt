@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_H_
-#define _ODE_JOINT_H_
+#pragma once
 
 
 #include <ode/contact.h>
@@ -204,7 +203,6 @@ struct dxJointLimitMotor
 
 
 
-#endif
 
 
 // Local Variables:

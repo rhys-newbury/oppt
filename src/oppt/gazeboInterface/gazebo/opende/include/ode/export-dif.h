@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_EXPORT_DIF_
-#define _ODE_EXPORT_DIF_
+#pragma once
 
 #include <ode/common.h>
 
@@ -37,4 +36,3 @@ ODE_API void dWorldExportDIF (dWorldID w, FILE *file, const char *world_name);
 }
 #endif
 
-#endif

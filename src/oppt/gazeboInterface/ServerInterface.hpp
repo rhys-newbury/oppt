@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _OPPT_SERVER_INTERFACE_HPP_
-#define _OPPT_SERVER_INTERFACE_HPP_
+#pragma once
 #include <oppt/opptCore/core.hpp>
 #include <gazebo/common/CommonTypes.hh>
 #include <gazebo/gazebo.hh>
@@ -37,4 +36,3 @@ private:
 };
 }
 
-#endif

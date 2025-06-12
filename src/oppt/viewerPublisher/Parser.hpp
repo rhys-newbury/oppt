@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __PARSER_HPP__
-#define __PARSER_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include <visualization_msgs/Marker.h>
 #include <visualization_msgs/MarkerArray.h>
@@ -49,4 +48,3 @@ public:
 
 }
 
-#endif

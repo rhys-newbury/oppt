@@ -3,8 +3,7 @@
  * Contains the RTree class, which is an implementation of the StateIndex interface that functions
  * as a thin wrapper for the RTree class of libspatialindex.
  */
-#ifndef SOLVER_RTREE_HPP_
-#define SOLVER_RTREE_HPP_
+#pragma once
 
 #include <limits>
 #include <memory>
@@ -71,4 +70,3 @@ class RTree : public StateIndex {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_RTREE_HPP_ */

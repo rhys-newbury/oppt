@@ -13,8 +13,7 @@
 *
 */
 
-#ifndef THREADPOOL_FUTURE_HPP_INCLUDED
-#define THREADPOOL_FUTURE_HPP_INCLUDED
+#pragma once
 
 
 
@@ -140,4 +139,3 @@ schedule(Pool& pool, const Function& task)
 
 } } // namespace boost::threadpool
 
-#endif // THREADPOOL_FUTURE_HPP_INCLUDED

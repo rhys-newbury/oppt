@@ -9,8 +9,7 @@
  * to be recalculated more efficiently. Also, not having to re-randomize means that unnecessary
  * divergence of histories due to resampling can be avoided.
  */
-#ifndef SOLVER_TRANSITIONPARAMETERS_HPP_
-#define SOLVER_TRANSITIONPARAMETERS_HPP_
+#pragma once
 #include <ostream>
 
 namespace abt {
@@ -43,4 +42,3 @@ inline std::ostream &operator<<(std::ostream &os,
 
 } /* namespace abt */
 
-#endif /* SOLVER_TRANSITIONPARAMETERS_HPP_ */

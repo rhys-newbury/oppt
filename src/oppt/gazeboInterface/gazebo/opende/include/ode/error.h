@@ -22,8 +22,7 @@
 
 /* this comes from the `reuse' library. copy any changes back to the source */
 
-#ifndef _ODE_ERROR_H_
-#define _ODE_ERROR_H_
+#pragma once
 
 #include <ode/odeconfig.h>
 
@@ -60,4 +59,3 @@ ODE_API void dMessage (int num, const char *msg, ...);
 }
 #endif
 
-#endif

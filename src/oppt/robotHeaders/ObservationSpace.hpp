@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OBSERVATION_SPACE_HPP_
-#define __OBSERVATION_SPACE_HPP_
+#pragma once
 #include <vector>
 #include <string>
 #include "utils.hpp"
@@ -297,4 +296,3 @@ public:
 
 }
 
-#endif

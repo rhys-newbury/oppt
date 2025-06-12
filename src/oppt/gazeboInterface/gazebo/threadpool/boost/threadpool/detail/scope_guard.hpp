@@ -14,8 +14,7 @@
 */
 
 
-#ifndef THREADPOOL_DETAIL_SCOPE_GUARD_HPP_INCLUDED
-#define THREADPOOL_DETAIL_SCOPE_GUARD_HPP_INCLUDED
+#pragma once
 
 
 
@@ -60,4 +59,3 @@ public:
 
 } } } // namespace boost::threadpool::detail
 
-#endif // THREADPOOL_DETAIL_SCOPE_GUARD_HPP_INCLUDED

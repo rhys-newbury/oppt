@@ -24,8 +24,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef __OU_ASSERT_H_INCLUDED
-#define __OU_ASSERT_H_INCLUDED
+#pragma once
 
 
 /**
@@ -185,4 +184,3 @@
 #endif // #if !defined(NDEBUG)
 
 
-#endif // #ifndef __OU_ASSERT_H_INCLUDED

@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_MESH_HPP__
-#define __OPPT_MESH_HPP__
+#pragma once
 #include "Geometry.hpp"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -70,4 +69,3 @@ private:
 
 };
 
-#endif

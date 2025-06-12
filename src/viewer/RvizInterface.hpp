@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _RVIZ_INTERFACE_HPP_
-#define _RVIZ_INTERFACE_HPP_
+#pragma once
 #include <QWidget>
 #include <QApplication>
 #include <QVBoxLayout>
@@ -169,4 +168,3 @@ private:
 
 }
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef __APPROXIMATE_OBSERVATIONS_ABT_HPP__
-#define __APPROXIMATE_OBSERVATIONS_ABT_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "solvers/ABT/solver/mappings/observations/approximate_observations.hpp"
 
@@ -77,4 +76,3 @@ private:
 
 }
 
-#endif

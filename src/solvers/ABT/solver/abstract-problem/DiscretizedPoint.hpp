@@ -3,8 +3,7 @@
  * Defines a point within a discretized space. In addition to the default point methods, this class
  * requires each point to be able to return its associated bin number.
  */
-#ifndef SOLVER_DISCRETIZED_POINT_HPP_
-#define SOLVER_DISCRETIZED_POINT_HPP_
+#pragma once
 
 #include <cstddef>                      // for size_t
 
@@ -44,4 +43,3 @@ class DiscretizedPoint : public Point {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_DISCRETIZED_POINT_HPP_ */

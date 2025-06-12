@@ -3,8 +3,7 @@
  * Defines an abstract base class for storing history-based heuristic information within a belief
  * node.
  */
-#ifndef SOLVER_HISTORICALDATA_HPP_
-#define SOLVER_HISTORICALDATA_HPP_
+#pragma once
 
 #include <memory>
 
@@ -43,4 +42,3 @@ inline std::ostream &operator<<(std::ostream &os, HistoricalData const &data) {
 }
 } /* namespace abt */
 
-#endif /* SOLVER_HISTORICALDATA_HPP_ */

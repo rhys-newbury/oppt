@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_COLLISION_H_
-#define _ODE_COLLISION_H_
+#pragma once
 
 #include <ode/common.h>
 #include <ode/collision_space.h>
@@ -1520,4 +1519,3 @@ ODE_API void dSetColliderOverride (int i, int j, dColliderFn *fn);
 }
 #endif
 
-#endif

@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_PISTON_H_
-#define _ODE_JOINT_PISTON_H_
+#pragma once
 
 #include "joint.h"
 
@@ -105,4 +104,3 @@ struct dxJointPiston : public dxJoint
 
 
 
-#endif

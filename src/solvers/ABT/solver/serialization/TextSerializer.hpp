@@ -10,8 +10,7 @@
  * Note that if you don't implement one of these (e.g. you leave historical data as nullptr for
  * each belief node) you can simply use the default do-nothing implementation for serialization.
  */
-#ifndef SOLVER_TEXTSERIALIZER_HPP_
-#define SOLVER_TEXTSERIALIZER_HPP_
+#pragma once
 
 #include <iosfwd>                       // for ostream, istream
 #include <memory>                       // for unique_ptr
@@ -109,4 +108,3 @@ class TextSerializer : virtual public Serializer {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_TEXTSERIALIZER_HPP_ */

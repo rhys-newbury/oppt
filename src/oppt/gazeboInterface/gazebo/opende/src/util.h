@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_UTIL_H_
-#define _ODE_UTIL_H_
+#pragma once
 
 #ifndef SIZE_MAX
 #define SIZE_MAX ((size_t)(-1))
@@ -332,4 +331,3 @@ inline ClassType *AllocateOnDemand(ClassType *&pctStorage)
   return pctCurrentInstance;
 }
 
-#endif

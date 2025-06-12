@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __ENVIRONMENT_INFO_HPP__
-#define __ENVIRONMENT_INFO_HPP__
+#pragma once
 #include "typedefs.hpp"
 #include "Body.hpp"
 #include "Scene.hpp"
@@ -58,4 +57,3 @@ private:
 };
 }
 
-#endif

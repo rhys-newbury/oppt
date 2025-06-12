@@ -1,5 +1,4 @@
-#ifndef _ROBOT_USER_DATA_HPP_
-#define _ROBOT_USER_DATA_HPP_
+#pragma once
 #include "OpptUserData.hpp"
 #include "typedefs.hpp"
 
@@ -24,4 +23,3 @@ typedef std::shared_ptr<RobotStateUserData> RobotStateUserDataSharedPtr;
 
 }
 
-#endif

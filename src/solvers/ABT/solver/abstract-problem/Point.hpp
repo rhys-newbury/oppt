@@ -3,8 +3,7 @@
  * Defines the abstract Point class. This is primarily in the sense of point-set topology; in other
  * words, each point will be a member of some set, e.g. the set of actions for a given POMDP.
  */
-#ifndef SOLVER_POINT_HPP_
-#define SOLVER_POINT_HPP_
+#pragma once
 
 #include <cstddef>                      // for size_t
 
@@ -73,4 +72,3 @@ inline bool operator!=(Point const &s1, Point const &s2) {
     return !s1.equals(s2); // || !s2.equals(s1); (symmetry - assumed by default)
 }
 } /* namespace abt */
-#endif /* SOLVER_POINT_HPP_ */

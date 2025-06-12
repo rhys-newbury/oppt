@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_FIXED_H_
-#define _ODE_JOINT_FIXED_H_
+#pragma once
 
 #include "joint.h"
 
@@ -49,4 +48,3 @@ struct dxJointFixed : public dxJoint
 };
 
 
-#endif

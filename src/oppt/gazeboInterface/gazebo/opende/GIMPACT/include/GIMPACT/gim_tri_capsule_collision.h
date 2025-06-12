@@ -1,5 +1,4 @@
-#ifndef GIM_TRI_CAPSULE_COLLISION_H_INCLUDED
-#define GIM_TRI_CAPSULE_COLLISION_H_INCLUDED
+#pragma once
 
 /*! \file gim_tri_capsule_collision.h
 \author Francisco Le�n
@@ -108,4 +107,3 @@ void gim_closest_point_triangle_segment(GIM_TRIANGLE_DATA * triangle, vec3f s1,v
 int gim_triangle_capsule_collision(GIM_TRIANGLE_DATA * triangle, GIM_CAPSULE_DATA * capsule, GDYNAMIC_ARRAY * contacts);
 //! @}
 
-#endif // GIM_TRI_CAPSULE_COLLISION_H_INCLUDED

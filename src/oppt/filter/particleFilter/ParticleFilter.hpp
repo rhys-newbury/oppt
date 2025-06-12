@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_PARTICLE_FILTER_HPP__
-#define __OPPT_PARTICLE_FILTER_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "oppt/utils/include/Sampler.hpp"
 #include "oppt/robotEnvironment/include/RobotEnvironment.hpp"
@@ -219,4 +218,3 @@ public:
 
 }
 
-#endif

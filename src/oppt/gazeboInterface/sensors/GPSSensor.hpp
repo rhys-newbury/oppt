@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __GPS_SENSOR_HPP__
-#define __GPS_SENSOR_HPP__
+#pragma once
 #include "GazeboSensor.hpp"
 
 namespace oppt
@@ -33,4 +32,3 @@ public:
 };
 }
 
-#endif

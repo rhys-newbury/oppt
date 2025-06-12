@@ -14,8 +14,7 @@
 *
 */
 
-#ifndef THREADPOOL_HPP_INCLUDED
-#define THREADPOOL_HPP_INCLUDED
+#pragma once
 
 #include "./threadpool/future.hpp"
 #include "./threadpool/pool.hpp"
@@ -24,4 +23,3 @@
 #include "./threadpool/task_adaptors.hpp"
 
 
-#endif // THREADPOOL_HPP_INCLUDED

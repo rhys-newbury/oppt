@@ -2,8 +2,7 @@
  *
  * Defines an abstract base class for correcting history sequences.
  */
-#ifndef SOLVER_HISTORYCORRECTOR_HPP_
-#define SOLVER_HISTORYCORRECTOR_HPP_
+#pragma once
 
 #include <unordered_set>
 
@@ -77,4 +76,3 @@ private:
 
 } /* namespace abt */
 
-#endif /* SOLVER_HISTORYCORRECTOR_HPP_ */

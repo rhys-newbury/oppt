@@ -1,5 +1,4 @@
-#ifndef __STATS_SERIALIZER_HPP__
-#define __STATS_SERIALIZER_HPP__
+#pragma once
 #include <boost/filesystem/path.hpp>
 #include <math.h>
 #include <map>
@@ -869,4 +868,3 @@ private:
 };
 }
 
-#endif

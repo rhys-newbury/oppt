@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __INCLUDES_HPP__
-#define __INCLUDES_HPP__
+#pragma once
 #include <algorithm>
 #include <vector>
 #include <iostream>
@@ -45,4 +44,3 @@
 
 #include <gazebo/physics/PhysicsTypes.hh>
 
-#endif

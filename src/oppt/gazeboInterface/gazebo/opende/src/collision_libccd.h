@@ -1,5 +1,4 @@
-#ifndef _LIBCCD_COLLISION_H_
-#define _LIBCCD_COLLISION_H_
+#pragma once
 
 int dCollideCylinderCylinder(dxGeom *o1, dxGeom *o2, int flags,
 			                 dContactGeom *contact, int skip);
@@ -25,4 +24,3 @@ int dCollideConvexSphereCCD(dxGeom *o1, dxGeom *o2, int flags,
 int dCollideConvexConvexCCD(dxGeom *o1, dxGeom *o2, int flags,
                             dContactGeom *contact, int skip);
 
-#endif /* _LIBCCD_COLLISION_H_ */

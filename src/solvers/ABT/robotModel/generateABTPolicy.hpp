@@ -1,5 +1,4 @@
-#ifndef __GENERATE_ABT_POLICY_HPP__
-#define __GENERATE_ABT_POLICY_HPP__
+#pragma once
 #include "simulate.hpp"
 #include "solvers/ABT/solver/Simulator.hpp"
 #include "problems/robot_problem/changes/GenericModelChange.hpp"
@@ -101,4 +100,3 @@ private:
 
 }
 
-#endif

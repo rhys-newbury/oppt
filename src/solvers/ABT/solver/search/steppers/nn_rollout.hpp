@@ -4,8 +4,7 @@
  * this is done via an implementation of StepGenerator and StepGeneratorFactory;
  * the latter can then be wrapped inside a BasicSearchStrategy.
  */
-#ifndef SOLVER_NN_ROLLOUT_HPP_
-#define SOLVER_NN_ROLLOUT_HPP_
+#pragma once
 
 #include <unordered_map>
 
@@ -76,4 +75,3 @@ private:
 
 } /* namespace abt */
 
-#endif /* SOLVER_NN_ROLLOUT_HPP_ */

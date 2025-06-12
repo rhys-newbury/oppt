@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_STATE_SPACE_INFORMATION__
-#define __OPPT_STATE_SPACE_INFORMATION__
+#pragma once
 #include "SpaceInformation.hpp"
 
 namespace oppt
@@ -23,4 +22,3 @@ struct StateSpaceInformation: public SpaceInformation {
 };
 }
 
-#endif

@@ -3,8 +3,7 @@
  * Provides some convenient functionality for parsing heuristics, search strategies and estimators
  * for belief values.
  */
-#ifndef SHARED_PARSERS_HPP_
-#define SHARED_PARSERS_HPP_
+#pragma once
 
 #include <unordered_map>
 
@@ -332,4 +331,3 @@ public:
 
 } /* namespace shared */
 
-#endif /* SHARED_PARSERS_HPP_ */

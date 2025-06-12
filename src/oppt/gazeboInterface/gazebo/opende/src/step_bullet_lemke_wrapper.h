@@ -14,12 +14,10 @@
  * limitations under the License.
  *
 */
-#ifndef _GAZEBO_ODE_STEP_BULLET_LEMKE_WRAPPER_H_
-#define _GAZEBO_ODE_STEP_BULLET_LEMKE_WRAPPER_H_
+#pragma once
 
 #ifdef HAVE_BULLET
 #include <ode/common.h>
 void dSolveLCP_bullet_lemke(int _m, dReal *_A, dReal *_x, dReal *_b,
   dReal *_lo, dReal *_hi);
-#endif
 #endif

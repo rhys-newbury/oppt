@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_UTILS_SAMPLER_HPP__
-#define __OPPT_UTILS_SAMPLER_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "oppt/global.hpp"
 
@@ -82,4 +81,3 @@ private:
 
 }
 
-#endif

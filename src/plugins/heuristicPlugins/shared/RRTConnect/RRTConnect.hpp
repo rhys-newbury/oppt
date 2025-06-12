@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _RRT_CONNECT_HPP_
-#define _RRT_CONNECT_HPP_
+#pragma once
 #include "Tree.hpp"
 
 namespace oppt
@@ -90,4 +89,3 @@ private:
 };
 }
 
-#endif

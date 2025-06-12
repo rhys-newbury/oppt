@@ -17,8 +17,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Include Guard
-#ifndef __OPC_RAYCOLLIDER_H__
-#define __OPC_RAYCOLLIDER_H__
+#pragma once
 
 	class OPCODE_API CollisionFace
 	{
@@ -221,4 +220,3 @@
 							BOOL			InitQuery(const Ray& world_ray, const Matrix4x4* world=null, udword* face_id=null);
 	};
 
-#endif // __OPC_RAYCOLLIDER_H__

@@ -6,8 +6,7 @@
  * the starting index and ending index of any changes that affect this sequence, as well as
  * the collective types of these changes.
  */
-#ifndef SOLVER_HISTORYSEQUENCE_HPP_
-#define SOLVER_HISTORYSEQUENCE_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 #include <vector>                       // for vector
@@ -118,4 +117,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_HISTORYSEQUENCE_HPP_ */

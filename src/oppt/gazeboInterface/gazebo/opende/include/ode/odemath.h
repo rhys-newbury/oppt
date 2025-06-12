@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_ODEMATH_H_
-#define _ODE_ODEMATH_H_
+#pragma once
 
 #include <ode/common.h>
 #include <cmath>
@@ -505,4 +504,3 @@ inline bool _dequal(const float &_a, const double &_b,
 {
   return std::fabs(_a - static_cast<float>(_b)) <= _epsilon;
 }
-#endif

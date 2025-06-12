@@ -1,5 +1,4 @@
-#ifndef _OPPT_SPACE_COMPONENTS_HPP_
-#define _OPPT_SPACE_COMPONENTS_HPP_
+#pragma once
 #include "typedefs.hpp"
 
 namespace oppt {
@@ -40,4 +39,3 @@ struct VectorSpaceVariables: public SpaceVariables {
 
 }
 
-#endif

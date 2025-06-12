@@ -21,8 +21,7 @@
  *************************************************************************/
 
 
-#ifndef _ODE_JOINT_INTERNAL_H_
-#define _ODE_JOINT_INTERNAL_H_
+#pragma once
 
 
 #include <ode/matrix.h>
@@ -58,4 +57,3 @@ dReal getHingeAngleFromRelativeQuat( dQuaternion qrel, dVector3 axis );
 
 void setFixedOrientation( dxJoint *joint, dxJoint::Info2 *info, dQuaternion qrel, int start_row );
 
-#endif

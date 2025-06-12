@@ -1,5 +1,4 @@
-#ifndef _OPPT_ABT_ENUMERATED_OBSERVATIONS_HPP_
-#define _OPPT_ABT_ENUMERATED_OBSERVATIONS_HPP_
+#pragma once
 #include "oppt/opptCore/core.hpp"
 
 #include <iostream>
@@ -119,4 +118,3 @@ protected:
 
 }
 
-#endif

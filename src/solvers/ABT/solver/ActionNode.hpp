@@ -3,8 +3,7 @@
  * Contains the ActionNode class, which represents a belief-action pair (i.e. the part of the
  * belief tree corresponding to taking a given action from a specific belief.
  */
-#ifndef SOLVER_ACTIONNODE_HPP_
-#define SOLVER_ACTIONNODE_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 #include <utility>                      // for pair
@@ -82,4 +81,3 @@ class ActionNode {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_ACTIONNODE_HPP_ */

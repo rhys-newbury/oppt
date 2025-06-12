@@ -2,8 +2,7 @@
  *
  * Defines Serializer, an abstract base class for serialization of an ABT solver instance.
  */
-#ifndef SOLVER_SERIALIZER_HPP_
-#define SOLVER_SERIALIZER_HPP_
+#pragma once
 
 #include <istream>                      // for istream, ostream
 #include <memory>                       // for unique_ptr
@@ -215,4 +214,3 @@ public:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_SERIALIZER_HPP_ */

@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __CHANGES_PARSER_HPP__
-#define __CHANGES_PARSER_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "oppt/robotEnvironment/include/EnvironmentChanges.hpp"
 
@@ -62,4 +61,3 @@ public:
 };
 }
 
-#endif

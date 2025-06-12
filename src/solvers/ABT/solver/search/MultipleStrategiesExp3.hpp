@@ -2,8 +2,7 @@
  *
  * Provides an EXP3-based approach to combining multiple different search strategies together.
  */
-#ifndef SOLVER_MULTIPLESTRATEGIESEXP3_HPP_
-#define SOLVER_MULTIPLESTRATEGIESEXP3_HPP_
+#pragma once
 
 #include <ctime>
 
@@ -82,4 +81,3 @@ private:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_MULTIPLESTRATEGIESEXP3_HPP_ */

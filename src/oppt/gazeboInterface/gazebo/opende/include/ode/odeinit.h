@@ -22,8 +22,7 @@
 
 /* Library initialization/finalization functions. */
 
-#ifndef _ODE_ODEINIT_H_
-#define _ODE_ODEINIT_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -233,4 +232,3 @@ ODE_API void dCloseODE(void);
 #endif
 
 
-#endif // _ODE_ODEINIT_H_

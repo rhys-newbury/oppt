@@ -17,8 +17,7 @@
  *
  * Contains some key definitions used throughout the OPPT code.
  */
-#ifndef GLOBAL_HPP_
-#define GLOBAL_HPP_
+#pragma once
 
 #include <unistd.h>
 #include <cctype>
@@ -131,4 +130,3 @@ namespace debug {
 } /* namespace debug */
 
 
-#endif /* GLOBAL_HPP_ */

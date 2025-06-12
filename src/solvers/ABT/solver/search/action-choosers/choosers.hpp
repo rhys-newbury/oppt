@@ -2,8 +2,7 @@
  *
  * Defines some useful basic functions for selecting an action from a belief node.
  */
-#ifndef SOLVER_CHOOSERS_HPP_
-#define SOLVER_CHOOSERS_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 
@@ -25,4 +24,3 @@ std::unique_ptr<Action> ucb_action(BeliefNode const *node, FloatType exploration
 } /* namespace choosers */
 } /* namespace abt */
 
-#endif /* SOLVER_CHOOSERS_HPP_ */

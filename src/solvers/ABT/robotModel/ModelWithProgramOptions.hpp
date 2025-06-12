@@ -3,8 +3,7 @@
  * Offers a Model class with extra functionality, allowing a text-based interface for selecting
  * different search strategies.
  */
-#ifndef SHARED_MODELWITHPROGRAMOPTIONS_HPP_
-#define SHARED_MODELWITHPROGRAMOPTIONS_HPP_
+#pragma once
 
 #include <memory>
 #include <string>
@@ -192,4 +191,3 @@ private:
 };
 } /* namespace shared */
 
-#endif /* SHARED_MODELWITHPROGRAMOPTIONS_HPP_ */

@@ -1,5 +1,4 @@
-#ifndef __ABT_BELIEF_NODE_HPP__
-#define __ABT_BELIEF_NODE_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "solvers/ABT/solver/BeliefNode.hpp"
 #include "solvers/ABT/solver/abstract-problem/Model.hpp"
@@ -127,4 +126,3 @@ private:
 
 }
 
-#endif

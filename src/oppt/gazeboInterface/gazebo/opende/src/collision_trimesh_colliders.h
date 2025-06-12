@@ -20,8 +20,7 @@
 *                                                                       *
 *************************************************************************/
 
-#ifndef _ODE_COLLISION_TRIMESH_COLLIDERS_H_
-#define _ODE_COLLISION_TRIMESH_COLLIDERS_H_
+#pragma once
 
 
 int dCollideCylinderTrimesh(dxGeom *o1, dxGeom *o2, int flags, dContactGeom *contact, int skip);
@@ -43,4 +42,3 @@ PURE_INLINE int dCollideRayTrimesh( dxGeom *ray, dxGeom *trimesh, int flags,
 }
 
 
-#endif // _ODE_COLLISION_TRIMESH_COLLIDERS_H_

@@ -3,8 +3,7 @@
  * Contains text-based serialization methods for the core classes implementing RockSample, that is:
  * RockSampleChange, RockSampleState, RockSampleAction, and RockSampleObservation.
  */
-#ifndef ROBOT_TEXTSERIALIZER_HPP_
-#define ROBOT_TEXTSERIALIZER_HPP_
+#pragma once
 
 #include "solvers/ABT/solver/abstract-problem/Action.hpp"
 
@@ -81,4 +80,3 @@ public:
 
 } /* namespace manipulator */
 
-#endif /* MANIPULATOR_TEXTSERIALIZER_HPP_ */

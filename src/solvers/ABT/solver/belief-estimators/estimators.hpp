@@ -9,8 +9,7 @@
  * max - the maximum value of its action children
  * robust - the value of the action child with the greatest number of visits
  */
-#ifndef SOLVER_ESTIMATORS_HPP_
-#define SOLVER_ESTIMATORS_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 
@@ -61,4 +60,3 @@ FloatType robust(BeliefNode const *node);
 } /* namespace estimators */
 } /* namespace abt */
 
-#endif /* SOLVER_ESTIMATORS_HPP_ */

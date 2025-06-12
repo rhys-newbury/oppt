@@ -3,8 +3,7 @@
  * Defines a simple heuristic that uses a rollout-based approach to estimate the value at the end
  * of a history sequence.
  */
-#ifndef SOLVER_ROLLOUTHEURISTIC_HPP_
-#define SOLVER_ROLLOUTHEURISTIC_HPP_
+#pragma once
 
 #include <memory>
 
@@ -50,4 +49,3 @@ private:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_ROLLOUTHEURISTIC_HPP_ */

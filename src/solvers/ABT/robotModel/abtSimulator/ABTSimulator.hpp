@@ -1,5 +1,4 @@
-#ifndef ___ABT_SIMULATOR_HPP__
-#define ___ABT_SIMULATOR_HPP__
+#pragma once
 #include "solvers/ABT/solver/Simulator.hpp"
 #include "solvers/ABT/solver/abstract-problem/Model.hpp"
 #include "solvers/ABT/solver/Solver.hpp"
@@ -26,4 +25,3 @@ private:
 };
 }
 
-#endif

@@ -4,8 +4,7 @@
  * implementation of StepGenerator and StepGeneratorFactory; the latter can then be wrapped
  * inside a BasicSearchStrategy.
  */
-#ifndef SOLVER_UCB_SEARCH_HPP_
-#define SOLVER_UCB_SEARCH_HPP_
+#pragma once
 
 #include "solvers/ABT/solver/search/SearchStatus.hpp"
 #include "solvers/ABT/solver/search/search_interface.hpp"
@@ -59,4 +58,3 @@ private:
 
 } /* namespace abt */
 
-#endif /* SOLVER_UCB_SEARCH_HPP_ */

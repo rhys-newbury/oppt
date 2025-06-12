@@ -11,8 +11,7 @@
  * in the sequence one at a time, and a heuristic, which will be applied to evaluate non-terminal
  * states that occur as the last entry in a sequence.
  */
-#ifndef SOLVER_SEARCH_INTERFACE_HPP_
-#define SOLVER_SEARCH_INTERFACE_HPP_
+#pragma once
 
 #include <memory>
 
@@ -256,4 +255,3 @@ private:
 
 } /* namespace abt */
 
-#endif /* SOLVER_SEARCH_INTERFACE_HPP_ */

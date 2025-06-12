@@ -3,8 +3,7 @@
  * Contains the Solver class, which is the core ABT solver class. A solver also owns a model,
  * which is its representation of the POMDP problem.
  */
-#ifndef SOLVER_SOLVER_HPP_
-#define SOLVER_SOLVER_HPP_
+#pragma once
 
 #include <map>
 #include <memory>        // for unique_ptr
@@ -274,4 +273,3 @@ protected:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_SOLVER_HPP_ */

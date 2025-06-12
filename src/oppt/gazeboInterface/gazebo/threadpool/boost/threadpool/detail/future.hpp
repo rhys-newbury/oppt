@@ -14,8 +14,7 @@
 */
 
 
-#ifndef THREADPOOL_DETAIL_FUTURE_IMPL_HPP_INCLUDED
-#define THREADPOOL_DETAIL_FUTURE_IMPL_HPP_INCLUDED
+#pragma once
 
 
 #include "locking_ptr.hpp"
@@ -210,4 +209,3 @@ public:
 
 } } } // namespace boost::threadpool::detail
 
-#endif // THREADPOOL_DETAIL_FUTURE_IMPL_HPP_INCLUDED

@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _OPPT_SPACE_INFORMATION_HPP_
-#define _OPPT_SPACE_INFORMATION_HPP_
+#pragma once
 #include "typedefs.hpp"
 #include "SpaceComponents.hpp"
 
@@ -108,4 +107,3 @@ struct SpaceInformation {
 };
 }
 
-#endif

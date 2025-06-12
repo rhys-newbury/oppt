@@ -1,5 +1,4 @@
-#ifndef _ABT_STATE_POOL_HPP_
-#define _ABT_STATE_POOL_HPP_
+#pragma once
 #include "solvers/ABT/solver/StatePool.hpp"
 #include "oppt/opptCore/typedefs.hpp"
 
@@ -57,4 +56,3 @@ private:
 
 }
 
-#endif

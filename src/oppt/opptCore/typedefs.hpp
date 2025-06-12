@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_TYPEDEFS_HPP__
-#define __OPPT_TYPEDEFS_HPP__
+#pragma once
 #include "includes.hpp"
 #include "oppt/defs.hpp"
 
@@ -357,4 +356,3 @@ typedef Eigen::Quaternion<FloatType> Quaternionf;
 
 }
 
-#endif

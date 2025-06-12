@@ -24,8 +24,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef __OU_FLAGSDEFINES_H_INCLUDED
-#define __OU_FLAGSDEFINES_H_INCLUDED
+#pragma once
 
 
 #define OU_FLAGS_ENUMFLAGS_MASK(Type, StartingFlag, EnumMax) ((Type)((Type)((Type)((Type)(StartingFlag) << ((EnumMax) - 1)) - (Type)(StartingFlag)) | (Type)((Type)(StartingFlag) << ((EnumMax) - 1))))
@@ -34,4 +33,3 @@
 #define OU_FLAGS_FLAG_IS_SINGLE(Type, Flag) ((Type)(Flag) != 0 && ((Type)(Flag) & (Type)((Type)(Flag) - (Type)1)) == 0)
 
 
-#endif // #ifndef __OU_FLAGSDEFINES_H_INCLUDED

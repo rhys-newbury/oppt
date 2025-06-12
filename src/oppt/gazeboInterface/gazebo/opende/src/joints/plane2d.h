@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_PLANE2D_H_
-#define _ODE_JOINT_PLANE2D_H_
+#pragma once
 
 #include "joint.h"
 
@@ -47,4 +46,3 @@ struct dxJointPlane2D : public dxJoint
 };
 
 
-#endif

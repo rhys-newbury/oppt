@@ -47,8 +47,7 @@ to be implemented. the first `nub' variables are assumed to have findex < 0.
 */
 
 
-#ifndef _ODE_LCP_H_
-#define _ODE_LCP_H_
+#pragma once
 
 struct dxWorldProcessContext;
 
@@ -58,4 +57,3 @@ void dSolveLCP (dxWorldProcessContext *context,
 
 size_t dEstimateSolveLCPMemoryReq(int n, bool outer_w_avail);
 
-#endif

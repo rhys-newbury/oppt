@@ -7,8 +7,7 @@
  * e.g. to keep statistics that are shared across all of the mappings rather than stored on
  * a per-mapping basis.
  */
-#ifndef SOLVER_ACTIONPOOL_HPP_
-#define SOLVER_ACTIONPOOL_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 
@@ -39,4 +38,3 @@ public:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_ACTIONPOOL_HPP_ */

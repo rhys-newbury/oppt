@@ -3,8 +3,7 @@
  * Defines the SpatialIndexVisitor class, which provides a visitor pattern-based approach to
  * deal with the results of querying states within an RTree.
  */
-#ifndef SOLVER_SPATIALINDEXVISITOR_HPP_
-#define SOLVER_SPATIALINDEXVISITOR_HPP_
+#pragma once
 
 #include <vector>
 
@@ -56,4 +55,3 @@ class SpatialIndexVisitor: public SpatialIndex::IVisitor {
 
 } /* namespace abt */
 
-#endif /* SOLVER_SPATIALINDEXVISITOR_HPP_ */

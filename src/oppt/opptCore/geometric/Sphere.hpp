@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT__SPHERE_HPP__
-#define __OPPT__SPHERE_HPP__
+#pragma once
 #include "Geometry.hpp"
 
 namespace oppt
@@ -57,4 +56,3 @@ private:
 
 };
 
-#endif

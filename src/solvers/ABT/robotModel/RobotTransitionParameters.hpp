@@ -1,5 +1,4 @@
-#ifndef MANIPULATOR_TRANSITION_HPP_
-#define MANIPULATOR_TRANSITION_HPP_
+#pragma once
 
 #include <unistd.h>
 #include "solvers/ABT/solver/abstract-problem/TransitionParameters.hpp"
@@ -42,4 +41,3 @@ private:
 
 }
 
-#endif

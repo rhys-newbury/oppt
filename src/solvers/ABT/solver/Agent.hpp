@@ -5,8 +5,7 @@
  * This is a general class that should allow ABT to interface with external sensors; it is
  * also used by the Simulator class to test performance of the algorithm.
  */
-#ifndef SOLVER_AGENT_HPP_
-#define SOLVER_AGENT_HPP_
+#pragma once
 
 #include <memory>
 
@@ -58,4 +57,3 @@ private:
 
 } /* namespace abt */
 
-#endif /* SOLVER_AGENT_HPP_ */

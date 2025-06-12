@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _OPPT_ODE_JOINT_HPP_
-#define _OPPT_ODE_JOINT_HPP_
+#pragma once
 #include "OpptJoint.hpp"
 #include "opende/src/joints/hinge.h"
 #include "opende/src/joints/ball.h"
@@ -453,4 +452,3 @@ private:
 }
 }
 
-#endif

@@ -2,8 +2,7 @@
  *
  * Contains the classes used to store cached values for a belief node.
  */
-#ifndef SOLVER_CACHED_VALUES_HPP_
-#define SOLVER_CACHED_VALUES_HPP_
+#pragma once
 
 #include "oppt/global.hpp"
 
@@ -67,4 +66,3 @@ CachedValue<std::unique_ptr<abt::Point>>::getCache() {
 }
 } /* namespace abt */
 
-#endif /* SOLVER_CACHED_VALUES_HPP_ */

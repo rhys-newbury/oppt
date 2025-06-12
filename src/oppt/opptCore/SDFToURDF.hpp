@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __SDF_TO_URDF_HPP__
-#define __SDF_TO_URDF_HPP__
+#pragma once
 #include "utils.hpp"
 #include "logging.hpp"
 #include "includes.hpp"
@@ -913,4 +912,3 @@ private:
 
 }
 
-#endif

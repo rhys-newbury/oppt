@@ -9,8 +9,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Include Guard
-#ifndef __ICEUTILS_H__
-#define __ICEUTILS_H__
+#pragma once
 #include <cmath>
 //	#define START_RUNONCE	{ static bool __RunOnce__ = false;	if(!__RunOnce__){ -- not thread safe
 //	#define END_RUNONCE		__RunOnce__ = true;}} -- not thread safe
@@ -280,4 +279,3 @@ inline bool _equal(const float &_a, const double &_b,
   return std::fabs(_a - static_cast<float>(_b)) <= _epsilon;
 }
 
-#endif // __ICEUTILS_H__

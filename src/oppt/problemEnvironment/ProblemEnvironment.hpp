@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _PROBLEM_ENVIRONMENT_HPP_
-#define _PROBLEM_ENVIRONMENT_HPP_
+#pragma once
 #include "oppt/global.hpp"
 #include "ProblemEnvironmentOptions.hpp"
 #include "oppt/opptCore/core.hpp"
@@ -989,4 +988,3 @@ private:
 };
 }
 
-#endif

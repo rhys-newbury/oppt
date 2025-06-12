@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _ROBOT_IMPL_SPACE_INFORMATION_FACTORY_
-#define _ROBOT_IMPL_SPACE_INFORMATION_FACTORY_
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "oppt/gazeboInterface/GazeboInterface.hpp"
 #include "oppt/robotHeaders/RobotConfigOptions.hpp"
@@ -43,4 +42,3 @@ void checkSpaceLimits(SpaceInformation *spaceInformation,
 }
 }
 
-#endif

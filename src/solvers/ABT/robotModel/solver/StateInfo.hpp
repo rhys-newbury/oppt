@@ -1,5 +1,4 @@
-#ifndef _OPPT_STATE_INFO_HPP_
-#define _OPPT_STATE_INFO_HPP_
+#pragma once
 #include "solvers/ABT/solver/StateInfo.hpp"
 
 namespace abt
@@ -33,4 +32,3 @@ protected:
 };
 }
 
-#endif

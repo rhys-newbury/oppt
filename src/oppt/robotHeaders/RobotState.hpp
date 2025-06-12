@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef ___ROBOT_STATE_SPEC_HPP___
-#define ___ROBOT_STATE_SPEC_HPP___
+#pragma once
 #include <iosfwd>                       // for istream, ostream
 #include <fstream>
 #include <vector>
@@ -102,4 +101,3 @@ protected:
 };
 }
 
-#endif

@@ -8,8 +8,7 @@
  * The RTree-based approach should be sufficient for most purposes, but you can easily make your
  * own implementation of this interface if need be.
  */
-#ifndef SOLVER_STATEINDEX_HPP_
-#define SOLVER_STATEINDEX_HPP_
+#pragma once
 
 #include <memory>
 
@@ -44,4 +43,3 @@ class StateIndex {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_STATEINDEX_HPP_ */

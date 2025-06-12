@@ -24,8 +24,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _OU_THREADLOCALSTORAGE_H_INCLUDED
-#define _OU_THREADLOCALSTORAGE_H_INCLUDED
+#pragma once
 
 
 #include <ou/typewrapper.h>
@@ -287,4 +286,3 @@ private:
 END_NAMESPACE_OU()
 
 
-#endif // #ifndef _OU_THREADLOCALSTORAGE_H_INCLUDED

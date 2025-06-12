@@ -5,8 +5,7 @@
 
 	// From Windows...
 	typedef int                 BOOL;
-	#ifndef FALSE
-	#define FALSE               0
+#pragma once
 	#endif
 
 	#ifndef TRUE
@@ -24,7 +23,6 @@
 
 	#ifndef ASSERT
 		#define	ASSERT(exp)	{}
-	#endif
 	#define ICE_COMPILE_TIME_ASSERT(exp)	extern char ICE_Dummy[ (exp) ? 1 : -1 ]
 
 	#define	Log				{}

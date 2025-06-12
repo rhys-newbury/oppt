@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_TRAJECTORY_HPP__
-#define __OPPT_TRAJECTORY_HPP__
+#pragma once
 #include "typedefs.hpp"
 #include "Action.hpp"
 #include "Observation.hpp"
@@ -116,4 +115,3 @@ struct VectorTrajectory {
 
 }
 
-#endif

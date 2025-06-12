@@ -3,8 +3,7 @@
  * Defines a simple rollout strategy that queries the model for a history-based rollout action.
  * This is done via the StepGenerator and StepGeneratory factory classes in search_interface.hpp.
  */
-#ifndef SOLVER_DEFAULTROLLOUTSTRATEGY_HPP_
-#define SOLVER_DEFAULTROLLOUTSTRATEGY_HPP_
+#pragma once
 
 #include "solvers/ABT/solver/search/SearchStatus.hpp"
 #include "solvers/ABT/solver/search/search_interface.hpp"
@@ -59,4 +58,3 @@ private:
 
 } /* namespace abt */
 
-#endif /* SOLVER_DEFAULTROLLOUTSTRATEGY_HPP_ */

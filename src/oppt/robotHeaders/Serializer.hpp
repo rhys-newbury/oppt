@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT__SERIALIZER__HPP__
-#define __OPPT__SERIALIZER__HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "Action.hpp"
 #include "Observation.hpp"
@@ -130,4 +129,3 @@ public:
 
 }
 
-#endif

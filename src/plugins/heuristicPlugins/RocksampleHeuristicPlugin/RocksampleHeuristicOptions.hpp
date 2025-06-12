@@ -1,5 +1,4 @@
-#ifndef _ROCKSAMPLE_HEURISTIC_OPTIONS_HPP_
-#define _ROCKSAMPLE_HEURISTIC_OPTIONS_HPP_
+#pragma once
 #include "oppt/plugin/PluginOptions.hpp"
 
 namespace oppt
@@ -26,4 +25,3 @@ public:
 
 };
 }
-#endif

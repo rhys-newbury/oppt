@@ -22,8 +22,7 @@
 
 /* miscellaneous math functions. these are mostly useful for testing */
 
-#ifndef _ODE_MISC_H_
-#define _ODE_MISC_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -152,4 +151,3 @@ static inline dReal dShortestAngularDistanceUpdate(dReal from, dReal to, dReal t
 }
 #endif
 
-#endif

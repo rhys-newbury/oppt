@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_OBJECTS_H_
-#define _ODE_OBJECTS_H_
+#pragma once
 
 #include <ode/common.h>
 #include <ode/mass.h>
@@ -3574,4 +3573,3 @@ ODE_API int dAreConnectedExcluding (dBodyID body1, dBodyID body2, int joint_type
 }
 #endif
 
-#endif

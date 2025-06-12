@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __PLAY_VIDEO_HPP__
-#define __PLAY_VIDEO_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "oppt/problemEnvironment/ProblemEnvironment.hpp"
 #include "oppt/robotHeaders/RobotState.hpp"
@@ -331,4 +330,3 @@ struct LogFilePlayer {
 
 }
 
-#endif

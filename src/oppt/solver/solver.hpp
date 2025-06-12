@@ -16,8 +16,7 @@
 /** @file solver.hpp
  * Contains an abstract definition of a POMDP solver
  */
-#ifndef __OPPT_SOLVER_HPP__
-#define __OPPT_SOLVER_HPP__
+#pragma once
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -279,4 +278,3 @@ typedef std::unique_ptr<Solver> SolverPtr;
 }
 
 
-#endif

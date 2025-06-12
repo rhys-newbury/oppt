@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_ROTATION_H_
-#define _ODE_ROTATION_H_
+#pragma once
 
 #include <ode/common.h>
 #include <ode/compatibility.h>
@@ -67,4 +66,3 @@ ODE_API void dDQfromW (dReal dq[4], const dVector3 w, const dQuaternion q);
 }
 #endif
 
-#endif

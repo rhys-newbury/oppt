@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_UNIVERSAL_H_
-#define _ODE_JOINT_UNIVERSAL_H_
+#pragma once
 
 #include "joint.h"
 
@@ -59,4 +58,3 @@ struct dxJointUniversal : public dxJoint
 };
 
 
-#endif

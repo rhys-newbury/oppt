@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_OBSTACK_H_
-#define _ODE_OBSTACK_H_
+#pragma once
 
 #include "objects.h"
 
@@ -65,4 +64,3 @@ struct dObStack : public dBase {
 };
 
 
-#endif

@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __GAZEBO_SENSOR_INTERFACE_HPP__
-#define __GAZEBO_SENSOR_INTERFACE_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include <gazebo/sensors/SensorsIface.hh>
 #include <gazebo/sensors/sensors.hh>
@@ -45,4 +44,3 @@ private:
 
 }
 
-#endif

@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _OPPT_USER_DATA_
-#define _OPPT_USER_DATA_
+#pragma once
 #include "oppt/opptCore/includes.hpp"
 
 namespace oppt
@@ -57,5 +56,4 @@ typedef std::shared_ptr<OpptUserData> OpptUserDataSharedPtr;
 
 }
 
-#endif
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

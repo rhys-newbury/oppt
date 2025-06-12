@@ -28,8 +28,7 @@ reference:
 #include "gazebo/gazebo_config.h"
 #ifdef HDF5_INSTRUMENT
 
-#ifndef IO_H5
-#define IO_H5
+#pragma once
 
 #include<string>
 #include<vector>
@@ -411,4 +410,3 @@ bool  find_first(H5::Group g, TraverserFn& fn);
 
 #endif
 
-#endif // HDF5_INSTRUMENT

@@ -1,5 +1,4 @@
-#ifndef GIM_VECTOR_H_INCLUDED
-#define GIM_VECTOR_H_INCLUDED
+#pragma once
 
 /*! \file gim_geometry.h
 \author Francisco Le�n
@@ -1873,4 +1872,3 @@ intersection_type must have the following values
 #include "GIMPACT/gim_tri_sphere_collision.h"
 #include "GIMPACT/gim_tri_capsule_collision.h"
 
-#endif // GIM_VECTOR_H_INCLUDED

@@ -19,8 +19,7 @@
 */
 
 
-#ifndef THREADPOOL_POOL_HPP_INCLUDED
-#define THREADPOOL_POOL_HPP_INCLUDED
+#pragma once
 
 #include <boost/ref.hpp>
 
@@ -229,4 +228,3 @@ namespace boost { namespace threadpool
 
 } } // namespace boost::threadpool
 
-#endif // THREADPOOL_POOL_HPP_INCLUDED

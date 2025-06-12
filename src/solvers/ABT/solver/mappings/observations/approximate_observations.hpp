@@ -9,8 +9,7 @@
  * Currently, it works by storing the observation entries in a vector, and comparing every new
  * observation to all of the previous ones - this is clearly rather inefficient.
  */
-#ifndef SOLVER_APPROXIMATE_OBSERVATIONS_HPP_
-#define SOLVER_APPROXIMATE_OBSERVATIONS_HPP_
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -157,4 +156,3 @@ class ApproximateObservationTextSerializer: virtual public abt::Serializer {
 };
 } /* namespace abt */
 
-#endif /* SOLVER_APPROXIMATE_OBSERVATIONS_HPP_ */

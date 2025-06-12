@@ -1,5 +1,4 @@
-#ifndef __SOLVER_ABT_HPP_
-#define __SOLVER_ABT_HPP_
+#pragma once
 #include "oppt/solver/solver.hpp"
 #include "robotModel/changes/GenericModelChange.hpp"
 #include "robotModel/treeInspector/TreeInspector.hpp"
@@ -373,4 +372,3 @@ private:
 
 }
 
-#endif

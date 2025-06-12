@@ -1,5 +1,4 @@
-#ifndef __ABT_SOLVER_SOLVER_HPP__
-#define __ABT_SOLVER_SOLVER_HPP__
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "solvers/ABT/solver/Solver.hpp"
 
@@ -37,4 +36,3 @@ protected:
 
 }
 
-#endif

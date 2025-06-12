@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _OPPT_ODE_LINK_HPP_
-#define _OPPT_ODE_LINK_HPP_
+#pragma once
 #include <gazebo/physics/ode/ODELink.hh>
 #include <oppt/opptCore/typedefs.hpp>
 
@@ -57,4 +56,3 @@ typedef boost::shared_ptr<OpptODELink> OpptODELinkPtr;
 }
 }
 
-#endif

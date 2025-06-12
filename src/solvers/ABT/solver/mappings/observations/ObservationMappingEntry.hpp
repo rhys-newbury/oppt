@@ -5,8 +5,7 @@
  *
  * In particular, this involves storing the visit count for this specific edge in the tree.
  */
-#ifndef SOLVER_OBSERVATIONMAPPINGENTRY_HPP_
-#define SOLVER_OBSERVATIONMAPPINGENTRY_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 
@@ -48,4 +47,3 @@ public:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_OBSERVATIONMAPPINGENTRY_HPP_ */

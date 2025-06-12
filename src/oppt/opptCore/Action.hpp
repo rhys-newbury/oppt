@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef _OPPT_ACTION_HPP_
-#define _OPPT_ACTION_HPP_
+#pragma once
 #include "includes.hpp"
 
 namespace oppt
@@ -88,4 +87,3 @@ public:
 };
 }
 
-#endif

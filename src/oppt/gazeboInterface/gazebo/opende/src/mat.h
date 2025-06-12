@@ -23,8 +23,7 @@
 // matrix class. this is mostly for convenience in the testing code, it is
 // not optimized at all. correctness is much more importance here.
 
-#ifndef _ODE_MAT_H_
-#define _ODE_MAT_H_
+#pragma once
 
 #include <ode/common.h>
 
@@ -68,4 +67,3 @@ public:
 };
 
 
-#endif

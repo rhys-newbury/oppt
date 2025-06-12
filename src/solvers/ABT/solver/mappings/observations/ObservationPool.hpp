@@ -7,8 +7,7 @@
  * e.g. to keep statistics that are shared across all of the mappings rather than stored on
  * a per-mapping basis.
  */
-#ifndef SOLVER_OBSERVATIONPOOL_HPP_
-#define SOLVER_OBSERVATIONPOOL_HPP_
+#pragma once
 
 #include "oppt/global.hpp"
 
@@ -32,4 +31,3 @@ public:
 
 } /* namespace abt */
 
-#endif /* SOLVER_OBSERVATIONPOOL_HPP_ */

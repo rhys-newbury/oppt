@@ -12,8 +12,7 @@
  * the initial belief distribution, and isTerminal(), which returns true iff the given state is
  * a terminal state.
  */
-#ifndef SOLVER_MODEL_HPP_
-#define SOLVER_MODEL_HPP_
+#pragma once
 
 #include <memory>                       // for unique_ptr
 #include <ostream>                      // for ostream
@@ -357,4 +356,3 @@ private:
 };
 } /* namespace abt */
 
-#endif /* SOLVER_MODEL_HPP_ */

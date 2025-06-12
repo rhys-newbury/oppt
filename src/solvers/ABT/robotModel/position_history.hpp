@@ -4,8 +4,7 @@
  *
  * This is useful, since the position is fully observable but is not included in observations.
  */
-#ifndef ROBOT_POSITION_HISTORY_HPP_
-#define ROBOT_POSITION_HISTORY_HPP_
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -74,4 +73,3 @@ private:
 
 } /* namespace manipulator */
 
-#endif /* MANIPULATOR_POSITION_HISTORY_HPP_ */

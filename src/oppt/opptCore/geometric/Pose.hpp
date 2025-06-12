@@ -1,5 +1,4 @@
-#ifndef _OPPT_POSE_HPP_
-#define _OPPT_POSE_HPP_
+#pragma once
 #include "oppt/opptCore/typedefs.hpp"
 #include "oppt/opptCore/MathUtils.hpp"
 
@@ -128,4 +127,3 @@ typedef std::shared_ptr<geometric::Pose> PoseSharedPtr;
 typedef std::unique_ptr<geometric::Pose> PoseUniquePtr;
 }
 }
-#endif

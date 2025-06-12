@@ -26,8 +26,7 @@ internal data structures and functions for collision detection.
 
 */
 
-#ifndef _ODE_COLLISION_KERNEL_H_
-#define _ODE_COLLISION_KERNEL_H_
+#pragma once
 
 #include <ode/common.h>
 #include <ode/contact.h>
@@ -257,4 +256,3 @@ void dClearPosrCache(void);
 void dFinitUserClasses();
 
 
-#endif

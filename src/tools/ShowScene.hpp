@@ -1,5 +1,4 @@
-#ifndef _SHOW_SCENE_HPP_
-#define _SHOW_SCENE_HPP_
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include <tclap/CmdLine.h>
 #include "solvers/solver.hpp"
@@ -70,4 +69,3 @@ public:
 };
 }
 
-#endif

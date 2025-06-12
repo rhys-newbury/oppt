@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_RESOURCES_HPP__
-#define __OPPT_RESOURCES_HPP__
+#pragma once
 //#include <experimental/filesystem>
 #include "oppt/opptCore/logging.hpp"
 #include "oppt/opptCore/utils.hpp"
@@ -193,4 +192,3 @@ inline bool FileExists(const std::string& filename)
 }
 }
 
-#endif

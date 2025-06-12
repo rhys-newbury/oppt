@@ -1,5 +1,4 @@
-#ifndef __GENERIC_MODEL_CHANGE__
-#define __GENERIC_MODEL_CHANGE__
+#pragma once
 #include "solvers/ABT/solver/abstract-problem/ModelChange.hpp"
 #include "oppt/robotEnvironment/include/EnvironmentChanges.hpp"
 
@@ -24,4 +23,3 @@ private:
 };
 }
 
-#endif

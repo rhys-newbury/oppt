@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_COLLISION_REPORT_HPP__
-#define __OPPT_COLLISION_REPORT_HPP__
+#pragma once
 #include "typedefs.hpp"
 #include "CollisionObject.hpp"
 
@@ -58,4 +57,3 @@ public:
 
 }
 
-#endif

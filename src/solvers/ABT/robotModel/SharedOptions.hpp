@@ -3,8 +3,7 @@
  * Defines the SharedOptions class, which comes with additional configuration options that apply
  * to many problems.
  */
-#ifndef SHAREDOPTIONS_HPP_
-#define SHAREDOPTIONS_HPP_
+#pragma once
 
 #include "oppt/options/tclap/CmdLine.h"
 #include "oppt/options/option_parser.hpp"
@@ -38,4 +37,3 @@ struct SharedOptions: public oppt::ProblemEnvironmentOptions {
 };
 } /* namespace shared */
 
-#endif /* SHAREDOPTIONS_HPP_ */

@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_UTILS_HPP__
-#define __OPPT_UTILS_HPP__
+#pragma once
 #include "includes.hpp"
 #include "logging.hpp"
 #include "RobotState.hpp"
@@ -198,4 +197,3 @@ inline bool contains(const std::vector<T>& vector, const T& elem)
 
 }
 
-#endif

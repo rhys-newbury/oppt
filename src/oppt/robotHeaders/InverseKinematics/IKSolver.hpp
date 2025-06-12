@@ -1,5 +1,4 @@
-#ifndef _OPPT_IK_SOLVER_HPP_
-#define _OPPT_IK_SOLVER_HPP_
+#pragma once
 #include "oppt/opptCore/core.hpp"
 #include "oppt/global.hpp"
 
@@ -54,4 +53,3 @@ typedef std::unique_ptr<IKSolver> IKSolverUniquePtr;
 
 }
 
-#endif

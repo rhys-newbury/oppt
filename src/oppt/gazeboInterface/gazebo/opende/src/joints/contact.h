@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_JOINT_CONTACT_H_
-#define _ODE_JOINT_CONTACT_H_
+#pragma once
 
 #include "joint.h"
 
@@ -41,4 +40,3 @@ struct dxJointContact : public dxJoint
 };
 
 
-#endif

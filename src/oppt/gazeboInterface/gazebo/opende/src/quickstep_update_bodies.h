@@ -20,8 +20,7 @@
  *                                                                       *
  *************************************************************************/
 
-#ifndef _ODE_QUICK_STEP_UPDATE_BODIES_H_
-#define _ODE_QUICK_STEP_UPDATE_BODIES_H_
+#pragma once
 
 #include <ode/common.h>
 #include "quickstep_util.h"
@@ -42,4 +41,3 @@ namespace ode {
         size_t dxUpdateBodiesMemoryRequirements(int m, int nb);
     } // namespace quickstep
 } // namespace ode
-#endif

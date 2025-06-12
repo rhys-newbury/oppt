@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License along with OPPT.
  * If not, see http://www.gnu.org/licenses/.
  */
-#ifndef __OPPT_GEOMETRY_HPP__
-#define __OPPT_GEOMETRY_HPP__
+#pragma once
 #include "oppt/opptCore/typedefs.hpp"
 #include "oppt/opptCore/constants.hpp"
 #include "Pose.hpp"
@@ -144,4 +143,3 @@ protected:
 }
 }
 
-#endif

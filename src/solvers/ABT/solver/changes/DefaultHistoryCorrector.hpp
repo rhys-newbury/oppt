@@ -3,8 +3,7 @@
  * Provides a default, general-purpose implementation of a HistoryCorrector that will be able to
  * deal with any POMDP model.
  */
-#ifndef SOLVER_DEFAULTHISTORYCORRECTOR_HPP_
-#define SOLVER_DEFAULTHISTORYCORRECTOR_HPP_
+#pragma once
 
 #include "HistoryCorrector.hpp"
 
@@ -37,4 +36,3 @@ private:
 
 } /* namespace abt */
 
-#endif /* SOLVER_DEFAULTHISTORYCORRECTOR_HPP_ */
