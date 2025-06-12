@@ -296,3 +296,14 @@ install(FILES
   ${spatialindex_BINARY_DIR}/bin/libspatialindex.so.4
   DESTINATION oppt_py
 )
+
+add_custom_target(generate_stubs ALL
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/build_tools/gen_stubs.py ${CMAKE_BINARY_DIR}
+    DEPENDS _oppt_py
+    COMMENT "Generating stubs for _oppt_py"
+)
+
+install(FILES
+    ${CMAKE_BINARY_DIR}/_oppt_py.pyi
+    DESTINATION oppt_py
+)

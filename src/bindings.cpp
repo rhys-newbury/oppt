@@ -8,25 +8,11 @@
 #include "solvers/ABT/ABTOptions.hpp"
 #include "solvers/ABT/robotModel/solver/Solver.hpp"
 
-
-#ifdef _WIN32
-#include <windows.h>
-#endif
-
-void set_env(const std::string& name, const std::string& value) {
-#ifdef _WIN32
-    _putenv_s(name.c_str(), value.c_str());
-#else
-    setenv(name.c_str(), value.c_str(), 1); // overwrite = 1
-#endif
-}
-
 namespace py = pybind11;
 using namespace oppt;
 
 std::shared_ptr<ABTExtendedOptions> parse_abt_options_from_file(const std::string& configPath) {
     ProblemEnvironmentOptionsParser parser;
-    std::cout << "configPath: " << configPath << std::endl;
     auto basePtr = parser.parseOptions<ABTExtendedOptions>(configPath);
     return std::dynamic_pointer_cast<ABTExtendedOptions>(basePtr);
 }
