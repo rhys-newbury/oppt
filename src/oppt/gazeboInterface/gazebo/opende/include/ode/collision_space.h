@@ -20,7 +20,8 @@
  *                                                                       *
  *************************************************************************/
 
-#pragma once
+#ifndef _ODE_COLLISION_SPACE_H_
+#define _ODE_COLLISION_SPACE_H_
 
 #include <ode/common.h>
 
@@ -178,3 +179,4 @@ ODE_API int dSpaceGetClass(dSpaceID space);
 }
 #endif
 
+#endif

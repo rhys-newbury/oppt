@@ -23,7 +23,8 @@
 /* C++ interface for non-collision stuff */
 
 
-#pragma once
+#ifndef _ODE_ODECPP_H_
+#define _ODE_ODECPP_H_
 #ifdef __cplusplus
 
 
@@ -1453,6 +1454,7 @@ typedef dAMotorJointTemplate<dODECPP_JOINT_TEMPLATE_BASE, dODECPP_WORLD_TEMPLATE
 typedef dLMotorJointTemplate<dODECPP_JOINT_TEMPLATE_BASE, dODECPP_WORLD_TEMPLATE_BASE, dODECPP_BODY_TEMPLATE_BASE> dLMotorJoint;
 
 
+#endif
 #endif
 
 // Local variables:

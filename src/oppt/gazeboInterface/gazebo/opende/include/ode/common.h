@@ -20,7 +20,8 @@
  *                                                                       *
  *************************************************************************/
 
-#pragma once
+#ifndef _ODE_COMMON_H_
+#define _ODE_COMMON_H_
 #include <ode/odeconfig.h>
 #include <ode/error.h>
 #include <math.h>
@@ -45,7 +46,8 @@ extern "C" {
  * defined in <math.h> on some platforms (like MS-Windows)
  */
 
-#pragma once
+#ifndef M_PI
+#define M_PI REAL(3.1415926535897932384626433832795029)
 #endif
 #ifndef M_SQRT1_2
 #define M_SQRT1_2 REAL(0.7071067811865475244008443621048490)
@@ -414,4 +416,6 @@ ODE_API int dCheckConfiguration( const char* token );
 
 #ifdef __cplusplus
 }
+#endif
 
+#endif

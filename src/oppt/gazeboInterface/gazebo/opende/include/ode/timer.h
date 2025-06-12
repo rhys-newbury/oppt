@@ -20,7 +20,8 @@
  *                                                                       *
  *************************************************************************/
 
-#pragma once
+#ifndef _ODE_TIMER_H_
+#define _ODE_TIMER_H_
 
 #include <ode/odeconfig.h>
 
@@ -72,3 +73,4 @@ ODE_API double dTimerResolution(void);
 }
 #endif
 
+#endif

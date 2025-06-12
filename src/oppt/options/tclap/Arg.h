@@ -219,7 +219,8 @@ class Arg
 		 * The char that indicates the beginning of a flag.  Defaults to '-', but
 		 * clients can define TCLAP_FLAGSTARTCHAR to override.
 		 */
-#pragma once
+#ifndef TCLAP_FLAGSTARTCHAR
+#define TCLAP_FLAGSTARTCHAR '-'
 #endif
 		static char flagStartChar() { return TCLAP_FLAGSTARTCHAR; }
 
@@ -422,6 +423,7 @@ ExtractValue(T &destVal, const std::string& strVal, ValueLike vl)
 	    is >> std::setbase(0) >> destVal;
 #else
 	    is >> destVal;
+#endif
 	else
 	    break;
 
@@ -684,4 +686,3 @@ inline void Arg::reset()
 //////////////////////////////////////////////////////////////////////
 
 } //namespace TCLAP
-

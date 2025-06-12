@@ -26,7 +26,8 @@ freely, subject to the following restrictions:
 #ifdef HDF5_INSTRUMENT
 
 
-#pragma once
+#ifndef H5_IO_C
+#define H5_IO_C
 
 struct dxWorld;
 
@@ -41,3 +42,4 @@ extern "C" {
 
 #endif
 
+#endif // HDF5_INSTRUMENT

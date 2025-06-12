@@ -20,7 +20,8 @@
  *                                                                       *
  *************************************************************************/
 
-#pragma once
+#ifndef _ODE_CONTACT_H_
+#define _ODE_CONTACT_H_
 
 #include <ode/common.h>
 
@@ -107,3 +108,4 @@ typedef struct dContact {
 }
 #endif
 
+#endif

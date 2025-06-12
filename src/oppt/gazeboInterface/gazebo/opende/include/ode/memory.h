@@ -22,7 +22,8 @@
 
 /* this comes from the `reuse' library. copy any changes back to the source */
 
-#pragma once
+#ifndef _ODE_MEMORY_H_
+#define _ODE_MEMORY_H_
 
 #include <ode/odeconfig.h>
 
@@ -55,3 +56,4 @@ ODE_API void dFree (void *ptr, size_t size);
 }
 #endif
 
+#endif

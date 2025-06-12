@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ODECONFIG_H
+#define ODECONFIG_H
 
 
 /* Pull in the standard headers */
@@ -93,3 +94,4 @@
 #endif
 
 
+#endif
